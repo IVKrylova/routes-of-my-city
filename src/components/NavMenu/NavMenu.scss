@@ -1,0 +1,38 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.navmenu {
+  display: none;
+
+  @include media_768 {
+    display: block;
+  }
+
+  &__list {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    column-gap: 20px;
+
+    @include media_1280 {
+      column-gap: 40px;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.17;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+    text-decoration: none;
+
+    &:hover {
+      color: $font-color-light-blue;
+    }
+
+    @include media_1280 {
+      font-size: 18px;
+    }
+  }
+}

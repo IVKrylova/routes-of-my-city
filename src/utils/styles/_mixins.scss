@@ -29,6 +29,10 @@
 
 @mixin button-cta {
   background-color: $button-color-cta;
+  border-radius: 10px;
+  color: $font-color-white;
+  font-weight: 600;
+  cursor: pointer;
 
   &:hover {
     background-color: $button-color-cta-hover;
@@ -41,6 +45,10 @@
 
 @mixin button-sign-up {
   background-color: $button-color-sign-up;
+  border-radius: 10px;
+  color: $font-color-white;
+  font-weight: 600;
+  cursor: pointer;
 
   &:hover {
     background-color: $button-color-sign-up-hover;
@@ -75,9 +83,26 @@
   }
 }
 
+@mixin reset-button {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+}
+
+@mixin button-header {
+  width: 30px;
+  height: 30px;
+}
+
 // media queries
 @mixin media_768 {
   @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media_1280 {
+  @media screen and (min-width: 1280px) {
     @content;
   }
 }
