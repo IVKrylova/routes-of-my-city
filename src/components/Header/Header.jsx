@@ -1,6 +1,7 @@
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Logo from '../Logo/Logo';
 import NavMenu from '../NavMenu/NavMenu';
+import LinkToAccount from '../LinkToAccount/LinkToAccount';
 import './Header.scss';
 
 const Header = (props) => {
@@ -22,19 +23,33 @@ const Header = (props) => {
       <NavMenu
         isMobileMenuOpen={props.isMobileMenuOpen}
       />
-      <button className='header__button-account' aria-label='кнопка личный кабинет' type='button'></button>
-      <ul className='header__button-list'>
-        <li>
-          <button className='header__button-sign-up' type='button'>
-            Регистрация
-          </button>
-        </li>
-        <li>
-          <button className='header__button-sign-in' type='button'>
-            Вход
-          </button>
-        </li>
-      </ul>
+      {!props.isLogin &&
+        <>
+          <button className='header__button-account' aria-label='кнопка личный кабинет' type='button'></button>
+          <ul className='header__button-list'>
+            <li>
+              <button className='header__button-sign-up' type='button'>
+                Регистрация
+              </button>
+            </li>
+            <li>
+              <button className='header__button-sign-in' type='button'>
+                Вход
+              </button>
+            </li>
+          </ul>
+        </>
+      }
+      {props.isLogin &&
+        <div className='header__account'>
+          <LinkToAccount />
+          <button
+            type='button'
+            aria-label='кнопка показать данные об аккаунте'
+            className='header__account-button'
+          ></button>
+        </div>
+      }
     </header>
   );
 }

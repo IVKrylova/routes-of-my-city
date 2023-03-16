@@ -4,6 +4,7 @@ import './App.scss';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -19,6 +20,7 @@ function App() {
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
         handleCloseMobileMenu={closeMobileMenu}
+        isLogin={isLogin}
       />
     </div>
   );

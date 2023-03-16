@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 15px 20px;
   display: grid;
-  grid-template-columns: 30px calc(100% - 60px - 34px) 30px;
+  grid-template-columns: 30px 120px calc(100% - 150px - 34px);
   column-gap: 17px;
   align-items: center;
   width: 100%;
@@ -39,6 +39,7 @@
     @include reset-button;
     @include button-header;
     background-image: url(../../images/icon-account-mobile.svg);
+    justify-self: end;
 
     @include media_768 {
       display: none;
@@ -87,5 +88,21 @@
     }
   }
 
+  &__account {
+    display: flex;
+    column-gap: 5px;
+    justify-self: end;
+  }
+
+  &__account-button {
+    @include reset-button;
+    background-image: url(../../images/icon-arrow-header.svg);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+  }
+
+  /* ToDo: delete after adding 2 next blocks */
   height: min-content;
 }
