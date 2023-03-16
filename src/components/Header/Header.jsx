@@ -27,7 +27,11 @@ const Header = (props) => {
       {!props.isLogin &&
         <>
           {/* ToDo: set up routing */}
-          <Link className='header__button-account' to='/'></Link>
+          <Link
+            className='header__button-account'
+            to='/'
+            aria-label='ссылка на форму входа в личный кабинет'
+          ></Link>
           <ul className='header__button-list'>
             <li>
               <button className='header__button-sign-up' type='button'>
