@@ -48,11 +48,14 @@ const Header = (props) => {
       }
       {props.isLogin &&
         <div className='header__account'>
-          <LinkToAccount />
+          <LinkToAccount
+            handleClickLinkToAccount={props.handleClickLinkToAccount}
+          />
           <button
             type='button'
             aria-label='кнопка показать данные об аккаунте'
             className='header__account-button'
+            onMouseOver={props.handleHoverButtonHeaderAcount}
           ></button>
         </div>
       }
