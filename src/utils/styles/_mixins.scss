@@ -33,6 +33,8 @@
   color: $font-color-white;
   font-weight: 600;
   cursor: pointer;
+  border: none;
+  box-sizing: border-box;
 
   &:hover {
     background-color: $button-color-cta-hover;
@@ -49,6 +51,8 @@
   color: $font-color-white;
   font-weight: 600;
   cursor: pointer;
+  border: none;
+  box-sizing: border-box;
 
   &:hover {
     background-color: $button-color-sign-up-hover;
@@ -87,6 +91,7 @@
   background-color: transparent;
   box-sizing: border-box;
   border: none;
+  cursor: pointer;
 }
 
 @mixin button-header {

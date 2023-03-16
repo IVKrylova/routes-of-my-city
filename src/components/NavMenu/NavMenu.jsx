@@ -1,25 +1,29 @@
 import './NavMenu.scss';
 
-const NavMenu = () => {
+const NavMenu = (props) => {
+  const classNavMenu = `navmenu ${props.isMobileMenuOpen ? 'navmenu_mobile' : ''}`;
+  const classLink = `navmenu__link ${props.isMobileMenuOpen ? 'navmenu__link_mobile' : ''}`;
+  const classList = `navmenu__list ${props.isMobileMenuOpen ? 'navmenu__list_mobile' : ''}`;
+
   return (
-    <nav className='navmenu'>
-      <ul className='navmenu__list'>
+    <nav className={classNavMenu}>
+      <ul className={classList}>
         {/* ToDo: add links to bloks.
         If <a> doesn`t work, you will need to install react-router-hash-link */}
         <li>
-          <a className='navmenu__link' href="#">О проекте</a>
+          <a className={classLink} href="#">О проекте</a>
         </li>
         <li>
-          <a className='navmenu__link' href="#">Квесты</a>
+          <a className={classLink} href="#">Квесты</a>
         </li>
         <li>
-          <a className='navmenu__link' href="#">Правила</a>
+          <a className={classLink} href="#">Правила</a>
         </li>
         <li>
-          <a className='navmenu__link' href="#">FAQ</a>
+          <a className={classLink} href="#">FAQ</a>
         </li>
         <li>
-          <a className='navmenu__link' href="#">Контакты</a>
+          <a className={classLink} href="#">Контакты</a>
         </li>
       </ul>
     </nav>

@@ -17,6 +17,14 @@
     @include media_1280 {
       column-gap: 40px;
     }
+
+    &_mobile {
+      flex-direction: column;
+      row-gap: 25px;
+      position: absolute;
+      left: 20px;
+      top: 90px;
+    }
   }
 
   &__link {
@@ -31,8 +39,22 @@
       color: $font-color-light-blue;
     }
 
+    &_mobile {
+      color: $font-color-blue;
+      font-size: 18px;
+
+      &:hover {
+        color: $font-color-blue-hover;
+      }
+    }
+
     @include media_1280 {
       font-size: 18px;
     }
+  }
+
+  &_mobile {
+    margin-top: 45px;
+    display: block;
   }
 }

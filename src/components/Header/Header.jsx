@@ -3,15 +3,25 @@ import Logo from '../Logo/Logo';
 import NavMenu from '../NavMenu/NavMenu';
 import './Header.scss';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className='header'>
       <div className='header__burger-menu'>
-        <button className='header__button-menu' aria-label='кнопка меню' type='button'></button>
-        <MobileMenu />
+        <button
+          className='header__button-menu'
+          aria-label='кнопка меню'
+          type='button'
+          onClick={props.handleClickBurgerMenu}
+        ></button>
+        <MobileMenu
+          isMobileMenuOpen={props.isMobileMenuOpen}
+          handleCloseMobileMenu={props.handleCloseMobileMenu}
+        />
       </div>
       <Logo />
-      <NavMenu />
+      <NavMenu
+        isMobileMenuOpen={props.isMobileMenuOpen}
+      />
       <button className='header__button-account' aria-label='кнопка личный кабинет' type='button'></button>
       <ul className='header__button-list'>
         <li>
