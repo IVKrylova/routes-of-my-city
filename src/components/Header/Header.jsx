@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Logo from '../Logo/Logo';
 import NavMenu from '../NavMenu/NavMenu';
@@ -25,7 +26,8 @@ const Header = (props) => {
       />
       {!props.isLogin &&
         <>
-          <button className='header__button-account' aria-label='кнопка личный кабинет' type='button'></button>
+          {/* ToDo: set up routing */}
+          <Link className='header__button-account' to='/'></Link>
           <ul className='header__button-list'>
             <li>
               <button className='header__button-sign-up' type='button'>
