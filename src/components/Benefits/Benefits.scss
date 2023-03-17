@@ -1,0 +1,87 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.benefits {
+  background-color: $background-gray;
+  box-sizing: border-box;
+  padding: 95px 20px 100px;
+  width: 100%;
+
+  @include media_768 {
+    padding: 60px 5% 85px;
+  }
+
+  @include media_1280 {
+    padding: 60px 10.4% 85px;
+  }
+
+  &__list {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 70px;
+    align-items: center;
+
+    @include media_768 {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    width: 100%;
+
+    @include media_768 {
+      max-width: 250px;
+    }
+
+    @include media_1280 {
+      max-width: 286px;
+    }
+  }
+
+  &__title {
+    @include reset-margins;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.15;
+    color: $font-color-black;
+
+    @include media_768 {
+      font-size: 18px;
+    }
+
+    @include media_1280 {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    @include reset-margins;
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.17;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-black;
+
+    @include media_768 {
+      font-size: 16px;
+    }
+
+    @include media_1280 {
+      font-size: 20px;
+    }
+  }
+
+  // ToDo: delete after adding other blocks
+  height: min-content;
+}
