@@ -1,0 +1,49 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.mobile-menu {
+  display: none;
+  grid-template-columns: 1fr;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $background-white;
+  width: 280px;
+
+  &__button-list {
+    @include reset-margins;
+    list-style-type: none;
+    margin-top: 340px;
+    justify-self: center;
+    margin-bottom: 180px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+  }
+
+  &__button-sign-in {
+    @include button-cta;
+    padding: 15px 96px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  &__button-sign-up {
+    @include reset-button;
+    color: $font-color-orange;
+    justify-self: center;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+
+    &:hover {
+      color: $font-color-orange-hover;
+    }
+  }
+
+  &_visible {
+    display: grid;
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../utils/styles/_mixins';
+
+.button-close {
+  @include reset-button;
+  @include button-header;
+  background-image: url(../../images/icon-close.svg);
+  margin-top: 14px;
+  margin-left: 20px;
+}

@@ -1,0 +1,108 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.header {
+  background-color: $background-blue;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 30px 120px calc(100% - 150px - 34px);
+  column-gap: 17px;
+  align-items: center;
+  width: 100%;
+
+  @include media_768 {
+    padding: 27px 3%;
+    column-gap: 8%;
+    grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 16%) 205px;
+  }
+
+  @include media_1280 {
+    padding: 37px 6.5% 37px 10.2%;
+    column-gap: 10.6%;
+    grid-template-columns: 6.6% calc(100% - 260px - 6.6% - 21.2%) 260px;
+  }
+
+  &__button-menu {
+    @include reset-button;
+    @include button-header;
+    background-image: url(../../images/icon-burger-menu.svg);
+  }
+
+  &__burger-menu {
+    @include media_768 {
+      display: none;
+    }
+  }
+
+  &__button-account {
+    @include reset-button;
+    @include button-header;
+    background-image: url(../../images/icon-account-mobile.svg);
+    justify-self: end;
+
+    @include media_768 {
+      display: none;
+    }
+  }
+
+  &__button-list {
+    display: none;
+    @include reset-margins;
+    list-style-type: none;
+    column-gap: 10px;
+    align-items: center;
+
+    @include media_768 {
+      display: flex;
+    }
+  }
+
+  &__button-sign-up {
+    @include reset-button;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+    cursor: pointer;
+
+    &:hover {
+      color: $font-color-light-blue;
+    }
+
+    @include media_1280 {
+      font-size: 20px;
+    }
+  }
+
+  &__button-sign-in {
+    @include reset-button;
+    @include button-sign-up;
+    padding: 16px 30px;
+    font-size: 14px;
+    line-height: 1.15;
+
+    @include media_1280 {
+      font-size: 20px;
+    }
+  }
+
+  &__account {
+    display: flex;
+    column-gap: 5px;
+    justify-self: end;
+  }
+
+  &__account-button {
+    @include reset-button;
+    background-image: url(../../images/icon-arrow-header.svg);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+  }
+
+  /* ToDo: delete after adding 2 next blocks */
+  height: min-content;
+}
