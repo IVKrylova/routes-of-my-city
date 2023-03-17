@@ -1,0 +1,37 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.faq-list {
+  background: $background-gradient-faq;
+  box-sizing: border-box;
+  padding: 80px 20px;
+
+  &__content {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 70px
+  }
+
+  &__list {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  &__list-partners {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+  }
+}
+
+.section-title {
+  @include h2;
+  @include reset-margins;
+}
