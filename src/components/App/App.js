@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -42,7 +41,6 @@ function App() {
 
   return (
     <div className="app">
-
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
@@ -55,9 +53,7 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
       />
-
       <Main />
-
     </div>
   );
 }
