@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
+import Main from '../Main/Main';
 import './App.scss';
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
 
   return (
     <div className="app">
+
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
@@ -52,6 +55,9 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
       />
+
+      <Main />
+
     </div>
   );
 }
