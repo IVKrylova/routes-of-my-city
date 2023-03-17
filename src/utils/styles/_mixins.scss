@@ -81,3 +81,9 @@
     @content;
   }
 }
+
+@mixin media_1280 {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
