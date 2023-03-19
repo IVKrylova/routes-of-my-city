@@ -1,0 +1,22 @@
+@import '../../utils/styles/_mixins';
+
+.logo {
+  &__mobile {
+    @include media_768 {
+      display: none;
+    }
+  }
+
+  &__desktop {
+    display: none;
+
+    @include media_768 {
+      display: block;
+      width: 75px;
+
+      @include media_1280 {
+        width: 95px;
+      }
+    }
+  }
+}
