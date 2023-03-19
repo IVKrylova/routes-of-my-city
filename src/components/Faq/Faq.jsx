@@ -8,10 +8,10 @@ const Faq = (props) => {
   const handleClickQuestion = (evt) => {
     evt.preventDefault();
 
-    if (!evt.target.closest('.faq__item').open) {
-      setIsAnswerOpened(true);
-    } else {
+    if (isAnswerOpened) {
       setIsAnswerOpened(false);
+    } else {
+      evt.target.id === props.faq.id.toString() ? setIsAnswerOpened(true) : setIsAnswerOpened(false);
     }
   }
 

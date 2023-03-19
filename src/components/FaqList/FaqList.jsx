@@ -20,14 +20,14 @@ const FaqList = () => {
           })}
         </ul>
         <ul className='faq-list__list-partners'>
-          <li className='faq-list__partner'>
-            <img src={logoRosmolodezh} alt='логотип Росмолодежь' />
+          <li>
+            <img className='faq-list__partner' src={logoRosmolodezh} alt='логотип Росмолодежь' />
           </li>
-          <li className='faq-list__partner'>
-            <img src={logoRosmolodezh} alt='логотип Росмолодежь' />
+          <li>
+            <img className='faq-list__partner' src={logoRosmolodezh} alt='логотип Росмолодежь' />
           </li>
-          <li className='faq-list__partner'>
-            <img src={logoRosmolodezh} alt='логотип Росмолодежь' />
+          <li>
+            <img className='faq-list__partner' src={logoRosmolodezh} alt='логотип Росмолодежь' />
           </li>
         </ul>
       </div>

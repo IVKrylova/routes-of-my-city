@@ -20,6 +20,11 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: $font-color-black;
     width: 80%;
+    cursor: pointer;
+
+    @include media_1280 {
+      font-size: 24px;
+    }
 
     &::-webkit-details-marker {
       display: none;
@@ -34,6 +39,11 @@
       right: 40px;
       width: 20px;
       height: 20px;
+      cursor: pointer;
+    }
+
+    &_opened {
+      color: $font-color-red;
     }
 
     &_opened::after {
@@ -50,6 +60,10 @@
     color: $font-color-gray;
     position: relative;
     margin-top: 40px;
+
+    @include media_1280 {
+      font-size: 20px;
+    }
 
     &::before {
       content: '';
