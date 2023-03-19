@@ -1,23 +1,16 @@
-import { useState } from 'react';
 import './Faq.scss';
 
 const Faq = (props) => {
-  const [isAnswerOpened, setIsAnswerOpened] = useState(false);
-  const summeryClass = `faq__question ${isAnswerOpened ? 'faq__question_opened' : ''}`;
+  const summeryClass = `faq__question ${props.faq.opened ? 'faq__question_opened' : ''}`;
 
   const handleClickQuestion = (evt) => {
     evt.preventDefault();
-
-    if (isAnswerOpened) {
-      setIsAnswerOpened(false);
-    } else {
-      evt.target.id === props.faq.id.toString() ? setIsAnswerOpened(true) : setIsAnswerOpened(false);
-    }
+    props.sentFaq(props.faq.id);
   }
 
   return (
     <li className='faq'>
-      <details className='faq__item' open={isAnswerOpened}>
+      <details className='faq__item' open={props.faq.opened}>
         <summary
           className={summeryClass}
           onClick={handleClickQuestion}

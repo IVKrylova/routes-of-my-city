@@ -6,7 +6,10 @@ const Main = (props) => {
   return (
     <main className="main-content">
       <AboutProject />
-      <FaqList />
+      <FaqList
+        faqList={props.faqList}
+        handleOpenAnswer={props.handleOpenAnswer}
+      />
     </main>
   );
 }
