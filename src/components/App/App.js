@@ -42,7 +42,6 @@ function App() {
 
   return (
     <div className="app">
-
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
@@ -55,7 +54,6 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
       />
-
       <Main />
 
     </div>
