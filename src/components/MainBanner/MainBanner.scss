@@ -1,0 +1,41 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.main-banner {
+  box-sizing: border-box;
+  padding: 50px 20px 291px;
+  background-image: url(../../images/background-main-banner-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: bottom;
+
+  &__title {
+    @include reset-margins;
+    @include h1;
+  }
+
+  &__orange-shadow {
+    text-shadow: $font-color-red 4px 4px;
+  }
+
+  &__text {
+    @include reset-margins;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+  }
+
+  &__button-cta {
+    @include button-cta;
+    display: block;
+    width: 166px;
+    margin-top: 40px;
+    padding: 15px 30px;
+    font-size: 16px;
+    line-height: 1.19;
+    text-decoration: none;
+  }
+}
