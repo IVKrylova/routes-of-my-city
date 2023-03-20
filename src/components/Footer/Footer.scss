@@ -1,0 +1,51 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.footer {
+  background-color: $background-blue;
+  box-sizing: border-box;
+  padding: 30px 20px 50px;
+  display: grid;
+  row-gap: 45px;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__about-company {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+  }
+
+  &__company-name {
+    @include reset-margins;
+    cursor: default;
+  }
+
+  &__contacts-list {
+    @include reset-margins;
+    list-style-type: none;
+  }
+
+  &__link-to-contact {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__social-networks-list {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    column-gap: 15px;
+    justify-self: end;
+    align-self: end;
+  }
+}
