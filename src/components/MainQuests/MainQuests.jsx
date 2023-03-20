@@ -1,8 +1,9 @@
 import iconNoQuests from '../../images/icon-no-quests.svg';
+import QuestItem from '../QuestItem/QuestItem';
 import './MainQuests.scss';
 
 const MainQuests = (props) => {
-  const classSection = `main-quests ${props.isNoQuests ? 'main-quests_no-quests' : ''}`;
+  const classSection = `main-quests ${props.isNoQuests ? 'main-quests_no-quests' : 'main-quests_quests'}`;
 
   return (
     <section className={classSection}>
@@ -13,8 +14,17 @@ const MainQuests = (props) => {
           <p className='main-quests__text-no-quests'>Работаем над новым квестом…</p>
         </div>
       }
-      {!props.isNoQuests &&
-        <div></div>
+      {!props.isNoQuests && props.questsList &&
+        <ul className='main-quests__quests-list'>
+          {props.questsList.map(el => {
+            return (
+              <QuestItem
+                quest={el}
+                key={el.id}
+              />
+            );
+          })}
+        </ul>
       }
     </section>
   );

@@ -10,6 +10,7 @@ const Main = (props) => {
       <Benefits />
       <MainQuests
         isNoQuests={props.isNoQuests}
+        questsList={props.questsList}
       />
     </main>
   );

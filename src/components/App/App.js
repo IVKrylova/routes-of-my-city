@@ -1,11 +1,12 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
 import './App.scss';
+// ToDo: delete after getting data with API
+import { quests } from '../../utils/data/quests';
 
 function App() {
   let navigate = useNavigate();
@@ -42,6 +43,12 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    // ToDo: replace with data from API
+    setQuestsList(quests);
+    if (quests.length > 0) setIsNoQuests(false);
+  }, []);
+
   return (
     <div className="app">
       <Header
@@ -58,6 +65,7 @@ function App() {
       />
       <Main
         isNoQuests={isNoQuests}
+        questsList={questsList}
       />
     </div>
   );

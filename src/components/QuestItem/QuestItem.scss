@@ -1,0 +1,64 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.quest-item {
+  width: 100%;
+  position: relative;
+  color: $font-color-white;
+  box-sizing: border-box;
+  padding: 50px 20px 53px;
+
+  &__title {
+    @include reset-margins;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.17;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    cursor: default;
+  }
+
+  &__description {
+    @include reset-margins;
+    margin-top: 10px;
+    @include text-s20-w500;
+  }
+
+  &__data {
+    @include reset-margins;
+    cursor: default;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.19;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+  &__time {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 170px;
+  }
+
+  &__text-time {
+    @include reset-margins;
+    @include text-s20-w500;
+  }
+
+  &__place {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 20px;
+  }
+
+  &__address {
+    @include reset-margins;
+    @include text-s20-w500;
+  }
+
+  &__button-cta {
+    @include button-cta;
+    font-size: 16px;
+    line-height: 1.19;
+    padding: 15px 104px;
+    margin-top: 25px;
+  }
+}
