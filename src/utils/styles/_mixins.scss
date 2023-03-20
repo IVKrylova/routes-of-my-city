@@ -100,8 +100,20 @@
 }
 
 // media queries
+@mixin media_530 {
+  @media screen and (min-width: 530px) {
+    @content;
+  }
+}
+
 @mixin media_768 {
   @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media_1024 {
+  @media screen and (min-width: 1024px) {
     @content;
   }
 }

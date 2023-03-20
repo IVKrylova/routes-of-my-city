@@ -1,0 +1,76 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.main-quests {
+  background: $background-gradient-no-quests;
+  padding: 80px 20px 185px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include media_768 {
+    padding: 90px 10% 115px;
+  }
+
+  &__section-title {
+    @include reset-margins;
+    @include h2;
+  }
+
+  &_no-quests {
+    background-image: url(../../images/background-no-quests-mobile.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include media_530 {
+      background-image: url(../../images/background-no-quests-desktop.png);
+    }
+  }
+
+  &__block-no-quests {
+    margin-top: 65px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    @include media_768 {
+      margin-top: 0;
+    }
+
+    @include media_1024 {
+      flex-direction: row;
+    }
+  }
+
+  &__icon-no-quests {
+    width: 168px;
+    height: 196px;
+    display: block;
+    align-self: center;
+
+    @include media_1024 {
+      width: 269px;
+      height: auto;
+    }
+  }
+
+  &__text-no-quests {
+    @include reset-margins;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-red;
+    cursor: default;
+
+    @include media_1024 {
+      font-size: 36px;
+      max-width: 457px;
+      width: 100%;
+      text-align: left;
+      align-self: center;
+    }
+  }
+}

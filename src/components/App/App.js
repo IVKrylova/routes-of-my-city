@@ -12,6 +12,8 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
+  const [questsList, setQuestsList] = useState([]);
+  const [isNoQuests, setIsNoQuests] = useState(true);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -54,8 +56,9 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
       />
-      <Main />
-
+      <Main
+        isNoQuests={isNoQuests}
+      />
     </div>
   );
 }
