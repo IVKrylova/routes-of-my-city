@@ -1,0 +1,68 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.results-table {
+  margin-top: 75px;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__categories-list {
+    @include reset-margins;
+    display: flex;
+    list-style-type: none;
+    border-bottom: 3px solid $background-braun;
+    overflow-x: hidden;
+    position: relative;
+    margin-left: 20px;
+    width: calc(100vw - 37px);
+  }
+
+  &__category {
+    min-width: 100px;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    color: $font-color-black;
+    cursor: pointer;
+    display: block;
+
+    &:hover {
+      color: $font-color-red;
+    }
+
+    &_active {
+      color: $font-color-white;
+      background: $background-braun;
+      border-radius: 10px 10px 0px 0px;
+
+      &:hover {
+        color: $font-color-white;
+      }
+    }
+  }
+
+  &__button-more {
+    @include reset-button;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+    color: $font-color-orange;
+
+    &:hover {
+      color: $font-color-orange-hover;
+    }
+
+    &_disabled {
+      color: $button-color-disabled;
+
+      &:hover {
+        cursor: default;
+        color: $button-color-disabled;
+      }
+    }
+  }
+}

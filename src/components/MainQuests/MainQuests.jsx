@@ -21,6 +21,7 @@ const MainQuests = (props) => {
               <QuestItem
                 quest={el}
                 key={el.id}
+                resultQuest={props.resultQuest}
               />
             );
           })}

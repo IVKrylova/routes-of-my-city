@@ -7,6 +7,7 @@ import Main from '../Main/Main';
 import './App.scss';
 // ToDo: delete after getting data with API
 import { quests } from '../../utils/data/quests';
+import { results } from '../../utils/data/results';
 
 function App() {
   let navigate = useNavigate();
@@ -15,6 +16,8 @@ function App() {
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [questsList, setQuestsList] = useState([]);
   const [isNoQuests, setIsNoQuests] = useState(true);
+  const [isQuestCompleted, setIsQuestCompleted] = useState(false);
+  const [resultQuest, setResultQuest] = useState([]);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -47,7 +50,15 @@ function App() {
     // ToDo: replace with data from API
     setQuestsList(quests);
     if (quests.length > 0) setIsNoQuests(false);
+    setIsQuestCompleted(quests.some(el => el.isCompleted === true));
   }, []);
+
+  useEffect(() => {
+    if (isQuestCompleted) {
+      // ToDo: replace with data from API
+      setResultQuest(results)
+    }
+  }, [isQuestCompleted]);
 
   return (
     <div className="app">
@@ -66,6 +77,7 @@ function App() {
       <Main
         isNoQuests={isNoQuests}
         questsList={questsList}
+        resultQuest={resultQuest}
       />
     </div>
   );

@@ -22,7 +22,7 @@ export const quests = [
     time: '10:00',
     place: 'Кисловодск, ул. Кирова, 1-а',
     isActive: false,
-    isCompleted: false,
+    isCompleted: true,
     img: stavropol,
   },
 ];

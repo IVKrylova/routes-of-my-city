@@ -2,22 +2,24 @@
 @import '../../utils/styles/_mixins';
 
 .quest-item {
-  width: 100%;
-  position: relative;
-  color: $font-color-white;
-  box-sizing: border-box;
-  padding: 50px 20px 53px;
-  min-height: 550px;
-  display: flex;
-  flex-direction: column;
+    &__card {
+    width: 100%;
+    position: relative;
+    color: $font-color-white;
+    box-sizing: border-box;
+    padding: 50px 20px 53px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
 
-  @include media_530 {
-    border-radius: 10px;
-  }
+    @include media_530 {
+      border-radius: 10px;
+    }
 
-  @include media_768 {
-    min-height: 440px;
-    padding: 50px 8.5% 35px;
+    @include media_768 {
+      min-height: 440px;
+      padding: 50px 8.5% 35px;
+    }
   }
 
   &__title {
