@@ -38,6 +38,7 @@
 
   &_disabled {
     background-color: $button-color-disabled;
+    cursor: default;
   }
 }
 

@@ -7,6 +7,9 @@
   color: $font-color-white;
   box-sizing: border-box;
   padding: 50px 20px 53px;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
 
   &__title {
     @include reset-margins;
@@ -30,6 +33,9 @@
     font-size: 32px;
     line-height: 1.19;
     font-feature-settings: 'pnum' on, 'lnum' on;
+    margin-top: 20px;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
 
   &__time {
@@ -58,7 +64,8 @@
     @include button-cta;
     font-size: 16px;
     line-height: 1.19;
-    padding: 15px 104px;
+    padding: 15px;
     margin-top: 25px;
+    width: 304px;
   }
 }
