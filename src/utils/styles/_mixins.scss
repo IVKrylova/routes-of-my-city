@@ -39,6 +39,10 @@
   &_disabled {
     background-color: $button-color-disabled;
     cursor: default;
+
+    &:hover {
+      background-color: $button-color-disabled;
+    }
   }
 }
 
@@ -102,6 +106,10 @@
   line-height: 1.15;
   font-feature-settings: 'pnum' on, 'lnum' on;
   cursor: default;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
 }
 
 // media queries

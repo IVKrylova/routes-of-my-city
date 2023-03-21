@@ -11,6 +11,10 @@
     @include reset-margins;
     @include h2;
     margin-left: 20px;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
   }
 
   &_no-quests {
@@ -33,11 +37,15 @@
     padding: 80px 0 100px;
 
     &::after {
-      content: url(../../images/quests-blend.svg);
+      content: url(../../images/quests-blend-mobile.svg);
       position: absolute;
       bottom: 0;
       right: 0;
       z-index: 100;
+
+      @include media_1024 {
+        content: url(../../images/quests-blend-desktop.svg);
+      }
     }
   }
 
@@ -95,5 +103,11 @@
     display: flex;
     flex-direction: column;
     row-gap: 60px;
+
+    @include media_530 {
+      row-gap: 50px;
+      padding-left: 7%;
+      padding-right: 7%;
+    }
   }
 }
