@@ -1,0 +1,45 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.results-table-body {
+  text-align: center;
+
+  &__row {
+    background-color: $background-table-row;
+  }
+
+  &__col-number {
+    @include result-table-cell(13%);
+    border-radius: 10px 0 0 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: $font-color-blue;
+  }
+
+  &__col-team {
+    @include result-table-cell(53%);
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__team-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: $font-color-blue;
+    background-color: $background-table-team;
+    border-radius: 10px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+  }
+
+  &__col-score {
+    @include result-table-cell(20%);
+  }
+
+  &__col-time {
+    @include result-table-cell(14%);
+    border-radius: 0 10px 10px 0;
+  }
+}

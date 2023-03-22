@@ -1,9 +1,12 @@
+import { useState, useEffect } from 'react';
+import ResultsTable from '../ResultsTable/ResultsTable';
 import iconTime from '../../images/icon-quest-time.svg';
 import iconPlace from '../../images/icon-quest-place.svg';
 import './QuestItem.scss';
-import ResultsTable from '../ResultsTable/ResultsTable';
 
 const QuestItem = (props) => {
+  const [resultData, setResultData] = useState([]);
+
   const background = props.quest.isActive ?
     {
       background: `radial-gradient(53.07% 53.07% at 33.71% 2.73%, rgba(1, 128, 162, 0.4) 0%, rgba(24, 123, 123, 0) 100%), linear-gradient(101.2deg, #003B59 15.99%, rgba(0, 59, 89, 0) 69.7%), 72% 30% url(${props.quest.img})`,
@@ -12,8 +15,13 @@ const QuestItem = (props) => {
       background: `radial-gradient(44.43% 53.16% at 30.93% 5.57%, rgba(1, 128, 162, 0.2) 0%, rgba(1, 128, 162, 0) 100%), linear-gradient(102.92deg, #003B59 4.72%, rgba(0, 59, 89, 0) 65.23%), linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 3% 100% url(${props.quest.img})`,
     };
   const buttonClass = `quest-item__button-cta ${props.quest.isActive ? '' : 'quest-item__button-cta_disabled'}`;
+
   // ToDo: check logic after connection with API
-  const resultData = props.resultQuest.filter(el => el.questId === props.quest.id);
+  useEffect(() => {
+    if (props.resultQuest) {
+      setResultData(props.resultQuest.filter(el => el.questId === props.quest.id));
+    }
+  }, [props.resultQuest]);
 
   return (
     <li className='quest-item'>
