@@ -11,10 +11,16 @@
     display: flex;
     list-style-type: none;
     border-bottom: 3px solid $background-braun;
-    overflow-x: hidden;
+    overflow-x: scroll;
     position: relative;
     margin-left: 20px;
     width: calc(100vw - 37px);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__category {
