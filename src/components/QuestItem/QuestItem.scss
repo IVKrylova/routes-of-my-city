@@ -14,6 +14,10 @@
 
     @include media_530 {
       border-radius: 10px;
+
+      margin-left: 7%;
+      margin-right: 7%;
+      width: 86%;
     }
 
     @include media_768 {

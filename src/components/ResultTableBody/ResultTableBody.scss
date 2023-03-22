@@ -14,6 +14,14 @@
     font-weight: 600;
     font-size: 18px;
     color: $font-color-blue;
+
+    @include media_1024 {
+      width: 9%;
+    }
+
+    @include media_1024 {
+      font-size: 24px;
+    }
   }
 
   &__col-team {
@@ -22,6 +30,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    @include media_1024 {
+      width: 64%;
+    }
   }
 
   &__team-name {
@@ -32,14 +44,30 @@
     border-radius: 10px;
     padding: 5px 15px;
     box-sizing: border-box;
+
+    @include media_1024 {
+      font-size: 20px;
+      padding: 10px 15px;
+    }
   }
 
   &__col-score {
     @include result-table-cell(20%);
+    text-align: left;
+
+    @include media_1024 {
+      width: 13%;
+      font-size: 20px;
+    }
   }
 
   &__col-time {
     @include result-table-cell(14%);
     border-radius: 0 10px 10px 0;
+    text-align: left;
+
+    @include media_1024 {
+      font-size: 20px;
+    }
   }
 }

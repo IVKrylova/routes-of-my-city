@@ -6,6 +6,10 @@
   display: grid;
   grid-template-columns: 1fr;
 
+  @include media_1024 {
+    margin-top: 100px;
+  }
+
   &__categories-list {
     @include reset-margins;
     display: flex;
@@ -15,11 +19,20 @@
     position: relative;
     margin-left: 20px;
     width: calc(100vw - 37px);
+    max-width: 500px;
     -ms-overflow-style: none;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    @include media_530 {
+      margin: 0 auto;
+    }
+
+    @include media_1024 {
+      max-width: 820px;
     }
   }
 
@@ -48,6 +61,11 @@
         color: $font-color-white;
       }
     }
+
+    @include media_1024 {
+      min-width: 164px;
+      font-size: 20px;
+    }
   }
 
   &__button-more {
@@ -70,6 +88,13 @@
         color: $button-color-disabled;
       }
     }
+
+    @include media_1024 {
+      margin-top: 30px;
+      font-size: 18px;
+      justify-self: start;
+      margin-left: calc((100vw - 820px) / 2);
+    }
   }
 
   &__table {
@@ -81,24 +106,50 @@
     border: none;
     border-spacing: 0 5px;
     cursor: default;
+    width: calc(100% - 40px);
+    max-width: 500px;
+
+    @include media_530 {
+      margin: 35px auto 0;
+    }
+
+    @include media_1024 {
+      margin-top: 27px;
+      max-width: 820px;
+      border-spacing: 0 11px;
+      font-size: 16px;
+    }
   }
 
   &__table-head {
-    text-align-last: left;
+    text-align: left;
     height: 49px;
     vertical-align: top;
   }
 
   &__col-number {
     @include result-table-cell(13%);
+    text-align: center;
+
+    @include media_1024 {
+      width: 9%;
+    }
   }
 
   &__col-team {
     @include result-table-cell(53%);
+
+    @include media_1024 {
+      width: 64%;
+    }
   }
 
   &__col-score {
     @include result-table-cell(20%);
+
+    @include media_1024 {
+      width: 13%;
+    }
   }
 
   &__col-time {

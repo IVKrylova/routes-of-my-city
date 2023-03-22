@@ -21,6 +21,11 @@ const ResultsTable = (props) => {
 
   // ToDo: check logic after connection with API
   useEffect(() => {
+    getSortResult(props.result.filter(el => el.category === 'Штатские'));
+  }, [props.result]);
+
+  // ToDo: check logic after connection with API
+  useEffect(() => {
     if (isCurrentCategory === 'Штатские') {
       const res = props.result.filter(el => el.category === 'Штатские');
       getSortResult(res);
