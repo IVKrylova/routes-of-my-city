@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
@@ -6,12 +7,15 @@ import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import './App.scss';
+// ToDo: delete after getting API data
+import { faq } from '../../utils/data/faq';
 
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
+  const [faqList, setFaqList] = useState([]);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -40,6 +44,27 @@ function App() {
     }
   }
 
+  const handleOpenAnswer = (faqId) => {
+    const newFaqList = faqList.map(el => {
+      if (el.id === faqId && el.opened === true) {
+        el.opened = false;
+      } else {
+        el.id === faqId ? el.opened = true : el.opened = false;
+      }
+      return el;
+    });
+    setFaqList(newFaqList);
+  }
+
+  useEffect(() => {
+    // ToDo: replace with API data
+    const faqs = faq.map(el => {
+      el.opened = false;
+      return el;
+    });
+    setFaqList(faqs);
+  }, []);
+
   return (
     <div className="app">
       <Header
@@ -54,7 +79,9 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
       />
-      <Main />
+      <Main
+        faqList={faqList}
+        handleOpenAnswer={handleOpenAnswer}
       <Footer />
     </div>
   );
