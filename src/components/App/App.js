@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 import './App.scss';
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
@@ -80,7 +82,7 @@ function App() {
       <Main
         faqList={faqList}
         handleOpenAnswer={handleOpenAnswer}
-      />
+      <Footer />
     </div>
   );
 }

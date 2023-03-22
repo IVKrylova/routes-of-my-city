@@ -1,0 +1,69 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.footer {
+  background-color: $background-blue;
+  box-sizing: border-box;
+  padding: 30px 20px 50px;
+  display: grid;
+  row-gap: 45px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include media_768 {
+    padding: 30px 7% 50px 10.2%;
+    grid-template-columns: 95px calc(100% - 95px - 140px - 99px) 99px;
+    column-gap: 70px;
+  }
+
+  &__about-company {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+
+    @include media_768 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      align-self: end;
+      font-size: 16px;
+    }
+  }
+
+  &__company-name {
+    @include reset-margins;
+    cursor: default;
+  }
+
+  &__contacts-list {
+    @include reset-margins;
+    list-style-type: none;
+  }
+
+  &__link-to-contact {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__social-networks-list {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    column-gap: 15px;
+    justify-self: end;
+    align-self: end;
+
+    @include media_768 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+  }
+}
