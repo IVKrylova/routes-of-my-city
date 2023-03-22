@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 import './App.scss';
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
       />
       <Main />
-
+      <Footer />
     </div>
   );
 }
