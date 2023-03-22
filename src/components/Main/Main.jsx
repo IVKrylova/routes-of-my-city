@@ -10,11 +10,11 @@ const Main = (props) => {
     <main className="main-content">
       <MainBanner />
       <AboutProject />
+      <Benefits />
       <FaqList
         faqList={props.faqList}
         handleOpenAnswer={props.handleOpenAnswer}
       />
-      <Benefits />
     </main>
   );
 }
