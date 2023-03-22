@@ -12,6 +12,7 @@ const Main = (props) => {
         isNoQuests={props.isNoQuests}
         questsList={props.questsList}
         resultQuest={props.resultQuest}
+        isQuestCompleted={props.isQuestCompleted}
       />
     </main>
   );

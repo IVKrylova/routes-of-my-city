@@ -78,6 +78,7 @@ function App() {
         isNoQuests={isNoQuests}
         questsList={questsList}
         resultQuest={resultQuest}
+        isQuestCompleted={isQuestCompleted}
       />
     </div>
   );
