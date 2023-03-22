@@ -4,14 +4,18 @@
 .about-project {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: $background-white;
-  padding: 70px 20px 104px;
+  padding: 17px 20px 104px;
   box-sizing: border-box;
 
   @include media_768 {
     grid-template-columns: repeat(2, 1fr);
-    padding: 90px 65px 75px;
+    padding: 0 65px 75px;
     column-gap: 9.7%;
+    margin-top: -50px;
+  }
+
+  @include media_1024 {
+    margin-top: -20px;
   }
 
   &__icon-free-part {
@@ -69,9 +73,6 @@
       width: 576px;
     }
   }
-
-  // ToDo: delet after adding next blocks
-  height: min-content;
 }
 
 .section-title {
