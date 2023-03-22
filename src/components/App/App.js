@@ -82,6 +82,7 @@ function App() {
       <Main
         faqList={faqList}
         handleOpenAnswer={handleOpenAnswer}
+      />
       <Footer />
     </div>
   );
