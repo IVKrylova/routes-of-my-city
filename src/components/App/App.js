@@ -22,7 +22,7 @@ import { faq } from '../../utils/data/faq';
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
   const screenWidth = useWindowWidth();
@@ -72,6 +72,12 @@ function App() {
   const clickButtonSignUp = () => {
     navigate('/signup');
     setIsMobileMenuOpen(false);
+  }
+
+  const clickButtonExit = () => {
+    navigate('/');
+    setIsHeaderAccountHovered(false);
+    setIsLogin(false);
   }
 
   useEffect(() => {
@@ -171,6 +177,7 @@ function App() {
       <PopupAccountData
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
+        handleClickButtonExit={clickButtonExit}
       />
       <Footer />
     </div>
