@@ -18,6 +18,8 @@ const Header = (props) => {
         <MobileMenu
           isMobileMenuOpen={props.isMobileMenuOpen}
           handleCloseMobileMenu={props.handleCloseMobileMenu}
+          handleClickButtonLogin={props.handleClickButtonLogin}
+          handleClickButtonSignUp={props.handleClickButtonSignUp}
         />
       </div>
       <Logo />
@@ -26,22 +28,21 @@ const Header = (props) => {
       />
       {!props.isLogin &&
         <>
-          {/* ToDo: set up routing */}
           <Link
             className='header__button-account'
-            to='/'
+            to='/login'
             aria-label='ссылка на форму входа в личный кабинет'
           ></Link>
           <ul className='header__button-list'>
             <li>
-              <button className='header__button-sign-up' type='button'>
+              <Link className='header__button-sign-up' to='/signup'>
                 Регистрация
-              </button>
+              </Link>
             </li>
             <li>
-              <button className='header__button-sign-in' type='button'>
+              <Link className='header__button-sign-in' to='/login'>
                 Вход
-              </button>
+              </Link>
             </li>
           </ul>
         </>

@@ -41,8 +41,7 @@ function App() {
 
   const goToAccount = () => {
     setIsHeaderAccountHovered(false);
-    // ToDo: fix rout
-    navigate('/');
+    navigate('/profile');
   }
 
   const clickLinkToAccount = () => {
@@ -65,6 +64,16 @@ function App() {
     setFaqList(newFaqList);
   }
 
+  const clickButtonLogin = () => {
+    navigate('/login');
+    setIsMobileMenuOpen(false);
+  }
+
+  const clickButtonSignUp = () => {
+    navigate('/signup');
+    setIsMobileMenuOpen(false);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -83,6 +92,8 @@ function App() {
         isLogin={isLogin}
         handleHoverButtonHeaderAcount={hoverButtonHeaderAcount}
         handleClickLinkToAccount={clickLinkToAccount}
+        handleClickButtonLogin={clickButtonLogin}
+        handleClickButtonSignUp={clickButtonSignUp}
       />
       <Routes>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './NavMenu.scss';
 
 const NavMenu = (props) => {
@@ -17,7 +18,7 @@ const NavMenu = (props) => {
           <a className={classLink} href="#">Квесты</a>
         </li>
         <li>
-          <a className={classLink} href="#">Правила</a>
+          <Link className={classLink} to='/rules'>Правила</Link>
         </li>
         <li>
           <a className={classLink} href="#">FAQ</a>
