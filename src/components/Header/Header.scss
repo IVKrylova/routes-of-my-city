@@ -13,6 +13,11 @@
 
   @include media_768 {
     padding: 27px 3%;
+    column-gap: 7%;
+    grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 14%) 205px;
+  }
+
+  @include media_1024 {
     column-gap: 8%;
     grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 16%) 205px;
   }
