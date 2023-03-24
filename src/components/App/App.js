@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -6,9 +5,12 @@ import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import Profile from '../Profile/Profile';
 import './App.scss';
+import { INITIAL_STATE_TEAM } from '../../utils/constants';
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
+import { teams } from '../../utils/data/teams';
 
 function App() {
   let navigate = useNavigate();
@@ -16,6 +18,9 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
+  const [team, setTeam] = useState(INITIAL_STATE_TEAM);
+  const [teamPlayers, setTeamPlayers] = useState([]);
+  const [teamQuestList, setTeamQuestList] = useState([]);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -43,6 +48,30 @@ function App() {
       !isHeaderAccountHovered ? setIsHeaderAccountHovered(true) : goToAccount();
     }
   }
+
+  /* ToDo: set up authorization, team data will be received by authorization  =>
+  replace useEffect with function sign in */
+  useEffect(() => {
+    setTeam(teams);
+  }, []);
+
+  /* ToDo: check logics with API data */
+  useEffect(() => {
+    const players = [];
+    for (let key in team.members) {
+      players.push(team.members[key]);
+    }
+    setTeamPlayers(players);
+  }, [team]);
+
+  /* ToDo: check logics with API data */
+  useEffect(() => {
+    const quests = [];
+    for (let key in team.quests) {
+      quests.push(team.quests[key]);
+    }
+    setTeamQuestList(quests);
+  }, [team]);
 
   const handleOpenAnswer = (faqId) => {
     const newFaqList = faqList.map(el => {
@@ -84,6 +113,11 @@ function App() {
         handleOpenAnswer={handleOpenAnswer}
       />
       <Footer />
+      <Profile
+        team={team}
+        teamPlayers={teamPlayers}
+        teamQuestList={teamQuestList}
+      />
     </div>
   );
 }
