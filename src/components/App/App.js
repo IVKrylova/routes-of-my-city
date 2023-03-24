@@ -1,8 +1,10 @@
-import './App.scss';
-
+import "./App.scss";
+import Register from "../Signup/Register";
 function App() {
   return (
-    <div className="app"></div>
+    <div className="app">
+      <Register />
+    </div>
   );
 }
 
