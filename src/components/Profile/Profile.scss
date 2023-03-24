@@ -1,2 +1,8 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/mixins';
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 32px;
+}

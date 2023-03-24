@@ -1,5 +1,6 @@
 import QuestCardProfile from '../QuestCardProfile/QuestCardProfile';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
+import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import './Profile.scss';
 
 const Profile = (props) => {
@@ -8,6 +9,9 @@ const Profile = (props) => {
 
   return (
     <main className='profile'>
+      <ButtonGoBack
+        goBack={props.goBack}
+      />
       <h1 className='profile__title'>Личный кабинет</h1>
       <form className='profile__form-name' id='edit-team-name'>
         <input

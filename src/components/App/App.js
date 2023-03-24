@@ -73,6 +73,11 @@ function App() {
     setTeamQuestList(quests);
   }, [team]);
 
+  // ToDo: set up routing
+  const handleGoBack = () => {
+
+  }
+
   const handleOpenAnswer = (faqId) => {
     const newFaqList = faqList.map(el => {
       if (el.id === faqId && el.opened === true) {
@@ -117,6 +122,7 @@ function App() {
         team={team}
         teamPlayers={teamPlayers}
         teamQuestList={teamQuestList}
+        goBack={handleGoBack}
       />
     </div>
   );
