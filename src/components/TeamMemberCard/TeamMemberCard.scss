@@ -28,14 +28,22 @@
   &__button-edit {
     @include reset-button;
     margin-left: 15px;
-    @include image-background('../../images/icon-edit.svg');
+    @include image-background(
+      '../../images/icon-edit.svg',
+      '../../images/icon-edit-hover.svg',
+      '../../images/icon-edit-active.svg',
+    );
     width: 20px;
     height: 20px;
   }
 
   &__button-delete {
     @include reset-button;
-    @include image-background('../../images/icon-delete.svg');
+    @include image-background(
+      '../../images/icon-delete.svg',
+      '../../images/icon-delete-hover.svg',
+      '../../images/icon-delete-hover.svg',
+    );
     width: 30px;
     height: 30px;
   }
@@ -61,7 +69,11 @@
 
   &__button-add {
     @include reset-button;
-    @include image-background('../../images/icon-add.svg');
+    @include image-background(
+      '../../images/icon-add.svg',
+      '../../images/icon-add-hover.svg',
+      '../../images/icon-add-active.svg'
+    );
     width: 45px;
     height: 45px;
     margin: 40px calc((100% - 45px) / 2);

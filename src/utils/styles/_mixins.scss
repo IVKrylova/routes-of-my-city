@@ -131,9 +131,22 @@
   }
 }
 
-@mixin image-background($url) {
+@mixin image-background($url, $urlHover, $urlActive) {
   background-image: url($url);
   background-repeat: no-repeat;
+  background-size: contain;
+
+  &:hover {
+    background-image: url($urlHover);
+  }
+
+  &_active {
+    background-image: url($urlActive);
+
+    &:hover {
+      background-image: url($urlActive);
+    }
+  }
 }
 
 @mixin font-data-profile {
