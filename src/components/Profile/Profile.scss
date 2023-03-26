@@ -112,4 +112,28 @@
     padding: 15px 0;
     text-align: center;
   }
+
+  &__no-quest {
+    max-width: 400px;
+    margin: 30px 20px 0;
+    width: calc(100% - 40px);
+    background-color: $background-light-gray;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  &__message {
+    @include reset-margins;
+    @include font-info-profile;
+    color: $font-color-gray;
+  }
+
+  &__link-to-quests {
+    @include link-button-orange;
+    text-decoration: none;
+  }
 }

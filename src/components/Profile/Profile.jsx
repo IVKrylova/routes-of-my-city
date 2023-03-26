@@ -2,6 +2,7 @@ import QuestCardProfile from '../QuestCardProfile/QuestCardProfile';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import './Profile.scss';
+import { Link } from 'react-router-dom';
 
 const Profile = (props) => {
   // ToDo: set up validation and add handler
@@ -36,8 +37,9 @@ const Profile = (props) => {
       <p className='profile__number'>
         Квесты<span className='profile__span-number'>{props.teamQuestList.length}</span>
       </p>
-      <ul className='profile__quest-list'>
-        {props.teamQuestList && props.teamQuestList.map(el => {
+      {props.teamQuestList && props.teamQuestList.length > 0 &&
+        <ul className='profile__quest-list'>
+          {props.teamQuestList.map(el => {
             return (
               <QuestCardProfile
                 quest={el}
@@ -45,7 +47,19 @@ const Profile = (props) => {
               />
             );
           })}
-      </ul>
+        </ul>
+      }
+      {props.teamQuestList && props.teamQuestList.length === 0 &&
+        <div className='profile__no-quest'>
+          <p className='profile__message'>
+            Пока вы не подверждали своё участие в предстоящем квесте
+          </p>
+          {/* ToDo: check link */}
+          <Link to='/#quests' className='profile__link-to-quests'>
+            Участвовать
+          </Link>
+        </div>
+      }
       <ul className='profile__settings'>
         <li>
           <button type='button' className='profile__button'>
