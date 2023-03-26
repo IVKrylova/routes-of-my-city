@@ -4,6 +4,8 @@ $background-gray: #EDF0F2;
 $background-gradient-faq: radial-gradient(104.3% 215.81% at -39.38% 165.74%, rgba(249, 161, 53, 0.2) 0%, rgba(249, 161, 53, 0) 100%), #EDF0F2;
 $background-gradient-no-quests: radial-gradient(70.36% 70.36% at -11.32% -37.94%, rgba(249, 161, 53, 0.2) 0%, rgba(249, 161, 53, 0) 100%), radial-gradient(59.97% 77.7% at 115.45% 65.77%, rgba(2, 118, 151, 0.2) 0%, rgba(2, 118, 151, 0) 100%), #FFFFFF;
 $background-blue-light: #EDF0F2;
+$background-light-blue: #DAE4EA;
+$background-light-gray: #F5F8F8;
 
 $font-color-white: #fff;
 $font-color-black: #131211;
@@ -15,6 +17,7 @@ $font-color-blue: #003B59;
 $font-color-blue-hover: #0C587E;
 $font-color-orange-hover: #FFB458;
 $font-color-black-darck: #000;
+$font-color-light: #AFBDC6;
 
 $button-color-cta: #F9A135;
 $button-color-cta-hover: #FFB458;
@@ -23,3 +26,6 @@ $button-color-disabled: #C2C4C4;
 $button-color-sign-up: #AC4C3E;
 $button-color-sign-up-active: #963628;
 $button-color-sign-up-hover: #BD5748;
+
+$input-border-grey: #C5C2CD;
+$input-border-error: #CC402B;

@@ -1,2 +1,69 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/mixins';
+
+.team-member-card {
+  max-width: 225px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__edit-block {
+    display: flex;
+  }
+
+  &__status {
+    @include reset-margins;
+    @include name-card-profile;
+    cursor: default;
+  }
+
+  &__button-edit {
+    @include reset-button;
+    margin-left: 15px;
+    @include image-background('../../images/icon-edit.svg');
+    width: 20px;
+    height: 20px;
+  }
+
+  &__button-delete {
+    @include reset-button;
+    @include image-background('../../images/icon-delete.svg');
+    width: 30px;
+    height: 30px;
+  }
+
+  &__data {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    @include font-data-profile;
+    row-gap: 5px;
+  }
+
+  &__item {
+    word-wrap: break-word;
+  }
+
+  &__data-field {
+    width: 100%;
+    background-color: $background-light-gray;
+    border-radius: 10px;
+  }
+
+  &__button-add {
+    @include reset-button;
+    @include image-background('../../images/icon-add.svg');
+    width: 45px;
+    height: 45px;
+    margin: 40px calc((100% - 45px) / 2);
+  }
+}

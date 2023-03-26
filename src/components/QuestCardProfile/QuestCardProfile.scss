@@ -1,2 +1,60 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/mixins';
+
+.quest-card-profile {
+  margin: 0 20px;
+  padding: 30px;
+  background-color: $background-light-gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+
+  &__name {
+    @include reset-margins;
+    @include h2;
+    color: $font-color-blue;
+  }
+
+  &__quest-data {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  &__category {
+    @include reset-margins;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.17;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-gray;
+  }
+
+  &__category-name {
+    @include reset-margins;
+    @include name-card-profile;
+  }
+
+  &__category-description {
+    @include reset-margins;
+    @include font-info-profile;
+  }
+
+  &__button-edit {
+    @include reset-button;
+    @include link-button-orange;
+    align-self: flex-start;
+  }
+
+  &__button-refuse {
+    @include reset-button;
+    @include button-sign-up;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+    color: $font-color-white;
+    padding: 7px 10px;
+    width: 184px;
+  }
+}

@@ -6,14 +6,16 @@ const TeamMemberCard = (props) => {
       {props.player.name &&
         <>
           <div className='team-member-card__header'>
-            <p className='team-member-card__status'>
-              {props.player.status}
-            </p>
-            <button
-              type='button'
-              className='team-member-card__button-edit'
-              aria-label='кнопка редактировать карточку игрока'
-            ></button>
+            <div className='team-member-card__edit-block'>
+              <p className='team-member-card__status'>
+                {props.player.status}
+              </p>
+              <button
+                type='button'
+                className='team-member-card__button-edit'
+                aria-label='кнопка редактировать карточку игрока'
+              ></button>
+            </div>
             <button
               type='button'
               className='team-member-card__button-delete'
@@ -21,10 +23,18 @@ const TeamMemberCard = (props) => {
             ></button>
           </div>
           <ul className='team-member-card__data'>
-            <li>{props.player.name}</li>
-            <li>{props.player.phone}</li>
-            <li>{props.player.email}</li>
-            <li>{props.player.birthday}</li>
+            <li className='team-member-card__item'>
+              {props.player.name}
+            </li>
+            <li className='team-member-card__item'>
+              {props.player.phone}
+            </li>
+            <li className='team-member-card__item'>
+              {props.player.email}
+            </li>
+            <li className='team-member-card__item'>
+              {props.player.birthday}
+            </li>
           </ul>
         </>
       }
@@ -36,7 +46,7 @@ const TeamMemberCard = (props) => {
           <div className='team-member-card__data-field'>
             <button
               type='button'
-              className='team-member-card__button-delete'
+              className='team-member-card__button-add'
               aria-label='кнопка добавить игрока'
             ></button>
           </div>

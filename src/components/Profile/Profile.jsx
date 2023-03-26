@@ -15,13 +15,13 @@ const Profile = (props) => {
       <h1 className='profile__title'>Личный кабинет</h1>
       <form className='profile__form-name' id='edit-team-name'>
         <input
-          className='profile__form-name'
+          className='profile__form-input'
           value={props.team.name}
           onChange={handleChange}
         />
       </form>
       <p className='profile__number'>
-        Участники <span className='profile__span-number'>{props.team.membersNumber}</span>
+        Участники<span className='profile__span-number'>{props.team.membersNumber}</span>
       </p>
       <ul className='profile__team-members'>
         {props.teamPlayers && props.teamPlayers.map(el => {
@@ -34,7 +34,7 @@ const Profile = (props) => {
         })}
       </ul>
       <p className='profile__number'>
-        Квесты <span className='profile__span-number'>{props.teamQuestList.length}</span>
+        Квесты<span className='profile__span-number'>{props.teamQuestList.length}</span>
       </p>
       <ul className='profile__quest-list'>
         {props.teamQuestList && props.teamQuestList.map(el => {
