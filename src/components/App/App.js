@@ -6,6 +6,7 @@ import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import ListExercise from '../ListExercise/ListExercise';
 import './App.scss';
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
@@ -82,7 +83,9 @@ function App() {
       <Main
         faqList={faqList}
         handleOpenAnswer={handleOpenAnswer}
+      />
       <Footer />
+      <ListExercise />
     </div>
   );
 }
