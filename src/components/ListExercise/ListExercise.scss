@@ -1,2 +1,53 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/_mixins';
+
+.list-exercise {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 30px 20px 50px;
+  box-sizing: border-box;
+
+  &__title {
+    @include reset-margins;
+    @include h2;
+    margin-top: 20px;
+  }
+
+  &__info {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__category {
+    @include reset-margins;
+    @include max-width-mixin(150px);
+    border-radius: $border-radius-block;
+    padding: 15px 25px;
+    text-align: center;
+    background-color: $background-blue-light;
+    box-sizing: border-box;
+  }
+
+  &__timer {
+    @include reset-margins;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.17;
+    color: $font-color-blue;
+    display: flex;
+    column-gap: 5px;
+  }
+
+  &__timer-icon {
+    display: block;
+  }
+
+  &__number {
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: $background-blue-light;
+    border-radius: 5px;
+  }
+}

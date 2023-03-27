@@ -13,12 +13,12 @@ const ListExercise = () => {
         <p className='list-exercise__category'>
           Велопрофи
         </p>
-        <p className='list-exercise__timer'>
+        <div className='list-exercise__timer'>
           <img src={iconTimer} alt='иконка таймер' className='list-exercise__timer-icon' />
-          <span className='list-exercise__number'>04</span>
+          <p className='list-exercise__number'>04</p>
           <img src={iconSeparator} alt='' className='list-exercise__separator-icon' />
-          <span className='list-exercise__number'>25</span>
-        </p>
+          <p className='list-exercise__number'>25</p>
+        </div>
       </div>
     </section>
   );
