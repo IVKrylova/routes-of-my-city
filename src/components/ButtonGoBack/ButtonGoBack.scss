@@ -13,4 +13,7 @@
     background-image: url(../../images/icon-go-back-hover.svg);
   }
 
+  @include media_530 {
+    margin-left: 7%;
+  }
 }

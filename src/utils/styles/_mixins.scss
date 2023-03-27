@@ -106,7 +106,7 @@
 @mixin font-block-profile {
   font-weight: 500;
   font-size: 20px;
-  line-height: 23px1.15;
+  line-height: 1.15;
   font-feature-settings: 'pnum' on, 'lnum' on;
   color: $font-color-gray;
 }
@@ -117,6 +117,10 @@
   line-height: 1.17;
   font-feature-settings: 'pnum' on, 'lnum' on;
   color: $font-color-light;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
+  }
 }
 
 @mixin name-card-profile {
@@ -170,6 +174,14 @@
 
   &_active {
     color: $button-color-cta-active;
+
+    &:hover {
+      color: $button-color-cta-active;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
   }
 }
 
@@ -189,6 +201,10 @@
     &:hover {
       color: $button-color-sign-up-active;
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 18px;
   }
 }
 

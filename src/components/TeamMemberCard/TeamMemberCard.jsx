@@ -2,7 +2,7 @@ import './TeamMemberCard.scss';
 
 const TeamMemberCard = (props) => {
   return (
-    <li className='team-member-card'>
+    <li className={`team-member-card ${props.player.name ? '' : 'team-member-card_empty'}`}>
       {props.player.name &&
         <>
           <div className='team-member-card__header'>

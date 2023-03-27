@@ -11,6 +11,14 @@
     @include h2;
     color: $font-color-black-darck;
     margin: 20px auto 0 20px;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
+
+    @include media_1024 {
+      margin-top: 32px;
+    }
   }
 
   &__form-name {
@@ -18,8 +26,20 @@
     background-color: $background-light-blue;
     padding: 30px 20px;
     box-sizing: border-box;
-    margin-top: 30px;
-    max-width: 360px;
+    margin: 30px auto 0;
+
+    @include media_530 {
+      margin-left: 7%;
+      border-radius: 10px;
+      max-width: 360px;
+    }
+
+    @include media_1024 {
+      margin-top: 45px;
+      max-width: 430px;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
   }
 
   // ToDo: compare with style input in sign up
@@ -52,6 +72,14 @@
     @include font-block-profile;
     margin-top: 30px;
     margin-left: 20px;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
+
+    @include media_1024 {
+      margin-top: 57px;
+    }
   }
 
   &__span-number {
@@ -68,6 +96,27 @@
     flex-direction: column;
     row-gap: 30px;
     align-items: center;
+
+    @include media_530 {
+      flex-flow: wrap;
+      column-gap: 30px;
+      align-items: flex-start;
+      margin-left: 7%;
+    }
+  }
+
+  &__settings-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
+
+    @include media_1280 {
+      margin-right: 7%;
+      grid-template-columns: 893px calc(100% - 893px);
+    }
   }
 
   &__quest-list {
@@ -76,7 +125,18 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    margin-top: 30px;
+    margin: 30px auto 0;
+    align-self: stretch;
+
+    @include media_530 {
+      margin-left: 0;
+    }
+
+    @include media_768 {
+      flex-flow: wrap;
+      column-gap: 30px;
+      width: 93%;
+    }
   }
 
   &__settings {
@@ -84,13 +144,26 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    margin: 20px 20px 0 20px;
+    margin: 20px auto 0;
     row-gap: 15px;
     border: 2px solid $background-light-blue;
     border-radius: 10px;
     padding: 86px 0 40px 20px;
     box-sizing: border-box;
     position: relative;
+    max-width: 308px;
+    width: 100%;
+
+    @include media_530 {
+      margin-left: 0;
+    }
+
+    @include media_1280 {
+      max-width: 295px;
+      margin-left: 0;
+      height: min-content;
+      align-self: end;
+    }
 
     &::after {
       content: url(../../images/icon-settings.svg);
@@ -111,6 +184,19 @@
     width: 308px;
     padding: 15px 0;
     text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
+
+    @include media_1024 {
+      font-size: 20px;
+      width: 165px;
+      margin-bottom: 130px;
+    }
   }
 
   &__no-quest {
@@ -124,6 +210,10 @@
     row-gap: 40px;
     box-sizing: border-box;
     border-radius: 10px;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
   }
 
   &__message {

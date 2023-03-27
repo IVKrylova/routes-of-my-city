@@ -7,6 +7,17 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  position: relative;
+
+  @include media_1024 {
+    min-height: 262px;
+  }
+
+  &_empty {
+    @include media_1024 {
+      min-height: min-content;
+    }
+  }
 
   &__header {
     display: flex;
@@ -46,6 +57,13 @@
     );
     width: 30px;
     height: 30px;
+
+    @include media_1024 {
+      position: absolute;
+      bottom: 0;
+      top: 232px;
+      left: 98.5px;
+    }
   }
 
   &__data {
