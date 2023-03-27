@@ -6,6 +6,7 @@ import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.scss';
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
@@ -17,6 +18,8 @@ function App() {
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
   const screenWidth = useWindowWidth();
+  /* ToDo: remove footer in PageNotFound */
+  const [isPageNotFound, setIsPageNotFound] = useState(false);
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -82,7 +85,9 @@ function App() {
       <Main
         faqList={faqList}
         handleOpenAnswer={handleOpenAnswer}
+      />
       <Footer />
+      <PageNotFound />
     </div>
   );
 }

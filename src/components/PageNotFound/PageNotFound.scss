@@ -1,0 +1,6 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.page-not-found {
+  background: $background-gradient-page-404;
+}
