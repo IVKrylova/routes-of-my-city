@@ -11,6 +11,7 @@ const ListExercise = () => {
       <div className='list-exercise__info'>
         {/* ToDo: category dynamic rendering */}
         <p className='list-exercise__category'>
+          <span className='list-exercise__category-span'>категория</span>
           Велопрофи
         </p>
         <div className='list-exercise__timer'>

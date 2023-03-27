@@ -7,10 +7,19 @@
   padding: 30px 20px 50px;
   box-sizing: border-box;
 
+  @include media_768 {
+    padding: 30px 7% 142px;
+  }
+
   &__title {
     @include reset-margins;
     @include h2;
     margin-top: 20px;
+    cursor: default;
+
+    @include media_768 {
+      margin-top: 30px;
+    }
   }
 
   &__info {
@@ -28,6 +37,32 @@
     text-align: center;
     background-color: $background-blue-light;
     box-sizing: border-box;
+    cursor: default;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-red;
+
+    @include media_768 {
+      max-width: 240px;
+      font-size: 20px;
+      padding: 15px 19px;
+    }
+  }
+
+  &__category-span {
+    display: none;
+
+    @include media_768 {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.2;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+      color: $font-color-gray;
+      margin-right: 11px;
+    }
   }
 
   &__timer {
@@ -38,10 +73,19 @@
     color: $font-color-blue;
     display: flex;
     column-gap: 5px;
+    cursor: default;
+
+    @include media_768 {
+      font-size: 36px;
+    }
   }
 
   &__timer-icon {
     display: block;
+
+    @include media_768 {
+      width: 35px;
+    }
   }
 
   &__number {
