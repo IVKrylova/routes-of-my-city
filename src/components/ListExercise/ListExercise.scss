@@ -23,10 +23,15 @@
   }
 
   &__info {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: $background-white;
+    padding: 10px 0;
+    box-sizing: border-box;
   }
 
   &__category {
@@ -66,7 +71,6 @@
   }
 
   &__timer {
-    @include reset-margins;
     font-weight: 700;
     font-size: 24px;
     line-height: 1.17;
@@ -78,6 +82,10 @@
     @include media_768 {
       font-size: 36px;
     }
+  }
+
+  &__number {
+    @include reset-margins;
   }
 
   &__timer-icon {
