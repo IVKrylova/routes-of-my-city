@@ -102,6 +102,11 @@
   height: 30px;
 }
 
+@mixin max-width-mixin($width) {
+  width: 100%;
+  max-width: $width;
+}
+
 // media queries
 @mixin media_530 {
   @media screen and (min-width: 530px) {

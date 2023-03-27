@@ -3,4 +3,50 @@
 
 .page-not-found {
   background: $background-gradient-page-404;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__img {
+    display: block;
+    max-width: 360px;
+    width: 100%;
+    object-position: -37px;
+  }
+
+  &__content {
+    margin: 0 20px 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h1;
+    @include max-width-mixin(380px);
+    cursor: default;
+  }
+
+  &__message {
+    @include reset-margins;
+    @include max-width-mixin(500px);
+    cursor: default;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+  }
+
+  &__link-to-main {
+    @include button-cta;
+    text-decoration: none;
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 15px 0;
+    width: 302px;
+  }
 }
