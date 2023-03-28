@@ -1,3 +1,4 @@
+import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
@@ -18,6 +19,27 @@ const ListExercise = (props) => {
           timerMinute={props.timerMinute}
         />
       </div>
+      <ul className='list-exercise__list'>
+        {props.taskList && props.taskList.map(el => {
+          return (
+            <CardTask
+              key={el.id}
+              number={el.number}
+              name={el.name}
+              img={el.img}
+            />
+          );
+        })}
+      </ul>
+      <p className='list-exercise__pagination'>
+        Страница <span className='list-exercise__page'>1</span> из <span className='list-exercise__all-page'>4</span>
+      </p>
+      <button
+        className='list-exercise__button-next-page'
+        type='button'
+      >
+        Загрузить ещё
+      </button>
     </section>
   );
 }

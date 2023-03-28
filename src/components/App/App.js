@@ -9,6 +9,7 @@ import ListExercise from '../ListExercise/ListExercise';
 import './App.scss';
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
+import { tasks } from '../../utils/data/listTask';
 
 function App() {
   let navigate = useNavigate();
@@ -19,6 +20,7 @@ function App() {
   const [deadline, setDeadline] = useState(null);
   const [timerHour, setTimerHour] = useState('');
   const [timerMinute, setTimerMinute] = useState('');
+  const [taskList, setTaskList] = useState([]);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -87,6 +89,13 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // ToDo: replace with API data
+    //       fix logic => if (isCurrentQuest === true) setTaskList(quest.taskList)
+    //       add isCurrentQuest to dependencies
+    setTaskList(tasks);
+  }, []);
+
+  useEffect(() => {
     // ToDo: fix logic => if (isCurrentQuest === true) setDeadline(quest.deadline)
     //       add isCurrentQuest to dependencies
     const date = new Date('Tue Mar 28 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
@@ -120,6 +129,7 @@ function App() {
       <ListExercise
         timerHour={timerHour}
         timerMinute={timerMinute}
+        taskList={taskList}
       />
     </div>
   );
