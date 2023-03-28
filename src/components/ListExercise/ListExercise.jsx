@@ -1,8 +1,7 @@
-import iconTimer from '../../images/icon-timer.svg';
-import iconSeparator from '../../images/icon-timer-separator.svg';
+import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
-const ListExercise = () => {
+const ListExercise = (props) => {
   return (
     <section className='list-exercise'>
       {/* ToDo: add GoBack */}
@@ -14,12 +13,10 @@ const ListExercise = () => {
           <span className='list-exercise__category-span'>категория</span>
           Велопрофи
         </p>
-        <div className='list-exercise__timer'>
-          <img src={iconTimer} alt='иконка таймер' className='list-exercise__timer-icon' />
-          <p className='list-exercise__number'>04</p>
-          <img src={iconSeparator} alt='' className='list-exercise__separator-icon' />
-          <p className='list-exercise__number'>25</p>
-        </div>
+        <Timer
+          timerHour={props.timerHour}
+          timerMinute={props.timerMinute}
+        />
       </div>
     </section>
   );

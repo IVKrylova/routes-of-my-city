@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -17,6 +16,9 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
+  const [deadline, setDeadline] = useState(null);
+  const [timerHour, setTimerHour] = useState('');
+  const [timerMinute, setTimerMinute] = useState('');
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -57,6 +59,24 @@ function App() {
     setFaqList(newFaqList);
   }
 
+  const getRemainingTime = () => {
+    const total = Date.parse(deadline) - Date.parse(new Date());
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+
+    return { total, hours, minutes };
+  }
+
+  const startTimer = () => {
+    const { total, hours, minutes } = getRemainingTime();
+    if (total >= 0) {
+      const h = hours > 9 ? hours : '0' + hours;
+      const m = minutes > 9 ? minutes : '0' + minutes;
+      setTimerHour(h);
+      setTimerMinute(m);
+    }
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -65,6 +85,18 @@ function App() {
     });
     setFaqList(faqs);
   }, []);
+
+  useEffect(() => {
+    // ToDo: fix logic => if (isCurrentQuest === true) setDeadline(quest.deadline)
+    //       add isCurrentQuest to dependencies
+    const date = new Date('Tue Mar 28 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
+    setDeadline(date);
+  }, []);
+
+  useEffect(() => {
+    startTimer();
+    setInterval(() => startTimer(), 1000);
+  }, [deadline]);
 
   return (
     <div className="app">
@@ -85,7 +117,10 @@ function App() {
         handleOpenAnswer={handleOpenAnswer}
       />
       <Footer />
-      <ListExercise />
+      <ListExercise
+        timerHour={timerHour}
+        timerMinute={timerMinute}
+      />
     </div>
   );
 }
