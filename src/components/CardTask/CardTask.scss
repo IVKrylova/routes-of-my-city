@@ -1,2 +1,68 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/_mixins';
+
+.card-task {
+  @include max-width-mixin(140px);
+  position: relative;
+  background-color: $background-blue-light;
+  border-radius: $border-radius-block;
+  display: flex;
+  flex-direction: column;
+
+  &__number {
+    position: absolute;
+    @include reset-margins;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.17;
+    text-align: center;
+    color: $font-color-blue;
+    top: 5px;
+    left: 11px;
+  }
+
+  &__img {
+    border-radius: 100px 10px 0px 0px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+
+  &__options {
+    background-color: $background-blue;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    border-radius: 0px 0px 10px 10px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px;
+  }
+
+  &__name {
+    @include reset-margins;
+    word-wrap: break-word;
+    @include task-card-text;
+  }
+
+  &__link-to-answer {
+    @include reset-margins;
+    @include button-cta;
+    text-decoration: none;
+    @include task-card-text;
+    padding: 7px 10px;
+    box-sizing: border-box;
+    @include max-width-mixin(83px);
+  }
+
+  &:hover {
+    box-shadow: 5px 5px 0px $font-color-orange;
+    cursor: pointer;
+  }
+
+  &:hover &__number {
+    color: $font-color-orange;
+  }
+}

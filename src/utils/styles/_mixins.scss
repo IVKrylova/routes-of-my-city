@@ -107,6 +107,13 @@
   max-width: $width;
 }
 
+@mixin task-card-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.14;
+  color: $font-color-white;
+}
+
 // media queries
 @mixin media_530 {
   @media screen and (min-width: 530px) {
