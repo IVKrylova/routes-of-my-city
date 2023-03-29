@@ -21,6 +21,7 @@ function App() {
   const [timerHour, setTimerHour] = useState('00');
   const [timerMinute, setTimerMinute] = useState('00');
   const [taskList, setTaskList] = useState([]);
+  const [isMobile, setIsMobile] = useState(true);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -107,6 +108,10 @@ function App() {
     setInterval(() => startTimer(), 1000);
   }, [deadline]);
 
+  useEffect(() => {
+    screenWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
+  }, [screenWidth]);
+
   return (
     <div className="app">
       <Header
@@ -130,6 +135,7 @@ function App() {
         timerHour={timerHour}
         timerMinute={timerMinute}
         taskList={taskList}
+        isMobile={isMobile}
       />
     </div>
   );

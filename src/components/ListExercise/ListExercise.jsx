@@ -41,7 +41,7 @@ const ListExercise = (props) => {
           className='list-exercise__button-next-page'
           type='button'
         >
-          Загрузить ещё
+          {props.isMobile ? 'Загрузить ещё' : 'Следующая страница'}
         </button>
         <p className='list-exercise__place'>
           Страница <span className='list-exercise__page'>1</span> из <span className='list-exercise__all-page'>4</span>
