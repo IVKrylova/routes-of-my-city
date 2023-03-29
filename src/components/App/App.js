@@ -18,8 +18,8 @@ function App() {
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
   const [deadline, setDeadline] = useState(null);
-  const [timerHour, setTimerHour] = useState('');
-  const [timerMinute, setTimerMinute] = useState('');
+  const [timerHour, setTimerHour] = useState('00');
+  const [timerMinute, setTimerMinute] = useState('00');
   const [taskList, setTaskList] = useState([]);
   const screenWidth = useWindowWidth();
 

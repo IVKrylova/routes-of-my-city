@@ -6,6 +6,7 @@
   grid-template-columns: 1fr;
   padding: 30px 20px 50px;
   box-sizing: border-box;
+  justify-items: center;
 
   @include media_768 {
     padding: 30px 7% 142px;
@@ -16,6 +17,7 @@
     @include h2;
     margin-top: 20px;
     cursor: default;
+    justify-self: start;
 
     @include media_768 {
       margin-top: 30px;
@@ -33,6 +35,7 @@
     padding: 10px 0;
     box-sizing: border-box;
     z-index: 10;
+    width: 100%;
   }
 
   &__category {
@@ -75,13 +78,21 @@
     @include reset-margins;
     list-style-type: none;
     margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 30px;
+    justify-content: center;
   }
 
   &__pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__place {
     @include reset-margins;
     margin-top: 30px;
     text-align: center;
@@ -95,7 +106,6 @@
   &__button-next-page {
     @include button-cta;
     margin-top: 20px;
-    font-weight: 600;
     font-size: 16px;
     line-height: 1.2;
     padding: 15px 0;

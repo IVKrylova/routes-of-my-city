@@ -9,6 +9,22 @@
   display: flex;
   flex-direction: column;
 
+  @include media_530 {
+    max-width: 150px;
+  }
+
+  @include media_768 {
+    max-width: 275px;
+  }
+
+  @include media_1280 {
+    max-width: 300px;
+  }
+
+  @include media_1440 {
+    max-width: 400px;
+  }
+
   &__number {
     position: absolute;
     @include reset-margins;
@@ -19,6 +35,11 @@
     color: $font-color-blue;
     top: 5px;
     left: 11px;
+
+    @include media_768 {
+      font-size: 48px;
+      top: 0;
+    }
   }
 
   &__img {
@@ -39,12 +60,21 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 10px;
+
+    @include media_768 {
+      padding: 15px 25px 22px;
+      row-gap: 20px;
+    }
   }
 
   &__name {
     @include reset-margins;
     word-wrap: break-word;
     @include task-card-text;
+
+    @include media_768 {
+      font-size: 24px;
+    }
   }
 
   &__link-to-answer {
@@ -55,6 +85,12 @@
     padding: 7px 10px;
     box-sizing: border-box;
     @include max-width-mixin(83px);
+
+    @include media_768 {
+      font-size: 20px;
+      padding: 15px 30px;
+      max-width: 150px;
+    }
   }
 
   &:hover {
