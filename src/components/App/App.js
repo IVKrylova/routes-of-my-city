@@ -80,6 +80,11 @@ function App() {
     }
   }
 
+  const handleCardClick = (id) => {
+    // ToDo: fix link to page task
+    // navigate(`/quest/:name/task/:${id}`);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -136,6 +141,7 @@ function App() {
         timerMinute={timerMinute}
         taskList={taskList}
         isMobile={isMobile}
+        handleCardClick={handleCardClick}
       />
     </div>
   );

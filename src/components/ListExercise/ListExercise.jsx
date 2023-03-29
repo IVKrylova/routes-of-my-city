@@ -27,6 +27,8 @@ const ListExercise = (props) => {
               number={el.number}
               name={el.name}
               img={el.img}
+              id={el.id}
+              sentCardTaskId={props.handleCardClick}
             />
           );
         })}
