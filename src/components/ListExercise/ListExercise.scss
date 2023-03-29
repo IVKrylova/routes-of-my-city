@@ -88,8 +88,15 @@
   &__pagination {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
+
+    @include media_768 {
+      flex-direction: row;
+      margin-top: 50px;
+      column-gap: 10px;
+      align-items: center;
+    }
   }
 
   &__place {
@@ -101,6 +108,15 @@
     line-height: 1.14;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: $font-color-gray;
+    cursor: default;
+
+    @include media_768 {
+      font-size: 20px;
+      flex-shrink: 0;
+      flex-grow: 1;
+      text-align: right;
+      margin-top: 0;
+    }
   }
 
   &__button-next-page {
@@ -110,5 +126,36 @@
     line-height: 1.2;
     padding: 15px 0;
     @include max-width-mixin(302px);
+
+    @include media_768 {
+      margin-top: 0;
+      max-width: 274px;
+    }
+  }
+
+  &__previous-page {
+    display: none;
+
+    &:hover {
+      background-image: url(../../images/icon-previous-page-hover.svg);
+    }
+
+    &_disabled {
+      background-image: url(../../images/icon-previous-page-disabled.svg);
+      cursor: default;
+
+      &:hover {
+        background-image: url(../../images/icon-previous-page-disabled.svg);
+      }
+    }
+
+    @include media_768 {
+      display: block;
+      @include reset-button;
+      background-image: url(../../images/icon-previous-page.svg);
+      background-repeat: no-repeat;
+      width: 55px;
+      height: 55px;
+    }
   }
 }

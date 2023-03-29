@@ -32,15 +32,20 @@ const ListExercise = (props) => {
         })}
       </ul>
       <div className='list-exercise__pagination'>
-        <p className='list-exercise__place'>
-          Страница <span className='list-exercise__page'>1</span> из <span className='list-exercise__all-page'>4</span>
-        </p>
+        <button
+          className='list-exercise__previous-page'
+          type='button'
+          aria-label='Кнопка вернуться на предыдущую страницу'
+        ></button>
         <button
           className='list-exercise__button-next-page'
           type='button'
         >
           Загрузить ещё
         </button>
+        <p className='list-exercise__place'>
+          Страница <span className='list-exercise__page'>1</span> из <span className='list-exercise__all-page'>4</span>
+        </p>
       </div>
     </section>
   );
