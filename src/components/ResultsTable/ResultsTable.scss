@@ -110,7 +110,7 @@
     max-width: 500px;
 
     @include media_530 {
-      margin: 35px auto 0;
+      margin: 27px auto 0;
     }
 
     @include media_1024 {
@@ -123,13 +123,14 @@
 
   &__table-head {
     text-align: left;
-    height: 49px;
+    height: 44px;
     vertical-align: top;
   }
 
   &__col-number {
     @include result-table-cell(13%);
     text-align: center;
+    padding: 0;
 
     @include media_1024 {
       width: 9%;
@@ -138,6 +139,7 @@
 
   &__col-team {
     @include result-table-cell(53%);
+    padding: 0;
 
     @include media_1024 {
       width: 64%;
@@ -146,6 +148,7 @@
 
   &__col-score {
     @include result-table-cell(20%);
+    padding: 0;
 
     @include media_1024 {
       width: 13%;
@@ -154,5 +157,6 @@
 
   &__col-time {
     @include result-table-cell(14%);
+    padding: 0;
   }
 }
