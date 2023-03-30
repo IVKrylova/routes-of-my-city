@@ -1,0 +1,90 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.page-not-found {
+  background: $background-gradient-page-404;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  position: relative;
+
+  &__img {
+    display: block;
+    @include max-width-mixin(360px);
+    object-position: -37px;
+
+    @include media_768 {
+      position: absolute;
+      bottom: 0;
+      left: 45%;
+      object-position: 0;
+      max-width: 410px;
+    }
+
+    @include media_1024 {
+      max-width: 650px;
+      left: 35%;
+    }
+
+    @include media_1280 {
+      max-width: 755px;
+    }
+  }
+
+  &__content {
+    margin: 0 20px 50px;
+    display: flex;
+    flex-direction: column;
+
+    @include media_768 {
+      margin-top: 50px;
+    }
+
+    @include media_1024 {
+      margin-top: 80px;
+      margin-bottom: 160px;
+    }
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h1;
+    @include max-width-mixin(380px);
+    cursor: default;
+  }
+
+  &__message {
+    @include reset-margins;
+    @include max-width-mixin(450px);
+    cursor: default;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+
+    @include media_1024 {
+      max-width: 500px;
+      font-size: 24px;
+    }
+  }
+
+  &__link-to-main {
+    @include button-cta;
+    text-decoration: none;
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 15px 0;
+    width: 302px;
+
+    @include media_1024 {
+      margin-top: 70px;
+      width: 277px;
+      font-size: 20px;
+    }
+  }
+}

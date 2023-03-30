@@ -115,6 +115,11 @@
   height: 30px;
 }
 
+
+@mixin max-width-mixin($width) {
+  width: 100%;
+  max-width: $width;
+
 @mixin text-s20-w500 {
   font-weight: 500;
   font-size: 20px;
@@ -131,6 +136,7 @@
   width: $w;
   font-weight: 400;
   padding: 11px 0;
+
 }
 
 // media queries

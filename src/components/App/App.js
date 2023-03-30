@@ -16,6 +16,7 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
+
 import './App.scss';
 
 // ToDo: delete after getting data with API
@@ -38,6 +39,8 @@ function App() {
   const [faqList, setFaqList] = useState([]);
 
   const screenWidth = useWindowWidth();
+  /* ToDo: remove footer in PageNotFound */
+  const [isPageNotFound, setIsPageNotFound] = useState(false);
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -217,6 +220,11 @@ function App() {
       />
 
       <Footer />
+      <PageNotFound />
+
+
+      <Footer />
+
 
     </div>
   );
