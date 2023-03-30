@@ -18,8 +18,7 @@ const Main = (props) => {
         questsList={props.questsList}
         resultQuest={props.resultQuest}
         isQuestCompleted={props.isQuestCompleted}
-=======
-    <main className="main-content">
+/>
       <MainBanner />
       <AboutProject />
       <Benefits />
