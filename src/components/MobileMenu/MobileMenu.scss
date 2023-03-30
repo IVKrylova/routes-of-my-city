@@ -3,7 +3,7 @@
 
 .mobile-menu {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: $background-white;
@@ -11,6 +11,7 @@
   min-height: 100vh;
   flex-direction: column;
   row-gap: 45px;
+  z-index: 1000;
 
   &__button-list {
     @include reset-margins;
