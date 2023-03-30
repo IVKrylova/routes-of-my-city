@@ -22,7 +22,7 @@ import { faq } from '../../utils/data/faq';
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [faqList, setFaqList] = useState([]);
   const screenWidth = useWindowWidth();
