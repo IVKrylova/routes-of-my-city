@@ -16,11 +16,13 @@ const TeamMemberCard = (props) => {
                 aria-label='кнопка редактировать карточку игрока'
               ></button>
             </div>
-            <button
-              type='button'
-              className='team-member-card__button-delete'
-              aria-label='кнопка удалить карточку игрока'
-            ></button>
+            {props.player.status !== 'Капитан' && props.player.status !== '2 игрок' &&
+              <button
+                type='button'
+                className='team-member-card__button-delete'
+                aria-label='кнопка удалить карточку игрока'
+              ></button>
+            }
           </div>
           <ul className='team-member-card__data'>
             <li className='team-member-card__item team-member-card__item_name'>
