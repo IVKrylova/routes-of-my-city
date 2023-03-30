@@ -21,9 +21,7 @@ const Header = (props) => {
         />
       </div>
       <Logo />
-      <NavMenu
-        isMobileMenuOpen={props.isMobileMenuOpen}
-      />
+      <NavMenu />
       {!props.isLogin &&
         <>
           {/* ToDo: set up routing */}

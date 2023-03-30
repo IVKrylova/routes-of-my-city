@@ -8,7 +8,9 @@ const MobileMenu = (props) => {
       <ButtonClose
         handleClose={props.handleCloseMobileMenu}
       />
-      <NavMenu />
+      <NavMenu
+        isMobileMenuOpen={props.isMobileMenuOpen}
+      />
       <ul className='mobile-menu__button-list'>
         <li>
           <button type='button' className='mobile-menu__button-sign-in'>Войти</button>

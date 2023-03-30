@@ -3,19 +3,21 @@
 
 .mobile-menu {
   display: none;
-  grid-template-columns: 1fr;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: $background-white;
   width: 280px;
+  min-height: 100vh;
+  flex-direction: column;
+  row-gap: 45px;
+  z-index: 1000;
 
   &__button-list {
     @include reset-margins;
     list-style-type: none;
-    margin-top: 340px;
+    margin-top: 45px;
     justify-self: center;
-    margin-bottom: 180px;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -44,6 +46,6 @@
   }
 
   &_visible {
-    display: grid;
+    display: flex;
   }
 }
