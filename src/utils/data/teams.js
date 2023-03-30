@@ -13,7 +13,7 @@ export const teams = {
       id: 0,
     },
     1: {
-      status: '2 игрок',
+      status: 'игрок',
       name: 'Космодемьянский Александр Илларионович',
       phone: 'Телефон',
       email: 'Почта',
@@ -21,28 +21,12 @@ export const teams = {
       id: 1,
     },
     2: {
-      status: '3 игрок',
+      status: 'игрок',
       name: 'Иванов Иван Михайлович',
       phone: 'Телефон',
       email: 'Почта',
       birthday: 'Дата рождения',
       id: 2,
-    },
-    3: {
-      status: '4 игрок',
-      name: '',
-      phone: '',
-      email: '',
-      birthday: '',
-      id: 3,
-    },
-    4: {
-      status: '5 игрок',
-      name: '',
-      phone: '',
-      email: '',
-      birthday: '',
-      id: 4,
     },
   },
   quests: {

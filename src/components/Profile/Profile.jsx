@@ -30,6 +30,7 @@ const Profile = (props) => {
             <TeamMemberCard
               player={el}
               key={el.id}
+              sendDeletedPlayer={props.sendDeletedPlayer}
             />
           );
         })}

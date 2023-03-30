@@ -58,9 +58,26 @@ function App() {
   /* ToDo: check logics with API data */
   useEffect(() => {
     const players = [];
-    for (let key in team.members) {
-      players.push(team.members[key]);
+    let count = 2;
+    for (let i = 0; i < 5; i++) {
+      players.push(team.members[i]);
+      if (!players[i]) {
+        players[i] = {
+          status: '',
+          name: '',
+          phone: '',
+          email: '',
+          birthday: '',
+          id: Math.random(),
+        }
+      }
+      if (players[i].status === 'игрок' || (players[i].status === '')) {
+        players[i].status = `${count} игрок`;
+        count++;
+      }
     }
+
+    console.log(players)
     setTeamPlayers(players);
   }, [team]);
 
@@ -88,6 +105,22 @@ function App() {
       return el;
     });
     setFaqList(newFaqList);
+  }
+
+  /* ToDo: check logics with API data and popup*/
+  const handleDeletePlayer = (playerId) => {
+    const team = teamPlayers.map(el => {
+      if (el.id === playerId) {
+        el.name = '';
+        el.phone = '';
+        el.email = '';
+        el.birthday = '';
+        el.id = Math.random();
+      }
+
+      return el;
+    });
+    setTeamPlayers(team);
   }
 
   useEffect(() => {
@@ -123,6 +156,7 @@ function App() {
         teamPlayers={teamPlayers}
         teamQuestList={teamQuestList}
         goBack={handleGoBack}
+        sendDeletedPlayer={handleDeletePlayer}
       />
     </div>
   );

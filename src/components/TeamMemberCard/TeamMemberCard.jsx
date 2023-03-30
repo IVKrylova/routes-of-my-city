@@ -1,6 +1,10 @@
 import './TeamMemberCard.scss';
 
 const TeamMemberCard = (props) => {
+  const handleClickButtonDelete = () => {
+    props.sendDeletedPlayer(props.player.id);
+  }
+
   return (
     <li className={`team-member-card ${props.player.name ? '' : 'team-member-card_empty'}`}>
       {props.player.name &&
@@ -21,6 +25,7 @@ const TeamMemberCard = (props) => {
                 type='button'
                 className='team-member-card__button-delete'
                 aria-label='кнопка удалить карточку игрока'
+                onClick={handleClickButtonDelete}
               ></button>
             }
           </div>
