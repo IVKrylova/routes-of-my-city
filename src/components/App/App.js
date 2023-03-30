@@ -76,8 +76,6 @@ function App() {
         count++;
       }
     }
-
-    console.log(players)
     setTeamPlayers(players);
   }, [team]);
 
