@@ -28,6 +28,7 @@ const PopupAccountData = (props) => {
       <button
         type='button'
         className='popup-account-data__button-exit'
+        onClick={props.handleClickButtonExit}
       >
         Выйти
       </button>
