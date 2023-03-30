@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <Routes>
       <Route
-        path="/sign-up"
+        path="/signup"
         element={
           <form
             /*      onSubmit={handleSubmit((data) => console.log(data))} */
