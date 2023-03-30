@@ -5,7 +5,13 @@
   text-align: center;
 
   &__row {
-    background-color: $background-table-row;
+    background-color: $background-table-row-grey;
+
+    @include media_768 {
+      &:nth-child(2n) {
+        background-color: $background-table-row-blue;
+      }
+    }
   }
 
   &__col-number {
