@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -16,15 +17,26 @@ import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
 import './App.scss';
+
+// ToDo: delete after getting data with API
+import { quests } from '../../utils/data/quests';
+import { results } from '../../utils/data/results';
+
 // ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
+
 
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
+  const [questsList, setQuestsList] = useState([]);
+  const [isNoQuests, setIsNoQuests] = useState(true);
+  const [isQuestCompleted, setIsQuestCompleted] = useState(false);
+  const [resultQuest, setResultQuest] = useState([]);
   const [faqList, setFaqList] = useState([]);
+
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -51,6 +63,20 @@ function App() {
       !isHeaderAccountHovered ? setIsHeaderAccountHovered(true) : goToAccount();
     }
   }
+
+  useEffect(() => {
+    // ToDo: replace with data from API
+    setQuestsList(quests);
+    if (quests.length > 0) setIsNoQuests(false);
+    setIsQuestCompleted(quests.some(el => el.isCompleted === true));
+  }, []);
+
+  useEffect(() => {
+    if (isQuestCompleted) {
+      // ToDo: replace with data from API
+      setResultQuest(results)
+    }
+  }, [isQuestCompleted]);
 
   const handleOpenAnswer = (faqId) => {
     const newFaqList = faqList.map(el => {
@@ -88,6 +114,7 @@ function App() {
     });
     setFaqList(faqs);
   }, []);
+
 
   return (
     <div className="app">
@@ -179,7 +206,18 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
       />
+
+      <Main
+        isNoQuests={isNoQuests}
+        questsList={questsList}
+        resultQuest={resultQuest}
+        isQuestCompleted={isQuestCompleted}
+        faqList={faqList}
+        handleOpenAnswer={handleOpenAnswer}
+      />
+
       <Footer />
+
     </div>
   );
 }

@@ -21,9 +21,7 @@
     &_mobile {
       flex-direction: column;
       row-gap: 25px;
-      position: absolute;
-      left: 20px;
-      top: 90px;
+      margin-left: 20px;
     }
   }
 
@@ -54,7 +52,6 @@
   }
 
   &_mobile {
-    margin-top: 45px;
     display: block;
   }
 }

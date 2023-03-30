@@ -1,0 +1,81 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.results-table-body {
+  text-align: center;
+
+  &__row {
+    background-color: $background-table-row-grey;
+
+    @include media_768 {
+      &:nth-child(2n) {
+        background-color: $background-table-row-blue;
+      }
+    }
+  }
+
+  &__col-number {
+    @include result-table-cell(13%);
+    border-radius: 10px 0 0 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: $font-color-blue;
+
+    @include media_1024 {
+      width: 9%;
+    }
+
+    @include media_1024 {
+      font-size: 24px;
+    }
+  }
+
+  &__col-team {
+    @include result-table-cell(53%);
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @include media_1024 {
+      width: 64%;
+    }
+  }
+
+  &__team-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: $font-color-blue;
+    background-color: $background-table-team;
+    border-radius: 10px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+
+    @include media_1024 {
+      font-size: 20px;
+      padding: 10px 15px;
+    }
+  }
+
+  &__col-score {
+    @include result-table-cell(20%);
+    text-align: left;
+    padding-left: 7px;
+
+    @include media_1024 {
+      width: 13%;
+      font-size: 20px;
+    }
+  }
+
+  &__col-time {
+    @include result-table-cell(14%);
+    border-radius: 0 10px 10px 0;
+    text-align: left;
+    padding-left: 7px;
+
+    @include media_1024 {
+      font-size: 20px;
+    }
+  }
+}
