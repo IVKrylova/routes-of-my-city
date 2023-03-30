@@ -1,0 +1,104 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.quest-item {
+    &__card {
+    width: 100%;
+    position: relative;
+    color: $font-color-white;
+    box-sizing: border-box;
+    padding: 50px 20px 53px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+
+    @include media_530 {
+      border-radius: 10px;
+
+      margin-left: 7%;
+      margin-right: 7%;
+      width: 86%;
+    }
+
+    @include media_768 {
+      min-height: 440px;
+      padding: 50px 8.5% 35px;
+    }
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h1;
+  }
+
+  &__description {
+    @include reset-margins;
+    margin-top: 10px;
+    @include text-s20-w500;
+
+    @include media_768 {
+      margin-top: 0;
+    }
+  }
+
+  &__data {
+    @include reset-margins;
+    @include h2;
+    color: $font-color-white;
+    margin-top: 20px;
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    @include media_768 {
+      margin-top: 10px;
+    }
+  }
+
+  &__time {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 170px;
+
+    @include media_768 {
+      margin-top: 48px;
+    }
+  }
+
+  &__text-time {
+    @include reset-margins;
+    @include text-s20-w500;
+  }
+
+  &__place {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 20px;
+
+    @include media_768 {
+      margin-top: 10px;
+    }
+  }
+
+  &__address {
+    @include reset-margins;
+    @include text-s20-w500;
+  }
+
+  &__button-cta {
+    @include button-cta;
+    font-size: 16px;
+    line-height: 1.19;
+    padding: 15px 0;
+    margin-top: 25px;
+    width: 300px;
+
+    @include media_768 {
+      margin-top: 32px;
+      width: 270px;
+    }
+
+    @include media_1280 {
+      font-size: 20px;
+    }
+  }
+}

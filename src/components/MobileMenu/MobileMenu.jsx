@@ -8,13 +8,27 @@ const MobileMenu = (props) => {
       <ButtonClose
         handleClose={props.handleCloseMobileMenu}
       />
-      <NavMenu />
+      <NavMenu
+        isMobileMenuOpen={props.isMobileMenuOpen}
+      />
       <ul className='mobile-menu__button-list'>
         <li>
-          <button type='button' className='mobile-menu__button-sign-in'>Войти</button>
+          <button
+            type='button'
+            className='mobile-menu__button-sign-in'
+            onClick={props.handleClickButtonLogin}
+          >
+              Войти
+          </button>
         </li>
         <li>
-          <button type='button' className='mobile-menu__button-sign-up'>Зарегестрироваться</button>
+          <button
+            type='button'
+            className='mobile-menu__button-sign-up'
+            onClick={props.handleClickButtonSignUp}
+          >
+            Зарегестрироваться
+          </button>
         </li>
       </ul>
     </div>

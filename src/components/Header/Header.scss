@@ -13,6 +13,11 @@
 
   @include media_768 {
     padding: 27px 3%;
+    column-gap: 7%;
+    grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 14%) 205px;
+  }
+
+  @include media_1024 {
     column-gap: 8%;
     grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 16%) 205px;
   }
@@ -59,13 +64,14 @@
   }
 
   &__button-sign-up {
-    @include reset-button;
+    box-sizing: border-box;
     font-weight: 600;
     font-size: 14px;
     line-height: 1.15;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: $font-color-white;
     cursor: pointer;
+    text-decoration: none;
 
     &:hover {
       color: $font-color-light-blue;
@@ -77,11 +83,12 @@
   }
 
   &__button-sign-in {
-    @include reset-button;
+    box-sizing: border-box;
     @include button-sign-up;
     padding: 16px 30px;
     font-size: 14px;
     line-height: 1.15;
+    text-decoration: none;
 
     @include media_1280 {
       font-size: 20px;

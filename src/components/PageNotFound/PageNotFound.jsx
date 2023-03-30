@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import pageNotFound from '../../images/page-not-found.png';
 import './PageNotFound.scss';
@@ -26,5 +27,12 @@ const PageNotFound = () => {
       </main>
     );
   }
+
+const PageNotFound = () => {
+  return (
+    <h1>404</h1>
+  );
+}
+
 
 export default PageNotFound;
