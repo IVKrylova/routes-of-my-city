@@ -1,3 +1,5 @@
+@import "../../utils/styles/_constants";
+@import "../../utils/styles/_mixins";
 .form {
   --background-blue: #003b59;
   --background-white: #fff;
@@ -54,15 +56,18 @@
     line-height: 28px;
     font-feature-settings: "pnum" on, "lnum" on;
     color: var (--background-blue);
+    margin-top: 5px;
   }
 }
 .form {
-  /*  display: grid; */
+  padding-left: 185px;
+  @media (max-width: 1400px) {
+    padding: 0;
+  }
   &__sign-in-up {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     gap: 15px;
     @media (max-width: 1200px) {
       margin-top: 6.5px;
@@ -73,6 +78,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 20px;
     @media (max-width: 1200px) {
       margin-top: 20px;
       margin-bottom: 15px;
@@ -117,10 +123,12 @@
         width: 324px;
       }
       @media (max-width: 400px) {
-        /*   width: auto; */
         width: 324px;
         box-sizing: border-box;
       }
+    }
+    &_type_signin {
+      border: 1px solid #c5c2cd;
     }
   }
   &__input-full {
@@ -151,7 +159,6 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 130%;
-    /* identical to box height, or 17px */
     letter-spacing: -0.019em;
     font-feature-settings: "pnum" on, "lnum" on;
     color: var(--font-color-gray);
@@ -161,42 +168,39 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 25px 20px;
+    padding: 25px 0 25px 18px;
     gap: 30px;
     border: none;
     width: 440px;
+    position: relative;
     @media (max-width: 980px) {
       width: 340px;
       padding: 15px 10px;
       box-sizing: border-box;
-      /*       align-items: center; */
     }
     @media (max-width: 400px) {
       padding: 15px 5px;
       width: 330px;
       box-sizing: border-box;
-      /*   width: auto; */
     }
   }
   &__fieldset-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-flow: wrap;
     & .form__fieldset:nth-of-type(2) {
       background: var(--background-gray);
       border-radius: 10px;
     }
     @media (max-width: 980px) {
       flex-direction: column;
+      gap: 25px;
     }
   }
   &__line {
     margin-right: 95px;
     margin-left: 95px;
     justify-self: center;
-    &:nth-last-of-type(1) {
-      display: none;
-    }
     @media (max-width: 1200px) {
       margin-right: auto;
       margin-left: auto;
@@ -206,10 +210,24 @@
       display: none;
     }
   }
-  &__back-button {
+  &__line-horizontal {
+    /* margin: auto; */
+    max-width: 503px;
+    @media (max-width: 980px) {
+      max-width: 319px;
+    }
+  }
+  &__button {
     outline: none;
     border: none;
-    background-color: #fff;
+    background-color: transparent;
+    &_type_close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+  }
+  &__back-button {
     @media (min-width: 1200px) {
       display: none;
     }
@@ -220,20 +238,71 @@
     cursor: pointer;
     border: none;
     box-sizing: border-box;
-
     &_disabled {
       background-color: var(--button-color-disabled);
       cursor: default;
     }
   }
+  &__plus-box {
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #79848a;
+    &:f {
+      margin-right: 35px;
+      @media (max-width: 768px) {
+        margin-right: 20px;
+      }
+    }
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+  &__star {
+    width: auto;
+    padding-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 32px;
+    @media (min-width: 1200px) {
+      width: 320px;
+    }
+  }
+  &__sign-data-container {
+    background-color: #f7fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 .container {
-  margin: 0 auto;
+  margin: 0;
+  @media (max-width: 1400px) {
+    margin: 0 auto;
+  }
   @media (max-width: 450px) {
     box-sizing: border-box;
     /*     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: baseline; */
+  }
+}
+body {
+  background: linear-gradient(180deg, #fff 39%, #f7fafc 61%);
+}
+.button {
+  &__button-sign {
+    padding: 16px 30px;
+    font-size: 14px;
+    line-height: 1.15;
+    background: #f9a135;
+    border-radius: 10px;
+    color: #ffffff;
+    @media (min-width: 1200px) {
+      font-size: 20px;
+    }
   }
 }

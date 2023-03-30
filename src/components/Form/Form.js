@@ -1,7 +1,15 @@
 import React from "react";
 import line from "../../images/line.svg";
+import chrest from "../../images/chrest.svg";
 /* import { useForm } from "react-hook-form"; */
-export const Form = ({ formName, modifier, register }) => {
+export const Form = ({
+  formName,
+  modifier,
+  register,
+  count,
+  id,
+  handleMinusClick,
+}) => {
   /*   const { register } = useForm(); */
   /*   const MyInput = React.forwardRef(({ name, label, ...rest }, ref) => {
     return (
@@ -12,24 +20,32 @@ export const Form = ({ formName, modifier, register }) => {
     );
   });
   const ref = React.useRef(); */
-
+  /*   const handleClick = (e) => {
+    e.preventDefault();
+    setCountPlayers(count - 1);
+  }; */
   return (
     <>
-      <fieldset id="registration" className="form__fieldset">
+      <fieldset id={`${modifier}-registration`} className="form__fieldset">
         <h1 className="form__subtitle">{formName}</h1>
+        {id > 1 && (
+          <button
+            className="form__button form__button_type_close"
+            onClick={handleMinusClick}
+          >
+            <img src={chrest} alt="chrest" />
+          </button>
+        )}
         <div className="form__input-full">
           <label htmlFor={`${modifier}-name`} className="form__label">
             Имя
           </label>
           <input
             {...register(`${modifier}-name`, { required: true })}
-            /*   label="Имя" */
             type="text"
             className="form__input "
-            /*  id={`${modifier}-name`}
-          name={`${modifier}-name`} */
-            /*      value={{ state.`${modifier}`Name }} */
             placeholder="Ваше ФИО"
+            autoComplete="name"
           />
         </div>
         <div className="form__input-full">
@@ -37,12 +53,11 @@ export const Form = ({ formName, modifier, register }) => {
             Телефон
           </label>
           <input
-            /*      label="Телефон" */
             {...register(`${modifier}-phone`, { required: true })}
             type="text"
             className="form__input"
-            /*         value={state.`${modifier}`Phone} */
             placeholder="Телефон"
+            autoComplete="tel"
           />
         </div>
         <div className="form__input-full">
@@ -50,13 +65,11 @@ export const Form = ({ formName, modifier, register }) => {
             Почта
           </label>
           <input
-            /*          label="Почта" */
             {...register(`${modifier}-email`, { required: true })}
             type="email"
-            /*      value={state.email} */
-            /*           onChange={handleChange} */
             className="form__input"
             placeholder="Электронная почта"
+            autoComplete="email"
           />
         </div>
         <div className="form__input-full">
@@ -64,17 +77,17 @@ export const Form = ({ formName, modifier, register }) => {
             Дата рождения
           </label>
           <input
-            /*     label="Дата рождения" */
             {...register(`${modifier}-date`, { required: true })}
             type="text"
-            /*     value={state.`${modifier}`Date} */
-            /*       onChange={handleChange} */
             className="form__input"
             placeholder="15.07.1997"
+            autoComplete="bday"
           />
         </div>
       </fieldset>
-      <img src={line} className="form__line" alt="линия" />
+      {id % 2 === 0 && count !== id + 1 && (
+        <img src={line} className="form__line" alt="линия" />
+      )}
     </>
   );
 };
