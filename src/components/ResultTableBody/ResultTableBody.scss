@@ -60,6 +60,7 @@
   &__col-score {
     @include result-table-cell(20%);
     text-align: left;
+    padding-left: 7px;
 
     @include media_1024 {
       width: 13%;
@@ -71,6 +72,7 @@
     @include result-table-cell(14%);
     border-radius: 0 10px 10px 0;
     text-align: left;
+    padding-left: 7px;
 
     @include media_1024 {
       font-size: 20px;
