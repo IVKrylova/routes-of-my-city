@@ -18,7 +18,7 @@
     overflow-x: scroll;
     position: relative;
     margin-left: 20px;
-    width: calc(100vw - 37px);
+    width: calc(100vw - 20px);
     max-width: 500px;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -106,7 +106,7 @@
     border: none;
     border-spacing: 0 5px;
     cursor: default;
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
     max-width: 500px;
 
     @include media_530 {
