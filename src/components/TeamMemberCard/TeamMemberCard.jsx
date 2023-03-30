@@ -23,7 +23,7 @@ const TeamMemberCard = (props) => {
             ></button>
           </div>
           <ul className='team-member-card__data'>
-            <li className='team-member-card__item'>
+            <li className='team-member-card__item team-member-card__item_name'>
               {props.player.name}
             </li>
             <li className='team-member-card__item'>

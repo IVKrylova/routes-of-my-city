@@ -100,7 +100,7 @@
     @include media_530 {
       flex-flow: wrap;
       column-gap: 30px;
-      align-items: flex-start;
+      align-items: stretch;
       margin-left: 7%;
     }
   }
@@ -190,6 +190,11 @@
 
     @include media_530 {
       margin-left: 7%;
+    }
+
+    @include media_768 {
+      margin-left: 7%;
+      margin-top: 60px;
     }
 
     @include media_1024 {

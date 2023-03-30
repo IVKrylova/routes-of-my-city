@@ -77,6 +77,12 @@
 
   &__item {
     word-wrap: break-word;
+
+    @include media_530 {
+      &_name {
+        min-height: 57px;
+      }
+    }
   }
 
   &__data-field {
