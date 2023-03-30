@@ -1,0 +1,58 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.faq-list {
+  background: $background-gradient-faq;
+  box-sizing: border-box;
+  padding: 80px 20px;
+
+  @include media_768 {
+    padding: 80px 7% 100px;
+  }
+
+  &__content {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 70px;
+
+    @include media_768 {
+      grid-template-columns: 58% 42%;
+    }
+  }
+
+  &__list {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 100%;
+  }
+
+  &__list-partners {
+    @include reset-margins;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+
+    @include media_768 {
+      align-items: flex-end;
+    }
+  }
+
+  &__partner {
+    width: 235px;
+
+    @include media_1280 {
+      width: 378px;
+    }
+  }
+}
+
+.section-title {
+  @include h2;
+  @include reset-margins;
+}

@@ -13,14 +13,19 @@
 
   @include media_768 {
     padding: 27px 3%;
+    column-gap: 7%;
+    grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 14%) 205px;
+  }
+
+  @include media_1024 {
     column-gap: 8%;
     grid-template-columns: 6.6% calc(100% - 205px - 6.6% - 16%) 205px;
   }
 
   @include media_1280 {
     padding: 37px 6.5% 37px 10.2%;
-    column-gap: 10.6%;
-    grid-template-columns: 6.6% calc(100% - 260px - 6.6% - 21.2%) 260px;
+    column-gap: 10%;
+    grid-template-columns: 6.6% calc(100% - 248px - 6.6% - 21.2%) 260px;
   }
 
   &__button-menu {
@@ -102,7 +107,4 @@
     height: 15px;
     align-self: center;
   }
-
-  /* ToDo: delete after adding 2 next blocks */
-  height: min-content;
 }
