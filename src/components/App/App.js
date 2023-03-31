@@ -248,8 +248,6 @@ function App() {
 
   useEffect(() => {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
-
-    console.log(pathList)
   }, [location]);
 
   return (
