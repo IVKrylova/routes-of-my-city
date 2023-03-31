@@ -22,3 +22,11 @@ export const INITIAL_STATE_TEAM = {
   },
   membersNumber: null,
 };
+
+export const PATH_LIST = [
+  '/',
+  '/login',
+  '/signup',
+  '/profile',
+  '/rules',
+];

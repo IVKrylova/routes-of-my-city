@@ -15,7 +15,10 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
-import { INITIAL_STATE_TEAM } from '../../utils/constants';
+import {
+  INITIAL_STATE_TEAM,
+  PATH_LIST,
+} from '../../utils/constants';
 import './App.scss';
 // ToDo: delete after getting API data
 import { quests } from '../../utils/data/quests';
@@ -34,7 +37,6 @@ function App() {
   const [isQuestCompleted, setIsQuestCompleted] = useState(false);
   const [resultQuest, setResultQuest] = useState([]);
   const [faqList, setFaqList] = useState([]);
-  /* ToDo: remove footer in PageNotFound */
   const [isPageNotFound, setIsPageNotFound] = useState(false);
   const [team, setTeam] = useState(INITIAL_STATE_TEAM);
   const [teamPlayers, setTeamPlayers] = useState([]);
@@ -44,8 +46,9 @@ function App() {
   const [timerMinute, setTimerMinute] = useState('00');
   const [taskList, setTaskList] = useState([]);
   const [isMobile, setIsMobile] = useState(true);
+  const [pathList, setPathList] = useState(PATH_LIST);
   const screenWidth = useWindowWidth();
-  let location = useLocation();
+  const location = useLocation();
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -229,9 +232,24 @@ function App() {
     screenWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
   }, [screenWidth]);
 
+  /* ToDo: check logics with API data */
   useEffect(() => {
-    location.key === 'default' ? setIsPageNotFound(true) : setIsPageNotFound(false);
-    console.log(location)
+    const paths = questsList.map(el => `/quest/${el.id}`);
+    const pathsListExercise = questsList.map(el => `/quest/${el.id}/list-exercise`);
+    setPathList([...pathList, ...paths, ...pathsListExercise]);
+  }, [questsList]);
+
+  /* ToDo: check logics with API data */
+  useEffect(() => {
+    const paths = taskList.map(el => `/quest/${el.questId}/task/${el.id}`);
+    const pathsAnswer = taskList.map(el => `/quest/${el.questId}/answer/${el.id}`);
+    setPathList([...pathList, ...paths, ...pathsAnswer]);
+  }, [taskList]);
+
+  useEffect(() => {
+    pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
+
+    console.log(pathList)
   }, [location]);
 
   return (
@@ -263,7 +281,7 @@ function App() {
         </Route>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
-            path='/quest/:name/list-exercise'
+            path='/quest/:questId/list-exercise'
             component={
               <ListExercise />
             }
@@ -271,7 +289,7 @@ function App() {
         </Route>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
-            path='/quest/:name/task/:id'
+            path='/quest/:questId/task/:id'
             component={
               <Task />
             }
@@ -279,7 +297,7 @@ function App() {
         </Route>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
-            path='/quest/:name/answer/:id'
+            path='/quest/:questId/answer/:id'
             component={
               <Answer />
             }
@@ -299,7 +317,7 @@ function App() {
           }
         />
         <Route
-          path='/quest/:name'
+          path='/quest/:questId'
           element={
             <QuestPage />
           }
@@ -325,7 +343,9 @@ function App() {
         <Route
           path='*'
           element={
-            <PageNotFound />
+            <PageNotFound
+              setIsPageNotFound={setIsPageNotFound}
+            />
           }
         />
       </Routes>
