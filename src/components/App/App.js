@@ -15,13 +15,14 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
-import './App.scss';
 import { INITIAL_STATE_TEAM } from '../../utils/constants';
+import './App.scss';
 // ToDo: delete after getting API data
 import { quests } from '../../utils/data/quests';
 import { results } from '../../utils/data/results';
 import { faq } from '../../utils/data/faq';
 import { teams } from '../../utils/data/teams';
+import { tasks } from '../../utils/data/listTask';
 
 function App() {
   let navigate = useNavigate();
@@ -38,6 +39,11 @@ function App() {
   const [team, setTeam] = useState(INITIAL_STATE_TEAM);
   const [teamPlayers, setTeamPlayers] = useState([]);
   const [teamQuestList, setTeamQuestList] = useState([]);
+  const [deadline, setDeadline] = useState(null);
+  const [timerHour, setTimerHour] = useState('00');
+  const [timerMinute, setTimerMinute] = useState('00');
+  const [taskList, setTaskList] = useState([]);
+  const [isMobile, setIsMobile] = useState(true);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -167,6 +173,29 @@ function App() {
     setTeamPlayers(team);
   }
 
+  const getRemainingTime = () => {
+    const total = Date.parse(deadline) - Date.parse(new Date());
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+
+    return { total, hours, minutes };
+  }
+
+  const startTimer = () => {
+    const { total, hours, minutes } = getRemainingTime();
+    if (total >= 0) {
+      const h = hours > 9 ? hours : '0' + hours;
+      const m = minutes > 9 ? minutes : '0' + minutes;
+      setTimerHour(h);
+      setTimerMinute(m);
+    }
+  }
+
+  const handleCardClick = (id) => {
+    // ToDo: fix link to page task
+    // navigate(`/quest/:name/task/:${id}`);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -175,6 +204,29 @@ function App() {
     });
     setFaqList(faqs);
   }, []);
+
+  useEffect(() => {
+    // ToDo: replace with API data
+    //       fix logic => if (isCurrentQuest === true) setTaskList(quest.taskList)
+    //       add isCurrentQuest to dependencies
+    setTaskList(tasks);
+  }, []);
+
+  useEffect(() => {
+    // ToDo: fix logic => if (isCurrentQuest === true) setDeadline(quest.deadline)
+    //       add isCurrentQuest to dependencies
+    const date = new Date('Tue Mar 28 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
+    setDeadline(date);
+  }, []);
+
+  useEffect(() => {
+    startTimer();
+    setInterval(() => startTimer(), 1000);
+  }, [deadline]);
+
+  useEffect(() => {
+    screenWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
+  }, [screenWidth]);
 
   return (
     <div className="app">
@@ -283,6 +335,13 @@ function App() {
         teamQuestList={teamQuestList}
         goBack={handleGoBack}
         sendDeletedPlayer={handleDeletePlayer}
+      />
+      <ListExercise
+        timerHour={timerHour}
+        timerMinute={timerMinute}
+        taskList={taskList}
+        isMobile={isMobile}
+        handleCardClick={handleCardClick}
       />
     </div>
   );

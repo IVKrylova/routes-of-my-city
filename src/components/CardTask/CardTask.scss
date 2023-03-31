@@ -1,0 +1,104 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.card-task {
+  @include max-width-mixin(140px);
+  position: relative;
+  background-color: $background-blue-light;
+  border-radius: $border-radius-block;
+  display: flex;
+  flex-direction: column;
+
+  @include media_530 {
+    max-width: 150px;
+  }
+
+  @include media_768 {
+    max-width: 275px;
+  }
+
+  @include media_1280 {
+    max-width: 300px;
+  }
+
+  @include media_1440 {
+    max-width: 400px;
+  }
+
+  &__number {
+    position: absolute;
+    @include reset-margins;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.17;
+    text-align: center;
+    color: $font-color-blue;
+    top: 5px;
+    left: 11px;
+
+    @include media_768 {
+      font-size: 48px;
+      top: 0;
+    }
+  }
+
+  &__img {
+    border-radius: 100px 10px 0px 0px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+
+  &__options {
+    background-color: $background-blue;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    border-radius: 0px 0px 10px 10px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px;
+
+    @include media_768 {
+      padding: 15px 25px 22px;
+      row-gap: 20px;
+    }
+  }
+
+  &__name {
+    @include reset-margins;
+    word-wrap: break-word;
+    @include task-card-text;
+
+    @include media_768 {
+      font-size: 24px;
+    }
+  }
+
+  &__link-to-answer {
+    @include reset-margins;
+    @include button-cta;
+    text-decoration: none;
+    @include task-card-text;
+    padding: 7px 10px;
+    box-sizing: border-box;
+    @include max-width-mixin(83px);
+
+    @include media_768 {
+      font-size: 20px;
+      padding: 15px 30px;
+      max-width: 150px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 5px 5px 0px $font-color-orange;
+    cursor: pointer;
+  }
+
+  &:hover &__number {
+    color: $font-color-orange;
+  }
+}

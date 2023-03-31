@@ -244,6 +244,13 @@
   }
 }
 
+@mixin task-card-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.14;
+  color: $font-color-white;
+}
+
 // media queries
 @mixin media_530 {
   @media screen and (min-width: 530px) {
@@ -265,6 +272,12 @@
 
 @mixin media_1280 {
   @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin media_1440 {
+  @media screen and (min-width: 1440px) {
     @content;
   }
 }
