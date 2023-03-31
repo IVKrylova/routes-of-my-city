@@ -11,7 +11,7 @@ const MainBanner = () => {
       </p>
       {/* ToDo: add links to bloks.
       If <a> doesn`t work, you will need to install react-router-hash-link */}
-      <a className='main-banner__button-cta' href='#'>Учавствовать</a>
+      <a className='main-banner__button-cta' href='#'>Участвовать</a>
     </section>
   );
 }
