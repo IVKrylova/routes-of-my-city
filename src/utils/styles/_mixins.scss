@@ -106,6 +106,7 @@
   box-sizing: border-box;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 @mixin button-header {
@@ -130,11 +131,117 @@
   }
 }
 
+@mixin font-block-profile {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: $font-color-gray;
+}
+
 @mixin result-table-cell($w) {
   width: $w;
   font-weight: 400;
   padding: 11px 0;
 
+  color: $font-color-gray;
+}
+
+@mixin font-info-profile {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.17;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: $font-color-light;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+@mixin name-card-profile {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.17;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: $font-color-blue;
+
+  &_empty {
+    color: $font-color-gray;
+  }
+}
+
+@mixin image-background($url, $urlHover, $urlActive) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &:hover {
+    background-image: url($urlHover);
+  }
+
+  &_active {
+    background-image: url($urlActive);
+
+    &:hover {
+      background-image: url($urlActive);
+    }
+  }
+}
+
+@mixin font-data-profile {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: $font-color-black-darck;
+  opacity: 0.5;
+}
+
+@mixin link-button-orange {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  color: $font-color-orange;
+
+  &:hover {
+    color: $button-color-cta-hover;
+  }
+
+  &_active {
+    color: $button-color-cta-active;
+
+    &:hover {
+      color: $button-color-cta-active;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+@mixin button-link-settings {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  color: $font-color-red;
+
+  &:hover {
+    color: $button-color-sign-up-hover;
+  }
+
+  &_active {
+    color: $button-color-sign-up-active;
+
+    &:hover {
+      color: $button-color-sign-up-active;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 18px;
+  }
 }
 
 // media queries

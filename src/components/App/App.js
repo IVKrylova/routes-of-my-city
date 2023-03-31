@@ -16,10 +16,12 @@ import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
 import './App.scss';
+import { INITIAL_STATE_TEAM } from '../../utils/constants';
 // ToDo: delete after getting API data
 import { quests } from '../../utils/data/quests';
 import { results } from '../../utils/data/results';
 import { faq } from '../../utils/data/faq';
+import { teams } from '../../utils/data/teams';
 
 function App() {
   let navigate = useNavigate();
@@ -33,6 +35,9 @@ function App() {
   const [faqList, setFaqList] = useState([]);
   /* ToDo: remove footer in PageNotFound */
   const [isPageNotFound, setIsPageNotFound] = useState(false);
+  const [team, setTeam] = useState(INITIAL_STATE_TEAM);
+  const [teamPlayers, setTeamPlayers] = useState([]);
+  const [teamQuestList, setTeamQuestList] = useState([]);
   const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
@@ -74,6 +79,50 @@ function App() {
     }
   }, [isQuestCompleted]);
 
+  /* ToDo: set up authorization, team data will be received by authorization  =>
+  replace useEffect with function sign in */
+  useEffect(() => {
+    setTeam(teams);
+  }, []);
+
+  /* ToDo: check logics with API data */
+  useEffect(() => {
+    const players = [];
+    let count = 2;
+    for (let i = 0; i < 5; i++) {
+      players.push(team.members[i]);
+      if (!players[i]) {
+        players[i] = {
+          status: '',
+          name: '',
+          phone: '',
+          email: '',
+          birthday: '',
+          id: Math.random(),
+        }
+      }
+      if (players[i].status === 'игрок' || (players[i].status === '')) {
+        players[i].status = `${count} игрок`;
+        count++;
+      }
+    }
+    setTeamPlayers(players);
+  }, [team]);
+
+  /* ToDo: check logics with API data */
+  useEffect(() => {
+    const quests = [];
+    for (let key in team.quests) {
+      quests.push(team.quests[key]);
+    }
+    setTeamQuestList(quests);
+  }, [team]);
+
+  // ToDo: set up routing
+  const handleGoBack = () => {
+
+  }
+
   const handleOpenAnswer = (faqId) => {
     const newFaqList = faqList.map(el => {
       if (el.id === faqId && el.opened === true) {
@@ -102,6 +151,22 @@ function App() {
     setIsLogin(false);
   }
 
+  /* ToDo: check logics with API data and popup*/
+  const handleDeletePlayer = (playerId) => {
+    const team = teamPlayers.map(el => {
+      if (el.id === playerId) {
+        el.name = '';
+        el.phone = '';
+        el.email = '';
+        el.birthday = '';
+        el.id = Math.random();
+      }
+
+      return el;
+    });
+    setTeamPlayers(team);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -128,7 +193,13 @@ function App() {
           <Route
             path='/profile'
             component={
-              <Profile />
+              <Profile
+                team={team}
+                teamPlayers={teamPlayers}
+                teamQuestList={teamQuestList}
+                goBack={handleGoBack}
+                sendDeletedPlayer={handleDeletePlayer}
+              />
             }
           />
         </Route>
@@ -206,8 +277,13 @@ function App() {
         handleClickButtonExit={clickButtonExit}
       />
       <Footer />
-      <PageNotFound />
-      <Footer />
+      <Profile
+        team={team}
+        teamPlayers={teamPlayers}
+        teamQuestList={teamQuestList}
+        goBack={handleGoBack}
+        sendDeletedPlayer={handleDeletePlayer}
+      />
     </div>
   );
 }
