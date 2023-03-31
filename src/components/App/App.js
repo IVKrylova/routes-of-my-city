@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
@@ -45,6 +45,7 @@ function App() {
   const [taskList, setTaskList] = useState([]);
   const [isMobile, setIsMobile] = useState(true);
   const screenWidth = useWindowWidth();
+  let location = useLocation();
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -228,6 +229,11 @@ function App() {
     screenWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
   }, [screenWidth]);
 
+  useEffect(() => {
+    location.key === 'default' ? setIsPageNotFound(true) : setIsPageNotFound(false);
+    console.log(location)
+  }, [location]);
+
   return (
     <div className="app">
       <Header
@@ -323,12 +329,14 @@ function App() {
           }
         />
       </Routes>
+      <Footer
+        isPageNotFound={isPageNotFound}
+      />
       <PopupAccountData
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
       />
-      <Footer />
       <Profile
         team={team}
         teamPlayers={teamPlayers}
