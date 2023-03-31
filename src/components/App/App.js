@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -16,16 +15,11 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
-
 import './App.scss';
-
-// ToDo: delete after getting data with API
+// ToDo: delete after getting API data
 import { quests } from '../../utils/data/quests';
 import { results } from '../../utils/data/results';
-
-// ToDo: delete after getting API data
 import { faq } from '../../utils/data/faq';
-
 
 function App() {
   let navigate = useNavigate();
@@ -37,10 +31,9 @@ function App() {
   const [isQuestCompleted, setIsQuestCompleted] = useState(false);
   const [resultQuest, setResultQuest] = useState([]);
   const [faqList, setFaqList] = useState([]);
-
-  const screenWidth = useWindowWidth();
   /* ToDo: remove footer in PageNotFound */
   const [isPageNotFound, setIsPageNotFound] = useState(false);
+  const screenWidth = useWindowWidth();
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -118,7 +111,6 @@ function App() {
     setFaqList(faqs);
   }, []);
 
-
   return (
     <div className="app">
       <Header
@@ -168,6 +160,10 @@ function App() {
           path='/'
           element={
             <Main
+              isNoQuests={isNoQuests}
+              questsList={questsList}
+              resultQuest={resultQuest}
+              isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
             />
@@ -209,23 +205,9 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
       />
-
-      <Main
-        isNoQuests={isNoQuests}
-        questsList={questsList}
-        resultQuest={resultQuest}
-        isQuestCompleted={isQuestCompleted}
-        faqList={faqList}
-        handleOpenAnswer={handleOpenAnswer}
-      />
-
       <Footer />
       <PageNotFound />
-
-
       <Footer />
-
-
     </div>
   );
 }

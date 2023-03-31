@@ -9,8 +9,8 @@ import MainBanner from '../MainBanner/MainBanner';
 import './Main.scss';
 const Main = (props) => {
   return (
-
     <main className='main-content'>
+      <MainBanner />
       <AboutProject />
       <Benefits />
       <MainQuests
@@ -18,14 +18,10 @@ const Main = (props) => {
         questsList={props.questsList}
         resultQuest={props.resultQuest}
         isQuestCompleted={props.isQuestCompleted}
-/>
-      <MainBanner />
-      <AboutProject />
-      <Benefits />
+      />
       <FaqList
         faqList={props.faqList}
         handleOpenAnswer={props.handleOpenAnswer}
-
       />
     </main>
   );
