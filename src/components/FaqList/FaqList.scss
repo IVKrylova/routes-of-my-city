@@ -10,6 +10,11 @@
     padding: 80px 7% 100px;
   }
 
+  &__section-title {
+    @include h2;
+    @include reset-margins;
+  }
+
   &__content {
     margin-top: 50px;
     display: grid;
@@ -50,9 +55,4 @@
       width: 378px;
     }
   }
-}
-
-.section-title {
-  @include h2;
-  @include reset-margins;
 }

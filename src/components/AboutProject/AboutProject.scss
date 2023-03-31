@@ -18,6 +18,21 @@
     margin-top: -20px;
   }
 
+  &__section-title {
+    @include reset-margins;
+    @include h2;
+    margin-top: 17px;
+
+    @include media_768 {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    @include media_1280 {
+      margin-top: 10px;
+    }
+  }
+
   &__icon-free-part {
     width: 277px;
     justify-self: end;
@@ -72,20 +87,5 @@
     @include media_1280 {
       width: 576px;
     }
-  }
-}
-
-.section-title {
-  @include reset-margins;
-  @include h2;
-  margin-top: 17px;
-
-  @include media_768 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-  }
-
-  @include media_1280 {
-    margin-top: 10px;
   }
 }

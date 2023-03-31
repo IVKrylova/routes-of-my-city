@@ -5,7 +5,7 @@ import './FaqList.scss';
 const FaqList = (props) => {
   return (
     <section className='faq-list'>
-      <h2 className='section-title'>Часто задаваемые вопросы</h2>
+      <h2 className='faq-list__section-title'>Часто задаваемые вопросы</h2>
       <div className='faq-list__content'>
         <ul className='faq-list__list'>
           {props.faqList && props.faqList.map(el => {
