@@ -18,7 +18,6 @@ const PageNotFound = () => {
           Мы обязательно разберёмся с этим недоразумением,
           а пока вернитесь на главную страницу
         </p>
-        {/* ToDo: check link */}
         <Link to='/' className='page-not-found__link-to-main'>
           Вернуться на главную
         </Link>
