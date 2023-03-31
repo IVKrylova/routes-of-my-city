@@ -10,25 +10,23 @@ const Footer = (props) => {
         <Logo />
         <div className='footer__about-company'>
           <p className='footer__company-name'>АНО «АМПИР»</p>
-          {/* ToDo: check contacts */}
           <ul className='footer__contacts-list'>
             <li>
-              <a className='footer__link-to-contact' href='tel:+79000000000'>+7 900 000-00-00</a>
+              <a className='footer__link-to-contact' href='tel:+79197529669'>+7 919 752-96-69</a>
             </li>
             <li>
-              <a className='footer__link-to-contact' href='mailto:memail@mail.com'>memail@mail.com</a>
+              <a className='footer__link-to-contact' href='mailto:anostav@yandex.ru'>anostav@yandex.ru</a>
             </li>
           </ul>
         </div>
-        {/* ToDo: add links to networks */}
         <ul className='footer__social-networks-list'>
           <li>
-            <a className='footer__link-to-network' href='' target='__blanck'>
+            <a className='footer__link-to-network' href='https://vk.com/mg_stv' target='__blanck'>
               <img src={logoVk} alt='логотип ВКонтакте' className='footer__logo-network' />
             </a>
           </li>
           <li>
-            <a className='footer__link-to-network' href='' target='__blanck'>
+            <a className='footer__link-to-network' href='https://t.me/mg_stv' target='__blanck'>
               <img src={logoTg} alt='логотип Телеграм' className='footer__logo-network' />
             </a>
           </li>
