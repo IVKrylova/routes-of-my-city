@@ -2,8 +2,7 @@
 @import '../../utils/styles/_mixins';
 
 .list-exercise {
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
   padding: 30px 20px 50px;
   box-sizing: border-box;
   justify-items: center;
@@ -47,10 +46,7 @@
     background-color: $background-blue-light;
     box-sizing: border-box;
     cursor: default;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w600-sz18;
     color: $font-color-red;
 
     @include media_768 {
@@ -65,10 +61,7 @@
 
     @include media_768 {
       display: inline-block;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.2;
-      font-feature-settings: 'pnum' on, 'lnum' on;
+      @include font-w400-sz16;
       color: $font-color-gray;
       margin-right: 11px;
     }
@@ -103,10 +96,7 @@
     @include reset-margins;
     margin-top: 30px;
     text-align: center;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w400-sz14;
     color: $font-color-gray;
     cursor: default;
 

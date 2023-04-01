@@ -131,23 +131,13 @@
   }
 }
 
-@mixin font-block-profile {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.15;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  color: $font-color-gray;
-}
-
 @mixin result-table-cell($w) {
   width: $w;
   font-weight: 400;
   padding: 11px 0;
-
-  color: $font-color-gray;
 }
 
-@mixin font-info-profile {
+@mixin font-w400-sz18 {
   font-weight: 400;
   font-size: 18px;
   line-height: 1.17;
@@ -159,16 +149,18 @@
   }
 }
 
-@mixin name-card-profile {
+@mixin font-w600-sz24 {
   font-weight: 600;
   font-size: 24px;
   line-height: 1.17;
   font-feature-settings: 'pnum' on, 'lnum' on;
-  color: $font-color-blue;
+}
 
-  &_empty {
-    color: $font-color-gray;
-  }
+@mixin font-w400-sz20 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.15;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 @mixin image-background($url, $urlHover, $urlActive) {
@@ -189,13 +181,11 @@
   }
 }
 
-@mixin font-data-profile {
+@mixin font-w400-sz16 {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.19;
   font-feature-settings: 'pnum' on, 'lnum' on;
-  color: $font-color-black-darck;
-  opacity: 0.5;
 }
 
 @mixin link-button-orange {
@@ -244,11 +234,47 @@
   }
 }
 
-@mixin task-card-text {
+@mixin font-w600-sz14 {
   font-weight: 600;
   font-size: 14px;
   line-height: 1.14;
+  font-feature-settings: 'pnum' on, 'lnum' on;
   color: $font-color-white;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-all-free-space {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+@mixin grid-column-1fr {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@mixin font-w600-sz16 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@mixin font-w600-sz18 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.17;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+@mixin font-w400-sz14 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 // media queries

@@ -7,17 +7,14 @@
     background-color: $background-white;
     box-sizing: border-box;
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: $border-radius-block;
     position: relative;
   }
 
   &__question {
     display: block;
     @include reset-margins;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.17;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w600-sz18;
     color: $font-color-black;
     width: 80%;
     cursor: pointer;
@@ -53,10 +50,7 @@
 
   &__answer {
     @include reset-margins;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.19;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w400-sz16;
     color: $font-color-gray;
     position: relative;
     margin-top: 40px;

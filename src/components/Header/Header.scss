@@ -65,11 +65,7 @@
 
   &__button-sign-up {
     box-sizing: border-box;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.15;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: $font-color-white;
+    @include font-w600-sz14;
     cursor: pointer;
     text-decoration: none;
 

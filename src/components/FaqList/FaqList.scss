@@ -17,8 +17,7 @@
 
   &__content {
     margin-top: 50px;
-    display: grid;
-    grid-template-columns: 1fr;
+    @include grid-column-1fr;
     row-gap: 70px;
 
     @include media_768 {
@@ -29,8 +28,7 @@
   &__list {
     @include reset-margins;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 20px;
     width: 100%;
   }
@@ -38,8 +36,7 @@
   &__list-partners {
     @include reset-margins;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 40px;
     align-items: center;
 

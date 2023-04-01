@@ -6,8 +6,7 @@
   position: relative;
   background-color: $background-blue-light;
   border-radius: $border-radius-block;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
 
   @include media_530 {
     max-width: 150px;
@@ -54,10 +53,8 @@
     box-sizing: border-box;
     padding: 15px 10px;
     border-radius: 0px 0px 10px 10px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
+    @include flex-all-free-space;
+    @include flex-column;
     justify-content: space-between;
     row-gap: 10px;
 
@@ -70,7 +67,7 @@
   &__name {
     @include reset-margins;
     word-wrap: break-word;
-    @include task-card-text;
+    @include font-w600-sz14;
 
     @include media_768 {
       font-size: 24px;
@@ -81,7 +78,7 @@
     @include reset-margins;
     @include button-cta;
     text-decoration: none;
-    @include task-card-text;
+    @include font-w600-sz14;
     padding: 7px 10px;
     box-sizing: border-box;
     @include max-width-mixin(83px);

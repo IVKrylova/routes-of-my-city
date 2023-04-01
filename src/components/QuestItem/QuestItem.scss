@@ -9,12 +9,10 @@
     box-sizing: border-box;
     padding: 50px 20px 53px;
     min-height: 550px;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
 
     @include media_530 {
-      border-radius: 10px;
-
+      border-radius: $border-radius-block;
       margin-left: 7%;
       margin-right: 7%;
       width: 86%;
@@ -46,8 +44,7 @@
     @include h2;
     color: $font-color-white;
     margin-top: 20px;
-    flex-grow: 1;
-    flex-shrink: 0;
+    @include flex-all-free-space;
 
     @include media_768 {
       margin-top: 10px;

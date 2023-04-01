@@ -2,10 +2,8 @@
 @import '../../utils/styles/mixins';
 
 .team-member-card {
-  max-width: 225px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  @include max-width-mixin(225px);
+  @include flex-column;
   row-gap: 20px;
   position: relative;
 
@@ -32,7 +30,12 @@
 
   &__status {
     @include reset-margins;
-    @include name-card-profile;
+    @include font-w600-sz24;
+    color: $font-color-blue;
+
+    &_empty {
+      color: $font-color-gray;
+    }
     cursor: default;
   }
 
@@ -69,9 +72,10 @@
   &__data {
     @include reset-margins;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    @include font-data-profile;
+    @include flex-column;
+    @include font-w400-sz16;
+    color: $font-color-black-darck;
+    opacity: 0.5;
     row-gap: 5px;
   }
 
@@ -88,7 +92,7 @@
   &__data-field {
     width: 100%;
     background-color: $background-light-gray;
-    border-radius: 10px;
+    border-radius: $border-radius-block;
   }
 
   &__button-add {

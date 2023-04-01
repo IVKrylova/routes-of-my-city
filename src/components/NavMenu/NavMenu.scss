@@ -26,11 +26,8 @@
   }
 
   &__link {
-    font-weight: 600;
-    font-size: 14px;
+    @include font-w600-sz14;
     line-height: 1.17;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: $font-color-white;
     text-decoration: none;
 
     &:hover {

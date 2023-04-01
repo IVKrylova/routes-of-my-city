@@ -1,6 +1,7 @@
+@import '../../utils/styles/mixins';
+
 .app {
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
   min-height: 100vh;
 }

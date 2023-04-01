@@ -1,4 +1,5 @@
+@import '../../utils/styles/_mixins';
+
 .main-content {
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
 }

@@ -3,8 +3,7 @@
 
 .results-table {
   margin-top: 75px;
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
 
   @include media_1024 {
     margin-top: 100px;
@@ -40,9 +39,7 @@
     min-width: 100px;
     padding: 15px 0;
     text-align: center;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.14;
+    @include font-w600-sz14;
     text-align: center;
     color: $font-color-black;
     cursor: pointer;
@@ -71,14 +68,7 @@
   &__button-more {
     @include reset-button;
     margin-top: 20px;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 1.2;
-    color: $font-color-orange;
-
-    &:hover {
-      color: $font-color-orange-hover;
-    }
+    @include link-button-orange;
 
     &_disabled {
       color: $button-color-disabled;
@@ -99,9 +89,7 @@
 
   &__table {
     margin: 35px 20px 0;
-    font-size: 14px;
-    line-height: 1.14;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w400-sz14;
     color: $font-color-black;
     border: none;
     border-spacing: 0 5px;
