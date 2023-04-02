@@ -30,7 +30,7 @@ import { tasks } from '../../utils/data/listTask';
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [questsList, setQuestsList] = useState([]);
   const [isNoQuests, setIsNoQuests] = useState(true);
@@ -266,7 +266,7 @@ function App() {
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
             path='/profile'
-            component={
+            element={
               <Profile
                 team={team}
                 teamPlayers={teamPlayers}
@@ -280,7 +280,7 @@ function App() {
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
             path='/quest/:questId/list-exercise'
-            component={
+            element={
               <ListExercise />
             }
           />
@@ -288,7 +288,7 @@ function App() {
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
             path='/quest/:questId/task/:id'
-            component={
+            element={
               <Task />
             }
           />
@@ -296,7 +296,7 @@ function App() {
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
           <Route
             path='/quest/:questId/answer/:id'
-            component={
+            element={
               <Answer />
             }
           />
