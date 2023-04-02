@@ -128,9 +128,8 @@ function App() {
     setTeamQuestList(quests);
   }, [team]);
 
-  // ToDo: set up routing
   const handleGoBack = () => {
-
+    navigate(-1);
   }
 
   const handleOpenAnswer = (faqId) => {
