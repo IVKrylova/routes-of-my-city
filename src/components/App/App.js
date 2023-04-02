@@ -233,21 +233,17 @@ function App() {
 
   /* ToDo: check logics with API data */
   useEffect(() => {
-    const paths = questsList.map(el => `/quest/${el.id}`);
+    const pathsQuests = questsList.map(el => `/quest/${el.id}`);
     const pathsListExercise = questsList.map(el => `/quest/${el.id}/list-exercise`);
-    setPathList([...pathList, ...paths, ...pathsListExercise]);
-  }, [questsList]);
+    const pathsTasks = taskList.map(el => `/quest/${el.questId}/task/${el.id}`);
+    const pathsAnswers = taskList.map(el => `/quest/${el.questId}/answer/${el.id}`);
 
-  /* ToDo: check logics with API data */
-  useEffect(() => {
-    const paths = taskList.map(el => `/quest/${el.questId}/task/${el.id}`);
-    const pathsAnswer = taskList.map(el => `/quest/${el.questId}/answer/${el.id}`);
-    setPathList([...pathList, ...paths, ...pathsAnswer]);
-  }, [taskList]);
+    setPathList([...PATH_LIST, ...pathsQuests, ...pathsListExercise, ...pathsTasks, ...pathsAnswers]);
+  }, [questsList, taskList]);
 
   useEffect(() => {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
-  }, [location]);
+  }, [location, pathList]);
 
   return (
     <div className="app">
