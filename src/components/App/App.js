@@ -280,7 +280,13 @@ function App() {
           <Route
             path='/quest/:questId/list-exercise'
             element={
-              <ListExercise />
+              <ListExercise
+                timerHour={timerHour}
+                timerMinute={timerMinute}
+                taskList={taskList}
+                isMobile={isMobile}
+                handleCardClick={handleCardClick}
+              />
             }
           />
         </Route>
@@ -353,13 +359,6 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
-      />
-      <ListExercise
-        timerHour={timerHour}
-        timerMinute={timerMinute}
-        taskList={taskList}
-        isMobile={isMobile}
-        handleCardClick={handleCardClick}
       />
     </div>
   );
