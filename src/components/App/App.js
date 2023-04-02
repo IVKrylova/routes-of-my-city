@@ -355,13 +355,6 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
       />
-      <Profile
-        team={team}
-        teamPlayers={teamPlayers}
-        teamQuestList={teamQuestList}
-        goBack={handleGoBack}
-        sendDeletedPlayer={handleDeletePlayer}
-      />
       <ListExercise
         timerHour={timerHour}
         timerMinute={timerMinute}
