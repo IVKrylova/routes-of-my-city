@@ -14,7 +14,7 @@ const QuestItem = (props) => {
     {
       background: `radial-gradient(44.43% 53.16% at 30.93% 5.57%, rgba(1, 128, 162, 0.2) 0%, rgba(1, 128, 162, 0) 100%), linear-gradient(102.92deg, #003B59 4.72%, rgba(0, 59, 89, 0) 65.23%), linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 3% 100% url(${props.quest.img})`,
     };
-  const buttonClass = `quest-item__button-cta ${props.quest.isActive ? '' : 'quest-item__button-cta_disabled'}`;
+  const buttonClass = `quest-item__button-cta ${props.quest.isActive ? '' : 'quest-item__button-cta_disabled'} ${props.location.pathname === '/' ? '' : 'quest-item__button-cta_hidden'}`;
 
   const hendleButtonTakePart = () => {
     if (props.quest.isActive) props.sendQuestId(props.quest.id);

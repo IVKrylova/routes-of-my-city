@@ -7,6 +7,7 @@ const QuestPage = (props) => {
       {props.currentQuest &&
         <QuestItem
           quest={props.currentQuest}
+          location={props.location}
         />
       }
     </main>

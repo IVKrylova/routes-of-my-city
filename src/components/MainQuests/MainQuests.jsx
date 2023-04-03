@@ -31,6 +31,7 @@ const MainQuests = (props) => {
                   key={el.id}
                   resultQuest={props.resultQuest}
                   sendQuestId={props.sendQuestId}
+                  location={props.location}
                 />
               </li>
             );

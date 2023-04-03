@@ -339,6 +339,7 @@ function App() {
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
               sendQuestId={handleClickTakePart}
+              location={location}
             />
           }
         />
@@ -347,6 +348,7 @@ function App() {
           element={
             <QuestPage
               currentQuest={currentQuest}
+              location={location}
             />
           }
         />

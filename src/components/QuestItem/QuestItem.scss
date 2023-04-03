@@ -89,6 +89,10 @@
     margin-top: 25px;
     width: 300px;
 
+    &_hidden {
+      display: none;
+    }
+
     @include media_768 {
       margin-top: 32px;
       width: 270px;
