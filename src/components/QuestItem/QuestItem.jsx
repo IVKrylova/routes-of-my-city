@@ -28,7 +28,7 @@ const QuestItem = (props) => {
   }, [props.resultQuest]);
 
   return (
-    <li className='quest-item'>
+    <div className='quest-item'>
       <div className='quest-item__card' style={background}>
         <h3 className='quest-item__title'>{props.quest.name}</h3>
         <p className='quest-item__description'>{props.quest.description}</p>
@@ -55,7 +55,7 @@ const QuestItem = (props) => {
           result={resultData}
         />
       }
-    </li>
+    </div>
   );
 }
 

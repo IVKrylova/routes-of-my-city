@@ -1,17 +1,9 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
 const ListExercise = (props) => {
-  let { questId } = useParams();
-
-  useEffect(() => {
-    props.sendQuestId(questId);
-  }, [questId])
-
   return (
     <section className='list-exercise'>
       <ButtonGoBack

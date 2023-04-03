@@ -205,17 +205,14 @@ function App() {
     // navigate(`/quest/:name/task/:${id}`);
   }
 
-  const getCurrentQuest = (questId) => {
-    setCurrentQuestId(questId);
-  }
-
   const handleClickTakePart = (questId) => {
     navigate(`/quest/${questId}`);
+    setCurrentQuestId(questId);
   }
 
   useEffect(() => {
     // ToDo: replace with API data
-    const quest = questsList.find(el => el.id.toString() === currentQuestId);
+    const quest = questsList.find(el => el.id === currentQuestId);
     setCurrentQuest(quest);
     // ToDo: replace with API data
     //       get tasks by currentQuestId
@@ -308,7 +305,6 @@ function App() {
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
-                sendQuestId={getCurrentQuest}
                 currentQuest={currentQuest}
               />
             }
@@ -349,7 +345,9 @@ function App() {
         <Route
           path='/quest/:questId'
           element={
-            <QuestPage />
+            <QuestPage
+              currentQuest={currentQuest}
+            />
           }
         />
         <Route
