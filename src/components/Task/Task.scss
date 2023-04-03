@@ -6,16 +6,33 @@
   box-sizing: border-box;
   padding: 30px 20px 0;
 
+  @include media_530 {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
   &__task {
-    margin: 20px 0 45px;
+    margin: 20px auto 45px;
     @include flex-column;
     row-gap: 40px;
+    align-items: center;
+
+    @include media_768 {
+      flex-direction: row;
+      column-gap: 50px;
+    }
   }
 
   &__block-img {
     background-color: $background-gray;
     border-radius: $border-radius-block;
     position: relative;
+    @include max-width-mixin(530px);
+
+    @include media_1280 {
+      max-width: 715px;
+      background-color: $background-white;
+    }
   }
 
   &__task-number {
@@ -24,16 +41,27 @@
     font-size: 32px;
     left: 22px;
     top: 10px;
+
+    @include media_1280 {
+      font-size: 72px;
+      top: 0;
+      left: 0;
+    }
   }
 
   &__task-img {
     @include img-card-task;
     border-radius: 200px 10px 0px 0px;
+
+    @include media_1280 {
+      border-radius: 400px 10px 10px 10px;
+    }
   }
 
   &__description {
     @include flex-column;
     row-gap: 15px;
+    @include max-width-mixin(530px);
   }
 
   &__title {
@@ -48,5 +76,9 @@
     @include reset-margins;
     @include font-w400-sz18;
     color: $font-color-black-darck;
+
+    @include media_1280 {
+      font-size: 20px;
+    }
   }
 }

@@ -27,11 +27,8 @@
   &__number {
     position: absolute;
     @include reset-margins;
-    font-weight: 700;
+    @include number-card-task;
     font-size: 18px;
-    line-height: 1.17;
-    text-align: center;
-    color: $font-color-blue;
     top: 5px;
     left: 11px;
 
