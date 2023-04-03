@@ -57,8 +57,7 @@ const Profile = (props) => {
             <p className='profile__message'>
               Пока вы не подверждали своё участие в предстоящем квесте
             </p>
-            {/* ToDo: check link */}
-            <Link to='/#quests' className='profile__link-to-quests'>
+            <Link to='/#main-quests' className='profile__link-to-quests'>
               Участвовать
             </Link>
           </div>
