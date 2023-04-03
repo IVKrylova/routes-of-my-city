@@ -42,3 +42,11 @@ export const INITIAL_STATE_CURRENT_QUEST = {
   isCompleted: false,
   img: '',
 };
+
+export const INITIAL_STATE_TASK = {
+  id: null,
+  number: null,
+  name: '',
+  img: '',
+  problem: '',
+};

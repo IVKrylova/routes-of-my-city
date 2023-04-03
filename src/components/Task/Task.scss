@@ -1,0 +1,60 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.task-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  padding: 30px 20px 0;
+
+  &__task {
+    margin: 20px 0 45px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  &__block-img {
+    background-color: $background-gray;
+    border-radius: $border-radius-block;
+    position: relative;
+  }
+
+  &__task-number {
+    @include reset-margins;
+    @include number-card-task;
+    font-size: 32px;
+    left: 22px;
+    top: 10px;
+  }
+
+  &__task-img {
+    @include img-card-task;
+    border-radius: 200px 10px 0px 0px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  &__title {
+    @include reset-margins;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.17;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #AC4C3E;
+    margin-bottom: 5px;
+  }
+
+  &__text {
+    @include reset-margins;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-black-darck;
+  }
+}

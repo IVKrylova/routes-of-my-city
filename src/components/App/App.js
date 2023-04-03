@@ -19,6 +19,7 @@ import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
   INITIAL_STATE_CURRENT_QUEST,
+  INITIAL_STATE_TASK,
 } from '../../utils/constants';
 import './App.scss';
 // ToDo: delete after getting API data
@@ -27,6 +28,7 @@ import { results } from '../../utils/data/results';
 import { faq } from '../../utils/data/faq';
 import { teams } from '../../utils/data/teams';
 import { tasks } from '../../utils/data/listTask';
+import { taskItem } from '../../utils/data/task';
 
 function App() {
   let navigate = useNavigate();
@@ -50,7 +52,7 @@ function App() {
   const [pathList, setPathList] = useState(PATH_LIST);
   const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
-  const [idQuestPage, setIdQuestPage] = useState('');
+  const [task, setTask] = useState(INITIAL_STATE_TASK);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -208,7 +210,6 @@ function App() {
   }
 
   const handleClickTakePart = (questId) => {
-    setIdQuestPage(questId);
     navigate(`/quest/${questId}`);
   }
 
@@ -256,6 +257,18 @@ function App() {
   useEffect(() => {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
   }, [location, pathList]);
+
+  useEffect(() => {
+    // ToDo: replace with API data
+    //       fix logic => find task in task list by id
+    //       add url to dependencies
+    let text = '';
+    if (typeof(taskItem.problem) === 'string') {
+      text = taskItem.problem.split('\n');
+      taskItem.problem = text;
+    }
+    setTask(taskItem);
+  }, []);
 
   return (
     <div className='app'>
@@ -305,7 +318,9 @@ function App() {
           <Route
             path='/quest/:questId/task/:id'
             element={
-              <Task />
+              <Task
+                task={task}
+              />
             }
           />
         </Route>
