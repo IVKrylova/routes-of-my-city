@@ -282,6 +282,7 @@ function App() {
                 taskList={taskList}
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
+                goBack={handleGoBack}
               />
             }
           />

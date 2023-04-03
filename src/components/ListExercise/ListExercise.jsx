@@ -1,3 +1,4 @@
+import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
@@ -5,7 +6,9 @@ import './ListExercise.scss';
 const ListExercise = (props) => {
   return (
     <section className='list-exercise'>
-      {/* ToDo: add GoBack */}
+      <ButtonGoBack
+        goBack={props.goBack}
+      />
       {/* ToDo: quest name dynamic rendering */}
       <h1 className='list-exercise__title'>Маршруты моего города</h1>
       <div className='list-exercise__info'>

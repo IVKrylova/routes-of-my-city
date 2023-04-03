@@ -10,9 +10,12 @@
   );
   width: 15px;
   height: 26px;
-  margin-left: 20px;
 
-  @include media_530 {
-    margin-left: 7%;
+  &__place_profile {
+    margin-left: 20px;
+
+    @include media_530 {
+      margin-left: 7%;
+    }
   }
 }

@@ -12,6 +12,7 @@ const Profile = (props) => {
     <main className='profile'>
       <ButtonGoBack
         goBack={props.goBack}
+        nameClass='button-go-back__place_profile'
       />
       <h1 className='profile__title'>Личный кабинет</h1>
       <form className='profile__form-name' id='edit-team-name'>
