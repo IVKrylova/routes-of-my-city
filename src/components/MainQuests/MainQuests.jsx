@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useScrollToRef from '../../hooks/useScrollToRef';
 import iconNoQuests from '../../images/icon-no-quests.svg';
 import QuestItem from '../QuestItem/QuestItem';
 import blend from '../../images/quests-blend.png';
@@ -6,9 +8,12 @@ import './MainQuests.scss';
 const MainQuests = (props) => {
   const classSection = `main-quests ${props.isNoQuests ? 'main-quests_no-quests' : 'main-quests_quests'} ${props.isQuestCompleted ? 'main-quests_table' : ''}`;
   const blendClass = `main-quests__blend-img ${props.isQuestCompleted ? 'main-quests__blend-img_result' : 'main-quests__blend-img_no-result'}`;
+  let questsBlockElement = useRef(null);
+
+  useScrollToRef(questsBlockElement, props.hashUrl);
 
   return (
-    <section className={classSection}>
+    <section className={classSection} id='#main-quests' ref={questsBlockElement}>
       <h2 className='main-quests__section-title'>Квесты</h2>
       {props.isNoQuests &&
         <div className='main-quests__block-no-quests' >

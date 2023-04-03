@@ -50,8 +50,9 @@ function App() {
   const [pathList, setPathList] = useState(PATH_LIST);
   const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
+  const [hashUrl, setHashUrl] = useState('');
   const screenWidth = useWindowWidth();
-  const location = useLocation();
+  let location = useLocation();
 
   const openMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -251,8 +252,14 @@ function App() {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
   }, [location, pathList]);
 
+  useEffect(() => {
+    const hash = location.hash;
+
+    hash ? setHashUrl(hash) : setHashUrl('');
+  }, [location]);
+
   return (
-    <div className="app">
+    <div className='app'>
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
@@ -321,6 +328,7 @@ function App() {
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
+              hashUrl={hashUrl}
             />
           }
         />
@@ -359,6 +367,7 @@ function App() {
       </Routes>
       <Footer
         isPageNotFound={isPageNotFound}
+        hashUrl={hashUrl}
       />
       <PopupAccountData
         isHeaderAccountHovered={isHeaderAccountHovered}

@@ -9,17 +9,21 @@ const Main = (props) => {
   return (
     <main className='main-content'>
       <MainBanner />
-      <AboutProject />
+      <AboutProject
+        hashUrl={props.hashUrl}
+      />
       <Benefits />
       <MainQuests
         isNoQuests={props.isNoQuests}
         questsList={props.questsList}
         resultQuest={props.resultQuest}
         isQuestCompleted={props.isQuestCompleted}
+        hashUrl={props.hashUrl}
       />
       <FaqList
         faqList={props.faqList}
         handleOpenAnswer={props.handleOpenAnswer}
+        hashUrl={props.hashUrl}
       />
     </main>
   );

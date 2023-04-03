@@ -9,22 +9,30 @@ const NavMenu = (props) => {
   return (
     <nav className={classNavMenu}>
       <ul className={classList}>
-        {/* ToDo: add links to bloks.
-        If <a> doesn`t work, you will need to install react-router-hash-link */}
         <li>
-          <a className={classLink} href="#">О проекте</a>
+          <Link className={classLink} to="/#about-project">
+            О проекте
+          </Link>
         </li>
         <li>
-          <a className={classLink} href="#">Квесты</a>
+          <Link className={classLink} to="/#main-quests">
+            Квесты
+          </Link>
         </li>
         <li>
-          <Link className={classLink} to='/rules'>Правила</Link>
+          <Link className={classLink} to='/rules'>
+            Правила
+          </Link>
         </li>
         <li>
-          <a className={classLink} href="#">FAQ</a>
+          <Link className={classLink} to="/#faq-list">
+            FAQ
+          </Link>
         </li>
         <li>
-          <a className={classLink} href="#">Контакты</a>
+          <Link className={classLink} to="/#contacts">
+            Контакты
+          </Link>
         </li>
       </ul>
     </nav>

@@ -1,12 +1,18 @@
+import { useRef } from 'react';
+import useScrollToRef from '../../hooks/useScrollToRef';
 import Logo from '../Logo/Logo';
 import logoVk from '../../images/logo-vk.svg';
 import logoTg from '../../images/logo-tg.svg';
 import './Footer.scss';
 
 const Footer = (props) => {
+  let footerElement = useRef(null);
+
+  useScrollToRef(footerElement, props.hashUrl);
+
   return (
     !props.isPageNotFound &&
-      <footer className='footer'>
+      <footer className='footer' id='#contacts' ref={footerElement}>
         <Logo />
         <div className='footer__about-company'>
           <p className='footer__company-name'>АНО «АМПИР»</p>
