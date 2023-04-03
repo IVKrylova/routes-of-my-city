@@ -2,15 +2,13 @@
 @import '../../utils/styles/_mixins';
 
 .task-page {
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
   box-sizing: border-box;
   padding: 30px 20px 0;
 
   &__task {
     margin: 20px 0 45px;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 40px;
   }
 
@@ -34,27 +32,21 @@
   }
 
   &__description {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 15px;
   }
 
   &__title {
     @include reset-margins;
-    font-weight: 600;
+    @include font-w600-sz18;
     font-size: 24px;
-    line-height: 1.17;
-    font-feature-settings: 'pnum' on, 'lnum' on;
     color: #AC4C3E;
     margin-bottom: 5px;
   }
 
   &__text {
     @include reset-margins;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w400-sz18;
     color: $font-color-black-darck;
   }
 }

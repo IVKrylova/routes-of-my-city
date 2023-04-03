@@ -277,6 +277,26 @@
   font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
+@mixin number-card-task {
+  position: absolute;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.17;
+  text-align: center;
+  color: $font-color-blue;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+  }
+}
+
+@mixin img-card-task {
+  border-radius: 100px 10px 0px 0px;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
 // media queries
 @mixin media_530 {
   @media screen and (min-width: 530px) {
