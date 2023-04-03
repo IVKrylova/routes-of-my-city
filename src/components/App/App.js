@@ -18,6 +18,7 @@ import Rules from '../Rules/Rules';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
+  INITIAL_STATE_CURRENT_QUEST,
 } from '../../utils/constants';
 import './App.scss';
 // ToDo: delete after getting API data
@@ -47,6 +48,8 @@ function App() {
   const [taskList, setTaskList] = useState([]);
   const [isMobile, setIsMobile] = useState(true);
   const [pathList, setPathList] = useState(PATH_LIST);
+  const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
+  const [currentQuestId, setCurrentQuestId] = useState(null);
   const screenWidth = useWindowWidth();
   const location = useLocation();
 
@@ -199,6 +202,23 @@ function App() {
     // navigate(`/quest/:name/task/:${id}`);
   }
 
+  const getCurrentQuest = (questId) => {
+    setCurrentQuestId(questId);
+  }
+
+  useEffect(() => {
+    // ToDo: replace with API data
+    const quest = questsList.find(el => el.id.toString() === currentQuestId);
+    setCurrentQuest(quest);
+    // ToDo: replace with API data
+    //       get tasks by currentQuestId
+    setTaskList(tasks);
+    // ToDo: replace with API data
+    //       get date by currentQuestId
+    const date = new Date('Tue Apr 03 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
+    setDeadline(date);
+  }, [currentQuestId, questsList]);
+
   useEffect(() => {
     // ToDo: replace with API data
     const faqs = faq.map(el => {
@@ -206,20 +226,6 @@ function App() {
       return el;
     });
     setFaqList(faqs);
-  }, []);
-
-  useEffect(() => {
-    // ToDo: replace with API data
-    //       fix logic => if (isCurrentQuest === true) setTaskList(quest.taskList)
-    //       add isCurrentQuest to dependencies
-    setTaskList(tasks);
-  }, []);
-
-  useEffect(() => {
-    // ToDo: fix logic => if (isCurrentQuest === true) setDeadline(quest.deadline)
-    //       add isCurrentQuest to dependencies
-    const date = new Date('Tue Mar 28 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
-    setDeadline(date);
   }, []);
 
   useEffect(() => {
@@ -283,6 +289,8 @@ function App() {
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
+                sendQuestId={getCurrentQuest}
+                currentQuest={currentQuest}
               />
             }
           />

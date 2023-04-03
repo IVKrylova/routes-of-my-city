@@ -30,3 +30,15 @@ export const PATH_LIST = [
   '/profile',
   '/rules',
 ];
+
+export const INITIAL_STATE_CURRENT_QUEST = {
+  id: null,
+  name: '',
+  description: '',
+  date: '',
+  time: '',
+  place: '',
+  isActive: true,
+  isCompleted: false,
+  img: '',
+};

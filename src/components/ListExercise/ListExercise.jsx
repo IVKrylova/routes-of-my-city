@@ -1,18 +1,26 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
 const ListExercise = (props) => {
+  let { questId } = useParams();
+
+  useEffect(() => {
+    props.sendQuestId(questId);
+  }, [questId])
+
   return (
     <section className='list-exercise'>
       <ButtonGoBack
         goBack={props.goBack}
       />
-      {/* ToDo: quest name dynamic rendering */}
-      <h1 className='list-exercise__title'>Маршруты моего города</h1>
+      {props.currentQuest &&
+        <h1 className='list-exercise__title'>{props.currentQuest.name}</h1>
+      }
       <div className='list-exercise__info'>
-        {/* ToDo: category dynamic rendering */}
         <p className='list-exercise__category'>
           <span className='list-exercise__category-span'>категория</span>
           Велопрофи
