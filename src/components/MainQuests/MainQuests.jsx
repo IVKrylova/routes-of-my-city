@@ -10,7 +10,7 @@ const MainQuests = (props) => {
   const blendClass = `main-quests__blend-img ${props.isQuestCompleted ? 'main-quests__blend-img_result' : 'main-quests__blend-img_no-result'}`;
   let questsBlockElement = useRef(null);
 
-  useScrollToRef(questsBlockElement, props.hashUrl);
+  useScrollToRef(questsBlockElement);
 
   return (
     <section className={classSection} id='#main-quests' ref={questsBlockElement}>

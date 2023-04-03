@@ -50,7 +50,6 @@ function App() {
   const [pathList, setPathList] = useState(PATH_LIST);
   const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
-  const [hashUrl, setHashUrl] = useState('');
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -252,12 +251,6 @@ function App() {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
   }, [location, pathList]);
 
-  useEffect(() => {
-    const hash = location.hash;
-
-    hash ? setHashUrl(hash) : setHashUrl('');
-  }, [location]);
-
   return (
     <div className='app'>
       <Header
@@ -328,7 +321,6 @@ function App() {
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
-              hashUrl={hashUrl}
             />
           }
         />
@@ -367,7 +359,6 @@ function App() {
       </Routes>
       <Footer
         isPageNotFound={isPageNotFound}
-        hashUrl={hashUrl}
       />
       <PopupAccountData
         isHeaderAccountHovered={isHeaderAccountHovered}

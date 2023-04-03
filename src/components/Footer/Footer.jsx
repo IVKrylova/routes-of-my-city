@@ -8,7 +8,7 @@ import './Footer.scss';
 const Footer = (props) => {
   let footerElement = useRef(null);
 
-  useScrollToRef(footerElement, props.hashUrl);
+  useScrollToRef(footerElement);
 
   return (
     !props.isPageNotFound &&

@@ -30,7 +30,7 @@ const NavMenu = (props) => {
           </Link>
         </li>
         <li>
-          <Link className={classLink} to="/#contacts">
+          <Link className={classLink} to="#contacts">
             Контакты
           </Link>
         </li>

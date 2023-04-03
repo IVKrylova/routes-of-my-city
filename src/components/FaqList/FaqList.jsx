@@ -7,7 +7,7 @@ import './FaqList.scss';
 const FaqList = (props) => {
   let faqListElement = useRef(null);
 
-  useScrollToRef(faqListElement, props.hashUrl);
+  useScrollToRef(faqListElement);
 
   return (
     <section className='faq-list' id='#faq-list' ref={faqListElement}>

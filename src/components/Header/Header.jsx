@@ -23,7 +23,9 @@ const Header = (props) => {
         />
       </div>
       <Logo />
-      <NavMenu />
+      <NavMenu
+        scrollToBlock={props.scrollToBlock}
+      />
       {!props.isLogin &&
         <>
           <Link

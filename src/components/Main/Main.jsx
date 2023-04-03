@@ -10,7 +10,6 @@ const Main = (props) => {
     <main className='main-content'>
       <MainBanner />
       <AboutProject
-        hashUrl={props.hashUrl}
       />
       <Benefits />
       <MainQuests
@@ -18,12 +17,10 @@ const Main = (props) => {
         questsList={props.questsList}
         resultQuest={props.resultQuest}
         isQuestCompleted={props.isQuestCompleted}
-        hashUrl={props.hashUrl}
       />
       <FaqList
         faqList={props.faqList}
         handleOpenAnswer={props.handleOpenAnswer}
-        hashUrl={props.hashUrl}
       />
     </main>
   );

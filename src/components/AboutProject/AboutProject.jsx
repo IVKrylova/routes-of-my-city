@@ -4,10 +4,10 @@ import iconFree from '../../images/icon-free-part.svg';
 import photoParticipants from '../../images/happy-participant.png';
 import './AboutProject.scss';
 
-const AboutProject = (props) => {
+const AboutProject = () => {
   let aboutProjectElement = useRef(null);
 
-  useScrollToRef(aboutProjectElement, props.hashUrl);
+  useScrollToRef(aboutProjectElement);
 
   return (
     <section className='about-project' id='#about-project' ref={aboutProjectElement}>
