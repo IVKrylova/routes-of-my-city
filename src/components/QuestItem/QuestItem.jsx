@@ -16,6 +16,10 @@ const QuestItem = (props) => {
     };
   const buttonClass = `quest-item__button-cta ${props.quest.isActive ? '' : 'quest-item__button-cta_disabled'}`;
 
+  const hendleButtonTakePart = () => {
+    if (props.quest.isActive) props.sendQuestId(props.quest.id);
+  }
+
   // ToDo: check logic after connection with API
   useEffect(() => {
     if (props.resultQuest) {
@@ -41,7 +45,7 @@ const QuestItem = (props) => {
             <p className='quest-item__address'>{props.quest.place}</p>
           </div>
         }
-        <button className={buttonClass} type='button'>
+        <button className={buttonClass} type='button' onClick={hendleButtonTakePart}>
           {props.quest.isActive ? 'Участвовать' : 'Регистрация завершена'}
         </button>
       </div>

@@ -29,6 +29,7 @@ const MainQuests = (props) => {
                 quest={el}
                 key={el.id}
                 resultQuest={props.resultQuest}
+                sendQuestId={props.sendQuestId}
               />
             );
           })}

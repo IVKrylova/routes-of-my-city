@@ -50,6 +50,7 @@ function App() {
   const [pathList, setPathList] = useState(PATH_LIST);
   const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
+  const [idQuestPage, setIdQuestPage] = useState('');
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -206,6 +207,11 @@ function App() {
     setCurrentQuestId(questId);
   }
 
+  const handleClickTakePart = (questId) => {
+    setIdQuestPage(questId);
+    navigate(`/quest/${questId}`);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const quest = questsList.find(el => el.id.toString() === currentQuestId);
@@ -321,6 +327,7 @@ function App() {
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
+              sendQuestId={handleClickTakePart}
             />
           }
         />
