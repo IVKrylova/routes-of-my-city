@@ -25,10 +25,9 @@ const MainQuests = (props) => {
         <ul className='main-quests__quests-list'>
           {props.questsList.map(el => {
             return (
-              <li>
+              <li key={el.id}>
                 <QuestItem
                   quest={el}
-                  key={el.id}
                   resultQuest={props.resultQuest}
                   sendQuestId={props.sendQuestId}
                   location={props.location}
