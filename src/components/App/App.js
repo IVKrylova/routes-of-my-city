@@ -203,8 +203,7 @@ function App() {
   }
 
   const handleCardClick = (id) => {
-    // ToDo: fix link to page task
-    // navigate(`/quest/:name/task/:${id}`);
+    navigate(`/quest/${currentQuestId}/task/${id}`);
   }
 
   const handleClickTakePart = (questId) => {

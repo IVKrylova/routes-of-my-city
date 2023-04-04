@@ -3,7 +3,7 @@ import './CardTask.scss';
 
 const CardTask = (props) => {
   const handleImgClick = () => {
-    props.sentCardTaskId(props.id);
+    props.sendCardTaskId(props.id);
   }
 
   return (
@@ -21,8 +21,7 @@ const CardTask = (props) => {
         <p className='card-task__name'>
           {props.name}
         </p>
-        {/* ToDo: fix link to page answer*/}
-        <Link to='/quest/:name/answer/:id' className='card-task__link-to-answer'>
+        <Link to={`/quest/${props.currentQuest}/answer/${props.id}`} className='card-task__link-to-answer'>
           Ответить
         </Link>
       </div>
