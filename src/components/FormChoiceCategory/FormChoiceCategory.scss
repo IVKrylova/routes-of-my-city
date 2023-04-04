@@ -4,16 +4,26 @@
 .form-choice-category {
   margin-top: 50px;
 
+  @include media_768 {
+    margin-top: 65px;
+  }
+
   &__category-list {
     @include reset-margins;
     list-style-type: none;
     row-gap: 35px;
     @include grid-column-1fr;
+
+    @include media_1024 {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 93px;
+    }
   }
 
   &__category {
     @include flex-column;
     row-gap: 10px;
+    @include max-width-mixin(400px);
   }
 
   &__label {
@@ -70,12 +80,21 @@
       content: url(../../images/icon-radio-normal.svg);
       vertical-align: top;
     }
+
+    @include media_768 {
+      font-size: 24px;
+    }
   }
 
   &__short-descriplion {
     @include reset-margins;
     @include font-w600-sz16;
     color: $font-color-black-darck;
+
+    @include media_768 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
   }
 
   &__long-description {
@@ -83,6 +102,10 @@
     @include font-w400-sz16;
     color: $font-color-black-darck;
     opacity: .5;
+
+    @include media_768 {
+      font-size: 20px;
+    }
   }
 
   &__long-description-list {
@@ -93,6 +116,11 @@
     list-style-type: none;
     @include flex-column;
     row-gap: 5px;
+
+    @include media_768 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
   }
 
   &__long-description-item {
@@ -114,6 +142,13 @@
     row-gap: 20px;
     margin-top: 75px;
     align-items: center;
+
+    @include media_768 {
+      flex-direction: row-reverse;
+      column-gap: 20px;
+      margin-top: 65px;
+      justify-content: start;
+    }
   }
 
   &__button-submit {
@@ -121,10 +156,19 @@
     padding: 15px 0;
     width: 302px;
     font-size: 16px;
+
+    @include media_768 {
+      font-size: 20px;
+      width: 193px;
+    }
   }
 
   &__button-cancel {
     @include reset-button;
     @include link-button-orange;
+
+    @include media_768 {
+      font-size: 20px;
+    }
   }
 }

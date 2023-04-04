@@ -70,7 +70,7 @@ const FormChoiceCategory = (props) => {
             type='submit'
             className='form-choice-category__button-submit'
           >
-            Учавствовать
+            Участвовать
           </button>
         </li>
         <li>
