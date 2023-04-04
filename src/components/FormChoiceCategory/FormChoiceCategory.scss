@@ -30,28 +30,32 @@
         content: url(../../images/icon-radio-hover.svg);
       }
     }
-
-    &_active {
-      color: $font-color-red;
-    }
-
-    &_disabled {
-      color: $font-color-gray;
-
-      &_disabled:hover {
-        cursor: default;
-
-        .form-choice-category__name {
-          color: $font-color-gray;
-        }
-      }
-    }
   }
 
   &__input {
     position: absolute;
     opacity: 0;
     z-index: -1;
+
+    &:checked+.form-choice-category__name {
+      color: $font-color-red;
+
+      &::before {
+        content: url(../../images/icon-radio-active.svg)
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+
+      &+.form-choice-category__name {
+        color: $font-color-gray;
+
+        &::before {
+          content: url(../../images/icon-radio-disabled.svg)
+        }
+      }
+    }
   }
 
   &__name {
