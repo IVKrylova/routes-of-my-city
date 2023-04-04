@@ -1,8 +1,20 @@
+import { useState } from 'react';
 import './FormChoiceCategory.scss';
 
 const FormChoiceCategory = (props) => {
+  const [category, setCategory] = useState('Генералы');
+
+  const chengeCategory = (evt) => {
+    setCategory(evt.target.value);
+ }
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    props.sendCategory(category);
+  }
+
   return (
-    <form className='form-choice-category'>
+    <form className='form-choice-category' onSubmit={handleFormSubmit}>
       <ul className='form-choice-category__category-list'>
         {props.questCategories && props.questCategories.map(el => {
         return (
@@ -14,6 +26,8 @@ const FormChoiceCategory = (props) => {
                 name='category'
                 id={el.id}
                 value={el.name}
+                onChange={chengeCategory}
+                checked={category === el.name}
               />
               <span className='form-choice-category__name'>
                 {el.name}
@@ -52,12 +66,19 @@ const FormChoiceCategory = (props) => {
       </ul>
       <ul className='form-choice-category__button-list'>
         <li>
-          <button type='submit' className='form-choice-category__button-submit'>
+          <button
+            type='submit'
+            className='form-choice-category__button-submit'
+          >
             Учавствовать
           </button>
         </li>
         <li>
-          <button type='button' className='form-choice-category__button-cancel'>
+          <button
+            type='button'
+            className='form-choice-category__button-cancel'
+            onClick={props.handleCancelClick}
+          >
             Отмена
           </button>
         </li>

@@ -17,6 +17,8 @@ const QuestPage = (props) => {
         </h1>
         <FormChoiceCategory
           questCategories={props.questCategories}
+          handleCancelClick={props.handleCancelAndGoBack}
+          sendCategory={props.sendCategory}
         />
       </div>
     </main>

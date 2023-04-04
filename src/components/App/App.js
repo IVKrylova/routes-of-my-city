@@ -212,6 +212,15 @@ function App() {
     setCurrentQuestId(questId);
   }
 
+  const handleCancelAndGoBack = () => {
+    navigate(-1);
+  }
+
+  const handleFormChoiceCategory = (category) => {
+    // ToDo: send data with API
+    console.log(category);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const quest = questsList.find(el => el.id === currentQuestId);
@@ -359,6 +368,8 @@ function App() {
               currentQuest={currentQuest}
               location={location}
               questCategories={questCategories}
+              handleCancelAndGoBack={handleCancelAndGoBack}
+              sendCategory={handleFormChoiceCategory}
             />
           }
         />
