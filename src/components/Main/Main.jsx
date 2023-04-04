@@ -19,6 +19,7 @@ const Main = (props) => {
         isQuestCompleted={props.isQuestCompleted}
         sendQuestId={props.sendQuestId}
         location={props.location}
+        isLogin={props.isLogin}
       />
       <FaqList
         faqList={props.faqList}

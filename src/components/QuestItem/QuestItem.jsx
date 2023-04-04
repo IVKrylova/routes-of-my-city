@@ -47,7 +47,8 @@ const QuestItem = (props) => {
           </div>
         }
         <button className={buttonClass} type='button' onClick={hendleButtonTakePart}>
-          {props.quest.isActive ? 'Участвовать' : 'Регистрация завершена'}
+          {/* ToDo: add checking quests list of the team */}
+          {props.quest.isActive ? (props.isLogin ? 'Играть' : 'Участвовать') : 'Регистрация завершена'}
         </button>
       </div>
       {props.quest.isCompleted &&

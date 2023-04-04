@@ -208,7 +208,8 @@ function App() {
   }
 
   const handleClickTakePart = (questId) => {
-    navigate(`/quest/${questId}`);
+    {/* ToDo: add checking quests list of the team */}
+    !isLogin ? navigate(`/quest/${questId}`) : navigate(`/quest/${questId}/list-exercise`)
     setCurrentQuestId(questId);
   }
 
@@ -358,6 +359,7 @@ function App() {
               handleOpenAnswer={handleOpenAnswer}
               sendQuestId={handleClickTakePart}
               location={location}
+              isLogin={isLogin}
             />
           }
         />
