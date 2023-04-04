@@ -29,6 +29,7 @@ import { faq } from '../../utils/data/faq';
 import { teams } from '../../utils/data/teams';
 import { tasks } from '../../utils/data/listTask';
 import { taskItem } from '../../utils/data/task';
+import { categories } from '../../utils/data/category';
 
 function App() {
   let navigate = useNavigate();
@@ -53,6 +54,7 @@ function App() {
   const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
+  const [questCategories, setQuestCategories] = useState([]);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -267,6 +269,13 @@ function App() {
     setTask(taskItem);
   }, []);
 
+  useEffect(() => {
+    // ToDo: replace with API data
+    //       fix logic => find categories in quest by name
+    //       add idQuest to dependencies
+    setQuestCategories(categories);
+  }, []);
+
   return (
     <div className='app'>
       <Header
@@ -349,6 +358,7 @@ function App() {
             <QuestPage
               currentQuest={currentQuest}
               location={location}
+              questCategories={questCategories}
             />
           }
         />
