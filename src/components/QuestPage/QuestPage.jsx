@@ -1,13 +1,16 @@
 import './QuestPage.scss';
 import QuestItem from '../QuestItem/QuestItem';
 import FormChoiceCategory from '../FormChoiceCategory/FormChoiceCategory';
+// ToDo: delete after adding storage
+import { quests } from '../../utils/data/quests';
 
 const QuestPage = (props) => {
   return (
     <main className='quest-page'>
-      {props.currentQuest &&
+      {/* props.currentQuest && */
         <QuestItem
-          quest={props.currentQuest}
+          /* ToDo: fix after adding storage */
+          quest={props.currentQuest || quests[0]}
           location={props.location}
         />
       }
