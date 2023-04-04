@@ -163,6 +163,14 @@
   font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
+@mixin font-w600-sz20 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.15;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: $font-color-blue;
+}
+
 @mixin image-background($url, $urlHover, $urlActive) {
   background-image: url($url);
   background-repeat: no-repeat;

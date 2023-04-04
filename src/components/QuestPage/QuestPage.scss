@@ -2,5 +2,14 @@
 @import '../../utils/styles/_mixins';
 
 .quest-page {
+  &__choice {
+    @include grid-column-1fr;
+    box-sizing: border-box;
+    padding: 80px 20px 50px;
+  }
 
+  &__title {
+    @include reset-margins;
+    @include h2;
+  }
 }

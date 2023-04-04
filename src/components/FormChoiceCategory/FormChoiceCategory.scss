@@ -1,0 +1,105 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.form-choice-category {
+  margin-top: 50px;
+
+  &__category-list {
+    @include reset-margins;
+    list-style-type: none;
+    row-gap: 35px;
+    @include grid-column-1fr;
+  }
+
+  &__category {
+    @include flex-column;
+    row-gap: 10px;
+  }
+
+  &__label {
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover .form-choice-category__name {
+      color: $font-color-red;
+
+      &::before {
+        content: url(../../images/icon-radio-hover.svg);
+      }
+    }
+
+    &_active {
+      color: $font-color-red;
+    }
+
+    &_disabled {
+      color: $font-color-gray;
+
+      &_disabled:hover {
+        cursor: default;
+
+        .form-choice-category__name {
+          color: $font-color-gray;
+        }
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__name {
+    @include font-w600-sz20;
+
+    &::before {
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 15px;
+      height: 20px;
+      width: 20px;
+      content: url(../../images/icon-radio-normal.svg);
+      vertical-align: top;
+    }
+  }
+
+  &__short-descriplion {
+    @include reset-margins;
+    @include font-w600-sz16;
+    color: $font-color-black-darck;
+  }
+
+  &__long-description {
+    @include reset-margins;
+    @include font-w400-sz16;
+    color: $font-color-black-darck;
+    opacity: .5;
+  }
+
+  &__long-description-list {
+    @include reset-margins;
+    @include font-w400-sz16;
+    color: $font-color-black-darck;
+    opacity: .5;
+    list-style-type: none;
+    @include flex-column;
+    row-gap: 5px;
+  }
+
+  &__long-description-item {
+    position: relative;
+    padding-left: 18px;
+
+    &::before {
+      content: url(../../images/icon-list-style-dist.svg);
+      position: absolute;
+      top: calc(50% - 10px);
+      left: 0;
+    }
+  }
+}

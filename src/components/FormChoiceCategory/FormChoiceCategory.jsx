@@ -3,35 +3,42 @@ import './FormChoiceCategory.scss';
 const FormChoiceCategory = (props) => {
   return (
     <form className='form-choice-category'>
-      {props.questCategories && props.questCategories.map(el => {
+      <ul className='form-choice-category__category-list'>
+        {props.questCategories && props.questCategories.map(el => {
         return (
-          <label key={el.id} className='form-choice-category__category'>
-            <input
-              type='radio'
-              className='form-choice-category__input'
-              name='category'
-              value={el.name}
-            />
-            <span className='form-choice-category__name'>
-              {el.name}
-            </span>
-            <span className='form-choice-category__short-descriplion'>
-                {el.shortDescriplion}
+          <li className='form-choice-category__category' key={el.id}>
+            <label className='form-choice-category__label' htmlFor={el.id}>
+              <input
+                type='radio'
+                className='form-choice-category__input'
+                name='category'
+                id={el.id}
+                value={el.name}
+              />
+              <span className='form-choice-category__name'>
+                {el.name}
               </span>
+            </label>
+            <p className='form-choice-category__short-descriplion'>
+              {el.shortDescriplion}
+            </p>
             {el.name !== 'Кадеты' &&
-              <span className='form-choice-category__long-description'>
+              <p className='form-choice-category__long-description'>
                 {el.longDescription}
-              </span>
+              </p>
             }
             {el.name === 'Кадеты' &&
               <>
-                <span className='form-choice-category__long-descriplion'>
+                <p className='form-choice-category__long-description'>
                   {el.longDescription.split('\n')[0]}
-                </span>
-                <ul className='form-choice-category__long-descriplion-list'>
+                </p>
+                <ul className='form-choice-category__long-description-list'>
                   {el.longDescription.split('\n').slice(1).map(item => {
                     return (
-                      <li key={el.longDescription.split('\n').slice(1).indexOf(item)}>
+                      <li
+                        key={el.longDescription.split('\n').slice(1).indexOf(item)}
+                        className='form-choice-category__long-description-item'
+                      >
                         {item}
                       </li>
                     );
@@ -39,9 +46,10 @@ const FormChoiceCategory = (props) => {
                 </ul>
               </>
             }
-          </label>
+          </li>
         );
       })}
+      </ul>
       <ul className='form-choice-category__button-list'>
         <li>
           <button type='submit' className='form-choice-category__button-submit'>
