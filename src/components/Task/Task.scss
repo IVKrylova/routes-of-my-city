@@ -4,18 +4,20 @@
 .task-page {
   @include grid-column-1fr;
   box-sizing: border-box;
-  padding: 30px 20px 0;
-
-  @include media_530 {
-    padding-left: 7%;
-    padding-right: 7%;
-  }
+  padding: 30px 0 0;
 
   &__task {
     margin: 20px auto 45px;
     @include flex-column;
     row-gap: 40px;
     align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    @include media_530 {
+      padding-left: 7%;
+      padding-right: 7%;
+    }
 
     @include media_768 {
       flex-direction: row;

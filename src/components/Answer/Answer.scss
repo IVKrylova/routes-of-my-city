@@ -1,3 +1,57 @@
 @import '../../utils/styles/_constants';
 @import '../../utils/styles/_mixins';
 
+.answer-form {
+  background-color: $background-blue-light;
+  padding: 40px 20px 50px;
+  box-sizing: border-box;
+  @include flex-column;
+  row-gap: 45px;
+
+  &__answer {
+    @include flex-column;
+    row-gap: 25px;
+  }
+
+  &__first-input {
+    @include font-w600-sz18;
+    color: $font-color-black;
+
+    &::before {
+      content: url(../../images/icon-one.svg);
+      margin-right: 15px;
+      width: 30px;
+    }
+  }
+
+  &__input-text {
+    @include input;
+    width: 100%;
+    @include font-w400-sz20;
+    color: $font-color-blue;
+    box-sizing: border-box;
+    padding: 16px;
+  }
+
+  &__input-type {
+    @include font-w400-sz14;
+    color: $font-color-blue;
+    position: relative;
+    margin-left: 40px;
+    margin-top: 10px;
+    display: inline-block;
+
+    &::before {
+      content: url(../../images/icon-attention.svg);
+      position: absolute;
+      bottom: -3px;
+      left: -25px;
+    }
+  }
+
+  &__input-validation {
+    @include font-w400-sz14;
+    color: $font-color-gray;
+    margin-left: 10px;
+  }
+}
