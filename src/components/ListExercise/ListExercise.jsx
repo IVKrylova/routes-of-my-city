@@ -32,7 +32,7 @@ const ListExercise = (props) => {
               img={el.img}
               id={el.id}
               sendCardTaskId={props.handleCardClick}
-              currentQuest={props.currentQuest.id}
+              currentQuestId={props.currentQuestId}
             />
           );
         })}

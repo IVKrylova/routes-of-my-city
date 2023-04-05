@@ -208,8 +208,8 @@ function App() {
 
   const handleClickTakePart = (questId) => {
     {/* ToDo: add checking quests list of the team */}
-    !isLogin ? navigate(`/quest/${questId}`) : navigate(`/quest/${questId}/list-exercise`)
     setCurrentQuestId(questId);
+    !isLogin ? navigate(`/quest/${questId}`) : navigate(`/quest/${questId}/list-exercise`);
   }
 
   const handleCancelAndGoBack = () => {
@@ -323,7 +323,7 @@ function App() {
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
-                currentQuest={currentQuest}
+                currentQuestId={currentQuestId}
               />
             }
           />

@@ -21,7 +21,7 @@ const CardTask = (props) => {
         <p className='card-task__name'>
           {props.name}
         </p>
-        <Link to={`/quest/${props.currentQuest}/answer/${props.id}`} className='card-task__link-to-answer'>
+        <Link to={`/quest/${props.currentQuestId}/answer/${props.id}`} className='card-task__link-to-answer'>
           Ответить
         </Link>
       </div>
