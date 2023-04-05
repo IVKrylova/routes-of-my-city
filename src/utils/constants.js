@@ -49,4 +49,8 @@ export const INITIAL_STATE_TASK = {
   name: '',
   img: '',
   problem: '',
+  response: {
+    type: '',
+    lengthStr: null,
+  }
 };

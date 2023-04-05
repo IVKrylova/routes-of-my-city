@@ -1,3 +1,4 @@
+import Answer from '../Answer/Answer';
 import './Task.scss';
 
 const Task = (props) => {
@@ -25,6 +26,9 @@ const Task = (props) => {
           })}
         </div>
       </div>
+      <Answer
+        task={props.task}
+      />
     </main>
   );
 }
