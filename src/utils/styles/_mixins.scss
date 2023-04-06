@@ -304,6 +304,8 @@
   background-color: $background-white;
   border: 1px solid $input-border-grey;
   border-radius: $border-radius-block;
+  color: $font-color-blue;
+  box-sizing: border-box;
 
   &:focus {
     outline: none;

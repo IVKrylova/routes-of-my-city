@@ -28,24 +28,28 @@
     @include input;
     width: 100%;
     @include font-w400-sz20;
-    color: $font-color-blue;
-    box-sizing: border-box;
     padding: 16px;
+  }
+
+  &__input-number {
+    @include input;
+    width: 40px;
+    @include font-w400-sz20;
+    padding: 9px 0;
+    text-align: center;
   }
 
   &__input-type {
     @include font-w400-sz14;
     color: $font-color-blue;
-    position: relative;
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top: 10px;
     display: inline-block;
 
     &::before {
       content: url(../../images/icon-attention.svg);
-      position: absolute;
-      bottom: -3px;
-      left: -25px;
+      margin-right: 8px;
+      vertical-align: middle;
     }
   }
 
@@ -53,5 +57,12 @@
     @include font-w400-sz14;
     color: $font-color-gray;
     margin-left: 10px;
+  }
+
+  &__field-answer {
+    &_type_number {
+      display: flex;
+      column-gap: 5px;
+    }
   }
 }
