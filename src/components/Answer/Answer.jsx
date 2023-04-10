@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { DATA_DIGITS } from '../../utils/constants';
+import { useEffect, useRef, useState } from 'react';
+import { DATE_DIGITS } from '../../utils/constants';
 import './Answer.scss';
 
 const Answer = (props) => {
   const [digits, setDigits] = useState([]);
-  const [currentInput, setCurrentInput] = useState(null);
 
   // ToDo: fix with hook useFormAndValidation
+  // ToDo: move focus
   const handleInputNumber = (evt) => {
     const value = evt.target.value;
     evt.target.value = value.replace(/\D/g, '');
@@ -23,7 +23,7 @@ const Answer = (props) => {
 
     if (props.task.response.type === 'date') {
       const arrDigits = [];
-      for (let i = 0; i < DATA_DIGITS; i++) {
+      for (let i = 0; i < DATE_DIGITS; i++) {
         arrDigits[i] = i;
       }
       setDigits(arrDigits);
@@ -96,7 +96,9 @@ const Answer = (props) => {
                 </div>
               );
             })}
-            <span className='answer-form__input-type answer-form__input-type_date'>Дата</span>
+            <span className='answer-form__input-type answer-form__input-type_date'>
+              Дата
+            </span>
           </div>
         }
       </label>

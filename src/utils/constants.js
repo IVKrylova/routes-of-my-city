@@ -55,4 +55,4 @@ export const INITIAL_STATE_TASK = {
   }
 };
 
-export const DATA_DIGITS = 6;
+export const DATE_DIGITS = 6;
