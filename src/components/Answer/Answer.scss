@@ -105,9 +105,9 @@
   }
 
   &__input-file {
-    opacity: 0;
     visibility: hidden;
     position: absolute;
+    width: 200px;
   }
 
   &__photo-label {

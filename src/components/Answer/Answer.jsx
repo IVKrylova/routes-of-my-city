@@ -102,7 +102,7 @@ const Answer = (props) => {
           </div>
         }
       </div>
-      {/* <div className='answer-form__photo'>
+      <div className='answer-form__photo'>
         <p className='answer-form__second-input'>
           Загрузите фото
         </p>
@@ -116,7 +116,7 @@ const Answer = (props) => {
         <label className='answer-form__photo-label' htmlFor={`${props.task.name}-photo`}>
           Выбрать фото
         </label>
-      </div> */}
+      </div>
       <ul className='answer-form__button-list'>
         <li>
           <button type='submit' className='answer-form__button-submit'>
