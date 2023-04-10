@@ -313,6 +313,12 @@
   }
 }
 
+@mixin input-number($url) {
+  content: url($url);
+  margin-right: 15px;
+  width: 30px;
+}
+
 // media queries
 @mixin media_530 {
   @media screen and (min-width: 530px) {

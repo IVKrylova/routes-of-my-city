@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DATE_DIGITS } from '../../utils/constants';
 import './Answer.scss';
 
@@ -32,10 +32,10 @@ const Answer = (props) => {
 
   return (
     <form className='answer-form'>
-      <label className='answer-form__answer' htmlFor={props.task.name}>
-        <span className='answer-form__first-input'>
+      <div className='answer-form__answer'>
+        <p className='answer-form__first-input'>
           Введите ответ
-        </span>
+        </p>
         {props.task.response.type === 'text' &&
           <div className='answer-form__field-answer'>
             <input
@@ -101,7 +101,22 @@ const Answer = (props) => {
             </span>
           </div>
         }
-      </label>
+      </div>
+      <div className='answer-form__photo'>
+        <p className='answer-form__second-input'>
+          Загрузите фото
+        </p>
+        <input
+          type='file'
+          className='answer-form__input-file'
+          required
+          id={`${props.task.name}-photo`}
+          name={`${props.task.name}-photo`}
+        />
+        <label className='answer-form__photo-label' htmlFor={`${props.task.name}-photo`}>
+          Выбрать фото
+        </label>
+      </div>
     </form>
   );
 }
