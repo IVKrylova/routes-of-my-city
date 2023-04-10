@@ -54,3 +54,5 @@ export const INITIAL_STATE_TASK = {
     lengthStr: null,
   }
 };
+
+export const DATA_DIGITS = 6;

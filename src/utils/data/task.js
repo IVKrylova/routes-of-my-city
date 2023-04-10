@@ -11,11 +11,11 @@ export const taskItem = {
     type: 'text',
     lengthStr: 13,
   }, */
-  response: {
+  /* response: {
     type: 'number',
     digits: 3,
-  }
-  /* response: {
-    type: 'date',
   } */
+  response: {
+    type: 'date',
+  }
 };

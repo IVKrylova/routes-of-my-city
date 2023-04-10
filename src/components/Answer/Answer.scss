@@ -51,6 +51,10 @@
       margin-right: 8px;
       vertical-align: middle;
     }
+
+    &_date {
+      break-after: always;
+    }
   }
 
   &__input-validation {
@@ -64,5 +68,20 @@
       display: flex;
       column-gap: 5px;
     }
+
+    &_type_date {
+      display: flex;
+      @include max-width-mixin(300px);
+      flex-wrap: wrap;
+      row-gap: 10px;
+      column-gap: 5px;
+      align-items: end;
+    }
+  }
+
+  &__input-dot {
+    background-image: url(../../images/icon-dot.svg);
+    width: 6px;
+    height: 6px;
   }
 }
