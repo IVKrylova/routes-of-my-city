@@ -313,10 +313,15 @@
   }
 }
 
-@mixin input-number($url) {
+@mixin input-number($url, $url1024) {
   content: url($url);
   margin-right: 15px;
-  width: 30px;
+
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    content: url($url1024);
+    left: -80px;
+  }
 }
 
 // media queries

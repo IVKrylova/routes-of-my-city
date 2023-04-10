@@ -37,7 +37,7 @@ const Answer = (props) => {
           Введите ответ
         </p>
         {props.task.response.type === 'text' &&
-          <div className='answer-form__field-answer'>
+          <div className='answer-form__field-answer answer-form__field-answer_type_text'>
             <input
               type='text'
               maxLength={props.task.response.lengthStr}
@@ -47,10 +47,12 @@ const Answer = (props) => {
               id={props.task.name}
               name={props.task.name}
             />
-            <span className='answer-form__input-type'>Текст</span>
-            <span className='answer-form__input-validation'>
-              {`${props.task.response.lengthStr} ${props.task.response.lengthStr === 1 ? 'символ' : (props.task.response.lengthStr > 4) ? 'символов' : 'символа'}`}
-            </span>
+            <p className='answer-form__input-type'>
+              Текст
+              <span className='answer-form__input-validation'>
+                {`${props.task.response.lengthStr} ${props.task.response.lengthStr === 1 ? 'символ' : (props.task.response.lengthStr > 4) ? 'символов' : 'символа'}`}
+              </span>
+            </p>
           </div>
         }
         {props.task.response.type === 'number' &&
@@ -71,7 +73,9 @@ const Answer = (props) => {
                 />
               );
             })}
-            <span className='answer-form__input-type'>Число</span>
+            <p className='answer-form__input-type answer-form__input-type_number'>
+              Число
+            </p>
           </div>
         }
         {props.task.response.type === 'date' &&
@@ -96,9 +100,9 @@ const Answer = (props) => {
                 </div>
               );
             })}
-            <span className='answer-form__input-type answer-form__input-type_date'>
+            <p className='answer-form__input-type answer-form__input-type_date'>
               Дата
-            </span>
+            </p>
           </div>
         }
       </div>
@@ -123,7 +127,7 @@ const Answer = (props) => {
             Ответить
           </button>
         </li>
-        <li className='answer-form__button-item'>
+        <li>
           <button
             type='button'
             className='answer-form__button-go-back'

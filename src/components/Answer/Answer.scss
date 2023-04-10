@@ -7,26 +7,54 @@
   box-sizing: border-box;
   @include flex-column;
 
+  @include media_530 {
+    padding-left: 40px;
+  }
+
+  @include media_1024 {
+    margin: 0 7% 143px;
+    border-radius: $border-radius-block;
+    padding: 44px 0 55px 105px;
+    background-image: url(../../images/background-answer.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   &__answer {
     @include flex-column;
     row-gap: 25px;
+
+    @include media_1024 {
+      row-gap: 20px;
+    }
   }
 
   &__first-input {
     @include font-w600-sz18;
     color: $font-color-black;
     @include reset-margins;
+    position: relative;
 
     &::before {
-      @include input-number('../../images/icon-one.svg');
+      @include input-number(
+        '../../images/icon-one.svg',
+        '../../images/icon-one-1024.svg');
+    }
+
+    @include media_1024 {
+      font-size: 20px;
     }
   }
 
   &__input-text {
     @include input;
-    width: 100%;
+    @include max-width-mixin(500px);
     @include font-w400-sz20;
     padding: 16px;
+
+    @include media_768 {
+      font-size: 24px;
+    }
   }
 
   &__input-number {
@@ -35,14 +63,26 @@
     @include font-w400-sz20;
     padding: 9px 0;
     text-align: center;
+
+    @include media_768 {
+      width: 55px;
+      font-size: 24px;
+    }
   }
 
   &__input-type {
+    @include reset-margins;
     @include font-w400-sz14;
     color: $font-color-blue;
     margin-left: 20px;
-    margin-top: 10px;
-    display: inline-block;
+
+    @include media_768 {
+      align-self: center;
+    }
+
+    @include media_1024 {
+      font-size: 16px;
+    }
 
     &::before {
       content: url(../../images/icon-attention.svg);
@@ -50,8 +90,13 @@
       vertical-align: middle;
     }
 
+    &_number {
+      align-self: center;
+    }
+
     &_date {
       break-after: always;
+      align-self: center;
     }
   }
 
@@ -62,18 +107,26 @@
   }
 
   &__field-answer {
-    &_type_number {
-      display: flex;
-      column-gap: 5px;
+    display: flex;
+    row-gap: 10px;
+    column-gap: 5px;
+
+    &_type_text {
+      flex-direction: column;
+
+      @include media_768 {
+        flex-direction: row;
+      }
     }
 
     &_type_date {
-      display: flex;
       @include max-width-mixin(300px);
       flex-wrap: wrap;
-      row-gap: 10px;
-      column-gap: 5px;
       align-items: end;
+
+      @include media_768 {
+        max-width: 510px;
+      }
     }
   }
 
@@ -99,8 +152,16 @@
     @include reset-margins;
     margin-top: 30px;
 
+    @include media_1024 {
+      font-size: 20px;
+      position: relative;
+      margin-top: 60px;
+    }
+
     &::before {
-      @include input-number('../../images/icon-two.svg');
+      @include input-number(
+        '../../images/icon-two.svg',
+        '../../images/icon-two-1024.svg');
     }
   }
 
@@ -118,6 +179,15 @@
     @include link-button-orange;
     cursor: pointer;
     position: relative;
+    @include max-width-mixin(500px);
+
+    @include media_530 {
+      max-width: 320px;
+    }
+
+    @include media_1024 {
+      max-width: 295px;
+    }
 
     &::before {
       position: absolute;
@@ -135,19 +205,34 @@
     margin-top: 40px;
     @include flex-column;
     row-gap: 20px;
+    align-items: center;
+
+    @include media_530 {
+      flex-direction: row-reverse;
+      column-gap: 40px;
+      justify-content: start;
+    }
+
+    @include media_1024 {
+      margin-top: 60px;
+    }
   }
 
   &__button-submit {
     @include button-cta;
     font-size: 16px;
-    @include max-width-mixin(302px);
+    width: 302px;;
     box-sizing: border-box;
     padding: 15px 0;
     text-align: center;
-  }
 
-  &__button-item {
-    align-self: center;
+    @include media_530 {
+      width: 150px;
+    }
+
+    @include media_1024 {
+      font-size: 20px;
+    }
   }
 
   &__button-go-back {
