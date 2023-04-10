@@ -124,7 +124,11 @@ const Answer = (props) => {
           </button>
         </li>
         <li className='answer-form__button-item'>
-          <button type='button' className='answer-form__button-go-back'>
+          <button
+            type='button'
+            className='answer-form__button-go-back'
+            onClick={props.handleGoBack}
+          >
             Назад
           </button>
         </li>

@@ -334,6 +334,7 @@ function App() {
             element={
               <Task
                 task={task}
+                handleGoBack={handleGoBack}
               />
             }
           />
@@ -342,7 +343,9 @@ function App() {
           <Route
             path='/quest/:questId/answer/:id'
             element={
-              <Answer />
+              <Answer
+                handleGoBack={handleGoBack}
+              />
             }
           />
         </Route>

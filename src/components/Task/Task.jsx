@@ -28,6 +28,7 @@ const Task = (props) => {
       </div>
       <Answer
         task={props.task}
+        handleGoBack={props.handleGoBack}
       />
     </main>
   );
