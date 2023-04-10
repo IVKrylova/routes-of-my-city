@@ -78,7 +78,10 @@ const Answer = (props) => {
           <div className='answer-form__field-answer answer-form__field-answer_type_date'>
             {digits && digits.map(el => {
               return (
-                <>
+                <div
+                  key={el}
+                  className={`answer-form__input-block ${(el === 1 || el === 3) ? 'answer-form__input-block_dot' : ''}`}
+                >
                   <input
                     type='text'
                     maxLength={1}
@@ -89,12 +92,8 @@ const Answer = (props) => {
                     id={`${props.task.name}${el}`}
                     name={`${props.task.name}${el}`}
                     onInput={handleInputNumber}
-                    key={el}
                   />
-                  {(el === 1 || el === 3) &&
-                    <div className='answer-form__input-dot'></div>
-                  }
-                </>
+                </div>
               );
             })}
             <span className='answer-form__input-type answer-form__input-type_date'>Дата</span>

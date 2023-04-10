@@ -79,9 +79,14 @@
     }
   }
 
-  &__input-dot {
-    background-image: url(../../images/icon-dot.svg);
-    width: 6px;
-    height: 6px;
+  &__input-block_dot {
+    display: flex;
+    align-items: end;
+
+    &::after {
+      content: url(../../images/icon-dot.svg);
+      margin-bottom: 0;
+      margin-left: 5px;
+    }
   }
 }
