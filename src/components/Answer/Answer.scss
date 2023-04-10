@@ -6,7 +6,6 @@
   padding: 40px 20px 50px;
   box-sizing: border-box;
   @include flex-column;
-  row-gap: 45px;
 
   &__answer {
     @include flex-column;
@@ -98,6 +97,7 @@
     @include font-w600-sz18;
     color: $font-color-black;
     @include reset-margins;
+    margin-top: 30px;
 
     &::before {
       @include input-number('../../images/icon-two.svg');
@@ -127,5 +127,31 @@
       top: 30px;
       left: calc((100% - 40px) / 2);
     }
+  }
+
+  &__button-list {
+    @include reset-margins;
+    list-style-type: none;
+    margin-top: 40px;
+    @include flex-column;
+    row-gap: 20px;
+  }
+
+  &__button-submit {
+    @include button-cta;
+    font-size: 16px;
+    @include max-width-mixin(302px);
+    box-sizing: border-box;
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  &__button-item {
+    align-self: center;
+  }
+
+  &__button-go-back {
+    @include reset-button;
+    @include link-button-orange;
   }
 }
