@@ -1,15 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { DATE_DIGITS } from '../../utils/constants';
 import './Answer.scss';
 
 const Answer = (props) => {
   const [digits, setDigits] = useState([]);
+  // ToDo: max number?
+  const listRefs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
 
   // ToDo: fix with hook useFormAndValidation
-  // ToDo: move focus
   const handleInputNumber = (evt) => {
     const value = evt.target.value;
     evt.target.value = value.replace(/\D/g, '');
+    const index = +evt.target.dataset.index;
+
+    if (props.task.response.type === 'number') {
+      if (value && value.length === 1 && index < props.task.response.digits - 1) {
+        listRefs[index + 1].current.focus();
+      }
+    }
+
+    if (props.task.response.type === 'date') {
+      if (value && value.length === 1 && index < DATE_DIGITS - 1) {
+        listRefs[index + 1].current.focus();
+      }
+    }
   }
 
   useEffect(() => {
@@ -70,6 +84,8 @@ const Answer = (props) => {
                   name={`${props.task.name}${el}`}
                   onInput={handleInputNumber}
                   key={el}
+                  ref={listRefs[el]}
+                  data-index={el}
                 />
               );
             })}
@@ -96,6 +112,8 @@ const Answer = (props) => {
                     id={`${props.task.name}${el}`}
                     name={`${props.task.name}${el}`}
                     onInput={handleInputNumber}
+                    ref={listRefs[el]}
+                    data-index={el}
                   />
                 </div>
               );
