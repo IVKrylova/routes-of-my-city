@@ -13,7 +13,7 @@ import Profile from '../Profile/Profile';
 import QuestPage from '../QuestPage/QuestPage';
 import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
-import Answer from '../Answer/Answer';
+import GeneralPopup from '../GeneralPopup/GeneralPopup';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import {
@@ -56,6 +56,7 @@ function App() {
   const [currentQuestId, setCurrentQuestId] = useState(null);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [questCategories, setQuestCategories] = useState([]);
+  const [isOpenGeneralPopup, setIsOpenGeneralPopup] = useState(true);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -420,6 +421,10 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
+      />
+
+      <GeneralPopup
+      isOpenGeneralPopup={isOpenGeneralPopup}
       />
     </div>
   );

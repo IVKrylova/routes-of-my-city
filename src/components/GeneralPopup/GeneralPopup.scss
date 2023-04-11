@@ -1,0 +1,75 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/mixins';
+
+.general-popup {
+  @include grid-column-1fr;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.9s, opacity .7s linear;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 59, 89, .8);
+  left: 0;
+  top: 0;
+  cursor: pointer;
+
+  &_opened {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility .9s, opacity .7s linear;
+  }
+
+  &__container {
+    position: relative;
+    @include grid-column-1fr;
+    width: 320px;
+    background-color: $background-white;
+    border-radius: $border-radius-block;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 15px 15px 50px;
+    cursor: default;
+    margin: 0 auto;
+  }
+
+  &__button-close {
+    @include reset-button;
+    background-image: url(../../images/icon-close.svg);
+    width: 30px;
+    height: 30px;
+    justify-self: end;
+  }
+
+  &__button-list {
+    @include reset-margins;
+    display: flex;
+    margin-top: 40px;
+    list-style-type: none;
+    justify-self: center;
+    column-gap: 35px;
+    align-items: center;
+  }
+
+  &__button-cancel {
+    @include reset-button;
+    @include link-button-orange;
+
+    @include media_768 {
+      font-size: 20px;
+    }
+  }
+
+  &__button-cta {
+    @include button-cta;
+    font-size: 16px;
+    padding: 15px 30px;
+
+    @include media_768 {
+      font-size: 20px;
+    }
+  }
+}
