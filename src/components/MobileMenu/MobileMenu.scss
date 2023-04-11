@@ -29,7 +29,8 @@
     @include font-w600-sz16;
   }
 
-  &__button-sign-up {
+  &__button-sign-up,
+  &__button-exit {
     @include reset-button;
     justify-self: center;
     @include link-button-orange;

@@ -302,6 +302,7 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonLogin={clickButtonLogin}
         handleClickButtonSignUp={clickButtonSignUp}
+        handleClickButtonExit={clickButtonExit}
       />
       <Routes>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>

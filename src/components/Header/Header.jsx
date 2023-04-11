@@ -20,6 +20,8 @@ const Header = (props) => {
           handleCloseMobileMenu={props.handleCloseMobileMenu}
           handleClickButtonLogin={props.handleClickButtonLogin}
           handleClickButtonSignUp={props.handleClickButtonSignUp}
+          isLogin={props.isLogin}
+          handleClickButtonExit={props.handleClickButtonExit}
         />
       </div>
       <Logo />
