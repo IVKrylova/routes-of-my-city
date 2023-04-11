@@ -26,6 +26,7 @@ const ListExercise = (props) => {
         {props.taskList && props.taskList.map(el => {
           return (
             <CardTask
+              sendTaskIdByButton={props.sendTaskIdByButton}
               key={el.id}
               number={el.number}
               name={el.name}

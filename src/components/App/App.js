@@ -15,6 +15,7 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import Answer from '../Answer/Answer';
 import Rules from '../Rules/Rules';
+import AnswerPage from '../AnswerPage/AnswerPage';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -221,6 +222,10 @@ function App() {
     console.log(category);
   }
 
+  const goToAnswer = (id) => {
+    navigate(`/quest/${currentQuestId}/answer/${id}`);
+  }
+
   useEffect(() => {
     // ToDo: replace with API data
     const quest = questsList.find(el => el.id === currentQuestId);
@@ -270,6 +275,7 @@ function App() {
     // ToDo: replace with API data
     //       fix logic => find task in task list by id
     //       add url to dependencies
+    //       move to the function and add to the hadnler
     let text = '';
     if (typeof(taskItem.problem) === 'string') {
       text = taskItem.problem.split('\n');
@@ -324,6 +330,7 @@ function App() {
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
                 currentQuestId={currentQuestId}
+                sendTaskIdByButton={goToAnswer}
               />
             }
           />
@@ -343,8 +350,9 @@ function App() {
           <Route
             path='/quest/:questId/answer/:id'
             element={
-              <Answer
+              <AnswerPage
                 handleGoBack={handleGoBack}
+                task={task}
               />
             }
           />

@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
 import './CardTask.scss';
 
 const CardTask = (props) => {
   const handleImgClick = () => {
     props.sendCardTaskId(props.id);
+  }
+
+  const handleButtonClick = () => {
+    props.sendTaskIdByButton(props.id);
   }
 
   return (
@@ -21,9 +24,13 @@ const CardTask = (props) => {
         <p className='card-task__name'>
           {props.name}
         </p>
-        <Link to={`/quest/${props.currentQuestId}/answer/${props.id}`} className='card-task__link-to-answer'>
+        <button
+          onClick={handleButtonClick}
+          className='card-task__link-to-answer'
+          type='button'
+        >
           Ответить
-        </Link>
+        </button>
       </div>
     </li>
   );

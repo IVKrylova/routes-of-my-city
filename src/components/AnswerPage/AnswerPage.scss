@@ -1,0 +1,40 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.answer-page {
+  @include grid-column-1fr;
+
+  &__button-go-back {
+    margin-top: 30px;
+    margin-left: 22px;
+
+    @include media_1024 {
+      margin-left: 7%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    margin: 15px 22px 30px;
+    column-gap: 20px;
+
+    @include media_1024 {
+      margin: 20px 7% 30px;
+    }
+  }
+
+  &__task-number {
+    @include reset-margins;
+    color: $font-color-black-darck;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.17;
+  }
+
+  &__task-title {
+    @include reset-margins;
+    @include font-w600-sz24;
+    align-self: center;
+    color: $font-color-red;
+  }
+}
