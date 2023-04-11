@@ -56,7 +56,7 @@ function App() {
   const [currentQuestId, setCurrentQuestId] = useState(null);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [questCategories, setQuestCategories] = useState([]);
-  const [isOpenGeneralPopup, setIsOpenGeneralPopup] = useState(true);
+  const [isOpenGeneralPopup, setIsOpenGeneralPopup] = useState(false);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -227,6 +227,26 @@ function App() {
     navigate(`/quest/${currentQuestId}/answer/${id}`);
   }
 
+  const closePopup = () => {
+    setIsOpenGeneralPopup(false);
+  }
+
+  const handleBackgroundClose = (evt) => {
+    if (evt.target.classList.contains('general-popup_opened')) {
+      closePopup();
+    }
+  }
+
+  useEffect(_ => {
+    const handleEscClose = (evt) => {
+      if (evt.key === 'Escape') {
+        closePopup();
+      }
+    };
+    document.addEventListener('keydown', handleEscClose);
+    return () => document.removeEventListener('keydown', handleEscClose);
+  }, []);
+
   useEffect(() => {
     // ToDo: replace with API data
     const quest = questsList.find(el => el.id === currentQuestId);
@@ -293,7 +313,7 @@ function App() {
   }, []);
 
   return (
-    <div className='app'>
+    <div className='app' onClick={handleBackgroundClose}>
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
@@ -425,6 +445,7 @@ function App() {
 
       <GeneralPopup
       isOpenGeneralPopup={isOpenGeneralPopup}
+      onClosePopup={closePopup}
       />
     </div>
   );
