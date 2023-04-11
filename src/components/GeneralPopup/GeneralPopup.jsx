@@ -28,7 +28,7 @@ const GeneralPopup = (props) => {
               type='button'
               className='general-popup__button-cta'
             >
-              Удалить{/* props.textButtonCta */}
+              {props.textButtonCta}
             </button>
           </li>
         </ul>
