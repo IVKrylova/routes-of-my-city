@@ -47,6 +47,7 @@ const Profile = (props) => {
                 <QuestCardProfile
                   quest={el}
                   key={el.id}
+                  sendIdQuest={props.sendIdQuest}
                 />
               );
             })}
