@@ -8,6 +8,10 @@
     margin-top: 65px;
   }
 
+  &_popup {
+    margin: 40px 25px 0;
+  }
+
   &__category-list {
     @include reset-margins;
     list-style-type: none;
@@ -149,6 +153,12 @@
       margin-top: 65px;
       justify-content: start;
     }
+
+    &_popup {
+      margin-top: 40px;
+      flex-direction: row-reverse;
+      column-gap: 40px;
+    }
   }
 
   &__button-submit {
@@ -160,6 +170,10 @@
     @include media_768 {
       font-size: 20px;
       width: 193px;
+    }
+
+    &_popup {
+      width: 144px;
     }
   }
 

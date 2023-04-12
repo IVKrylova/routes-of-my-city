@@ -16,6 +16,7 @@
   left: 0;
   top: 0;
   cursor: pointer;
+  overflow-y: scroll;
 
   &_opened {
     visibility: visible;
@@ -25,7 +26,7 @@
 
   &__container {
     position: relative;
-    @include grid-column-1fr;
+    @include flex-column;
     width: 320px;
     background-color: $background-white;
     border-radius: $border-radius-block;
@@ -41,7 +42,7 @@
     background-image: url(../../images/icon-close.svg);
     width: 30px;
     height: 30px;
-    justify-self: end;
+    align-self: end;
     margin-bottom: 15px;
 
     @include media_768 {
@@ -54,7 +55,7 @@
     display: flex;
     margin-top: 40px;
     list-style-type: none;
-    justify-self: center;
+    align-self: center;
     column-gap: 35px;
     align-items: center;
   }
@@ -80,7 +81,9 @@
 
   &__succes-image {
     display: block;
-    justify-self: center;
+    align-self: center;
+    width: 60px;
+    height: 60px;
   }
 
   &__succes-message {
@@ -88,6 +91,7 @@
     @include font-w600-sz18;
     margin-top: 30px;
     text-align: center;
+    color: $font-color-blue;
   }
 
   &__button-to-home-page {
@@ -98,6 +102,6 @@
     margin-top: 40px;
     width: 150px;
     text-align: center;
-    justify-self: center;
+    align-self: center;
   }
 }

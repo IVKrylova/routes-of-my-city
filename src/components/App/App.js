@@ -16,6 +16,7 @@ import Task from '../Task/Task';
 import DeletePlayerPopup from '../DeletePlayerPopup/DeletePlayerPopup';
 import CancelQuestPopup from '../CancelQuestPopup/CancelQuestPopup';
 import DeleteProfilePopup from '../DeleteProfilePopup/DeleteProfilePopup';
+import PopupChangeQuestCategory from '../PopupChangeQuestCategory/PopupChangeQuestCategory';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import {
@@ -64,6 +65,9 @@ function App() {
   const [isOpenCancelQuestPopup, setIsOpenCancelQuestPopup] = useState(false);
   const [canceledQuestId, setCanceledQuestId] = useState(null);
   const [isOpenDeleteProfilePopup, setIsOpenDeleteProfilePopup] = useState(false);
+  const [isOpenPopupChangeQuestCategory, setIsOpenPopupChangeQuestCategory] = useState(false);
+  const [changedCategoryQuestId, setChangedCategoryQuestId] = useState(null);
+  const [questCategoriesToChange, setQuestCategoriesToChange] = useState([]);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -193,6 +197,7 @@ function App() {
     setTeamPlayers(team);
     // ToDo: if deleting successfull
     setIsPopupSuccess(true);
+    setDeletedPlayerId(null);
   }
 
   const getRemainingTime = () => {
@@ -224,7 +229,9 @@ function App() {
   }
 
   const handleCancelAndGoBack = () => {
-    navigate(-1);
+    isOpenPopupChangeQuestCategory
+      ? setIsOpenPopupChangeQuestCategory(false)
+      : navigate(-1);
   }
 
   const handleFormChoiceCategory = (category) => {
@@ -240,12 +247,8 @@ function App() {
     setIsOpenDeletePlayerPopup(false);
     setIsOpenCancelQuestPopup(false);
     setIsOpenDeleteProfilePopup(false);
-    if (isOpenDeletePlayerPopup === false
-      && isOpenCancelQuestPopup === false
-      && isOpenDeleteProfilePopup === false
-    ) {
-      setIsPopupSuccess(false);
-    }
+    setIsOpenPopupChangeQuestCategory(false);
+    setTimeout(() => setIsPopupSuccess(false), 1000);
   }
 
   const handleBackgroundClose = (evt) => {
@@ -274,6 +277,7 @@ function App() {
     const quests = teamQuestList.filter(el => el.id !== canceledQuestId);
     setTeamQuestList(quests);
     setIsPopupSuccess(true);
+    setCanceledQuestId(null);
   }
 
   const openCancelQuestPopup = (questId) => {
@@ -285,6 +289,19 @@ function App() {
   const handleDeleteProfile = () => {
     setIsPopupSuccess(true);
     setIsLogin(false);
+  }
+
+  const openPopupChangeQuestCategory = (questId) => {
+    setIsOpenPopupChangeQuestCategory(true);
+    setChangedCategoryQuestId(questId);
+    // ToDo: fix with Api
+    setQuestCategoriesToChange(categories);
+  }
+
+  const changeCategoryInPopup = (category) => {
+    // ToDo: fix with Api, use changedCategoryQuestId
+    console.log(category);
+    setIsPopupSuccess(true);
   }
 
   useEffect(_ => {
@@ -388,6 +405,7 @@ function App() {
                 sendDeletedPlayer={openDeletePlayerPopup}
                 sendIdQuest={openCancelQuestPopup}
                 handleClickDeleteProfile={openDeleteProfilePopup}
+                sendChangeCategoryQuestId={openPopupChangeQuestCategory}
               />
             }
           />
@@ -514,6 +532,16 @@ function App() {
         isPopupSuccess={isPopupSuccess}
         goToHomePage={handleButtongoToHomePage}
         handleButtonClick={handleDeleteProfile}
+      />
+      <PopupChangeQuestCategory
+        isOpenPopup={isOpenPopupChangeQuestCategory}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        handleCancelAndGoBack={handleCancelAndGoBack}
+        isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
+        questCategories={questCategoriesToChange}
+        sendCategory={changeCategoryInPopup}
       />
     </div>
   );

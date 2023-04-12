@@ -2,7 +2,7 @@ import iconSuccess from '../../images/icon-success-popup.svg';
 import './GeneralPopup.scss';
 
 const GeneralPopup = (props) => {
-  const classPopup = `general-popup ${props.isOpenPopup && 'general-popup_opened'}`;
+  const classPopup = `general-popup ${props.isOpenPopup ? 'general-popup_opened' : ''}`;
   return (
     <section className={classPopup}>
       <div className='general-popup__container'>
@@ -15,26 +15,28 @@ const GeneralPopup = (props) => {
         {!props.isPopupSuccess &&
           <>
             {props.children}
-            <ul className='general-popup__button-list'>
-              <li>
-                <button
-                  onClick={props.onClosePopup}
-                  type='button'
-                  className='general-popup__button-cancel'
-                >
-                  Отмена
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={props.handleButtonClick}
-                  type='button'
-                  className='general-popup__button-cta'
-                >
-                  {props.textButtonCta}
-                </button>
-              </li>
-            </ul>
+            {props.isOpenPopupChangeQuestCategory === undefined &&
+              <ul className='general-popup__button-list'>
+                <li>
+                  <button
+                    onClick={props.onClosePopup}
+                    type='button'
+                    className='general-popup__button-cancel'
+                  >
+                    Отмена
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={props.handleButtonClick}
+                    type='button'
+                    className='general-popup__button-cta'
+                  >
+                    {props.textButtonCta}
+                  </button>
+                </li>
+              </ul>
+            }
           </>
         }
         {props.isPopupSuccess &&

@@ -3,6 +3,8 @@ import './FormChoiceCategory.scss';
 
 const FormChoiceCategory = (props) => {
   const [category, setCategory] = useState('Генералы');
+  const classButtonList = `form-choice-category__button-list ${props.isOpenPopup ? 'form-choice-category__button-list_popup' : ''}`;
+  const classButtonSubmit = `form-choice-category__button-submit ${props.isOpenPopup ? 'form-choice-category__button-submit_popup' : ''}`;
 
   const chengeCategory = (evt) => {
     setCategory(evt.target.value);
@@ -14,7 +16,9 @@ const FormChoiceCategory = (props) => {
   }
 
   return (
-    <form className='form-choice-category' onSubmit={handleFormSubmit}>
+    <form className={`form-choice-category ${props.classModifier ? props.classModifier : ''}`}
+      onSubmit={handleFormSubmit}
+    >
       <ul className='form-choice-category__category-list'>
         {props.questCategories && props.questCategories.map(el => {
         return (
@@ -64,13 +68,13 @@ const FormChoiceCategory = (props) => {
         );
       })}
       </ul>
-      <ul className='form-choice-category__button-list'>
+      <ul className={classButtonList}>
         <li>
           <button
             type='submit'
-            className='form-choice-category__button-submit'
+            className={classButtonSubmit}
           >
-            Участвовать
+            {props.isOpenPopup ? 'Сохранить' : 'Участвовать'}
           </button>
         </li>
         <li>

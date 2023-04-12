@@ -6,4 +6,8 @@
   @include font-w600-sz18;
   color: $font-color-blue;
   text-align: center;
+
+  &_change-category {
+    margin-top: 20px;
+  }
 }

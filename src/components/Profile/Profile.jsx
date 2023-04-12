@@ -48,6 +48,7 @@ const Profile = (props) => {
                   quest={el}
                   key={el.id}
                   sendIdQuest={props.sendIdQuest}
+                  sendChangeCategoryQuestId={props.sendChangeCategoryQuestId}
                 />
               );
             })}

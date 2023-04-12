@@ -5,6 +5,10 @@ const QuestCardProfile = (props) => {
     props.sendIdQuest(props.quest.id);
   }
 
+  const handleClickChangeCategory = () => {
+    props.sendChangeCategoryQuestId(props.quest.id);
+  }
+
   return (
     <li className='quest-card-profile'>
       <h2 className='quest-card-profile__name'>
@@ -20,7 +24,11 @@ const QuestCardProfile = (props) => {
         <p className='quest-card-profile__category-description'>
           {props.quest.description}
         </p>
-        <button type='button' className='quest-card-profile__button-edit'>
+        <button
+          type='button'
+          className='quest-card-profile__button-edit'
+          onClick={handleClickChangeCategory}
+        >
           Изменить
         </button>
       </div>
