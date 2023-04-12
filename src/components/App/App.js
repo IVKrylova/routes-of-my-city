@@ -15,6 +15,7 @@ import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
 import DeletePlayerPopup from '../DeletePlayerPopup/DeletePlayerPopup';
 import CancelQuestPopup from '../CancelQuestPopup/CancelQuestPopup';
+import DeleteProfilePopup from '../DeleteProfilePopup/DeleteProfilePopup';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import {
@@ -62,6 +63,7 @@ function App() {
   const [deletedPlayerId, setDeletedPlayerId] = useState(null);
   const [isOpenCancelQuestPopup, setIsOpenCancelQuestPopup] = useState(false);
   const [canceledQuestId, setCanceledQuestId] = useState(null);
+  const [isOpenDeleteProfilePopup, setIsOpenDeleteProfilePopup] = useState(false);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -236,9 +238,12 @@ function App() {
 
   const closeAllPopup = () => {
     setIsOpenDeletePlayerPopup(false);
-    setIsOpenCancelQuestPopup(false)
+    setIsOpenCancelQuestPopup(false);
+    setIsOpenDeleteProfilePopup(false);
     if (isOpenDeletePlayerPopup === false
-      && isOpenCancelQuestPopup === false) {
+      && isOpenCancelQuestPopup === false
+      && isOpenDeleteProfilePopup === false
+    ) {
       setIsPopupSuccess(false);
     }
   }
@@ -260,6 +265,10 @@ function App() {
     setIsOpenDeletePlayerPopup(true);
   }
 
+  const openDeleteProfilePopup = () => {
+    setIsOpenDeleteProfilePopup(true);
+  }
+
   // ToDo: connect API
   const handleCancelQuest = () => {
     const quests = teamQuestList.filter(el => el.id !== canceledQuestId);
@@ -270,6 +279,12 @@ function App() {
   const openCancelQuestPopup = (questId) => {
     setCanceledQuestId(questId);
     setIsOpenCancelQuestPopup(true);
+  }
+
+  // ToDo: connect API
+  const handleDeleteProfile = () => {
+    setIsPopupSuccess(true);
+    setIsLogin(false);
   }
 
   useEffect(_ => {
@@ -372,6 +387,7 @@ function App() {
                 goBack={handleGoBack}
                 sendDeletedPlayer={openDeletePlayerPopup}
                 sendIdQuest={openCancelQuestPopup}
+                handleClickDeleteProfile={openDeleteProfilePopup}
               />
             }
           />
@@ -491,6 +507,13 @@ function App() {
         isPopupSuccess={isPopupSuccess}
         goToHomePage={handleButtongoToHomePage}
         handleButtonClick={handleCancelQuest}
+      />
+      <DeleteProfilePopup
+        isOpenPopup={isOpenDeleteProfilePopup}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        handleButtonClick={handleDeleteProfile}
       />
     </div>
   );

@@ -70,7 +70,11 @@ const Profile = (props) => {
             </button>
           </li>
           <li>
-            <button type='button' className='profile__button'>
+            <button
+              type='button'
+              className='profile__button'
+              onClick={props.handleClickDeleteProfile}
+            >
               Удалить профиль
             </button>
           </li>
