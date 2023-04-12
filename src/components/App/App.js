@@ -13,7 +13,7 @@ import Profile from '../Profile/Profile';
 import QuestPage from '../QuestPage/QuestPage';
 import ListExercise from '../ListExercise/ListExercise';
 import Task from '../Task/Task';
-import GeneralPopup from '../GeneralPopup/GeneralPopup';
+import DeletePlayerPopup from '../DeletePlayerPopup/DeletePlayerPopup';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import {
@@ -56,7 +56,9 @@ function App() {
   const [currentQuestId, setCurrentQuestId] = useState(null);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [questCategories, setQuestCategories] = useState([]);
-  const [isOpenGeneralPopup, setIsOpenGeneralPopup] = useState(false);
+  const [isOpenDeletePlayerPopup, setIsOpenDeletePlayerPopup] = useState(false);
+  const [isPopupSuccess, setIsPopupSuccess] = useState(false);
+  const [deletedPlayerId, setDeletedPlayerId] = useState(null);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -171,9 +173,9 @@ function App() {
   }
 
   /* ToDo: check logics with API data and popup*/
-  const handleDeletePlayer = (playerId) => {
+  const handleDeletePlayer = () => {
     const team = teamPlayers.map(el => {
-      if (el.id === playerId) {
+      if (el.id === deletedPlayerId) {
         el.name = '';
         el.phone = '';
         el.email = '';
@@ -184,6 +186,8 @@ function App() {
       return el;
     });
     setTeamPlayers(team);
+    // ToDo: if deleting successfull
+    setIsPopupSuccess(true);
   }
 
   const getRemainingTime = () => {
@@ -227,20 +231,34 @@ function App() {
     navigate(`/quest/${currentQuestId}/answer/${id}`);
   }
 
-  const closePopup = () => {
-    setIsOpenGeneralPopup(false);
+  const closeAllPopup = () => {
+    setIsOpenDeletePlayerPopup(false);
+    if (isOpenDeletePlayerPopup === false) {
+      setIsPopupSuccess(false);
+    }
   }
 
   const handleBackgroundClose = (evt) => {
     if (evt.target.classList.contains('general-popup_opened')) {
-      closePopup();
+      closeAllPopup();
     }
+  }
+
+  const handleButtongoToHomePage = () => {
+    navigate('/');
+    setIsPopupSuccess(false);
+    closeAllPopup();
+  }
+
+  const openDeletePlayerPopup = (idPlayer) => {
+    setDeletedPlayerId(idPlayer);
+    setIsOpenDeletePlayerPopup(true);
   }
 
   useEffect(_ => {
     const handleEscClose = (evt) => {
       if (evt.key === 'Escape') {
-        closePopup();
+        closeAllPopup();
       }
     };
     document.addEventListener('keydown', handleEscClose);
@@ -335,7 +353,7 @@ function App() {
                 teamPlayers={teamPlayers}
                 teamQuestList={teamQuestList}
                 goBack={handleGoBack}
-                sendDeletedPlayer={handleDeletePlayer}
+                sendDeletedPlayer={openDeletePlayerPopup}
               />
             }
           />
@@ -442,10 +460,12 @@ function App() {
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
       />
-
-      <GeneralPopup
-      isOpenGeneralPopup={isOpenGeneralPopup}
-      onClosePopup={closePopup}
+      <DeletePlayerPopup
+        isOpenPopup={isOpenDeletePlayerPopup}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        handleButtonClick={handleDeletePlayer}
       />
     </div>
   );

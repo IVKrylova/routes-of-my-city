@@ -42,6 +42,11 @@
     width: 30px;
     height: 30px;
     justify-self: end;
+    margin-bottom: 15px;
+
+    @include media_768 {
+      margin-bottom: 30px;
+    }
   }
 
   &__button-list {
@@ -71,5 +76,28 @@
     @include media_768 {
       font-size: 20px;
     }
+  }
+
+  &__succes-image {
+    display: block;
+    justify-self: center;
+  }
+
+  &__succes-message {
+    @include reset-margins;
+    @include font-w600-sz18;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  &__button-to-home-page {
+    @include button-cta;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 15px 0;
+    margin-top: 40px;
+    width: 150px;
+    text-align: center;
+    justify-self: center;
   }
 }
