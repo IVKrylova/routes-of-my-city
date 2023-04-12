@@ -35,6 +35,20 @@
     padding: 15px 15px 50px;
     cursor: default;
     margin: 0 auto;
+
+    @include media_768 {
+      width: 610px;
+    }
+
+    &_change-category {
+      @include media_1024 {
+        width: 900px;
+      }
+
+      @include media_1280 {
+        width: 1030px;
+      }
+    }
   }
 
   &__button-close {

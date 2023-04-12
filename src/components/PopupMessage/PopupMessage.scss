@@ -7,6 +7,10 @@
   color: $font-color-blue;
   text-align: center;
 
+  @include media_768 {
+    font-size: 24px;
+  }
+
   &_change-category {
     margin-top: 20px;
   }

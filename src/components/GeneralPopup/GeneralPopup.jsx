@@ -3,9 +3,11 @@ import './GeneralPopup.scss';
 
 const GeneralPopup = (props) => {
   const classPopup = `general-popup ${props.isOpenPopup ? 'general-popup_opened' : ''}`;
+  const classPopupContainer = `general-popup__container ${props.isOpenPopupChangeQuestCategory ? 'general-popup__container_change-category' : ''}`;
+
   return (
     <section className={classPopup}>
-      <div className='general-popup__container'>
+      <div className={classPopupContainer}>
         <button
           onClick={props.onClosePopup}
           type='button'
