@@ -486,7 +486,9 @@ function App() {
         <Route
           path='/login'
           element={
-            <Login />
+            <Login
+              screenWidth={screenWidth}
+            />
           }
         />
         <Route

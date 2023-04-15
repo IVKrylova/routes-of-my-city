@@ -1,12 +1,24 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import './Login.scss';
 
 const Login = (props) => {
+  const [classButtonGoBack, setClassButtonGoBack] = useState();
   const { values, handleChange } = useFormAndValidation();
+
+  useEffect(() => {
+    props.screenWidth < 1024
+      ? setClassButtonGoBack('page-login__button-go-back_hidden')
+      : setClassButtonGoBack('page-login__button-go-back_visible');
+  }, [props.screenWidth]);
 
   return (
     <main className='page-login'>
+      <ButtonGoBack
+        nameClass={classButtonGoBack}
+      />
       <h1 className='page-login__title'>
         Вход в аккаунт
       </h1>
@@ -47,13 +59,15 @@ const Login = (props) => {
         <button type='button' className='page-login__reset-password'>
           Забыли пароль?
         </button>
-        <button className='page-login__button-submit' type='submit'>
-          Войти
-        </button>
+        <div className='page-login__button-list'>
+          <button className='page-login__button-submit' type='submit'>
+            Войти
+          </button>
+          <Link className='page-login__link-to-register' to='/signup'>
+            Зарегестрироваться
+          </Link>
+        </div>
       </form>
-      <Link className='page-login__link-to-register' to='/signup'>
-        Зарегестрироваться
-      </Link>
     </main>
   );
 }
