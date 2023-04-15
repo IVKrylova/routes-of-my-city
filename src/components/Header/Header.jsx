@@ -16,7 +16,11 @@ const Header = (props) => {
       props.screenWidth < 768 ? setHeaderClass('header header_hidden') : setHeaderClass('header');
       props.screenWidth < 768 ? setHeaderLoginClass('header-login') : setHeaderLoginClass('header-login header-login_hidden');
     }
-  }, [props.screenWidth]);
+
+    if (props.location.pathname !== '/login') {
+      setHeaderLoginClass('header-login header-login_hidden');
+    }
+  }, [props.screenWidth, props.location]);
 
   return (
     <>
