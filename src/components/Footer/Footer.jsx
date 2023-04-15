@@ -14,7 +14,7 @@ const Footer = (props) => {
 
   useEffect(() => {
     if (props.location.pathname === '/login') {
-      props.screenWidth < 530 ? setFooterClass('footer footer_hidden') : setFooterClass('footer');
+      props.screenWidth < 768 ? setFooterClass('footer footer_hidden') : setFooterClass('footer');
     }
 
   }, [props.screenWidth]);
