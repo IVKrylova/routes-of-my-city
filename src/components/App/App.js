@@ -508,6 +508,8 @@ function App() {
       </Routes>
       <Footer
         isPageNotFound={isPageNotFound}
+        location={location}
+        screenWidth={screenWidth}
       />
       <PopupAccountData
         isHeaderAccountHovered={isHeaderAccountHovered}
