@@ -391,6 +391,8 @@ function App() {
         handleClickButtonLogin={clickButtonLogin}
         handleClickButtonSignUp={clickButtonSignUp}
         handleClickButtonExit={clickButtonExit}
+        location={location}
+        screenWidth={screenWidth}
       />
       <Routes>
         <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
