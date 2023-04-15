@@ -1,0 +1,50 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.page-login {
+  @include grid-column-1fr;
+  box-sizing: border-box;
+  padding: 50px 20px;
+
+  &__title {
+    @include reset-margins;
+    @include h2;
+  }
+
+  &__form {
+    margin-top: 20px;
+    @include flex-column;
+  }
+
+  &__input-block {
+    @include input-block;
+    @include flex-column;
+  }
+
+  &__reset-password {
+    @include reset-button;
+    @include font-w400-sz14;
+    width: 113px;
+    color: $font-color-red;
+    margin-top: 15px;
+
+    &:hover {
+      color: $button-color-sign-up-hover;
+    }
+  }
+
+  &__button-submit {
+    @include button-cta;
+    margin-top: 50px;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  &__link-to-register {
+    @include link-button-orange;
+    text-decoration: none;
+    justify-self: center;
+    margin-top: 20px;
+    max-width: 152px;
+  }
+}
