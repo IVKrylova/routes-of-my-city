@@ -1,29 +1,36 @@
 import React from "react";
+import { useFormContext } from "react-hook-form";
 import line from "../../images/line.svg";
 import chrest from "../../images/chrest.svg";
-/* import { useForm } from "react-hook-form"; */
+import DatePicker from "react-datepicker";
+import { registerLocale } from "react-datepicker";
+import ru from "date-fns/locale/ru";
+import "react-datepicker/dist/react-datepicker.css";
+registerLocale("ru", ru);
+
 export const Form = ({
   formName,
   modifier,
-  register,
   count,
   id,
   handleMinusClick,
+  Controller,
 }) => {
-  /*   const { register } = useForm(); */
-  /*   const MyInput = React.forwardRef(({ name, label, ...rest }, ref) => {
-    return (
-      <>
-        {   <label htmlFor={name}>{label}</label> }
-        <input name={name} {...rest} ref={ref} />
-      </>
-    );
-  });
-  const ref = React.useRef(); */
-  /*   const handleClick = (e) => {
-    e.preventDefault();
-    setCountPlayers(count - 1);
-  }; */
+  const name = `${modifier}-name`;
+ /*  const email = `${modifier}-email`;
+  const date = `${modifier}-date`;
+  const phone = `${modifier}-phone`; */
+
+/*   const validationSchema = Yup.object({
+    name: Yup.string().required(),
+    email: Yup.string().email().required(),
+    date: Yup.date().default(() => new Date()),
+  }); */
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext();
   return (
     <>
       <fieldset id={`${modifier}-registration`} className="form__fieldset">
@@ -37,16 +44,18 @@ export const Form = ({
           </button>
         )}
         <div className="form__input-full">
-          <label htmlFor={`${modifier}-name`} className="form__label">
+          <label htmlFor={name} className="form__label">
             Имя
           </label>
           <input
-            {...register(`${modifier}-name`, { required: true })}
+            {...register(name, { required: true })}
             type="text"
             className="form__input "
             placeholder="Ваше ФИО"
             autoComplete="name"
+            errors={errors}
           />
+          <p>{errors.name?.message}</p>
         </div>
         <div className="form__input-full">
           <label htmlFor={`${modifier}-phone`} className="form__label">
@@ -59,6 +68,7 @@ export const Form = ({
             placeholder="Телефон"
             autoComplete="tel"
           />
+          <p>{errors.phone?.message}</p>
         </div>
         <div className="form__input-full">
           <label htmlFor={`${modifier}-email`} className="form__label">
@@ -71,18 +81,50 @@ export const Form = ({
             placeholder="Электронная почта"
             autoComplete="email"
           />
+          <p>{errors.email?.message}</p>
         </div>
         <div className="form__input-full">
           <label htmlFor={`${modifier}-date`} className="form__label">
             Дата рождения
           </label>
-          <input
+          {/*    <input
             {...register(`${modifier}-date`, { required: true })}
             type="text"
             className="form__input"
             placeholder="15.07.1997"
             autoComplete="bday"
+          /> */}
+          <Controller
+            defaultValue={new Date(1997, 6, 15)}
+            name={`${modifier}-date`}
+            control={control}
+            rules={{ required: true }}
+            render={({
+              field: { onChange, value, ...params },
+              fieldState: { error, invalid },
+            }) => (
+              <DatePicker
+                {...params}
+                type="text"
+                disableFuture
+                className="form__input"
+                dateFormat="dd.MM.yyyy"
+                placeholderText="15.07.1997"
+                autoComplete="bday"
+                locale="ru"
+                selected={value}
+                onChange={onChange}
+                error={invalid}
+                helperText={invalid ? error.message : null}
+              />
+            )}
           />
+          <p>{errors.date?.message}</p>
+          {/*           <ErrorMessage
+  errors={errors}
+  name="birthDate"
+  render={({ message }) => <p>{message}</p>}
+/> */}
         </div>
       </fieldset>
       {id % 2 === 0 && count !== id + 1 && (
