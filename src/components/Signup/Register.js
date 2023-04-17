@@ -13,6 +13,7 @@ import { formSchema } from "../Validation/Validation";
 const Register = () => {
   const {
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -29,7 +30,10 @@ const Register = () => {
   const methods = useForm({
     resolver: yupResolver(formSchema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   /*   console.log(errors);
   console.log(watch()); */
   return (
@@ -68,7 +72,7 @@ const Register = () => {
                   className="form__input_type_simple"
                   placeholder="Название команды"
                 />
-                <ErrorMessage
+                {/*           <ErrorMessage
                   errors={errors}
                   name="team"
                   render={({ messages }) => {
@@ -79,7 +83,7 @@ const Register = () => {
                         ))
                       : null;
                   }}
-                />
+                /> */}
               </div>
               <div className="form__fieldset-box">
                 {forms
@@ -124,14 +128,14 @@ const Register = () => {
                 />
                 <fieldset className="form__fieldset">
                   <h1 className="form__title">Данные для входа</h1>
-                  <label htmlFor="email" className="form__label"></label>
+                  {/*  <label htmlFor="email" className="form__label"></label> */}
                   <input
-                    {...methods.register("email", { required: true })}
+                    {...methods.register("email")}
                     type="email"
                     className="form__input_type_simple form__input_type_signin"
                     placeholder="Электронная почта"
                   />
-                  <p>{errors.email?.message}</p>
+                  {/*        <p>{errors.email?.message}</p>
                   <ErrorMessage
                     errors={errors}
                     name="email"
@@ -143,23 +147,28 @@ const Register = () => {
                           ))
                         : null;
                     }}
-                  />
-                  <label htmlFor="password" className="form__label"></label>
+                  /> */}
+                  {/*   <label htmlFor="password" className="form__label"></label> */}
                   <input
                     {...methods.register("password")}
                     type="password"
                     className="form__input_type_simple form__input_type_signin"
                     placeholder="Пароль"
                   />
-                  <p>{errors.password?.message}</p>
-                  <label htmlFor="cpassword" className="form__label"></label>
+                  {/*      <p>{errors.password?.message}</p> */}
+                  {/*     <label htmlFor="cpassword" className="form__label"></label> */}
                   <input
                     {...methods.register("cpassword")}
                     type="password"
                     className="form__input_type_simple form__input_type_signin"
                     placeholder="Повторить пароль"
                   />
-                  <p>{errors.cpassword?.message}</p>
+                  <ErrorMessage
+                    errors={errors}
+                    name="singleErrorInput"
+                    render={({ message }) => <p>{message}</p>}
+                  />
+                  {/*            <p>{errors.cpassword?.message}</p>
                   <ErrorMessage
                     errors={errors}
                     name="password"
@@ -174,7 +183,7 @@ const Register = () => {
                   />
                   {errors.password?.type === "required" && (
                     <p role="alert">First name is required</p>
-                  )}
+                  )} */}
                 </fieldset>
                 <div className="form__button-container">
                   <input

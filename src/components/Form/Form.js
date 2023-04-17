@@ -16,12 +16,12 @@ export const Form = ({
   handleMinusClick,
   Controller,
 }) => {
-  const name = `${modifier}-name`;
- /*  const email = `${modifier}-email`;
-  const date = `${modifier}-date`;
-  const phone = `${modifier}-phone`; */
+  const name = `${modifier}name`;
+  const email = `${modifier}email`;
+  const date = `${modifier}date`;
+  const phone = `${modifier}phone`;
 
-/*   const validationSchema = Yup.object({
+  /*   const validationSchema = Yup.object({
     name: Yup.string().required(),
     email: Yup.string().email().required(),
     date: Yup.date().default(() => new Date()),
@@ -48,7 +48,7 @@ export const Form = ({
             Имя
           </label>
           <input
-            {...register(name, { required: true })}
+            {...register(name)}
             type="text"
             className="form__input "
             placeholder="Ваше ФИО"
@@ -62,7 +62,7 @@ export const Form = ({
             Телефон
           </label>
           <input
-            {...register(`${modifier}-phone`, { required: true })}
+            {...register(phone)}
             type="text"
             className="form__input"
             placeholder="Телефон"
@@ -71,11 +71,11 @@ export const Form = ({
           <p>{errors.phone?.message}</p>
         </div>
         <div className="form__input-full">
-          <label htmlFor={`${modifier}-email`} className="form__label">
+          <label htmlFor="email" className="form__label">
             Почта
           </label>
           <input
-            {...register(`${modifier}-email`, { required: true })}
+            {...register(email)}
             type="email"
             className="form__input"
             placeholder="Электронная почта"
@@ -84,7 +84,7 @@ export const Form = ({
           <p>{errors.email?.message}</p>
         </div>
         <div className="form__input-full">
-          <label htmlFor={`${modifier}-date`} className="form__label">
+          <label htmlFor="date" className="form__label">
             Дата рождения
           </label>
           {/*    <input
@@ -96,7 +96,7 @@ export const Form = ({
           /> */}
           <Controller
             defaultValue={new Date(1997, 6, 15)}
-            name={`${modifier}-date`}
+            name={date}
             control={control}
             rules={{ required: true }}
             render={({
