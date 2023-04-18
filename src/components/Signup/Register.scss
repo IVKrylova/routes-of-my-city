@@ -276,6 +276,33 @@
     flex-direction: column;
     gap: 40px;
   }
+  &__checkbox {
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #afbdc6;
+    border-radius: 5px;
+    &-container {
+      gap: 10px;
+      display: flex;
+      flex-direction: row;
+    }
+    &-label {
+      width: 307px;
+      height: 38px;
+      font-family: "Raleway";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      font-feature-settings: "pnum" on, "lnum" on;
+      color: K #000000;
+      opacity: 0.5;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+  }
 }
 .container {
   margin: 0;

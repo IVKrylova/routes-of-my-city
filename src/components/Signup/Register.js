@@ -32,6 +32,7 @@ const Register = () => {
   });
   const onSubmit = (data) => {
     console.log(data);
+    methods.watch();
     reset();
   };
   /*   console.log(errors);
@@ -184,6 +185,17 @@ const Register = () => {
                   {errors.password?.type === "required" && (
                     <p role="alert">First name is required</p>
                   )} */}
+                  <div className="form__checkbox-container">
+                    <input
+                      type="checkbox"
+                      {...methods.register("checkbox")}
+                      className="form__checkbox"
+                    />
+                    <label htmlFor="checkbox" className="form__checkbox-label">
+                      Нажимая, вы принимаете согласие о конфедиациальности
+                    </label>
+                    {errors && console.log(errors)}
+                  </div>
                 </fieldset>
                 <div className="form__button-container">
                   <input

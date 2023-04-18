@@ -20,12 +20,6 @@ export const Form = ({
   const email = `${modifier}email`;
   const date = `${modifier}date`;
   const phone = `${modifier}phone`;
-
-  /*   const validationSchema = Yup.object({
-    name: Yup.string().required(),
-    email: Yup.string().email().required(),
-    date: Yup.date().default(() => new Date()),
-  }); */
   const {
     register,
     control,

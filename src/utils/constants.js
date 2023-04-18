@@ -28,15 +28,5 @@ export const forms = [
     id: 5,
     formName: "6 игрок",
     modifier: "player6",
-  },
-  {
-    id: 6,
-    formName: "7 игрок",
-    modifier: "7player",
-  },
-  {
-    id: 7,
-    formName: "8 игрок",
-    modifier: "8player",
-  },
+  }
 ];
