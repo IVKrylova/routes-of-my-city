@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import { registerLocale } from "react-datepicker";
 import ru from "date-fns/locale/ru";
 import "react-datepicker/dist/react-datepicker.css";
+import { ErrorMessage } from "@hookform/error-message";
 registerLocale("ru", ru);
 
 export const Form = ({
@@ -49,7 +50,13 @@ export const Form = ({
             autoComplete="name"
             errors={errors}
           />
-          <p>{errors.name?.message}</p>
+          {/*   <p>{errors.name?.message}</p> */}
+          <ErrorMessage
+            errors={errors}
+            name={name}
+            className="form__error-message"
+            render={({ message }) => <span className="tooltip">{message}</span>}
+          />
         </div>
         <div className="form__input-full">
           <label htmlFor={`${modifier}-phone`} className="form__label">
@@ -62,7 +69,12 @@ export const Form = ({
             placeholder="Телефон"
             autoComplete="tel"
           />
-          <p>{errors.phone?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name={phone}
+            className="form__error-message"
+            render={({ message }) => <span className="tooltip">{message}</span>}
+          />
         </div>
         <div className="form__input-full">
           <label htmlFor="email" className="form__label">
@@ -76,6 +88,11 @@ export const Form = ({
             autoComplete="email"
           />
           <p>{errors.email?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name={email}
+            render={({ message }) => <span className="tooltip">{message}</span>}
+          />
         </div>
         <div className="form__input-full">
           <label htmlFor="date" className="form__label">
@@ -114,10 +131,16 @@ export const Form = ({
             )}
           />
           <p>{errors.date?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name={date}
+            className="form__error-message"
+            render={({ message }) => <span className="tooltip">{message}</span>}
+          />
           {/*           <ErrorMessage
   errors={errors}
   name="birthDate"
-  render={({ message }) => <p>{message}</p>}
+  render={({ message }) =>   <span className="tooltip">{message}</span>}
 /> */}
         </div>
       </fieldset>

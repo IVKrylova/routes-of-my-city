@@ -10,11 +10,11 @@ import plus from "../../images/plus.svg";
 import lineHorizontal from "../../images/line-horizontal.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { formSchema } from "../Validation/Validation";
+import * as auth from "../../utils/auth";
+import { ERROR_MESSAGES } from "../../utils/constants";
+
 const Register = () => {
-  const {
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { reset } = useForm({
     resolver: yupResolver(formSchema),
   });
   const navigate = useNavigate();
@@ -31,12 +31,31 @@ const Register = () => {
     resolver: yupResolver(formSchema),
   });
   const onSubmit = (data) => {
+    auth
+      .register(data)
+      .then((response) => {
+        if (response.email) {
+          /* handleLogin(email, password); */
+          alert("ok");
+          /*        setSuccess(true);
+          setInfoTooltip(true); */
+        }
+      })
+      .catch((res) => {
+        if (res.statusText === "Bad Request") {
+          alert(ERROR_MESSAGES.dataBadRequest);
+        } else if (res.status === 409) {
+          alert(ERROR_MESSAGES.userExists);
+        } else if (res.status === 401) {
+          alert(ERROR_MESSAGES.userBadRequest);
+        } else {
+          alert(`${ERROR_MESSAGES.serverError} ${res.status}`);
+        }
+      });
     console.log(data);
     methods.watch();
     reset();
   };
-  /*   console.log(errors);
-  console.log(watch()); */
   return (
     <Routes>
       <Route
@@ -69,29 +88,22 @@ const Register = () => {
                 <input
                   {...methods.register("team", { required: true })}
                   type="text"
-                  /*    onChange={handleChange} */
                   className="form__input_type_simple"
                   placeholder="Название команды"
                 />
-                {/*           <ErrorMessage
-                  errors={errors}
+                <ErrorMessage
+                  errors={methods.errors}
                   name="team"
-                  render={({ messages }) => {
-                    console.log("messages", messages);
-                    return messages
-                      ? Object.entries(messages).map(([type, message]) => (
-                          <p key={type}>{message}</p>
-                        ))
-                      : null;
-                  }}
-                /> */}
+                  render={({ message }) => (
+                    <span className="tooltip">{message}</span>
+                  )}
+                />
               </div>
               <div className="form__fieldset-box">
                 {forms
                   .map((fieldset) => {
                     return (
                       <Form
-                        {...methods}
                         key={fieldset.id}
                         id={fieldset.id}
                         formName={fieldset.formName}
@@ -129,16 +141,14 @@ const Register = () => {
                 />
                 <fieldset className="form__fieldset">
                   <h1 className="form__title">Данные для входа</h1>
-                  {/*  <label htmlFor="email" className="form__label"></label> */}
                   <input
                     {...methods.register("email")}
                     type="email"
                     className="form__input_type_simple form__input_type_signin"
                     placeholder="Электронная почта"
                   />
-                  {/*        <p>{errors.email?.message}</p>
-                  <ErrorMessage
-                    errors={errors}
+                  {/*       <ErrorMessage
+                    errors={methods.errors}
                     name="email"
                     render={({ messages }) => {
                       console.log("messages", messages);
@@ -149,15 +159,28 @@ const Register = () => {
                         : null;
                     }}
                   /> */}
-                  {/*   <label htmlFor="password" className="form__label"></label> */}
+                  <ErrorMessage
+                    errors={methods.errors}
+                    name="cpassword"
+                    className="form__error-message"
+                    render={({ message }) => (
+                      <span className="tooltip">{message}</span>
+                    )}
+                  />
                   <input
                     {...methods.register("password")}
                     type="password"
                     className="form__input_type_simple form__input_type_signin"
                     placeholder="Пароль"
                   />
-                  {/*      <p>{errors.password?.message}</p> */}
-                  {/*     <label htmlFor="cpassword" className="form__label"></label> */}
+                  <ErrorMessage
+                    errors={methods.errors}
+                    name="password"
+                    className="form__error-message"
+                    render={({ message }) => (
+                      <span className="tooltip">{message}</span>
+                    )}
+                  />
                   <input
                     {...methods.register("cpassword")}
                     type="password"
@@ -165,36 +188,30 @@ const Register = () => {
                     placeholder="Повторить пароль"
                   />
                   <ErrorMessage
-                    errors={errors}
-                    name="singleErrorInput"
-                    render={({ message }) => <p>{message}</p>}
+                    errors={methods.errors}
+                    name="cpassword"
+                    className="form__error-message"
+                    render={({ message }) => (
+                      <span className="tooltip">{message}</span>
+                    )}
                   />
-                  {/*            <p>{errors.cpassword?.message}</p>
-                  <ErrorMessage
-                    errors={errors}
-                    name="password"
-                    render={({ messages }) => {
-                      console.log("messages", messages);
-                      return messages
-                        ? Object.entries(messages).map(([type, message]) => (
-                            <p key={type}>{message}</p>
-                          ))
-                        : null;
-                    }}
-                  />
-                  {errors.password?.type === "required" && (
-                    <p role="alert">First name is required</p>
-                  )} */}
                   <div className="form__checkbox-container">
                     <input
                       type="checkbox"
                       {...methods.register("checkbox")}
                       className="form__checkbox"
                     />
+                    <ErrorMessage
+                      errors={methods.errors}
+                      name="checkbox"
+                      className="form__error-message"
+                      render={({ message }) => (
+                        <span className="tooltip">{message}</span>
+                      )}
+                    />
                     <label htmlFor="checkbox" className="form__checkbox-label">
                       Нажимая, вы принимаете согласие о конфедиациальности
                     </label>
-                    {errors && console.log(errors)}
                   </div>
                 </fieldset>
                 <div className="form__button-container">

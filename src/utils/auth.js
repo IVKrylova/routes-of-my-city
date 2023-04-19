@@ -3,6 +3,7 @@ const API_URL = "http://mycitybackend.pythonanywhere.com/api";
 export const register = (data) => {
   return fetch(`${API_URL}/users/register`, {
     method: "POST",
+    
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
