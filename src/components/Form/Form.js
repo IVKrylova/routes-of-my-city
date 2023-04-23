@@ -50,11 +50,9 @@ export const Form = ({
             autoComplete="name"
             errors={errors}
           />
-          {/*   <p>{errors.name?.message}</p> */}
           <ErrorMessage
             errors={errors}
             name={name}
-            className="form__error-message"
             render={({ message }) => <span className="tooltip">{message}</span>}
           />
         </div>
@@ -72,7 +70,6 @@ export const Form = ({
           <ErrorMessage
             errors={errors}
             name={phone}
-            className="form__error-message"
             render={({ message }) => <span className="tooltip">{message}</span>}
           />
         </div>
@@ -87,7 +84,6 @@ export const Form = ({
             placeholder="Электронная почта"
             autoComplete="email"
           />
-          <p>{errors.email?.message}</p>
           <ErrorMessage
             errors={errors}
             name={email}
@@ -106,13 +102,13 @@ export const Form = ({
             autoComplete="bday"
           /> */}
           <Controller
-            defaultValue={new Date(1997, 6, 15)}
+            /*        defaultValue={new Date(1997, 6, 15)} */
             name={date}
             control={control}
             rules={{ required: true }}
             render={({
               field: { onChange, value, ...params },
-              fieldState: { error, invalid },
+              /* fieldState: { error, invalid }, */
             }) => (
               <DatePicker
                 {...params}
@@ -125,23 +121,16 @@ export const Form = ({
                 locale="ru"
                 selected={value}
                 onChange={onChange}
-                error={invalid}
-                helperText={invalid ? error.message : null}
+                /*    error={invalid}
+                helperText={invalid ? error.message : null} */
               />
             )}
           />
-          <p>{errors.date?.message}</p>
           <ErrorMessage
             errors={errors}
             name={date}
-            className="form__error-message"
             render={({ message }) => <span className="tooltip">{message}</span>}
           />
-          {/*           <ErrorMessage
-  errors={errors}
-  name="birthDate"
-  render={({ message }) =>   <span className="tooltip">{message}</span>}
-/> */}
         </div>
       </fieldset>
       {id % 2 === 0 && count !== id + 1 && (

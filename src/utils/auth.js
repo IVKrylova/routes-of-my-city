@@ -1,9 +1,8 @@
 const API_URL = "http://mycitybackend.pythonanywhere.com/api";
 
 export const register = (data) => {
-  return fetch(`${API_URL}/users/register`, {
+  return fetch(`${API_URL}/users/register/`, {
     method: "POST",
-    
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -18,7 +17,7 @@ export const register = (data) => {
         {
           member_number: 1,
           full_name: data.captainname,
-          birth_date: data.captaindate,
+          birth_date: `${data.captaindate.toISOString().slice(0, 10)}`,
           phone: data.captainphone,
           email: data.captainemail,
           is_captain: true,
@@ -26,33 +25,26 @@ export const register = (data) => {
         {
           member_number: 2,
           full_name: data.player2name,
-          birth_date: data.player2date,
+          birth_date: `${data.player2date.toISOString().slice(0, 10)}`,
           phone: data.player2phone,
           email: data.player2email,
           is_captain: false,
         },
       ],
     }),
-  }).then((response) => {
-    if (response.status === 201) {
-      return response.json();
-    } else {
-      throw new Error("Unsuccessful registration");
-    }
-  });
+  }).then(checkResponse);
 };
 
-export const login = (email, password) => {
-  return fetch(`${API_URL}/signin`, {
+export const login = (data) => {
+  return fetch(`${API_URL}/users/login`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email: data.email, password: data.password }),
   }).then(checkResponse);
 };
-
 export const checkToken = (token) => {
   return fetch(`${API_URL}/users/me`, {
     method: "GET",
@@ -66,9 +58,8 @@ export const checkToken = (token) => {
 };
 
 const checkResponse = (response) => {
-  if (response.ok) {
-    return response.json();
-  } else {
-    return Promise.reject(response);
-  }
+  if (response.ok) return response.json();
+  return response.json().then((response) => {
+    return response;
+  });
 };

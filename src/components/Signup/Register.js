@@ -14,11 +14,10 @@ import * as auth from "../../utils/auth";
 import { ERROR_MESSAGES } from "../../utils/constants";
 
 const Register = () => {
-  const { reset } = useForm({
-    resolver: yupResolver(formSchema),
-  });
   const navigate = useNavigate();
   const [countPlayers, setNumberOfPlayers] = useState(2);
+  /*   const [isLoggedIn, setIsLoggedIn] =useState(false);
+  const [jwt, setJWT] = useState(localStorage.getItem("jwt")); */
   const handlePlusClick = (e) => {
     e.preventDefault();
     setNumberOfPlayers(countPlayers + 1);
@@ -30,31 +29,117 @@ const Register = () => {
   const methods = useForm({
     resolver: yupResolver(formSchema),
   });
-  const onSubmit = (data) => {
-    auth
+  const onSubmit = async (data) => {
+    await auth
       .register(data)
       .then((response) => {
-        if (response.email) {
+        console.log("response", response);
+        if (response.token) {
           /* handleLogin(email, password); */
           alert("ok");
           /*        setSuccess(true);
           setInfoTooltip(true); */
+          methods.reset();
+        } else {
+          if (response.team) {
+            methods.setError("team", {
+              type: "custom",
+              message: response.team.name,
+            });
+          }
+          if (response.password) {
+            methods.setError("password", {
+              type: "custom",
+              message: response.password,
+            });
+          }
+          if (response.email) {
+            methods.setError("email", {
+              type: "custom",
+              message: response.email,
+            });
+          }
+          if (response.members_general[0]) {
+            methods.setError("captainemail", {
+              type: "custom",
+              message: response.members_general[0],
+            });
+          }
+          if (response.members_general[1]) {
+            methods.setError("captainephone", {
+              type: "custom",
+              message: response.members_general[1],
+            });
+          }
+          if (response.members) {
+            if (response.members[0].name) {
+              methods.setError("captainname", {
+                type: "custom",
+                message: response.members[0].name,
+              });
+            }
+            if (response.members[0].email) {
+              methods.setError("captainemail", {
+                type: "custom",
+                message: response.members[0].email,
+              });
+            }
+            if (response.members[0].phone) {
+              methods.setError("captainphone", {
+                type: "custom",
+                message: response.members[0].phone,
+              });
+            }
+            if (response.members[0].birth_date) {
+              methods.setError("captaindate", {
+                type: "custom",
+                message: response.members[0].birth_date,
+              });
+            }
+            if (response.members[1].name) {
+              methods.setError("player2name", {
+                type: "custom",
+                message: response.members[1].name,
+              });
+            }
+            if (response.members[1].email) {
+              methods.setError("player2email", {
+                type: "custom",
+                message: response.members[0].email,
+              });
+            }
+            if (response.members[1].phone) {
+              methods.setError("player2phone", {
+                type: "custom",
+                message: response.members[1].phone,
+              });
+            }
+            if (response.members[1].birth_date) {
+              methods.setError("player2date", {
+                type: "custom",
+                message: response.members[1].birth_date,
+              });
+            }
+          }
         }
       })
-      .catch((res) => {
-        if (res.statusText === "Bad Request") {
-          alert(ERROR_MESSAGES.dataBadRequest);
-        } else if (res.status === 409) {
-          alert(ERROR_MESSAGES.userExists);
-        } else if (res.status === 401) {
-          alert(ERROR_MESSAGES.userBadRequest);
-        } else {
-          alert(`${ERROR_MESSAGES.serverError} ${res.status}`);
+
+      .catch((err) => {
+        if (err.status === 400) {
+          if (err.password) {
+            const message = err.password[0];
+            console.log(message);
+          } else if (err.statusText === "Bad Request") {
+            alert(ERROR_MESSAGES.dataBadRequest);
+          } else if (err.status === 409) {
+            alert(ERROR_MESSAGES.userExists);
+          } else if (err.status === 401) {
+            alert(ERROR_MESSAGES.userBadRequest);
+          } else {
+            alert(`${ERROR_MESSAGES.serverError} ${err.status}`);
+          }
         }
       });
-    console.log(data);
-    methods.watch();
-    reset();
   };
   return (
     <Routes>
@@ -67,6 +152,7 @@ const Register = () => {
               onSubmit={methods.handleSubmit(onSubmit)}
               className="form container"
             >
+
               <Link to="/signin" className="link form__link">
                 <button
                   className="form__button form__back-button"
@@ -162,7 +248,6 @@ const Register = () => {
                   <ErrorMessage
                     errors={methods.errors}
                     name="cpassword"
-                    className="form__error-message"
                     render={({ message }) => (
                       <span className="tooltip">{message}</span>
                     )}
@@ -176,7 +261,6 @@ const Register = () => {
                   <ErrorMessage
                     errors={methods.errors}
                     name="password"
-                    className="form__error-message"
                     render={({ message }) => (
                       <span className="tooltip">{message}</span>
                     )}
@@ -190,7 +274,6 @@ const Register = () => {
                   <ErrorMessage
                     errors={methods.errors}
                     name="cpassword"
-                    className="form__error-message"
                     render={({ message }) => (
                       <span className="tooltip">{message}</span>
                     )}
@@ -204,7 +287,6 @@ const Register = () => {
                     <ErrorMessage
                       errors={methods.errors}
                       name="checkbox"
-                      className="form__error-message"
                       render={({ message }) => (
                         <span className="tooltip">{message}</span>
                       )}
