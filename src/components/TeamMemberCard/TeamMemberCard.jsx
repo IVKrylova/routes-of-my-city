@@ -55,6 +55,7 @@ const TeamMemberCard = (props) => {
               type='button'
               className='team-member-card__button-add'
               aria-label='кнопка добавить игрока'
+              onClick={props.handleClickAddPlayer}
             ></button>
           </div>
         </>

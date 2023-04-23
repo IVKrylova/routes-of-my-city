@@ -19,6 +19,7 @@ import DeleteProfilePopup from '../DeleteProfilePopup/DeleteProfilePopup';
 import PopupChangeQuestCategory from '../PopupChangeQuestCategory/PopupChangeQuestCategory';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
+import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -68,6 +69,7 @@ function App() {
   const [isOpenPopupChangeQuestCategory, setIsOpenPopupChangeQuestCategory] = useState(false);
   const [changedCategoryQuestId, setChangedCategoryQuestId] = useState(null);
   const [questCategoriesToChange, setQuestCategoriesToChange] = useState([]);
+  const [isOpenPopopAddPlayer, setIsOpenPopopAddPlayer] = useState(false);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -248,6 +250,7 @@ function App() {
     setIsOpenCancelQuestPopup(false);
     setIsOpenDeleteProfilePopup(false);
     setIsOpenPopupChangeQuestCategory(false);
+    setIsOpenPopopAddPlayer(false);
     setTimeout(() => setIsPopupSuccess(false), 1000);
   }
 
@@ -301,6 +304,14 @@ function App() {
   const changeCategoryInPopup = (category) => {
     // ToDo: fix with Api, use changedCategoryQuestId
     console.log(category);
+    setIsPopupSuccess(true);
+  }
+
+  const openPopopAddPlayer = () => {
+    setIsOpenPopopAddPlayer(true);
+  }
+
+  const handleFormAddPlayer = (data) => {
     setIsPopupSuccess(true);
   }
 
@@ -408,6 +419,7 @@ function App() {
                 sendIdQuest={openCancelQuestPopup}
                 handleClickDeleteProfile={openDeleteProfilePopup}
                 sendChangeCategoryQuestId={openPopupChangeQuestCategory}
+                handleClickAddPlayer={openPopopAddPlayer}
               />
             }
           />
@@ -548,6 +560,14 @@ function App() {
         isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
         questCategories={questCategoriesToChange}
         sendCategory={changeCategoryInPopup}
+      />
+      <PopupAddPlayer
+        isOpenPopup={isOpenPopopAddPlayer}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        isOpenPopopAddPlayer={isOpenPopopAddPlayer}
+        sendDataForm={handleFormAddPlayer}
       />
     </div>
   );

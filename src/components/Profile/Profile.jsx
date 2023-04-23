@@ -32,6 +32,7 @@ const Profile = (props) => {
               player={el}
               key={el.id}
               sendDeletedPlayer={props.sendDeletedPlayer}
+              handleClickAddPlayer={props.handleClickAddPlayer}
             />
           );
         })}
