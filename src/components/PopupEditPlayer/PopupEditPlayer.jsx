@@ -2,8 +2,6 @@ import GeneralPopup from '../GeneralPopup/GeneralPopup';
 import FormPlayer from '../FormPlayer/FormPlayer';
 
 const PopupEditPlayer = (props) => {
-
-  console.log(props)
   return (
     <GeneralPopup
       message='Изменения сохранены'
