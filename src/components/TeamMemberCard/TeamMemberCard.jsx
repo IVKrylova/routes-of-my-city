@@ -5,6 +5,11 @@ const TeamMemberCard = (props) => {
     props.sendDeletedPlayer(props.player.id);
   }
 
+  // ToDo: fix whith redux
+  const handleClickButtonEdit = () => {
+    props.sendEditedPlayer(props.player.id);
+  }
+
   return (
     <li className={`team-member-card ${props.player.name ? '' : 'team-member-card_empty'}`}>
       {props.player.name &&
@@ -18,6 +23,7 @@ const TeamMemberCard = (props) => {
                 type='button'
                 className='team-member-card__button-edit'
                 aria-label='кнопка редактировать карточку игрока'
+                onClick={handleClickButtonEdit}
               ></button>
             </div>
             {props.player.status !== 'Капитан' && props.player.status !== '2 игрок' &&

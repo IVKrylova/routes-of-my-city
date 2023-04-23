@@ -1,7 +1,9 @@
 import GeneralPopup from '../GeneralPopup/GeneralPopup';
 import FormPlayer from '../FormPlayer/FormPlayer';
 
-const PopupAddPlayer = (props) => {
+const PopupEditPlayer = (props) => {
+
+  console.log(props)
   return (
     <GeneralPopup
       message='Изменения сохранены'
@@ -13,16 +15,16 @@ const PopupAddPlayer = (props) => {
     >
       <FormPlayer
         sendDataForm={props.sendDataForm}
-        title='Добавить игрока'
-        button='Добавить'
-        defaultName=''
-        defaultPhone=''
-        defaultEmail=''
-        defaultBirthday=''
-        defaultCaptain={false}
+        title='Редактировать игрока'
+        button='Сохранить'
+        defaultName={props.editedPlayer.name}
+        defaultPhone={props.editedPlayer.phone}
+        defaultEmail={props.editedPlayer.email}
+        defaultBirthday={props.editedPlayer.birthday}
+        defaultCaptain={props.editedPlayer.status === 'Капитан'}
       />
     </GeneralPopup>
   );
 }
 
-export default PopupAddPlayer;
+export default PopupEditPlayer;

@@ -20,6 +20,7 @@ import PopupChangeQuestCategory from '../PopupChangeQuestCategory/PopupChangeQue
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
+import PopupEditPlayer from '../PopupEditPlayer/PopupEditPlayer';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -70,6 +71,8 @@ function App() {
   const [changedCategoryQuestId, setChangedCategoryQuestId] = useState(null);
   const [questCategoriesToChange, setQuestCategoriesToChange] = useState([]);
   const [isOpenPopopAddPlayer, setIsOpenPopopAddPlayer] = useState(false);
+  const [isOpenPopopEditPlayer, setIsOpenPopopEditPlayer] = useState(false);
+  const [editedPlayer, setEditedPlayer] = useState({});
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -199,6 +202,7 @@ function App() {
     setTeamPlayers(team);
     // ToDo: if deleting successfull
     setIsPopupSuccess(true);
+     // ToDo: fix with Redux
     setDeletedPlayerId(null);
   }
 
@@ -251,6 +255,7 @@ function App() {
     setIsOpenDeleteProfilePopup(false);
     setIsOpenPopupChangeQuestCategory(false);
     setIsOpenPopopAddPlayer(false);
+    setIsOpenPopopEditPlayer(false)
     setTimeout(() => setIsPopupSuccess(false), 1000);
   }
 
@@ -311,8 +316,23 @@ function App() {
     setIsOpenPopopAddPlayer(true);
   }
 
+  // ToDo: fix with Redux
   const handleFormAddPlayer = (data) => {
     setIsPopupSuccess(true);
+  }
+
+  // ToDo: fix with Redux
+  const handleClickEditPlayer = (id) => {
+    setIsOpenPopopEditPlayer(true);
+    for (let key in teams.members) {
+      if (teams.members[key].id === id) setEditedPlayer(team.members[key]);
+    }
+  }
+
+  // ToDo: fix with Api
+  const handleFormEditPlayer = (data) => {
+    setIsPopupSuccess(true);
+    setEditedPlayer({});
   }
 
   useEffect(_ => {
@@ -420,6 +440,7 @@ function App() {
                 handleClickDeleteProfile={openDeleteProfilePopup}
                 sendChangeCategoryQuestId={openPopupChangeQuestCategory}
                 handleClickAddPlayer={openPopopAddPlayer}
+                handleClickEditPlayer={handleClickEditPlayer}
               />
             }
           />
@@ -569,6 +590,15 @@ function App() {
         isOpenPopopAddPlayer={isOpenPopopAddPlayer}
         sendDataForm={handleFormAddPlayer}
       />
+      <PopupEditPlayer
+        isOpenPopup={isOpenPopopEditPlayer}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        isOpenPopopAddPlayer={isOpenPopopEditPlayer}
+        sendDataForm={handleFormEditPlayer}
+        editedPlayer={editedPlayer}
+      ></PopupEditPlayer>
     </div>
   );
 }

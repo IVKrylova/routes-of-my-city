@@ -1,7 +1,7 @@
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './FormPlayer.scss';
 
-const FormPlayer = ({ sendDataForm }) => {
+const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, defaultEmail, defaultBirthday, defaultCaptain }) => {
   const { values, handleChange } = useFormAndValidation();
 
   const handleFormSubmit = (evt) => {
@@ -12,7 +12,7 @@ const FormPlayer = ({ sendDataForm }) => {
   return (
     <form className='form form-add-player' onSubmit={handleFormSubmit}>
       <h2 className='form form-add-player__title'>
-        Добавить игрока
+        {title}
       </h2>
       <label htmlFor='name' className='form-add-player__input-block'>
         <input
@@ -22,7 +22,7 @@ const FormPlayer = ({ sendDataForm }) => {
           id='name'
           required
           placeholder='Имя'
-          value={values.name || ''}
+          value={values.name || defaultName}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.name ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -38,7 +38,7 @@ const FormPlayer = ({ sendDataForm }) => {
           id='tel'
           required
           placeholder='Телефон'
-          value={values.tel || ''}
+          value={values.tel || defaultPhone}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.tel ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -54,7 +54,7 @@ const FormPlayer = ({ sendDataForm }) => {
           id='email'
           required
           placeholder='Почта'
-          value={values.email || ''}
+          value={values.email || defaultEmail}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.email ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -70,7 +70,7 @@ const FormPlayer = ({ sendDataForm }) => {
           id='birthday'
           required
           placeholder='Дата рождения'
-          value={values.birthday || ''}
+          value={values.birthday || defaultBirthday}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.birthday ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -85,7 +85,7 @@ const FormPlayer = ({ sendDataForm }) => {
           name='captain'
           id='captain'
           placeholder='Дата рождения'
-          value={values.captain}
+          value={values.captain || defaultCaptain}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-checkbox-span`}>
@@ -93,7 +93,7 @@ const FormPlayer = ({ sendDataForm }) => {
         </span>
       </label>
       <button type='submit' className='form-add-player__button'>
-        Добавить
+        {button}
       </button>
     </form>
   );
