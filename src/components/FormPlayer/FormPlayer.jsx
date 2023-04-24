@@ -22,7 +22,7 @@ const FormPlayer = (props) => {
           id={props.idName}
           required
           placeholder='Имя'
-          value={values.name || props.defaultName}
+          value={values.name || props.defaultName || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.name ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -38,7 +38,7 @@ const FormPlayer = (props) => {
           id={props.idTel}
           required
           placeholder='Телефон'
-          value={values.tel || props.defaultPhone}
+          value={values.tel || props.defaultPhone || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.tel ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -54,7 +54,7 @@ const FormPlayer = (props) => {
           id={props.idEmail}
           required
           placeholder='Почта'
-          value={values.email || props.defaultEmail}
+          value={values.email || props.defaultEmail || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.email ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -70,7 +70,7 @@ const FormPlayer = (props) => {
           id={props.idBirthday}
           required
           placeholder='Дата рождения'
-          value={values.birthday || props.defaultBirthday}
+          value={values.birthday || props.defaultBirthday || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.birthday ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -84,7 +84,8 @@ const FormPlayer = (props) => {
           type='checkbox'
           name='captain'
           id={props.idCaptain}
-          value={values.captain || props.defaultCaptain}
+          value={values.captain || props.defaultCaptain || false}
+          checked={props.defaultCaptain}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-checkbox-span`}>
