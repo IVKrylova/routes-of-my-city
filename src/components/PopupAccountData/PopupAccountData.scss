@@ -11,6 +11,7 @@
   border-radius: $border-radius-block;
   top: 60px;
   right: 20px;
+  z-index: 10000;
 
   @include media_768 {
     top: 110px;
