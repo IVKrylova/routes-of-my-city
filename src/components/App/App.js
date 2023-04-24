@@ -21,6 +21,7 @@ import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
 import PopupEditPlayer from '../PopupEditPlayer/PopupEditPlayer';
+import PopupResetPassword from '../PopupResetPassword/PopupResetPassword';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -72,6 +73,7 @@ function App() {
   const [questCategoriesToChange, setQuestCategoriesToChange] = useState([]);
   const [isOpenPopopAddPlayer, setIsOpenPopopAddPlayer] = useState(false);
   const [isOpenPopopEditPlayer, setIsOpenPopopEditPlayer] = useState(false);
+  const [isOpenPopupResetPassword, setIsOpenPopupResetPassword] = useState(false);
   const [editedPlayer, setEditedPlayer] = useState({});
   const screenWidth = useWindowWidth();
   let location = useLocation();
@@ -255,7 +257,8 @@ function App() {
     setIsOpenDeleteProfilePopup(false);
     setIsOpenPopupChangeQuestCategory(false);
     setIsOpenPopopAddPlayer(false);
-    setIsOpenPopopEditPlayer(false)
+    setIsOpenPopopEditPlayer(false);
+    setIsOpenPopupResetPassword(false);
     setTimeout(() => setIsPopupSuccess(false), 1000);
   }
 
@@ -333,6 +336,11 @@ function App() {
   const handleFormEditPlayer = (data) => {
     setIsPopupSuccess(true);
     setEditedPlayer({});
+  }
+
+  // ToDo: check logic
+  const openPopupResetPassword = () => {
+    setIsOpenPopupResetPassword(true);
   }
 
   useEffect(_ => {
@@ -441,6 +449,7 @@ function App() {
                 sendChangeCategoryQuestId={openPopupChangeQuestCategory}
                 handleClickAddPlayer={openPopopAddPlayer}
                 handleClickEditPlayer={handleClickEditPlayer}
+                openPopupResetPassword={openPopupResetPassword}
               />
             }
           />
@@ -598,7 +607,14 @@ function App() {
         isOpenPopopAddPlayer={isOpenPopopEditPlayer}
         sendDataForm={handleFormEditPlayer}
         editedPlayer={editedPlayer}
-      ></PopupEditPlayer>
+      />
+      <PopupResetPassword
+        isOpenPopup={isOpenPopupResetPassword}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        goToHomePage={handleButtongoToHomePage}
+        isOpenPopupResetPassword={isOpenPopupResetPassword}
+      />
     </div>
   );
 }

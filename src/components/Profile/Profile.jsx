@@ -68,7 +68,11 @@ const Profile = (props) => {
         }
         <ul className='profile__settings'>
           <li>
-            <button type='button' className='profile__button'>
+            <button
+              type='button'
+              className='profile__button'
+              onClick={props.openPopupResetPassword}
+            >
               Сбросить пароль
             </button>
           </li>

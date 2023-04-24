@@ -3,7 +3,11 @@ import './GeneralPopup.scss';
 
 const GeneralPopup = (props) => {
   const classPopup = `general-popup ${props.isOpenPopup ? 'general-popup_opened' : ''}`;
-  const classPopupContainer = `general-popup__container ${props.isOpenPopupChangeQuestCategory ? 'general-popup__container_change-category' : ''} ${props.isOpenPopopAddPlayer ? 'general-popup__container_player' : ''} ${props.isOpenPopopEditPlayer ? 'general-popup__container_player' : ''}`;
+  const classPopupContainer = `general-popup__container
+    ${props.isOpenPopupChangeQuestCategory ? 'general-popup__container_change-category' : ''}
+    ${props.isOpenPopopAddPlayer ? 'general-popup__container_player' : ''}
+    ${props.isOpenPopopEditPlayer ? 'general-popup__container_player' : ''}
+    ${props.isOpenPopupResetPassword ? 'general-popup__container_password' : ''}`;
 
   return (
     <section className={classPopup}>
@@ -20,6 +24,7 @@ const GeneralPopup = (props) => {
             {props.isOpenPopupChangeQuestCategory === undefined &&
             props.isOpenPopopAddPlayer === undefined &&
             props.isOpenPopopEditPlayer === undefined &&
+            props.isOpenPopupResetPassword === undefined &&
               <ul className='general-popup__button-list'>
                 <li>
                   <button

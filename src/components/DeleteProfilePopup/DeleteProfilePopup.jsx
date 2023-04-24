@@ -10,12 +10,11 @@ const DeleteProfilePopup = (props) => {
       isPopupSuccess={props.isPopupSuccess}
       goToHomePage={props.goToHomePage}
       textButtonCta='Удалить'
-      actionPopup={props.actionPopup}
       handleButtonClick={props.handleButtonClick}
     >
-    <PopupMessage
-      message='Вы действительно хотите удалить свой профиль в «мой город»?'
-    />
+      <PopupMessage
+        message='Вы действительно хотите удалить свой профиль в «мой город»?'
+      />
     </GeneralPopup>
   );
 }
