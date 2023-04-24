@@ -15,11 +15,6 @@ const PopupAddPlayer = (props) => {
         sendDataForm={props.sendDataForm}
         title='Добавить игрока'
         button='Добавить'
-        defaultName=''
-        defaultPhone=''
-        defaultEmail=''
-        defaultBirthday=''
-        defaultCaptain={false}
         idName='add-name'
         idPhone='add-tel'
         idEmail='add-email'

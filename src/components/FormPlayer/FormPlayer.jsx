@@ -1,13 +1,28 @@
+import { useEffect } from 'react';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './FormPlayer.scss';
 
 const FormPlayer = (props) => {
-  const { values, handleChange } = useFormAndValidation();
+  const { values, handleChange, setValues, setErrors, setIsValid } = useFormAndValidation();
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     props.sendDataForm(values)
   }
+
+  useEffect(_ => {
+    if (props.isOpenPopopEditPlayer) {
+      setValues({
+        name: props.player.name,
+        tel: props.player.phone,
+        email: props.player.email,
+        birthday: props.player.birthday,
+        captain: props.player.status === 'Капитан',
+      });
+      setErrors({});
+      setIsValid(true);
+    }
+  }, [props.player, props.isOpenPopopEditPlayer]);
 
   return (
     <form className='form form-add-player' onSubmit={handleFormSubmit}>
@@ -22,7 +37,7 @@ const FormPlayer = (props) => {
           id={props.idName}
           required
           placeholder='Имя'
-          value={values.name || props.defaultName || ''}
+          value={values.name || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.name ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -38,7 +53,7 @@ const FormPlayer = (props) => {
           id={props.idTel}
           required
           placeholder='Телефон'
-          value={values.tel || props.defaultPhone || ''}
+          value={values.tel || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.tel ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -54,7 +69,7 @@ const FormPlayer = (props) => {
           id={props.idEmail}
           required
           placeholder='Почта'
-          value={values.email || props.defaultEmail || ''}
+          value={values.email || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.email ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -70,7 +85,7 @@ const FormPlayer = (props) => {
           id={props.idBirthday}
           required
           placeholder='Дата рождения'
-          value={values.birthday || props.defaultBirthday || ''}
+          value={values.birthday || ''}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.birthday ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -84,8 +99,8 @@ const FormPlayer = (props) => {
           type='checkbox'
           name='captain'
           id={props.idCaptain}
-          value={values.captain || props.defaultCaptain || false}
-          checked={props.defaultCaptain}
+          value={values.captain || false}
+          checked={props.player && props.player.status === 'Капитан'}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-checkbox-span`}>

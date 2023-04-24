@@ -618,7 +618,7 @@ function App() {
         onClosePopup={closeAllPopup}
         isPopupSuccess={isPopupSuccess}
         goToHomePage={handleButtongoToHomePage}
-        isOpenPopopAddPlayer={isOpenPopopEditPlayer}
+        isOpenPopopEditPlayer={isOpenPopopEditPlayer}
         sendDataForm={handleFormEditPlayer}
         editedPlayer={editedPlayer}
       />
