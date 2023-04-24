@@ -71,7 +71,7 @@ const Profile = (props) => {
             <button
               type='button'
               className='profile__button'
-              onClick={props.openPopupResetPassword}
+              onClick={props.openPopupChangePassword}
             >
               Сбросить пароль
             </button>

@@ -22,6 +22,7 @@ import AnswerPage from '../AnswerPage/AnswerPage';
 import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
 import PopupEditPlayer from '../PopupEditPlayer/PopupEditPlayer';
 import PopupResetPassword from '../PopupResetPassword/PopupResetPassword';
+import PopupChangePassword from '../PopupChangePassword/PopupChangePassword';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -75,6 +76,7 @@ function App() {
   const [isOpenPopopEditPlayer, setIsOpenPopopEditPlayer] = useState(false);
   const [isOpenPopupResetPassword, setIsOpenPopupResetPassword] = useState(false);
   const [editedPlayer, setEditedPlayer] = useState({});
+  const [isOpenPopupChangePassword, setIsOpenPopupChangePassword] = useState(false);
   const screenWidth = useWindowWidth();
   let location = useLocation();
 
@@ -259,6 +261,7 @@ function App() {
     setIsOpenPopopAddPlayer(false);
     setIsOpenPopopEditPlayer(false);
     setIsOpenPopupResetPassword(false);
+    setIsOpenPopupChangePassword(false);
     setTimeout(() => setIsPopupSuccess(false), 1000);
   }
 
@@ -341,6 +344,16 @@ function App() {
   // ToDo: check logic
   const openPopupResetPassword = () => {
     setIsOpenPopupResetPassword(true);
+  }
+
+  // ToDo: check logic
+  const openPopupChangePassword = () => {
+    setIsOpenPopupChangePassword(true);
+  }
+
+  // ToDo: connect API
+  const handleFormChangePassword = (data) => {
+    setIsPopupSuccess(true);
   }
 
   useEffect(_ => {
@@ -450,6 +463,7 @@ function App() {
                 handleClickAddPlayer={openPopopAddPlayer}
                 handleClickEditPlayer={handleClickEditPlayer}
                 openPopupResetPassword={openPopupResetPassword}
+                openPopupChangePassword={openPopupChangePassword}
               />
             }
           />
@@ -612,8 +626,14 @@ function App() {
         isOpenPopup={isOpenPopupResetPassword}
         onClosePopup={closeAllPopup}
         isPopupSuccess={isPopupSuccess}
-        goToHomePage={handleButtongoToHomePage}
         isOpenPopupResetPassword={isOpenPopupResetPassword}
+      />
+      <PopupChangePassword
+        isOpenPopup={isOpenPopupChangePassword}
+        onClosePopup={closeAllPopup}
+        isPopupSuccess={isPopupSuccess}
+        isOpenPopupChangePassword={isOpenPopupChangePassword}
+        sendDataForm={handleFormChangePassword}
       />
     </div>
   );

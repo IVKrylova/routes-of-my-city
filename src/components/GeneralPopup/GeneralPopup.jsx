@@ -1,4 +1,5 @@
 import iconSuccess from '../../images/icon-success-popup.svg';
+import iconEmail from '../../images/icon-email-success.svg';
 import './GeneralPopup.scss';
 
 const GeneralPopup = (props) => {
@@ -7,7 +8,8 @@ const GeneralPopup = (props) => {
     ${props.isOpenPopupChangeQuestCategory ? 'general-popup__container_change-category' : ''}
     ${props.isOpenPopopAddPlayer ? 'general-popup__container_player' : ''}
     ${props.isOpenPopopEditPlayer ? 'general-popup__container_player' : ''}
-    ${props.isOpenPopupResetPassword ? 'general-popup__container_password' : ''}`;
+    ${props.isOpenPopupResetPassword ? 'general-popup__container_password' : ''}
+    ${props.isOpenPopupChangePassword ? 'general-popup__container_password' : ''}`;
 
   return (
     <section className={classPopup}>
@@ -25,6 +27,7 @@ const GeneralPopup = (props) => {
             props.isOpenPopopAddPlayer === undefined &&
             props.isOpenPopopEditPlayer === undefined &&
             props.isOpenPopupResetPassword === undefined &&
+            props.isOpenPopupChangePassword === undefined &&
               <ul className='general-popup__button-list'>
                 <li>
                   <button
@@ -50,21 +53,43 @@ const GeneralPopup = (props) => {
         }
         {props.isPopupSuccess &&
           <>
-            <img
-              className='general-popup__succes-image'
-              alt='Иконка действие успешно выполнено'
-              src={iconSuccess}
-            />
-            <p className='general-popup__succes-message'>
-              {props.message}
-            </p>
-            <button
+            {!props.isOpenPopupChangePassword &&
+              <>
+                <img
+                  className='general-popup__succes-image'
+                  alt='Иконка действие успешно выполнено'
+                  src={iconSuccess}
+                />
+                <p className='general-popup__succes-message'>
+                  {props.message}
+                </p>
+              </>
+            }
+            {props.isOpenPopupChangePassword &&
+            <>
+              <img
+                className='general-popup__succes-image'
+                alt='Иконка инструкции отправлены на почту'
+                src={iconEmail}
+              />
+              <p className='general-popup__succes-message'>
+                Письмо отправлено.
+              </p>
+              <p className='general-popup__succes-message'>
+                Проверьте указанную почту
+              </p>
+            </>
+            }
+            {props.isOpenPopupResetPassword === undefined &&
+            props.isOpenPopupChangePassword === undefined &&
+              <button
               type='button'
               onClick={props.goToHomePage}
               className='general-popup__button-to-home-page'
-            >
-              На главную
-            </button>
+              >
+                На главную
+              </button>
+            }
           </>
         }
       </div>
