@@ -20,6 +20,11 @@ const PopupEditPlayer = (props) => {
         defaultEmail={props.editedPlayer.email}
         defaultBirthday={props.editedPlayer.birthday}
         defaultCaptain={props.editedPlayer.status === 'Капитан'}
+        idName='edit-name'
+        idPhone='edit-tel'
+        idEmail='edit-email'
+        idBirthday='edit-birthday'
+        idCaptain='edit-captain'
       />
     </GeneralPopup>
   );

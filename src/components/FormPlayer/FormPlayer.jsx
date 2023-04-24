@@ -1,28 +1,28 @@
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './FormPlayer.scss';
 
-const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, defaultEmail, defaultBirthday, defaultCaptain }) => {
+const FormPlayer = (props) => {
   const { values, handleChange } = useFormAndValidation();
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    sendDataForm(values)
+    props.sendDataForm(values)
   }
 
   return (
     <form className='form form-add-player' onSubmit={handleFormSubmit}>
       <h2 className='form form-add-player__title'>
-        {title}
+        {props.title}
       </h2>
-      <label htmlFor='name' className='form-add-player__input-block'>
+      <label htmlFor={props.idName} className='form-add-player__input-block'>
         <input
           className={`form-add-player__input-block-input ${values.name ? 'form-add-player__input-block-input_fill' : ''}`}
           type='text'
           name='name'
-          id='name'
+          id={props.idName}
           required
           placeholder='Имя'
-          value={values.name || defaultName}
+          value={values.name || props.defaultName}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.name ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -30,15 +30,15 @@ const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, de
         </span>
         <span className='form-add-player__input-block-error'></span>
       </label>
-      <label htmlFor='name' className='form-add-player__input-block'>
+      <label htmlFor={props.idTel} className='form-add-player__input-block'>
         <input
           className={`form-add-player__input-block-input ${values.tel ? 'form-add-player__input-block-input_fill' : ''}`}
           type='tel'
           name='tel'
-          id='tel'
+          id={props.idTel}
           required
           placeholder='Телефон'
-          value={values.tel || defaultPhone}
+          value={values.tel || props.defaultPhone}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.tel ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -46,15 +46,15 @@ const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, de
         </span>
         <span className='form-add-player__input-block-error'></span>
       </label>
-      <label htmlFor='email' className='form-add-player__input-block'>
+      <label htmlFor={props.idEmail} className='form-add-player__input-block'>
         <input
           className={`form-add-player__input-block-input ${values.email ? 'form-add-player__input-block-input_fill' : ''}`}
           type='email'
           name='email'
-          id='email'
+          id={props.idEmail}
           required
           placeholder='Почта'
-          value={values.email || defaultEmail}
+          value={values.email || props.defaultEmail}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.email ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -62,15 +62,15 @@ const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, de
         </span>
         <span className='form-add-player__input-block-error'></span>
       </label>
-      <label htmlFor='birthday' className='form-add-player__input-block'>
+      <label htmlFor={props.idBirthday} className='form-add-player__input-block'>
         <input
           className={`form-add-player__input-block-input ${values.birthday ? 'form-add-player__input-block-input_fill' : ''}`}
           type='date'
           name='birthday'
-          id='birthday'
+          id={props.idBirthday}
           required
           placeholder='Дата рождения'
-          value={values.birthday || defaultBirthday}
+          value={values.birthday || props.defaultBirthday}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-block-placeholder ${values.birthday ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
@@ -78,14 +78,13 @@ const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, de
         </span>
         <span className='form-add-player__input-block-error'></span>
       </label>
-      <label htmlFor='captain' className={`form-add-player__input-checkbox`}>
+      <label htmlFor={props.idCaptain} className={`form-add-player__input-checkbox`}>
         <input
           className={`form-add-player__input-checkbox-input ${values.captain ? 'form-add-player__input-block-input_fill' : ''}`}
           type='checkbox'
           name='captain'
-          id='captain'
-          placeholder='Дата рождения'
-          value={values.captain || defaultCaptain}
+          id={props.idCaptain}
+          value={values.captain || props.defaultCaptain}
           onChange={handleChange}
         />
         <span className={`form-add-player__input-checkbox-span`}>
@@ -93,7 +92,7 @@ const FormPlayer = ({ sendDataForm, title, button, defaultName, defaultPhone, de
         </span>
       </label>
       <button type='submit' className='form-add-player__button'>
-        {button}
+        {props.button}
       </button>
     </form>
   );

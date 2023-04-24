@@ -20,6 +20,11 @@ const PopupAddPlayer = (props) => {
         defaultEmail=''
         defaultBirthday=''
         defaultCaptain={false}
+        idName='add-name'
+        idPhone='add-tel'
+        idEmail='add-email'
+        idBirthday='add-birthday'
+        idCaptain='add-captain'
       />
     </GeneralPopup>
   );
