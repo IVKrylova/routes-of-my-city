@@ -108,11 +108,7 @@ function App() {
 
   useEffect(() => {
 
-
-const res = getQuests();
-
-console.log(res)
-
+  //  const res = getQuests();
 
     // ToDo: replace with data from API
     setQuestsList(quests);
