@@ -56,3 +56,5 @@ export const INITIAL_STATE_TASK = {
 };
 
 export const DATE_DIGITS = 6;
+
+export const BASE_URL = 'https://mycitybackend.pythonanywhere.com/api';

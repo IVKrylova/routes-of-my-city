@@ -29,6 +29,7 @@ import {
   INITIAL_STATE_CURRENT_QUEST,
   INITIAL_STATE_TASK,
 } from '../../utils/constants';
+import { getQuests } from '../../utils/api';
 import './App.scss';
 // ToDo: delete after getting API data
 import { quests } from '../../utils/data/quests';
@@ -106,6 +107,13 @@ function App() {
   }
 
   useEffect(() => {
+
+
+const res = getQuests();
+
+console.log(res)
+
+
     // ToDo: replace with data from API
     setQuestsList(quests);
     if (quests.length > 0) setIsNoQuests(false);
