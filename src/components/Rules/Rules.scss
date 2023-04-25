@@ -1,0 +1,128 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.page-rules {
+  padding: 30px 5.6%;
+
+  @include media_768 {
+    padding: 50px 5.6%;
+  }
+
+  &__title {
+    @include reset-margins;
+    text-align: center;
+    color: $font-color-blue;
+    @include font-w600-sz24;
+
+    @include media_768 {
+      font-size: 28px;
+    }
+
+    &-span {
+      display: block;
+      text-transform: uppercase;
+    }
+  }
+
+  &__list {
+    @include reset-margins;
+    margin-top: 30px;
+    list-style-type: none;
+    counter-reset: item1;
+    row-gap: 20px;
+    @include flex-column;
+  }
+
+  &__section {
+    @include flex-column;
+    row-gap: 20px;
+
+    &-title {
+      @include reset-margins;
+      @include font-w600-sz20;
+      color: $font-color-black;
+      text-align: center;
+
+      @include media_768 {
+        font-size: 22px;
+      }
+
+      &::before {
+        counter-increment: item1;
+        content: counter(item1) '. ';
+      }
+    }
+
+    &-list {
+      list-style-type: none;
+      counter-reset: item2;
+      @include reset-margins;
+      @include flex-column;
+      row-gap: 10px;
+      @include font-w400-sz16;
+      color: $font-color-black;
+    }
+  }
+
+  &__text {
+    @include reset-margins;
+    margin-top: 10px;
+  }
+
+  &__item {
+    display: block;
+    text-indent: 20px;
+
+    &::before {
+      counter-increment: item2;
+      content: counter(item1) '.' counter(item2) '. ';
+    }
+
+    &-list {
+      @include reset-margins;
+      list-style-type: none;
+
+      &_dist {
+        list-style-type: disc;
+        list-style-position: inside;
+      }
+
+      &_number {
+        counter-reset: item3;
+        margin-left: 10px;
+
+        & li {
+          display: block;
+
+          &::before {
+            counter-increment: item3;
+            content: counter(item1) '.' counter(item2) '.' counter(item3) '. ';
+          }
+        }
+      }
+
+      &_star {
+        li {
+          display: block;
+
+          &::before {
+            content: '⭑ ';
+          }
+        }
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $font-color-black;
+  }
+
+  &_bold {
+    font-weight: 600;
+  }
+
+  &_underline {
+    text-decoration: underline;
+  }
+}
