@@ -29,7 +29,7 @@ const MainQuests = (props) => {
                 <QuestItem
                   quest={el}
                   resultQuest={props.resultQuest}
-                  sendQuestId={props.sendQuestId}
+                  sendQuestIdAndButton={props.sendQuestIdAndButton}
                   location={props.location}
                   isLogin={props.isLogin}
                 />

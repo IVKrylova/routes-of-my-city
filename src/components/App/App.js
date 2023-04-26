@@ -32,7 +32,6 @@ import {
 import { getQuests } from '../../utils/api';
 import './App.scss';
 // ToDo: delete after getting API data
-import { quests } from '../../utils/data/quests';
 import { results } from '../../utils/data/results';
 import { faq } from '../../utils/data/faq';
 import { teams } from '../../utils/data/teams';
@@ -107,11 +106,14 @@ function App() {
   }
 
   useEffect(() => {
-    // const res = getQuests().then(res => console.log(res))
-    // ToDo: replace with data from API
-    setQuestsList(quests);
-    if (quests.length > 0) setIsNoQuests(false);
-    setIsQuestCompleted(quests.some(el => el.isCompleted === true));
+    getQuests()
+      .then(res => {
+        const quests = res.results;
+        setQuestsList(quests);
+        if (quests.length > 0) setIsNoQuests(false);
+        setIsQuestCompleted(quests.some(el => el.status === 'finished'));
+      })
+      .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -234,10 +236,10 @@ function App() {
     navigate(`/quest/${currentQuestId}/task/${id}`);
   }
 
-  const handleClickTakePart = (questId) => {
+  const handleClickTakePart = ({ id, buttonText}) => {
     {/* ToDo: add checking quests list of the team */}
-    setCurrentQuestId(questId);
-    !isLogin ? navigate(`/quest/${questId}`) : navigate(`/quest/${questId}/list-exercise`);
+    setCurrentQuestId(id);
+    !isLogin ? navigate(`/quest/${id}`) : navigate(`/quest/${id}/list-exercise`);
   }
 
   const handleCancelAndGoBack = () => {
@@ -519,7 +521,7 @@ function App() {
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
-              sendQuestId={handleClickTakePart}
+              sendQuestIdAndButton={handleClickTakePart}
               location={location}
               isLogin={isLogin}
             />
