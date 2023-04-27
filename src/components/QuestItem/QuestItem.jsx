@@ -50,7 +50,7 @@ const QuestItem = ({ quest, location, sendQuestIdAndButton, isLogin, resultQuest
     } else if (quest.status === 'finished') {
       setButtonText('Регистрация завершена');
     }
-  }, [quest]);
+  }, [quest, isLogin]);
 
   return (
     <div className='quest-item'>

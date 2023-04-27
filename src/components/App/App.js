@@ -42,7 +42,7 @@ import { categories } from '../../utils/data/category';
 function App() {
   let navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
   const [questsList, setQuestsList] = useState([]);
   const [isNoQuests, setIsNoQuests] = useState(true);
