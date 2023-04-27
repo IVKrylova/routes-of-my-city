@@ -14,7 +14,6 @@ const Main = (props) => {
       <Benefits />
       <MainQuests
         isNoQuests={props.isNoQuests}
-        questsList={props.questsList}
         resultQuest={props.resultQuest}
         isQuestCompleted={props.isQuestCompleted}
         sendQuestIdAndButton={props.sendQuestIdAndButton}

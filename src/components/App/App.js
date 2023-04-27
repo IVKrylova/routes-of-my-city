@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
@@ -30,6 +31,7 @@ import {
   INITIAL_STATE_TASK,
 } from '../../utils/constants';
 import { getQuests } from '../../utils/api';
+import { setQuests } from '../../store/actionCreators/questsAction';
 import './App.scss';
 // ToDo: delete after getting API data
 import { results } from '../../utils/data/results';
@@ -41,10 +43,13 @@ import { categories } from '../../utils/data/category';
 
 function App() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const quests = useSelector(store => store.quests.quests);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
-  const [questsList, setQuestsList] = useState([]);
   const [isNoQuests, setIsNoQuests] = useState(true);
   const [isQuestCompleted, setIsQuestCompleted] = useState(false);
   const [resultQuest, setResultQuest] = useState([]);
@@ -109,7 +114,7 @@ function App() {
     getQuests()
       .then(res => {
         const quests = res.results;
-        setQuestsList(quests);
+        dispatch(setQuests(quests));
         if (quests.length > 0) setIsNoQuests(false);
         setIsQuestCompleted(quests.some(el => el.status === 'finished'));
       })
@@ -372,7 +377,7 @@ function App() {
 
   useEffect(() => {
     // ToDo: replace with API data
-    const quest = questsList.find(el => el.id === currentQuestId);
+    const quest = quests.find(el => el.id === currentQuestId);
     setCurrentQuest(quest);
     // ToDo: replace with API data
     //       get tasks by currentQuestId
@@ -381,7 +386,7 @@ function App() {
     //       get date by currentQuestId
     const date = new Date('Tue Apr 03 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
     setDeadline(date);
-  }, [currentQuestId, questsList]);
+  }, [currentQuestId, quests]);
 
   useEffect(() => {
     // ToDo: replace with API data
@@ -403,13 +408,13 @@ function App() {
 
   /* ToDo: check logics with API data */
   useEffect(() => {
-    const pathsQuests = questsList.map(el => `/quest/${el.id}`);
-    const pathsListExercise = questsList.map(el => `/quest/${el.id}/list-exercise`);
+    const pathsQuests = quests.map(el => `/quest/${el.id}`);
+    const pathsListExercise = quests.map(el => `/quest/${el.id}/list-exercise`);
     const pathsTasks = taskList.map(el => `/quest/${el.questId}/task/${el.id}`);
     const pathsAnswers = taskList.map(el => `/quest/${el.questId}/answer/${el.id}`);
 
     setPathList([...PATH_LIST, ...pathsQuests, ...pathsListExercise, ...pathsTasks, ...pathsAnswers]);
-  }, [questsList, taskList]);
+  }, [quests, taskList]);
 
   useEffect(() => {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
@@ -516,7 +521,6 @@ function App() {
           element={
             <Main
               isNoQuests={isNoQuests}
-              questsList={questsList}
               resultQuest={resultQuest}
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
