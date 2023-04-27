@@ -27,11 +27,11 @@ import PopupChangePassword from '../PopupChangePassword/PopupChangePassword';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
-  INITIAL_STATE_CURRENT_QUEST,
   INITIAL_STATE_TASK,
 } from '../../utils/constants';
 import { getQuests } from '../../utils/api';
 import { setQuests } from '../../store/actionCreators/questsAction';
+import { setCurrentQuest } from '../../store/actionCreators/currentQuestAction';
 import './App.scss';
 // ToDo: delete after getting API data
 import { results } from '../../utils/data/results';
@@ -64,8 +64,7 @@ function App() {
   const [taskList, setTaskList] = useState([]);
   const [isMobile, setIsMobile] = useState(true);
   const [pathList, setPathList] = useState(PATH_LIST);
-  const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
-  const [currentQuestId, setCurrentQuestId] = useState(null);
+  const [currentQuestId, setCurrentQuestId] = useState(1);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [questCategories, setQuestCategories] = useState([]);
   const [isOpenDeletePlayerPopup, setIsOpenDeletePlayerPopup] = useState(false);
@@ -376,9 +375,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // ToDo: replace with API data
     const quest = quests.find(el => el.id === currentQuestId);
-    setCurrentQuest(quest);
+    dispatch(setCurrentQuest(quest));
     // ToDo: replace with API data
     //       get tasks by currentQuestId
     setTaskList(tasks);
@@ -488,7 +486,6 @@ function App() {
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
-                currentQuestId={currentQuestId}
                 sendTaskIdByButton={goToAnswer}
               />
             }
@@ -535,7 +532,6 @@ function App() {
           path='/quest/:questId'
           element={
             <QuestPage
-              currentQuest={currentQuest}
               location={location}
               questCategories={questCategories}
               handleCancelAndGoBack={handleCancelAndGoBack}

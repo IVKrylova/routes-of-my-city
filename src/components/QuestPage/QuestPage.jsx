@@ -1,19 +1,17 @@
-import './QuestPage.scss';
+import { useSelector } from 'react-redux';
 import QuestItem from '../QuestItem/QuestItem';
 import FormChoiceCategory from '../FormChoiceCategory/FormChoiceCategory';
-// ToDo: delete after adding storage
-import { quests } from '../../utils/data/quests';
+import './QuestPage.scss';
 
 const QuestPage = (props) => {
+  const currentQuest = useSelector(store => store.currentQuest.currentQuest);
+
   return (
     <main className='quest-page'>
-      {/* props.currentQuest && */
-        <QuestItem
-          /* ToDo: fix after adding storage */
-          quest={props.currentQuest || quests[0]}
-          location={props.location}
-        />
-      }
+      <QuestItem
+        quest={currentQuest}
+        location={props.location}
+      />
       <div className='quest-page__choice'>
         <h1 className='quest-page__title'>
           Выбор категории
