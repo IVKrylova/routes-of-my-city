@@ -11,3 +11,8 @@ export const getQuests = () => {
   return fetch(`${BASE_URL}/questapp/quests/`)
     .then(checkResponse)
 }
+
+export const getQuestCategory = (id) => {
+  return fetch(`${BASE_URL}/questapp/quests/${id}/categories/`)
+    .then(checkResponse)
+}
