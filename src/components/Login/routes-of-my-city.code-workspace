@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../movies-explorer-frontend"
+		},
+		{
+			"path": "../../../../3/movies-explorer-frontend-main/src"
+		}
+	],
+	"settings": {}
+}

@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import "./Login.css";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../Validation/Validation";
+import { ErrorMessage } from "@hookform/error-message";
 import * as auth from "../../utils/auth";
 
 const Login = () => {
@@ -12,15 +12,10 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
-  /*   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (onLogin && values.email && values.password) {
-      return onLogin(values.email, values.password);
-    }
-  }; */
   const onSubmit = async (data) => {
     await auth.login(data).then((response) => {
       console.log("response", response);
@@ -29,8 +24,10 @@ const Login = () => {
         alert("ok");
         /*        setSuccess(true);
         setInfoTooltip(true); */
-        methods.reset();
-      } else { };
+        reset();
+      } else {
+      }
+    });
   };
   return (
     <Routes>

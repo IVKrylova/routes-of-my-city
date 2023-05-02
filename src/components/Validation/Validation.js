@@ -89,16 +89,16 @@ export const formSchema = Yup.object({
     .min(2, "Длина поля не должна быть меньше 2х символов")
     .max(100, "Длина поля не должна первышать 100 символов"),
   captainphone: Yup.string()
-    .matches(/\+\d{9,10}/, "Введите номер телефона")
+    .matches(/\+\d{11}/, "Введите номер телефона")
     .required("Необходимо заполнить")
     .min(2, "Длина поля не должна быть меньше 2х символов")
     .max(100, "Длина поля не должна первышать 100 символов"),
   player2phone: Yup.string()
-    .matches(/\+\d{9,11}/, "Введите номер телефона")
+    .matches(/\+\d{11}/, "Введите номер телефона")
     .required("Необходимо заполнить"),
-  player3phone: Yup.string().matches(/\+\d{9,11}/, "Введите номер телефона"),
-  player4phone: Yup.string().matches(/\+\d{9,11}/, "Введите номер телефона"),
-  player5phone: Yup.string().matches(/\+\d{9,11}/, "Введите номер телефона"),
+  player3phone: Yup.string().matches(/\+\d{11}/, "Введите номер телефона"),
+  player4phone: Yup.string().matches(/\+\d{11}/, "Введите номер телефона"),
+  player5phone: Yup.string().matches(/\+\d{11}/, "Введите номер телефона"),
   captaindate: Yup.date().required("Необходимо заполнить"),
   player2date: Yup.date().required("Необходимо заполнить"),
   player3date: Yup.date(),

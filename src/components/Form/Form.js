@@ -17,15 +17,17 @@ export const Form = ({
   handleMinusClick,
   Controller,
 }) => {
-  const name = `${modifier}name`;
-  const email = `${modifier}email`;
-  const date = `${modifier}date`;
-  const phone = `${modifier}phone`;
+  let name = `${modifier}name`;
+  let email = `${modifier}email`;
+  let date = `${modifier}date`;
+  let phone = `${modifier}phone`;
   const {
     register,
     control,
     formState: { errors },
-  } = useFormContext();
+  } = useFormContext({
+    /*   shouldFocusError: false, */
+  });
   return (
     <>
       <fieldset id={`${modifier}-registration`} className="form__fieldset">
@@ -57,7 +59,7 @@ export const Form = ({
           />
         </div>
         <div className="form__input-full">
-          <label htmlFor={`${modifier}-phone`} className="form__label">
+          <label htmlFor={phone} className="form__label">
             Телефон
           </label>
           <input
@@ -74,7 +76,7 @@ export const Form = ({
           />
         </div>
         <div className="form__input-full">
-          <label htmlFor="email" className="form__label">
+          <label htmlFor={email} className="form__label">
             Почта
           </label>
           <input
@@ -91,7 +93,7 @@ export const Form = ({
           />
         </div>
         <div className="form__input-full">
-          <label htmlFor="date" className="form__label">
+          <label htmlFor={date} className="form__label">
             Дата рождения
           </label>
           {/*    <input
