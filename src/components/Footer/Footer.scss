@@ -15,11 +15,14 @@
     column-gap: 70px;
   }
 
+  &_hidden {
+    display: none;
+  }
+
   &__about-company {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 15px;
     font-weight: 400;
     font-size: 14px;

@@ -1,15 +1,21 @@
+import { useSelector } from 'react-redux';
+import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
 const ListExercise = (props) => {
+  const currentQuest = useSelector(store => store.currentQuest.currentQuest);
+
   return (
     <section className='list-exercise'>
-      {/* ToDo: add GoBack */}
-      {/* ToDo: quest name dynamic rendering */}
-      <h1 className='list-exercise__title'>Маршруты моего города</h1>
+      <ButtonGoBack
+        goBack={props.goBack}
+      />
+      {currentQuest &&
+        <h1 className='list-exercise__title'>{currentQuest.name}</h1>
+      }
       <div className='list-exercise__info'>
-        {/* ToDo: category dynamic rendering */}
         <p className='list-exercise__category'>
           <span className='list-exercise__category-span'>категория</span>
           Велопрофи
@@ -23,12 +29,13 @@ const ListExercise = (props) => {
         {props.taskList && props.taskList.map(el => {
           return (
             <CardTask
+              sendTaskIdByButton={props.sendTaskIdByButton}
               key={el.id}
               number={el.number}
               name={el.name}
               img={el.img}
               id={el.id}
-              sentCardTaskId={props.handleCardClick}
+              sendCardTaskId={props.handleCardClick}
             />
           );
         })}

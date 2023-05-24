@@ -18,8 +18,7 @@
   &__list {
     @include reset-margins;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 70px;
     align-items: center;
 
@@ -31,11 +30,9 @@
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
-    max-width: 300px;
-    width: 100%;
+    @include max-width-mixin(300px);
 
     @include media_768 {
       max-width: 250px;
@@ -49,31 +46,27 @@
   &__title {
     @include reset-margins;
     margin-top: 20px;
+    @include text-s20-w500;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 1.15;
     color: $font-color-black;
 
     @include media_768 {
       font-size: 18px;
-    }
-
-    @include media_1280 {
-      font-size: 24px;
     }
   }
 
   &__text {
     @include reset-margins;
     margin-top: 10px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.17;
+    @include font-w400-sz18;
     text-align: center;
-    font-feature-settings: 'pnum' on, 'lnum' on;
     color: $font-color-black;
 
     @include media_768 {
+      font-size: 16px;
+    }
+
+    @include media_1024 {
       font-size: 16px;
     }
 
@@ -81,7 +74,4 @@
       font-size: 20px;
     }
   }
-
-  // ToDo: delete after adding other blocks
-  height: min-content;
 }

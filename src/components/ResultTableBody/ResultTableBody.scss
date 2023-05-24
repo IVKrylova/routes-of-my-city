@@ -17,8 +17,7 @@
   &__col-number {
     @include result-table-cell(13%);
     border-radius: 10px 0 0 10px;
-    font-weight: 600;
-    font-size: 18px;
+    @include font-w600-sz18;
     color: $font-color-blue;
 
     @include media_1024 {
@@ -47,7 +46,7 @@
     font-size: 16px;
     color: $font-color-blue;
     background-color: $background-table-team;
-    border-radius: 10px;
+    border-radius: $border-radius-block;
     padding: 5px 15px;
     box-sizing: border-box;
 

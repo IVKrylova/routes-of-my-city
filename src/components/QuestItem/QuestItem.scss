@@ -9,26 +9,40 @@
     box-sizing: border-box;
     padding: 50px 20px 53px;
     min-height: 550px;
-    display: flex;
-    flex-direction: column;
-
-    @include media_530 {
-      border-radius: 10px;
-
-      margin-left: 7%;
-      margin-right: 7%;
-      width: 86%;
-    }
+    @include flex-column;
 
     @include media_768 {
       min-height: 440px;
       padding: 50px 8.5% 35px;
+    }
+
+    &_place_home-page {
+      @include media_530 {
+        border-radius: $border-radius-block;
+        margin-left: 7%;
+        margin-right: 7%;
+        width: 86%;
+      }
+    }
+
+    &_place_quest-page {
+      @include media_1280 {
+        padding-left: 14.2%;
+      }
     }
   }
 
   &__title {
     @include reset-margins;
     @include h1;
+
+    @include media_530 {
+      font-size: 48px;
+    }
+
+    @include media_768 {
+      font-size: 54px;
+    }
   }
 
   &__description {
@@ -46,8 +60,7 @@
     @include h2;
     color: $font-color-white;
     margin-top: 20px;
-    flex-grow: 1;
-    flex-shrink: 0;
+    @include flex-all-free-space;
 
     @include media_768 {
       margin-top: 10px;
@@ -91,6 +104,10 @@
     padding: 15px 0;
     margin-top: 25px;
     width: 300px;
+
+    &_hidden {
+      display: none;
+    }
 
     @include media_768 {
       margin-top: 32px;

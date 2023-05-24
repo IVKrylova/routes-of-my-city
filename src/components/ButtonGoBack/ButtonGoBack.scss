@@ -3,17 +3,19 @@
 
 .button-go-back {
   @include reset-button;
-  background-image: url(../../images/icon-go-back.svg);
+  @include image-background(
+    '../../images/icon-go-back.svg',
+    '../../images/icon-go-back-hover.svg',
+    '../../images/icon-go-back.svg'
+  );
   width: 15px;
   height: 26px;
-  background-repeat: no-repeat;
-  margin-left: 20px;
 
-  &:hover {
-    background-image: url(../../images/icon-go-back-hover.svg);
-  }
+  &__place_profile {
+    margin-left: 20px;
 
-  @include media_530 {
-    margin-left: 7%;
+    @include media_530 {
+      margin-left: 7%;
+    }
   }
 }

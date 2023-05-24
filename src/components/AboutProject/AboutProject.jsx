@@ -1,12 +1,18 @@
+import { useRef } from 'react';
+import useScrollToRef from '../../hooks/useScrollToRef';
 import iconFree from '../../images/icon-free-part.svg';
 import photoParticipants from '../../images/happy-participant.png';
 import './AboutProject.scss';
 
 const AboutProject = () => {
+  let aboutProjectElement = useRef(null);
+
+  useScrollToRef(aboutProjectElement);
+
   return (
-    <section className='about-project'>
+    <section className='about-project' id='#about-project' ref={aboutProjectElement}>
       <img src={iconFree} alt='Бесплатное участие' className='about-project__icon-free-part' />
-      <h2 className='section-title'>О проекте</h2>
+      <h2 className='about-project__section-title'>О проекте</h2>
       <div className='about-project__description'>
         <p className='about-project__text'>
           «Мой Город» представляет собой креативную смесь городских экскурсий,

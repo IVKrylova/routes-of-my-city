@@ -11,26 +11,37 @@ const MobileMenu = (props) => {
       <NavMenu
         isMobileMenuOpen={props.isMobileMenuOpen}
       />
-      <ul className='mobile-menu__button-list'>
-        <li>
-          <button
-            type='button'
-            className='mobile-menu__button-sign-in'
-            onClick={props.handleClickButtonLogin}
-          >
+      {!props.isLogin &&
+        <ul className='mobile-menu__button-list'>
+          <li>
+            <button
+              type='button'
+              className='mobile-menu__button-sign-in'
+              onClick={props.handleClickButtonLogin}
+            >
               Войти
-          </button>
-        </li>
-        <li>
-          <button
-            type='button'
-            className='mobile-menu__button-sign-up'
-            onClick={props.handleClickButtonSignUp}
-          >
-            Зарегестрироваться
-          </button>
-        </li>
-      </ul>
+            </button>
+          </li>
+          <li>
+            <button
+              type='button'
+              className='mobile-menu__button-sign-up'
+              onClick={props.handleClickButtonSignUp}
+            >
+              Зарегестрироваться
+            </button>
+          </li>
+        </ul>
+      }
+      {props.isLogin &&
+        <button
+          type='button'
+          className='mobile-menu__button-exit'
+          onClick={props.handleClickButtonExit}
+        >
+          Выйти
+        </button>
+      }
     </div>
   );
 }

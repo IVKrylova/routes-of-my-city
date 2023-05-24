@@ -1,0 +1,118 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.page-login {
+  @include grid-column-1fr;
+  box-sizing: border-box;
+  padding: 50px 20px;
+
+  @include media_530 {
+    justify-items: center;
+  }
+
+  @include media_1024 {
+    padding: 0 0 0 7.6%;
+    justify-items: start;
+  }
+
+  @include media_1280 {
+    background-image: url(../../images/background-login-img.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+  }
+
+  &__button-go-back {
+    &_hidden {
+      display: none;
+    }
+
+    &_visible {
+      justify-self: start;
+      margin-top: 30px;
+    }
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h2;
+    @include max-width-mixin(400px);
+    text-align: left;
+
+    @include media_1024 {
+      margin-left: 100px;
+      margin-top: 30px;
+    }
+  }
+
+  &__form {
+    margin-top: 20px;
+    @include flex-column;
+    @include max-width-mixin(400px);
+
+    @include media_1024 {
+      margin-left: 100px;
+      margin-top: 65px;
+    }
+  }
+
+  &__input-block {
+    @include input-block;
+    @include flex-column;
+  }
+
+  &__button-list {
+    @include grid-column-1fr;
+    margin-top: 50px;
+
+    @include media_1024 {
+      margin-bottom: 145px;
+      display: flex;
+      margin-top: 35px;
+      column-gap: 20px;
+      align-items: center;
+    }
+  }
+
+  &__reset-password {
+    @include reset-button;
+    @include font-w400-sz14;
+    width: 113px;
+    color: $font-color-red;
+    margin-top: 15px;
+
+    &:hover {
+      color: $button-color-sign-up-hover;
+    }
+
+    @include media_1024 {
+      font-size: 16px;
+      width: 129px;
+    }
+  }
+
+  &__button-submit {
+    @include button-cta;
+    padding: 15px;
+    font-size: 16px;
+
+    @include media_1024 {
+      font-size: 20px;
+      width: 120px;
+    }
+  }
+
+  &__link-to-register {
+    @include link-button-orange;
+    text-decoration: none;
+    justify-self: center;
+    margin-top: 20px;
+    max-width: 152px;
+
+    @include media_1024 {
+      font-size: 20px;
+      max-width: 203px;
+      margin-top: 0;
+    }
+  }
+}

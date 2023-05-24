@@ -3,8 +3,7 @@
 
 .page-not-found {
   background: $background-gradient-page-404;
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
   width: 100%;
   position: relative;
 
@@ -33,8 +32,7 @@
 
   &__content {
     margin: 0 20px 50px;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
 
     @include media_768 {
       margin-top: 50px;
@@ -58,10 +56,7 @@
     @include max-width-mixin(450px);
     cursor: default;
     margin-top: 20px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include text-s20-w500;
     color: $font-color-white;
 
     @include media_1024 {
@@ -75,9 +70,7 @@
     text-decoration: none;
     margin-top: 60px;
     text-align: center;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.2;
+    @include font-w600-sz16;
     padding: 15px 0;
     width: 302px;
 

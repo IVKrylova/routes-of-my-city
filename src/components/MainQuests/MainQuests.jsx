@@ -1,14 +1,22 @@
+import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import useScrollToRef from '../../hooks/useScrollToRef';
 import iconNoQuests from '../../images/icon-no-quests.svg';
 import QuestItem from '../QuestItem/QuestItem';
 import blend from '../../images/quests-blend.png';
 import './MainQuests.scss';
 
 const MainQuests = (props) => {
+  const quests = useSelector(store => store.quests.quests);
+
   const classSection = `main-quests ${props.isNoQuests ? 'main-quests_no-quests' : 'main-quests_quests'} ${props.isQuestCompleted ? 'main-quests_table' : ''}`;
   const blendClass = `main-quests__blend-img ${props.isQuestCompleted ? 'main-quests__blend-img_result' : 'main-quests__blend-img_no-result'}`;
+  let questsBlockElement = useRef(null);
+
+  useScrollToRef(questsBlockElement);
 
   return (
-    <section className={classSection}>
+    <section className={classSection} id='#main-quests' ref={questsBlockElement}>
       <h2 className='main-quests__section-title'>Квесты</h2>
       {props.isNoQuests &&
         <div className='main-quests__block-no-quests' >
@@ -16,15 +24,19 @@ const MainQuests = (props) => {
           <p className='main-quests__text-no-quests'>Работаем над новым квестом…</p>
         </div>
       }
-      {!props.isNoQuests && props.questsList &&
+      {!props.isNoQuests && quests &&
         <ul className='main-quests__quests-list'>
-          {props.questsList.map(el => {
+          {quests.map(el => {
             return (
-              <QuestItem
-                quest={el}
-                key={el.id}
-                resultQuest={props.resultQuest}
-              />
+              <li key={el.id}>
+                <QuestItem
+                  quest={el}
+                  resultQuest={props.resultQuest}
+                  sendQuestIdAndButton={props.sendQuestIdAndButton}
+                  location={props.location}
+                  isLogin={props.isLogin}
+                />
+              </li>
             );
           })}
         </ul>

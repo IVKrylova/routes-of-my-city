@@ -18,8 +18,7 @@
     list-style-type: none;
     margin-top: 45px;
     justify-self: center;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 20px;
     align-items: center;
   }
@@ -27,22 +26,14 @@
   &__button-sign-in {
     @include button-cta;
     padding: 15px 96px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.19;
+    @include font-w600-sz16;
   }
 
-  &__button-sign-up {
+  &__button-sign-up,
+  &__button-exit {
     @include reset-button;
-    color: $font-color-orange;
     justify-self: center;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 1.2;
-
-    &:hover {
-      color: $font-color-orange-hover;
-    }
+    @include link-button-orange;
   }
 
   &_visible {

@@ -39,13 +39,9 @@
   &__text {
     @include reset-margins;
     margin-top: 20px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include text-s20-w500;
     color: $font-color-white;
-    max-width: 390px;
-    width: 100%;
+    @include max-width-mixin(390px);
 
     @include media_530 {
       max-width: 570px;

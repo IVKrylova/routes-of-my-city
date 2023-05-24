@@ -4,8 +4,7 @@
 .main-quests {
   background: $background-gradient-no-quests;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr;
+  @include grid-column-1fr;
   position: relative;
   overflow: hidden;
 
@@ -95,8 +94,7 @@
   &__block-no-quests {
     margin-top: 65px;
     justify-self: center;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 20px;
 
     @include media_768 {
@@ -122,18 +120,18 @@
 
   &__text-no-quests {
     @include reset-margins;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
+    @include h2;
     text-align: center;
-    font-feature-settings: 'pnum' on, 'lnum' on;
     color: $font-color-red;
     cursor: default;
 
+    @include media_768 {
+      font-size: 32px;
+    }
+
     @include media_1024 {
       font-size: 36px;
-      max-width: 457px;
-      width: 100%;
+      @include max-width-mixin(457px);
       text-align: left;
       align-self: center;
     }
@@ -143,8 +141,7 @@
     @include reset-margins;
     list-style-type: none;
     margin-top: 40px;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 60px;
 
     @include media_530 {

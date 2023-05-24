@@ -8,9 +8,8 @@
   width: calc(100% - 40px);
   padding: 30px;
   background-color: $background-light-gray;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+  border-radius: $border-radius-block;
+  @include flex-column;
   row-gap: 30px;
 
   @include media_530 {
@@ -25,8 +24,7 @@
   }
 
   &__quest-data {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 10px;
 
     @include media_1024 {
@@ -36,21 +34,23 @@
 
   &__category {
     @include reset-margins;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.17;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    @include font-w600-sz18;
     color: $font-color-gray;
   }
 
   &__category-name {
     @include reset-margins;
-    @include name-card-profile;
+    @include font-w600-sz24;
+    color: $font-color-blue;
+
+    &_empty {
+      color: $font-color-gray;
+    }
   }
 
   &__category-description {
     @include reset-margins;
-    @include font-info-profile;
+    @include font-w400-sz18;
   }
 
   &__button-edit {
@@ -62,9 +62,8 @@
   &__button-refuse {
     @include reset-button;
     @include button-sign-up;
-    font-weight: 600;
+    @include font-w600-sz16;
     font-size: 15px;
-    line-height: 1.2;
     color: $font-color-white;
     padding: 7px 10px;
     width: 184px;

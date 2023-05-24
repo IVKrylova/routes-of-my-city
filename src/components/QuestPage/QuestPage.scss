@@ -1,0 +1,30 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.quest-page {
+  &__choice {
+    @include grid-column-1fr;
+    box-sizing: border-box;
+    padding: 80px 20px 50px;
+
+    @include media_530 {
+      padding: 90px 14.2% 142px;
+    }
+
+    @include media_768 {
+      background-image: url(../../images/background-choice-category-desktop.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right top;
+    }
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h2;
+
+    @include media_530 {
+      color: $font-color-blue;
+    }
+  }
+}

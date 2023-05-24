@@ -1,11 +1,17 @@
+import { useRef } from 'react';
+import useScrollToRef from '../../hooks/useScrollToRef';
 import Faq from '../Faq/Faq';
 import logoRosmolodezh from '../../images/logo-rosmolodezh.svg';
 import './FaqList.scss';
 
 const FaqList = (props) => {
+  let faqListElement = useRef(null);
+
+  useScrollToRef(faqListElement);
+
   return (
-    <section className='faq-list'>
-      <h2 className='section-title'>Часто задаваемые вопросы</h2>
+    <section className='faq-list' id='#faq-list' ref={faqListElement}>
+      <h2 className='faq-list__section-title'>Часто задаваемые вопросы</h2>
       <div className='faq-list__content'>
         <ul className='faq-list__list'>
           {props.faqList && props.faqList.map(el => {

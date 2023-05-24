@@ -1,0 +1,17 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/mixins';
+
+.popup-message {
+  @include reset-margins;
+  @include font-w600-sz18;
+  color: $font-color-blue;
+  text-align: center;
+
+  @include media_768 {
+    font-size: 24px;
+  }
+
+  &_change-category {
+    margin-top: 20px;
+  }
+}

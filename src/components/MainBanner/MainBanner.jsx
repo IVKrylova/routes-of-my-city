@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './MainBanner.scss';
 
 const MainBanner = () => {
@@ -9,9 +10,9 @@ const MainBanner = () => {
       <p className='main-banner__text'>
         Все примечательные уголки города и много положительных эмоций ждут вас
       </p>
-      {/* ToDo: add links to bloks.
-      If <a> doesn`t work, you will need to install react-router-hash-link */}
-      <a className='main-banner__button-cta' href='#'>Учавствовать</a>
+      <Link className='main-banner__button-cta' to='/#main-quests'>
+        Участвовать
+      </Link>
     </section>
   );
 }
