@@ -1,9 +1,18 @@
 import { BASE_URL } from './constants';
 
-export const getQuests = async () => {
-  try {
-    return await fetch(`${BASE_URL}/questapp/quests/`);
-  } catch (err) {
-    console.log(err);
+const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
   }
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
+
+export const getQuests = () => {
+  return fetch(`${BASE_URL}/questapp/quests/`)
+    .then(checkResponse)
+}
+
+export const getQuestCategory = (id) => {
+  return fetch(`${BASE_URL}/questapp/quests/${id}/categories/`)
+    .then(checkResponse)
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
 import useWindowWidth from '../../hooks/useWindowWidth';
@@ -26,26 +27,28 @@ import PopupChangePassword from '../PopupChangePassword/PopupChangePassword';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
-  INITIAL_STATE_CURRENT_QUEST,
   INITIAL_STATE_TASK,
 } from '../../utils/constants';
-import { getQuests } from '../../utils/api';
+import { getQuests, getQuestCategory } from '../../utils/api';
+import { setQuests } from '../../store/actionCreators/questsAction';
+import { setCurrentQuest } from '../../store/actionCreators/currentQuestAction';
 import './App.scss';
 // ToDo: delete after getting API data
-import { quests } from '../../utils/data/quests';
 import { results } from '../../utils/data/results';
 import { faq } from '../../utils/data/faq';
 import { teams } from '../../utils/data/teams';
 import { tasks } from '../../utils/data/listTask';
 import { taskItem } from '../../utils/data/task';
-import { categories } from '../../utils/data/category';
 
 function App() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const quests = useSelector(store => store.quests.quests);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isHeaderAccountHovered, setIsHeaderAccountHovered] = useState(false);
-  const [questsList, setQuestsList] = useState([]);
   const [isNoQuests, setIsNoQuests] = useState(true);
   const [isQuestCompleted, setIsQuestCompleted] = useState(false);
   const [resultQuest, setResultQuest] = useState([]);
@@ -60,10 +63,8 @@ function App() {
   const [taskList, setTaskList] = useState([]);
   const [isMobile, setIsMobile] = useState(true);
   const [pathList, setPathList] = useState(PATH_LIST);
-  const [currentQuest, setCurrentQuest] = useState(INITIAL_STATE_CURRENT_QUEST);
   const [currentQuestId, setCurrentQuestId] = useState(null);
   const [task, setTask] = useState(INITIAL_STATE_TASK);
-  const [questCategories, setQuestCategories] = useState([]);
   const [isOpenDeletePlayerPopup, setIsOpenDeletePlayerPopup] = useState(false);
   const [isPopupSuccess, setIsPopupSuccess] = useState(false);
   const [deletedPlayerId, setDeletedPlayerId] = useState(null);
@@ -107,11 +108,14 @@ function App() {
   }
 
   useEffect(() => {
-    // const res = getQuests().then(res => console.log(res))
-    // ToDo: replace with data from API
-    setQuestsList(quests);
-    if (quests.length > 0) setIsNoQuests(false);
-    setIsQuestCompleted(quests.some(el => el.isCompleted === true));
+    getQuests()
+      .then(res => {
+        const quests = res.results;
+        dispatch(setQuests(quests));
+        if (quests.length > 0) setIsNoQuests(false);
+        setIsQuestCompleted(quests.some(el => el.status === 'finished'));
+      })
+      .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -234,10 +238,10 @@ function App() {
     navigate(`/quest/${currentQuestId}/task/${id}`);
   }
 
-  const handleClickTakePart = (questId) => {
+  const handleClickTakePart = ({ id, buttonText}) => {
     {/* ToDo: add checking quests list of the team */}
-    setCurrentQuestId(questId);
-    !isLogin ? navigate(`/quest/${questId}`) : navigate(`/quest/${questId}/list-exercise`);
+    setCurrentQuestId(id);
+    !isLogin ? navigate(`/quest/${id}`) : navigate(`/quest/${id}/list-exercise`);
   }
 
   const handleCancelAndGoBack = () => {
@@ -310,8 +314,10 @@ function App() {
   const openPopupChangeQuestCategory = (questId) => {
     setIsOpenPopupChangeQuestCategory(true);
     setChangedCategoryQuestId(questId);
-    // ToDo: fix with Api
-    setQuestCategoriesToChange(categories);
+    getQuestCategory(questId)
+      .then(res => setQuestCategoriesToChange(res))
+      .catch(err => console.log(err));
+
   }
 
   const changeCategoryInPopup = (category) => {
@@ -369,9 +375,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // ToDo: replace with API data
-    const quest = questsList.find(el => el.id === currentQuestId);
-    setCurrentQuest(quest);
+    const quest = quests.find(el => el.id === currentQuestId);
+    dispatch(setCurrentQuest(quest));
     // ToDo: replace with API data
     //       get tasks by currentQuestId
     setTaskList(tasks);
@@ -379,7 +384,7 @@ function App() {
     //       get date by currentQuestId
     const date = new Date('Tue Apr 03 2023 16:00:00 GMT+0300 (Москва, стандартное время)');
     setDeadline(date);
-  }, [currentQuestId, questsList]);
+  }, [currentQuestId, quests]);
 
   useEffect(() => {
     // ToDo: replace with API data
@@ -401,13 +406,13 @@ function App() {
 
   /* ToDo: check logics with API data */
   useEffect(() => {
-    const pathsQuests = questsList.map(el => `/quest/${el.id}`);
-    const pathsListExercise = questsList.map(el => `/quest/${el.id}/list-exercise`);
+    const pathsQuests = quests.map(el => `/quest/${el.id}`);
+    const pathsListExercise = quests.map(el => `/quest/${el.id}/list-exercise`);
     const pathsTasks = taskList.map(el => `/quest/${el.questId}/task/${el.id}`);
     const pathsAnswers = taskList.map(el => `/quest/${el.questId}/answer/${el.id}`);
 
     setPathList([...PATH_LIST, ...pathsQuests, ...pathsListExercise, ...pathsTasks, ...pathsAnswers]);
-  }, [questsList, taskList]);
+  }, [quests, taskList]);
 
   useEffect(() => {
     pathList.find(el => el === location.pathname) ? setIsPageNotFound(false) : setIsPageNotFound(true);
@@ -424,13 +429,6 @@ function App() {
       taskItem.problem = text;
     }
     setTask(taskItem);
-  }, []);
-
-  useEffect(() => {
-    // ToDo: replace with API data
-    //       fix logic => find categories in quest by name
-    //       add idQuest to dependencies
-    setQuestCategories(categories);
   }, []);
 
   return (
@@ -481,7 +479,6 @@ function App() {
                 isMobile={isMobile}
                 handleCardClick={handleCardClick}
                 goBack={handleGoBack}
-                currentQuestId={currentQuestId}
                 sendTaskIdByButton={goToAnswer}
               />
             }
@@ -514,12 +511,11 @@ function App() {
           element={
             <Main
               isNoQuests={isNoQuests}
-              questsList={questsList}
               resultQuest={resultQuest}
               isQuestCompleted={isQuestCompleted}
               faqList={faqList}
               handleOpenAnswer={handleOpenAnswer}
-              sendQuestId={handleClickTakePart}
+              sendQuestIdAndButton={handleClickTakePart}
               location={location}
               isLogin={isLogin}
             />
@@ -529,9 +525,7 @@ function App() {
           path='/quest/:questId'
           element={
             <QuestPage
-              currentQuest={currentQuest}
               location={location}
-              questCategories={questCategories}
               handleCancelAndGoBack={handleCancelAndGoBack}
               sendCategory={handleFormChoiceCategory}
             />

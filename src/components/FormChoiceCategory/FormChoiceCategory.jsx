@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './FormChoiceCategory.scss';
 
-const FormChoiceCategory = (props) => {
-  const [category, setCategory] = useState('Генералы');
-  const classButtonList = `form-choice-category__button-list ${props.isOpenPopup ? 'form-choice-category__button-list_popup' : ''}`;
-  const classButtonSubmit = `form-choice-category__button-submit ${props.isOpenPopup ? 'form-choice-category__button-submit_popup' : ''}`;
+const FormChoiceCategory = ({ questCategories, isOpenPopup, sendCategory, classModifier, handleCancelClick }) => {
+  const [category, setCategory] = useState('');
+  const classButtonList = `form-choice-category__button-list ${isOpenPopup ? 'form-choice-category__button-list_popup' : ''}`;
+  const classButtonSubmit = `form-choice-category__button-submit ${isOpenPopup ? 'form-choice-category__button-submit_popup' : ''}`;
 
   const chengeCategory = (evt) => {
     setCategory(evt.target.value);
@@ -12,15 +12,21 @@ const FormChoiceCategory = (props) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    props.sendCategory(category);
+    sendCategory(category);
   }
 
+  useEffect(() => {
+    if (questCategories.length > 0) {
+     setCategory(questCategories[0].name);
+    }
+  }, [questCategories]);
+
   return (
-    <form className={`form-choice-category ${props.classModifier ? props.classModifier : ''}`}
+    <form className={`form-choice-category ${classModifier ? classModifier : ''}`}
       onSubmit={handleFormSubmit}
     >
       <ul className='form-choice-category__category-list'>
-        {props.questCategories && props.questCategories.map(el => {
+        {questCategories && questCategories.map(el => {
         return (
           <li className='form-choice-category__category' key={el.id}>
             <label className='form-choice-category__label' htmlFor={el.id}>
@@ -38,23 +44,23 @@ const FormChoiceCategory = (props) => {
               </span>
             </label>
             <p className='form-choice-category__short-descriplion'>
-              {el.shortDescriplion}
+              {el.short_description}
             </p>
             {el.name !== 'Кадеты' &&
               <p className='form-choice-category__long-description'>
-                {el.longDescription}
+                {el.long_description}
               </p>
             }
             {el.name === 'Кадеты' &&
               <>
                 <p className='form-choice-category__long-description'>
-                  {el.longDescription.split('\n')[0]}
+                  {el.long_description.split('\n')[0]}
                 </p>
                 <ul className='form-choice-category__long-description-list'>
-                  {el.longDescription.split('\n').slice(1).map(item => {
+                  {el.long_description.split('\n').slice(1).map(item => {
                     return (
                       <li
-                        key={el.longDescription.split('\n').slice(1).indexOf(item)}
+                        key={el.long_description.split('\n').slice(1).indexOf(item)}
                         className='form-choice-category__long-description-item'
                       >
                         {item}
@@ -74,14 +80,14 @@ const FormChoiceCategory = (props) => {
             type='submit'
             className={classButtonSubmit}
           >
-            {props.isOpenPopup ? 'Сохранить' : 'Участвовать'}
+            {isOpenPopup ? 'Сохранить' : 'Участвовать'}
           </button>
         </li>
         <li>
           <button
             type='button'
             className='form-choice-category__button-cancel'
-            onClick={props.handleCancelClick}
+            onClick={handleCancelClick}
           >
             Отмена
           </button>

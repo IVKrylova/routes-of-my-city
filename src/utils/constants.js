@@ -31,18 +31,6 @@ export const PATH_LIST = [
   '/rules',
 ];
 
-export const INITIAL_STATE_CURRENT_QUEST = {
-  id: null,
-  name: '',
-  description: '',
-  date: '',
-  time: '',
-  place: '',
-  isActive: true,
-  isCompleted: false,
-  img: '',
-};
-
 export const INITIAL_STATE_TASK = {
   id: null,
   number: null,
