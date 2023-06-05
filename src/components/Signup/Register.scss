@@ -1,6 +1,7 @@
 @import "../../utils/styles/_constants";
 @import "../../utils/styles/_mixins";
 .form {
+  padding-bottom: 144px;
   --background-blue: #003b59;
   --background-white: #fff;
   --background-gray: #edf0f2;
@@ -43,6 +44,7 @@
     font-feature-settings: "pnum" on, "lnum" on;
     color: var(font-color-white);
     margin: 0;
+    margin-bottom: 25px;
     @media screen and (max-width: 768px) {
       font-weight: 700;
       font-size: 32px;
@@ -79,6 +81,29 @@
     flex-direction: row;
     justify-content: space-between;
     padding-left: 20px;
+    padding-right: 100px;
+    & a {
+      text-decoration: none;
+      color: #f9a135;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 23px;
+      @media (max-width: 1200px) {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+    & p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      @media (max-width: 1200px) {
+        font-size: 14px;
+        line-height: 16px;
+        color: #131211;
+        padding-right: 0;
+      }
+    }
     @media (max-width: 1200px) {
       margin-top: 20px;
       margin-bottom: 15px;
@@ -97,18 +122,18 @@
     font-size: 16px;
     line-height: 19px;
     font-feature-settings: "pnum" on, "lnum" on;
-    color: var(--font-color-black);
+    color: #003b59;
     &::-webkit-input-placeholder {
-      color: var(--font-color-black);
+      color: #003b59;
     }
     ::-moz-placeholder {
-      color: var(--font-color-black);
+      color: #003b59;
     }
     :-moz-placeholder {
-      color: var(--font-color-black);
+      color: #003b59;
     }
     :-ms-input-placeholder {
-      color: var(--font-color-black);
+      color: #003b59;
     }
     &_type_simple {
       border: 2px solid var(--font-color-red);
@@ -266,7 +291,7 @@
     padding-left: 20px;
     padding-top: 25px;
     padding-bottom: 32px;
-    @media (min-width: 1200px) {
+    @media (max-width: 1200px) {
       width: 320px;
     }
   }
@@ -318,10 +343,13 @@
   }
 }
 .register {
+  margin: 0 auto;
   background: linear-gradient(180deg, #fff 39%, #f7fafc 61%);
 }
 .button {
   &__button-sign {
+    @include button-cta;
+    font-size: 16px;
     padding: 16px 30px;
     font-size: 14px;
     line-height: 1.15;
@@ -330,6 +358,11 @@
     color: #ffffff;
     @media (min-width: 1200px) {
       font-size: 20px;
+      margin: 0 auto;
+    }
+    @media (max-width: 568px) {
+      width: 90%;
+      margin: 0 auto;
     }
   }
 }
