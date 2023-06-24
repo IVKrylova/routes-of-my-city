@@ -118,3 +118,22 @@
     @content;
   }
 }
+
+@mixin link-button-orange {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  color: $font-color-orange;
+
+  &:hover {
+    color: $button-color-cta-hover;
+  }
+
+  &_active {
+    color: $button-color-cta-active;
+
+    &:hover {
+      color: $button-color-cta-active;
+    }
+  }
+}

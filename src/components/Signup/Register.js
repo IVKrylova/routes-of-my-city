@@ -160,7 +160,7 @@ const Register = () => {
             <form
               noValidate
               onSubmit={methods.handleSubmit(onSubmit)}
-              className="form container"
+              className="form container register"
             >
               <Link to="/signin" className="link form__link">
                 <button
