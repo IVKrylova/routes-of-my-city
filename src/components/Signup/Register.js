@@ -212,10 +212,6 @@ const Register = () => {
                   })
                   .slice(0, countPlayers)}
               </div>
-              <p className="form__star">
-                *Для регистрации необходимо заполнить данные минимум двух
-                игроков
-              </p>
               <div className="form__sign-data-container">
                 <div className="form__plus-box">
                   <button

@@ -268,12 +268,19 @@
     }
   }
   &__plus-box {
+    position: relative;
     display: flex;
     flex-direction: row;
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
     color: #79848a;
+    &:hover {
+      color: grey;
+    }
+    &:disabled {
+      color: rgba(175, 189, 198, 1);
+    }
     &:f {
       margin-right: 35px;
       @media (max-width: 768px) {
@@ -286,6 +293,8 @@
     }
   }
   &__star {
+    position: relative;
+    flex-basis: 100%;
     width: auto;
     padding-left: 20px;
     padding-top: 25px;
@@ -341,16 +350,32 @@
     align-items: baseline; */
   }
 }
-/* .register {
-  margin: 0 auto;
-/*   background: linear-gradient(180deg, #fff 39%, #f7fafc 61%); 
-background: radial-gradient(
-  104.3% 215.81% at -39.38% 165.74%,
-  rgba(249, 161, 53, 0.2) 0%,
-  rgba(249, 161, 53, 0) 100%
-),
-#edf0f2;
-} */
+.register {
+  background: #f7fafc;
+  padding-bottom: 200px;
+  @media (max-width: 981px) {
+    padding-bottom: 50px;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    @media (min-width: 981px) {
+      height: 63%;
+    }
+    @media (max-width: 981px) {
+      /*    height: 147%; */
+      height: 99%;
+    }
+    @media (max-width: 400px) {
+      height: 89%;
+    }
+  }
+}
+
 .button {
   &__button-sign {
     @include button-cta;

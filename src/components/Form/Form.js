@@ -135,6 +135,11 @@ export const Form = ({
           />
         </div>
       </fieldset>
+      {modifier === "player2" && (
+        <p className="form__star">
+          *Для регистрации необходимо заполнить данные минимум двух игроков
+        </p>
+      )}
       {id % 2 === 0 && count !== id + 1 && (
         <img src={line} className="form__line" alt="линия" />
       )}
