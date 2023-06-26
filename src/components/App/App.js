@@ -7,7 +7,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import Register from '../Register/Register';
+import Register from '../Signup/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import QuestPage from '../QuestPage/QuestPage';
