@@ -24,11 +24,6 @@ export const forms = [
     formName: "5 игрок",
     modifier: "player5",
   },
-  {
-    id: 5,
-    formName: "6 игрок",
-    modifier: "player6",
-  },
 ];
 export const ERROR_MESSAGES = {
   notFound: "Requested resource not found.",

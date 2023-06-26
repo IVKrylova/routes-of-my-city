@@ -28,13 +28,14 @@ export const Form = ({
   } = useFormContext({
     /*   shouldFocusError: false, */
   });
+
   return (
     <>
       <fieldset id={`${modifier}-registration`} className="form__fieldset">
         <h1 className="form__subtitle">{formName}</h1>
         {id > 1 && (
           <button
-            className="form__button form__button_type_close"
+            className="form__button form__button_type_close form__link"
             onClick={handleMinusClick}
           >
             <img src={chrest} alt="chrest" />

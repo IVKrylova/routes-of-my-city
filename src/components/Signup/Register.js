@@ -16,6 +16,7 @@ import { ERROR_MESSAGES } from "../../utils/constants";
 const Register = () => {
   const navigate = useNavigate();
   const [countPlayers, setNumberOfPlayers] = useState(2);
+  /*   console.log(countPlayers); */
   /*   const [isLoggedIn, setIsLoggedIn] =useState(false);
   const [jwt, setJWT] = useState(localStorage.getItem("jwt")); */
   React.useEffect(() => {
@@ -23,10 +24,10 @@ const Register = () => {
     return () => {
       document.body.classList.remove("register");
     };
-  });
+  }, []);
   const handlePlusClick = (e) => {
     e.preventDefault();
-    setNumberOfPlayers(countPlayers + 1);
+    countPlayers < 5 && setNumberOfPlayers(countPlayers + 1);
   };
   const handleMinusClick = (e) => {
     e.preventDefault();
@@ -39,11 +40,11 @@ const Register = () => {
   });
   const onSubmit = async (data) => {
     if (methods.formState.isValid) {
-      console.log(methods.formState.isValid);
+      /*       console.log(methods.formState.isValid); */
       await auth
         .register(data)
         .then((response) => {
-          console.log("response", response);
+          /*    console.log("response", response); */
           if (response.token) {
             /* handleLogin(email, password); */
             alert("ok");
@@ -136,8 +137,6 @@ const Register = () => {
         .catch((err) => {
           if (err.status === 400) {
             if (err.password) {
-              const message = err.password[0];
-              console.log(message);
             } else if (err.statusText === "Bad Request") {
               alert(ERROR_MESSAGES.dataBadRequest);
             } else if (err.status === 409) {
@@ -160,7 +159,7 @@ const Register = () => {
             <form
               noValidate
               onSubmit={methods.handleSubmit(onSubmit)}
-              className="form container register"
+              className="form container"
             >
               <Link to="/signin" className="link form__link">
                 <button
@@ -219,10 +218,22 @@ const Register = () => {
                     className="form__button "
                     style={{ marginRight: "20px" }}
                   >
-                    <img src={plus} alt="плюс" />
+                    <img
+                      className={`form__link form__link-plus ${
+                        countPlayers > 4 && "form__link-plus_disable"
+                      }`}
+                      src={plus}
+                      alt="плюс"
+                    />
                   </button>
                   <div>
-                    <p className="">Добавить игрока</p>
+                    <p
+                      className={`form__link form__link-plus ${
+                        countPlayers > 4 && "form__link-plus_disable"
+                      }`}
+                    >
+                      Добавить игрока
+                    </p>
                   </div>
                 </div>
                 <img
@@ -287,7 +298,7 @@ const Register = () => {
                     <input
                       type="checkbox"
                       {...methods.register("checkbox")}
-                      className="form__checkbox"
+                      className="form__link form__checkbox"
                     />
                     <ErrorMessage
                       errors={methods.errors}
@@ -301,7 +312,7 @@ const Register = () => {
                     </label>
                   </div>
                 </fieldset>
-                <div className="form__button-container">
+                <div className=" form__fieldset form__button-container">
                   <input
                     type="submit"
                     className="button__button-sign form__submit"
