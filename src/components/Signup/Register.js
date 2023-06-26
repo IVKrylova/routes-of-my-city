@@ -152,92 +152,88 @@ const Register = () => {
     }
   };
   return (
-    <Routes>
-      <Route
-        path="/signup"
-        element={
-          <FormProvider {...methods}>
-            <form
-              noValidate
-              onSubmit={methods.handleSubmit(onSubmit)}
-              className="form container register"
-            >
-              <Link to="/signin" className="link form__link">
-                <button
-                  className="form__button form__back-button"
-                  onClick={() => navigate(-1)}
-                >
-                  <img src={back} alt="назад" />
-                </button>
-              </Link>
-              <div className="form__sign-in ">
-                <h1 className="form__title">Регистрация</h1>
-                <div className="form__sign-in-up">
-                  <p className="form__sign-text">Уже есть аккаунт? </p>
-                  <Link to="/sign-in" className="link form__link">
-                    Войти
-                  </Link>
-                </div>
-              </div>
-              <div className="form__fieldset">
-                <input
-                  {...methods.register("team", { required: true })}
-                  type="text"
-                  className="form__input_type_simple"
-                  placeholder="Название команды"
-                />
-                <ErrorMessage
-                  errors={methods.errors}
-                  name="team"
-                  render={({ message }) => (
-                    <span className="tooltip">{message}</span>
-                  )}
-                />
-              </div>
-              <div className="form__fieldset-box">
-                {forms
-                  .map((fieldset) => {
-                    return (
-                      <Form
-                        key={fieldset.id}
-                        id={fieldset.id}
-                        formName={fieldset.formName}
-                        modifier={fieldset.modifier}
-                        count={countPlayers}
-                        setCountPlayers={setNumberOfPlayers}
-                        handleMinusClick={handleMinusClick}
-                        Controller={Controller}
-                      />
-                    );
-                  })
-                  .slice(0, countPlayers)}
-              </div>
-              <div className="form__sign-data-container">
-                <div className="form__plus-box">
-                  <button
-                    onClick={handlePlusClick}
-                    className="form__button "
-                    style={{ marginRight: "20px" }}
-                  >
-                    <img src={plus} alt="плюс" />
-                  </button>
-                  <div>
-                    <p className="">Добавить игрока</p>
-                  </div>
-                </div>
-                <img
-                  src={lineHorizontal}
-                  className="form__line-horizontal"
-                  alt="линия"
-                />
-                <fieldset className="form__fieldset">
-                  <h1 className="form__title">Данные для входа</h1>
-                  <input
-                    {...methods.register("email")}
-                    type="email"
-                    className="form__input_type_simple form__input_type_signin"
-                    placeholder="Электронная почта"
-                  />
+    <FormProvider {...methods}>
+      <form
+        noValidate
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className="form container register"
+      >
+        <Link to="/signin" className="link form__link">
+          <button
+            className="form__button form__back-button"
+            onClick={() => navigate(-1)}
+          >
+            <img src={back} alt="назад" />
+          </button>
+        </Link>
+        <div className="form__sign-in ">
+          <h1 className="form__title">Регистрация</h1>
+        <div className="form__sign-in-up">
+          <p className="form__sign-text">Уже есть аккаунт? </p>
+          <Link to="/sign-in" className="link form__link">
+            Войти
+          </Link>
+        </div>
+      </div>
+      <div className="form__fieldset">
+        <input
+          {...methods.register("team", { required: true })}
+          type="text"
+          className="form__input_type_simple"
+          placeholder="Название команды"
+        />
+        <ErrorMessage
+          errors={methods.errors}
+          name="team"
+          render={({ message }) => (
+            <span className="tooltip">{message}</span>
+          )}
+        />
+      </div>
+      <div className="form__fieldset-box">
+        {forms
+          .map((fieldset) => {
+            return (
+              <Form
+                key={fieldset.id}
+                id={fieldset.id}
+                formName={fieldset.formName}
+                modifier={fieldset.modifier}
+                count={countPlayers}
+                setCountPlayers={setNumberOfPlayers}
+                handleMinusClick={handleMinusClick}
+                Controller={Controller}
+              />
+            );
+          })
+        .slice(0, countPlayers)}
+      </div>
+      <div className="form__sign-data-container">
+        <div className="form__plus-box">
+          <button
+            onClick={handlePlusClick}
+            className="form__button "
+            style={{ marginRight: "20px" }}
+          >
+            <img src={plus} alt="плюс" />
+          </button>
+          <div>
+            <p className="">Добавить игрока</p>
+          </div>
+        </div>
+        <img
+          src={lineHorizontal}
+          className="form__line-horizontal"
+          alt="линия"
+        />
+        <fieldset className="form__fieldset">
+          <h1 className="form__title">Данные для входа</h1>
+          <input
+            {...methods.register("email")}
+            type="email"
+            className="form__input_type_simple form__input_type_signin"
+            placeholder="Электронная почта"
+          />
                   {/*       <ErrorMessage
                     errors={methods.errors}
                     name="email"
@@ -250,70 +246,67 @@ const Register = () => {
                         : null;
                     }}
                   /> */}
-                  <ErrorMessage
-                    errors={methods.errors}
-                    name="cpassword"
-                    render={({ message }) => (
-                      <span className="tooltip">{message}</span>
-                    )}
-                  />
-                  <input
-                    {...methods.register("password")}
-                    type="password"
-                    className="form__input_type_simple form__input_type_signin"
-                    placeholder="Пароль"
-                  />
-                  <ErrorMessage
-                    errors={methods.errors}
-                    name="password"
-                    render={({ message }) => (
-                      <span className="tooltip">{message}</span>
-                    )}
-                  />
-                  <input
-                    {...methods.register("cpassword")}
-                    type="password"
-                    className="form__input_type_simple form__input_type_signin"
-                    placeholder="Повторить пароль"
-                  />
-                  <ErrorMessage
-                    errors={methods.errors}
-                    name="cpassword"
-                    render={({ message }) => (
-                      <span className="tooltip">{message}</span>
-                    )}
-                  />
-                  <div className="form__checkbox-container">
-                    <input
-                      type="checkbox"
-                      {...methods.register("checkbox")}
-                      className="form__checkbox"
-                    />
-                    <ErrorMessage
-                      errors={methods.errors}
-                      name="checkbox"
-                      render={({ message }) => (
-                        <span className="tooltip">{message}</span>
-                      )}
-                    />
-                    <label htmlFor="checkbox" className="form__checkbox-label">
-                      Нажимая, вы принимаете согласие о конфедиациальности
-                    </label>
-                  </div>
-                </fieldset>
-                <div className="form__button-container">
-                  <input
-                    type="submit"
-                    className="button__button-sign form__submit"
-                    value="Зарегистрироваться"
-                  />
-                </div>
-              </div>
-            </form>
-          </FormProvider>
-        }
-      />
-    </Routes>
+          <ErrorMessage
+            errors={methods.errors}
+            name="cpassword"
+            render={({ message }) => (
+              <span className="tooltip">{message}</span>
+            )}
+          />
+          <input
+            {...methods.register("password")}
+            type="password"
+            className="form__input_type_simple form__input_type_signin"
+            placeholder="Пароль"
+          />
+          <ErrorMessage
+            errors={methods.errors}
+            name="password"
+            render={({ message }) => (
+              <span className="tooltip">{message}</span>
+            )}
+          />
+          <input
+            {...methods.register("cpassword")}
+            type="password"
+            className="form__input_type_simple form__input_type_signin"
+            placeholder="Повторить пароль"
+          />
+          <ErrorMessage
+            errors={methods.errors}
+            name="cpassword"
+            render={({ message }) => (
+              <span className="tooltip">{message}</span>
+            )}
+          />
+          <div className="form__checkbox-container">
+            <input
+              type="checkbox"
+              {...methods.register("checkbox")}
+              className="form__checkbox"
+            />
+            <ErrorMessage
+              errors={methods.errors}
+              name="checkbox"
+              render={({ message }) => (
+                <span className="tooltip">{message}</span>
+              )}
+            />
+            <label htmlFor="checkbox" className="form__checkbox-label">
+              Нажимая, вы принимаете согласие о конфедиациальности
+            </label>
+          </div>
+        </fieldset>
+        <div className="form__button-container">
+          <input
+            type="submit"
+            className="button__button-sign form__submit"
+            value="Зарегистрироваться"
+          />
+        </div>
+      </div>
+    </form>
+    </FormProvider>
   );
 };
 
