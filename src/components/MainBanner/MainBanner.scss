@@ -1,0 +1,72 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.main-banner {
+  box-sizing: border-box;
+  padding: 50px 20px 291px;
+  background-image: url(../../images/background-main-banner-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: bottom;
+  width: 100%;
+
+  @include media_530 {
+    padding: 50px 20px 375px;
+  }
+
+  @include media_768 {
+    padding: 52px 10% 530px;
+  }
+
+  @include media_1024 {
+    background-image: url(../../images/background-main-banner-desktop.png);
+    padding-bottom: 145px;
+  }
+
+  @include media_1280 {
+    padding-bottom: 359px;
+  }
+
+  &__title {
+    @include reset-margins;
+    @include h1;
+  }
+
+  &__orange-shadow {
+    text-shadow: $font-color-red 4px 4px;
+  }
+
+  &__text {
+    @include reset-margins;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-white;
+    max-width: 390px;
+    width: 100%;
+
+    @include media_530 {
+      max-width: 570px;
+      font-size: 24px;
+    }
+  }
+
+  &__button-cta {
+    @include button-cta;
+    display: block;
+    width: 166px;
+    margin-top: 40px;
+    padding: 15px 30px;
+    font-size: 16px;
+    line-height: 1.19;
+    text-decoration: none;
+
+    @include media_530 {
+      font-size: 20px;
+      margin-top: 55px;
+      width: 193px;
+    }
+  }
+}

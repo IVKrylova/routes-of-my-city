@@ -1,0 +1,19 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/mixins';
+
+.button-go-back {
+  @include reset-button;
+  background-image: url(../../images/icon-go-back.svg);
+  width: 15px;
+  height: 26px;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+
+  &:hover {
+    background-image: url(../../images/icon-go-back-hover.svg);
+  }
+
+  @include media_530 {
+    margin-left: 7%;
+  }
+}

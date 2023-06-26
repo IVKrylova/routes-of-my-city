@@ -1,0 +1,162 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/_mixins';
+
+.results-table {
+  margin-top: 75px;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include media_1024 {
+    margin-top: 100px;
+  }
+
+  &__categories-list {
+    @include reset-margins;
+    display: flex;
+    list-style-type: none;
+    border-bottom: 3px solid $background-braun;
+    overflow-x: scroll;
+    position: relative;
+    margin-left: 20px;
+    width: calc(100vw - 20px);
+    max-width: 500px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include media_530 {
+      margin: 0 auto;
+    }
+
+    @include media_1024 {
+      max-width: 820px;
+    }
+  }
+
+  &__category {
+    min-width: 100px;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    color: $font-color-black;
+    cursor: pointer;
+    display: block;
+
+    &:hover {
+      color: $font-color-red;
+    }
+
+    &_active {
+      color: $font-color-white;
+      background: $background-braun;
+      border-radius: 10px 10px 0px 0px;
+
+      &:hover {
+        color: $font-color-white;
+      }
+    }
+
+    @include media_1024 {
+      min-width: 164px;
+      font-size: 20px;
+    }
+  }
+
+  &__button-more {
+    @include reset-button;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+    color: $font-color-orange;
+
+    &:hover {
+      color: $font-color-orange-hover;
+    }
+
+    &_disabled {
+      color: $button-color-disabled;
+
+      &:hover {
+        cursor: default;
+        color: $button-color-disabled;
+      }
+    }
+
+    @include media_1024 {
+      margin-top: 30px;
+      font-size: 18px;
+      justify-self: start;
+      margin-left: calc((100vw - 820px) / 2);
+    }
+  }
+
+  &__table {
+    margin: 35px 20px 0;
+    font-size: 14px;
+    line-height: 1.14;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-black;
+    border: none;
+    border-spacing: 0 5px;
+    cursor: default;
+    width: calc(100% - 60px);
+    max-width: 500px;
+
+    @include media_530 {
+      margin: 27px auto 0;
+    }
+
+    @include media_1024 {
+      margin-top: 27px;
+      max-width: 820px;
+      border-spacing: 0 11px;
+      font-size: 16px;
+    }
+  }
+
+  &__table-head {
+    text-align: left;
+    height: 44px;
+    vertical-align: top;
+  }
+
+  &__col-number {
+    @include result-table-cell(13%);
+    text-align: center;
+    padding: 0;
+
+    @include media_1024 {
+      width: 9%;
+    }
+  }
+
+  &__col-team {
+    @include result-table-cell(53%);
+    padding: 0;
+
+    @include media_1024 {
+      width: 64%;
+    }
+  }
+
+  &__col-score {
+    @include result-table-cell(20%);
+    padding: 0;
+
+    @include media_1024 {
+      width: 13%;
+    }
+  }
+
+  &__col-time {
+    @include result-table-cell(14%);
+    padding: 0;
+  }
+}

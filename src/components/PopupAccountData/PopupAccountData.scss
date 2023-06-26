@@ -1,0 +1,80 @@
+@import '../../utils/styles/_constants';
+@import '../../utils/styles/mixins';
+
+.popup-account-data {
+  display: none;
+  position: absolute;
+  max-width: 340px;
+  width: 100%;
+  background-color: $background-blue-light;
+  box-sizing: border-box;
+  padding: 25px 20px 30px;
+  border-radius: 10px;
+  top: 60px;
+  right: 20px;
+
+  @include media_768 {
+    top: 110px;
+    right: 3%;
+  }
+
+  @include media_1280 {
+    top: 130px;
+    right: 6.5%;
+  }
+
+  &__team {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    cursor: default;
+  }
+
+  &__name {
+    @include reset-margins;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.17;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: $font-color-black-darck;
+  }
+
+  &__members {
+    @include reset-margins;
+    color: $font-color-red;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+  &__category {
+    display: flex;
+    column-gap: 10px;
+    margin-left: 60px;
+    margin-top: 5px;
+    cursor: default;
+  }
+
+  &__name-category {
+    @include reset-margins;
+    color: $font-color-black;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  &__button-exit {
+    @include reset-button;
+    margin-top: 20px;
+    color: $font-color-gray;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.15;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+  &_visible {
+    display: block;
+  }
+}

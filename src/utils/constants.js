@@ -30,6 +30,7 @@ export const forms = [
     modifier: "player6",
   },
 ];
+
 export const ERROR_MESSAGES = {
   notFound: "Requested resource not found.",
   unauthorized: "Authorization Required",
@@ -41,4 +42,29 @@ export const ERROR_MESSAGES = {
   userBadRequest: "User not found.",
   jwtChecked: "Jwts been checked. jwt is not valid",
   jwtNotValid: "Jwt not valid",
+}
+
+// ToDo: check with API
+export const INITIAL_STATE_TEAM = {
+  id: null,
+  members: {
+    0: {
+      status: '',
+      name: '',
+      phone: '',
+      email: '',
+      birthday: '',
+      id: null,
+    }
+  },
+  name: '',
+  quests: {
+    0: {
+      id: null,
+      name: '',
+      category: '',
+      categoryDescription: ''
+    }
+  },
+  membersNumber: null,
 };
