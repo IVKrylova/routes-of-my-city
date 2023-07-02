@@ -575,6 +575,7 @@ function App() {
         isHeaderAccountHovered={isHeaderAccountHovered}
         handleClickLinkToAccount={clickLinkToAccount}
         handleClickButtonExit={clickButtonExit}
+        setIsHeaderAccountHovered={setIsHeaderAccountHovered}
       />
       <DeletePlayerPopup
         isOpenPopup={isOpenDeletePlayerPopup}
