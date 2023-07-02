@@ -332,6 +332,7 @@
   }
   &__link {
     transition: 0.2s linear;
+    cursor: pointer;
     &:hover {
       opacity: 0.7;
     }
