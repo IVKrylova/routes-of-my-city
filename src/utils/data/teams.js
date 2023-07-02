@@ -3,8 +3,8 @@ export const teams = {
   id: 0,
   name: 'Чемпионы',
   membersNumber: 3,
-  members: {
-    0: {
+  members: [
+    {
       status: 'Капитан',
       name: 'Космодемьянский Александр Илларионовичааааааааааа',
       phone: 'Телефон',
@@ -12,7 +12,7 @@ export const teams = {
       birthday: '2023-04-20',
       id: 0,
     },
-    1: {
+    {
       status: 'игрок',
       name: 'Космодемьянский Александр Илларионович',
       phone: 'Телефон',
@@ -20,7 +20,7 @@ export const teams = {
       birthday: '2023-04-20',
       id: 1,
     },
-    2: {
+    {
       status: 'игрок',
       name: 'Иванов Иван Михайлович',
       phone: 'Телефон',
@@ -28,7 +28,7 @@ export const teams = {
       birthday: '2023-04-20',
       id: 2,
     },
-  },
+  ],
   quests: {
     0: {
       id: 0,

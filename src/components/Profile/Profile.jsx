@@ -1,10 +1,21 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import QuestCardProfile from '../QuestCardProfile/QuestCardProfile';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
+
 import './Profile.scss';
 
 const Profile = (props) => {
+  const [teamPlayersNumber, setTeamPlayersNumber] = useState(0);
+
+  useEffect(() => {
+    const arr = props.teamPlayers.filter(el => el.name !== '');
+
+    setTeamPlayersNumber(arr.length);
+  }, [props.teamPlayers])
+
   // ToDo: set up validation and add handler
   const handleChange = () => {};
 
@@ -23,7 +34,7 @@ const Profile = (props) => {
         />
       </form>
       <p className='profile__number'>
-        Участники<span className='profile__span-number'>{props.team.membersNumber}</span>
+        Участники<span className='profile__span-number'>{teamPlayersNumber}</span>
       </p>
       <ul className='profile__team-members'>
         {props.teamPlayers && props.teamPlayers.map(el => {
