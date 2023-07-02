@@ -13,7 +13,7 @@ const useScrollToRef = (ref) => {
   }
 
   useEffect(() => {
-    if (ref.current.id === hash) setTimeout(scrollToElement, 100);
+    if (ref.current && ref.current.id === hash) setTimeout(scrollToElement, 100);
   }, [hash, location]);
 
   return null;
