@@ -10,27 +10,27 @@ const NavMenu = (props) => {
     <nav className={classNavMenu}>
       <ul className={classList}>
         <li>
-          <Link className={classLink} to="/#about-project">
+          <Link className={classLink} to="/#about-project" onClick={props.handleClose}>
             О проекте
           </Link>
         </li>
         <li>
-          <Link className={classLink} to="/#main-quests">
+          <Link className={classLink} to="/#main-quests" onClick={props.handleClose}>
             Квесты
           </Link>
         </li>
         <li>
-          <Link className={classLink} to='/rules'>
+          <Link className={classLink} to='/rules' onClick={props.handleClose}>
             Правила
           </Link>
         </li>
         <li>
-          <Link className={classLink} to="/#faq-list">
+          <Link className={classLink} to="/#faq-list" onClick={props.handleClose}>
             FAQ
           </Link>
         </li>
         <li>
-          <Link className={classLink} to="#contacts">
+          <Link className={classLink} to="#contacts" onClick={props.handleClose}>
             Контакты
           </Link>
         </li>

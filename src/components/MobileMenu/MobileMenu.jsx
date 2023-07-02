@@ -10,6 +10,7 @@ const MobileMenu = (props) => {
       />
       <NavMenu
         isMobileMenuOpen={props.isMobileMenuOpen}
+        handleClose={props.handleCloseMobileMenu}
       />
       {!props.isLogin &&
         <ul className='mobile-menu__button-list'>
