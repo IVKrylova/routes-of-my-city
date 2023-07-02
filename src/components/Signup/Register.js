@@ -156,28 +156,28 @@ const Register = () => {
         path="/signup"
         element={
           <FormProvider {...methods}>
+            <Link to="/signin" className="link form__link">
+              <button
+                className="form__button form__back-button"
+                onClick={() => navigate(-1)}
+              >
+                <img src={back} alt="назад" />
+              </button>
+            </Link>
+            <div className="form__sign-in ">
+              <h1 className="form__title">Регистрация</h1>
+              <div className="form__sign-in-up">
+                <p className="form__sign-text">Уже есть аккаунт? </p>
+                <Link to="/signin" className="link form__link">
+                  Войти
+                </Link>
+              </div>
+            </div>
             <form
               noValidate
               onSubmit={methods.handleSubmit(onSubmit)}
               className="form container"
             >
-              <Link to="/signin" className="link form__link">
-                <button
-                  className="form__button form__back-button"
-                  onClick={() => navigate(-1)}
-                >
-                  <img src={back} alt="назад" />
-                </button>
-              </Link>
-              <div className="form__sign-in ">
-                <h1 className="form__title">Регистрация</h1>
-                <div className="form__sign-in-up">
-                  <p className="form__sign-text">Уже есть аккаунт? </p>
-                  <Link to="/sign-in" className="link form__link">
-                    Войти
-                  </Link>
-                </div>
-              </div>
               <div className="form__fieldset">
                 <input
                   {...methods.register("team", { required: true })}
