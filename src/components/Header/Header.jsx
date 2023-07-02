@@ -19,8 +19,21 @@ const Header = (props) => {
 
     if (props.location.pathname !== '/login') {
       setHeaderLoginClass('header-login header-login_hidden');
+      setHeaderClass('header');
     }
   }, [props.screenWidth, props.location]);
+
+  useEffect(() => {
+    if (props.location.pathname === '/login') {
+      props.screenWidth < 768 ? setHeaderClass('header header_hidden') : setHeaderClass('header');
+      props.screenWidth < 768 ? setHeaderLoginClass('header-login') : setHeaderLoginClass('header-login header-login_hidden');
+    }
+
+    if (props.location.pathname !== '/login') {
+      setHeaderLoginClass('header-login header-login_hidden');
+      setHeaderClass('header');
+    }
+  }, []);
 
   return (
     <>

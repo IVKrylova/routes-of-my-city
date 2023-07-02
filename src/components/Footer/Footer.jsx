@@ -15,9 +15,19 @@ const Footer = (props) => {
   useEffect(() => {
     if (props.location.pathname === '/login') {
       props.screenWidth < 768 ? setFooterClass('footer footer_hidden') : setFooterClass('footer');
+    } else {
+      setFooterClass('footer');
     }
 
-  }, [props.screenWidth]);
+  }, [props.screenWidth, props.location]);
+
+  useEffect(() => {
+    if (props.location.pathname === '/login') {
+      props.screenWidth < 768 ? setFooterClass('footer footer_hidden') : setFooterClass('footer');
+    } else {
+      setFooterClass('footer');
+    }
+  }, []);
 
   return (
     !props.isPageNotFound &&

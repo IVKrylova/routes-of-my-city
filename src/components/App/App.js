@@ -434,7 +434,10 @@ function App() {
   }, []);
 
   return (
-    <div className='app' onClick={handleBackgroundClose}>
+    <div
+      className={`app ${location.pathname === '/login' ? 'app_login' : ''}`}
+      onClick={handleBackgroundClose}
+    >
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         handleClickBurgerMenu={openMobileMenu}
