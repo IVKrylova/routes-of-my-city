@@ -294,18 +294,18 @@ const Register = () => {
                       <span className="tooltip">{message}</span>
                     )}
                   />
+                  <ErrorMessage
+                    errors={methods.errors}
+                    name="checkbox"
+                    render={({ message }) => (
+                      <span className="tooltip">{message}</span>
+                    )}
+                  />
                   <div className="form__checkbox-container">
                     <input
                       type="checkbox"
                       {...methods.register("checkbox")}
                       className="form__link form__checkbox"
-                    />
-                    <ErrorMessage
-                      errors={methods.errors}
-                      name="checkbox"
-                      render={({ message }) => (
-                        <span className="tooltip">{message}</span>
-                      )}
                     />
                     <label htmlFor="checkbox" className="form__checkbox-label">
                       Нажимая, вы принимаете согласие о конфедиациальности
