@@ -48,6 +48,15 @@
       background-color: $button-color-disabled;
     }
   }
+
+  &:disabled {
+    background-color: $button-color-disabled;
+    cursor: default;
+
+    &:hover {
+      background-color: $button-color-disabled;
+    }
+  }
 }
 
 @mixin button-sign-up {

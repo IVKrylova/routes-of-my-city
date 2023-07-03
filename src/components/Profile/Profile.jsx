@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import QuestCardProfile from '../QuestCardProfile/QuestCardProfile';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
 import './Profile.scss';
 
 const Profile = (props) => {
   const [teamPlayersNumber, setTeamPlayersNumber] = useState(0);
+  const [buttonSubmitActive, setButtonSubmitActive] = useState(false);
+
+  const { values, setValues, handleChange } = useFormAndValidation();
 
   useEffect(() => {
     const arr = props.teamPlayers.filter(el => el.name !== '');
@@ -16,8 +20,13 @@ const Profile = (props) => {
     setTeamPlayersNumber(arr.length);
   }, [props.teamPlayers])
 
-  // ToDo: set up validation and add handler
-  const handleChange = () => {};
+  useEffect(() => {
+    setValues({ name: props.team.name });
+  }, [props.team]);
+
+  useEffect(() => {
+    values.name !== props.team.name ? setButtonSubmitActive(true) : setButtonSubmitActive(false);
+  }, [values.name]);
 
   return (
     <main className='profile'>
@@ -29,7 +38,8 @@ const Profile = (props) => {
       <form className='profile__form-name' id='edit-team-name'>
         <input
           className='profile__form-input'
-          value={props.team.name}
+          value={values.name || ''}
+          name='name'
           onChange={handleChange}
         />
       </form>
@@ -98,7 +108,12 @@ const Profile = (props) => {
           </li>
         </ul>
       </div>
-      <button type='submit' className='profile__button-submit' form='edit-team-name'>
+      <button
+        type='submit'
+        className='profile__button-submit'
+        form='edit-team-name'
+        disabled={!buttonSubmitActive}
+      >
         Сохранить
       </button>
     </main>
