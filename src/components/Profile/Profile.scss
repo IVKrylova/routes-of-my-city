@@ -106,7 +106,8 @@
   }
 
   &__settings-wrap {
-    @include grid-column-1fr;
+    display: flex;
+    flex-wrap: wrap;
 
     @include media_530 {
       margin-left: 7%;
@@ -114,7 +115,6 @@
 
     @include media_1280 {
       margin-right: 7%;
-      grid-template-columns: 893px calc(100% - 893px);
     }
   }
 
@@ -123,7 +123,7 @@
     list-style-type: none;
     @include flex-column;
     row-gap: 20px;
-    margin: 30px auto 0;
+    margin: 30px 45px 0 0;
     align-self: stretch;
 
     @include media_530 {
@@ -131,9 +131,8 @@
     }
 
     @include media_768 {
-      flex-flow: wrap;
       column-gap: 30px;
-      width: 93%;
+      flex-direction: row;
     }
   }
 
@@ -141,7 +140,7 @@
     @include reset-margins;
     list-style-type: none;
     @include flex-column;
-    margin: 20px auto 0;
+    margin: 20px 25px 0 0;
     row-gap: 15px;
     border: 2px solid $background-light-blue;
     border-radius: $border-radius-block;
@@ -149,6 +148,8 @@
     box-sizing: border-box;
     position: relative;
     @include max-width-mixin(308px);
+    height: min-content;
+    align-self: end;
 
     @include media_530 {
       margin-left: 0;
@@ -157,8 +158,6 @@
     @include media_1280 {
       max-width: 295px;
       margin-left: 0;
-      height: min-content;
-      align-self: end;
     }
 
     &::after {
