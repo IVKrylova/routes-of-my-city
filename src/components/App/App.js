@@ -25,6 +25,7 @@ import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
 import PopupEditPlayer from '../PopupEditPlayer/PopupEditPlayer';
 import PopupResetPassword from '../PopupResetPassword/PopupResetPassword';
 import PopupChangePassword from '../PopupChangePassword/PopupChangePassword';
+import AuthRoute from '../AuthRoute/AuthRoute';
 import {
   INITIAL_STATE_TEAM,
   PATH_LIST,
@@ -614,12 +615,14 @@ function App() {
                 <Register />
               }
             />
-            <Route
-              path='/login'
-              element={
-                <Login />
-              }
-            />
+            <Route element={ <AuthRoute isLogin={isLogin} /> }>
+              <Route
+                path='/login'
+                element={
+                  <Login />
+                }
+              />
+            </Route>
             <Route
               path='/rules'
               element={
