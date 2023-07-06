@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import Header from '../Header/Header';
 import PopupAccountData from '../PopupAccountData/PopupAccountData';
@@ -475,232 +475,243 @@ function App() {
     setQuestCategories(categories);
   }, []);
 
-  return (
-    <div>
-      <Helmet
-        htmlAttributes={{'lang': 'ru'}}
-        title='Городской квест Мой город'
-        meta={[
-          { 'name': 'description', 'content': 'Городской квест Мой город' },
-        ]}
-        link={[
-          {
-            'rel': 'icon',
-            'type': 'image/png',
-            'href': 'favicon.ico',
-          }
-        ]}
-      />
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsHeaderAccountHovered(false);
+    }
+    if (isHeaderAccountHovered) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [isMobileMenuOpen, isHeaderAccountHovered]);
 
-      <div
-        className={`app ${location.pathname === '/login' ? 'app_login' : ''}`}
-        onClick={handleBackgroundClose}
-      >
-        <Header
-          isMobileMenuOpen={isMobileMenuOpen}
-          handleClickBurgerMenu={openMobileMenu}
-          handleCloseMobileMenu={closeMobileMenu}
-          isLogin={isLogin}
-          handleHoverButtonHeaderAcount={hoverButtonHeaderAcount}
-          handleClickLinkToAccount={clickLinkToAccount}
-          handleClickButtonLogin={clickButtonLogin}
-          handleClickButtonSignUp={clickButtonSignUp}
-          handleClickButtonExit={clickButtonExit}
-          location={location}
-          screenWidth={screenWidth}
+  return (
+    <HelmetProvider>
+      <div>
+        <Helmet
+          htmlAttributes={{'lang': 'ru'}}
+          title='Городской квест Мой город'
+          meta={[
+            { 'name': 'description', 'content': 'Городской квест Мой город' },
+          ]}
+          link={[
+            {
+              'rel': 'icon',
+              'type': 'image/png',
+              'href': 'favicon.ico',
+            }
+          ]}
         />
-        <Routes>
-          <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
+
+        <div
+          className={`app ${location.pathname === '/login' ? 'app_login' : ''}`}
+          onClick={handleBackgroundClose}
+        >
+          <Header
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleClickBurgerMenu={openMobileMenu}
+            handleCloseMobileMenu={closeMobileMenu}
+            isLogin={isLogin}
+            handleHoverButtonHeaderAcount={hoverButtonHeaderAcount}
+            handleClickLinkToAccount={clickLinkToAccount}
+            handleClickButtonLogin={clickButtonLogin}
+            handleClickButtonSignUp={clickButtonSignUp}
+            handleClickButtonExit={clickButtonExit}
+            location={location}
+            screenWidth={screenWidth}
+          />
+          <Routes>
+            <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
+              <Route
+                path='/profile'
+                element={
+                  <Profile
+                    team={team}
+                    teamPlayers={teamPlayers}
+                    teamQuestList={teamQuestList}
+                    goBack={handleGoBack}
+                    sendDeletedPlayer={openDeletePlayerPopup}
+                    sendIdQuest={openCancelQuestPopup}
+                    handleClickDeleteProfile={openDeleteProfilePopup}
+                    sendChangeCategoryQuestId={openPopupChangeQuestCategory}
+                    handleClickAddPlayer={openPopopAddPlayer}
+                    handleClickEditPlayer={handleClickEditPlayer}
+                    openPopupResetPassword={openPopupResetPassword}
+                    openPopupChangePassword={openPopupChangePassword}
+                  />
+                }
+              />
+            </Route>
+            <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
+              <Route
+                path='/quest/:questId/list-exercise'
+                element={
+                  <ListExercise
+                    timerHour={timerHour}
+                    timerMinute={timerMinute}
+                    taskList={taskList}
+                    isMobile={isMobile}
+                    handleCardClick={handleCardClick}
+                    goBack={handleGoBack}
+                    currentQuestId={currentQuestId}
+                    sendTaskIdByButton={goToAnswer}
+                  />
+                }
+              />
+            </Route>
+            <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
+              <Route
+                path='/quest/:questId/task/:id'
+                element={
+                  <Task
+                    task={task}
+                    handleGoBack={handleGoBack}
+                  />
+                }
+              />
+            </Route>
+            <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
+              <Route
+                path='/quest/:questId/answer/:id'
+                element={
+                  <AnswerPage
+                    handleGoBack={handleGoBack}
+                    task={task}
+                  />
+                }
+              />
+            </Route>
             <Route
-              path='/profile'
+              path='/'
               element={
-                <Profile
-                  team={team}
-                  teamPlayers={teamPlayers}
-                  teamQuestList={teamQuestList}
-                  goBack={handleGoBack}
-                  sendDeletedPlayer={openDeletePlayerPopup}
-                  sendIdQuest={openCancelQuestPopup}
-                  handleClickDeleteProfile={openDeleteProfilePopup}
-                  sendChangeCategoryQuestId={openPopupChangeQuestCategory}
-                  handleClickAddPlayer={openPopopAddPlayer}
-                  handleClickEditPlayer={handleClickEditPlayer}
-                  openPopupResetPassword={openPopupResetPassword}
-                  openPopupChangePassword={openPopupChangePassword}
+                <Main
+                  isNoQuests={isNoQuests}
+                  questsList={questsList}
+                  resultQuest={resultQuest}
+                  isQuestCompleted={isQuestCompleted}
+                  faqList={faqList}
+                  handleOpenAnswer={handleOpenAnswer}
+                  sendQuestId={handleClickTakePart}
+                  location={location}
+                  isLogin={isLogin}
                 />
               }
             />
-          </Route>
-          <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
             <Route
-              path='/quest/:questId/list-exercise'
+              path='/quest/:questId'
               element={
-                <ListExercise
-                  timerHour={timerHour}
-                  timerMinute={timerMinute}
-                  taskList={taskList}
-                  isMobile={isMobile}
-                  handleCardClick={handleCardClick}
-                  goBack={handleGoBack}
-                  currentQuestId={currentQuestId}
-                  sendTaskIdByButton={goToAnswer}
+                <QuestPage
+                  currentQuest={currentQuest}
+                  location={location}
+                  questCategories={questCategories}
+                  handleCancelAndGoBack={handleCancelAndGoBack}
+                  sendCategory={handleFormChoiceCategory}
                 />
               }
             />
-          </Route>
-          <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
             <Route
-              path='/quest/:questId/task/:id'
+              path='/signup'
               element={
-                <Task
-                  task={task}
-                  handleGoBack={handleGoBack}
+                <Register />
+              }
+            />
+            <Route
+              path='/login'
+              element={
+                <Login
+                  screenWidth={screenWidth}
                 />
               }
             />
-          </Route>
-          <Route element={ <ProtectedRoute isLogin={isLogin} /> }>
             <Route
-              path='/quest/:questId/answer/:id'
+              path='/rules'
               element={
-                <AnswerPage
-                  handleGoBack={handleGoBack}
-                  task={task}
+                <Rules />
+              }
+            />
+            <Route
+              path='*'
+              element={
+                <PageNotFound
+                  setIsPageNotFound={setIsPageNotFound}
                 />
               }
             />
-          </Route>
-          <Route
-            path='/'
-            element={
-              <Main
-                isNoQuests={isNoQuests}
-                questsList={questsList}
-                resultQuest={resultQuest}
-                isQuestCompleted={isQuestCompleted}
-                faqList={faqList}
-                handleOpenAnswer={handleOpenAnswer}
-                sendQuestId={handleClickTakePart}
-                location={location}
-                isLogin={isLogin}
-              />
-            }
+          </Routes>
+          <Footer
+            isPageNotFound={isPageNotFound}
+            location={location}
+            screenWidth={screenWidth}
           />
-          <Route
-            path='/quest/:questId'
-            element={
-              <QuestPage
-                currentQuest={currentQuest}
-                location={location}
-                questCategories={questCategories}
-                handleCancelAndGoBack={handleCancelAndGoBack}
-                sendCategory={handleFormChoiceCategory}
-              />
-            }
+          <PopupAccountData
+            isHeaderAccountHovered={isHeaderAccountHovered}
+            handleClickLinkToAccount={clickLinkToAccount}
+            handleClickButtonExit={clickButtonExit}
+            setIsHeaderAccountHovered={setIsHeaderAccountHovered}
           />
-          <Route
-            path='/signup'
-            element={
-              <Register />
-            }
+          <DeletePlayerPopup
+            isOpenPopup={isOpenDeletePlayerPopup}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            handleButtonClick={handleDeletePlayer}
           />
-          <Route
-            path='/login'
-            element={
-              <Login
-                screenWidth={screenWidth}
-              />
-            }
+          <CancelQuestPopup
+            isOpenPopup={isOpenCancelQuestPopup}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            handleButtonClick={handleCancelQuest}
           />
-          <Route
-            path='/rules'
-            element={
-              <Rules />
-            }
+          <DeleteProfilePopup
+            isOpenPopup={isOpenDeleteProfilePopup}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            handleButtonClick={handleDeleteProfile}
           />
-          <Route
-            path='*'
-            element={
-              <PageNotFound
-                setIsPageNotFound={setIsPageNotFound}
-              />
-            }
+          <PopupChangeQuestCategory
+            isOpenPopup={isOpenPopupChangeQuestCategory}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            handleCancelAndGoBack={handleCancelAndGoBack}
+            isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
+            questCategories={questCategoriesToChange}
+            sendCategory={changeCategoryInPopup}
           />
-        </Routes>
-        <Footer
-          isPageNotFound={isPageNotFound}
-          location={location}
-          screenWidth={screenWidth}
-        />
-        <PopupAccountData
-          isHeaderAccountHovered={isHeaderAccountHovered}
-          handleClickLinkToAccount={clickLinkToAccount}
-          handleClickButtonExit={clickButtonExit}
-          setIsHeaderAccountHovered={setIsHeaderAccountHovered}
-        />
-        <DeletePlayerPopup
-          isOpenPopup={isOpenDeletePlayerPopup}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          handleButtonClick={handleDeletePlayer}
-        />
-        <CancelQuestPopup
-          isOpenPopup={isOpenCancelQuestPopup}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          handleButtonClick={handleCancelQuest}
-        />
-        <DeleteProfilePopup
-          isOpenPopup={isOpenDeleteProfilePopup}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          handleButtonClick={handleDeleteProfile}
-        />
-        <PopupChangeQuestCategory
-          isOpenPopup={isOpenPopupChangeQuestCategory}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          handleCancelAndGoBack={handleCancelAndGoBack}
-          isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
-          questCategories={questCategoriesToChange}
-          sendCategory={changeCategoryInPopup}
-        />
-        <PopupAddPlayer
-          isOpenPopup={isOpenPopopAddPlayer}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          isOpenPopopAddPlayer={isOpenPopopAddPlayer}
-          sendDataForm={handleFormAddPlayer}
-        />
-        <PopupEditPlayer
-          isOpenPopup={isOpenPopopEditPlayer}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          goToHomePage={handleButtongoToHomePage}
-          isOpenPopopEditPlayer={isOpenPopopEditPlayer}
-          sendDataForm={handleFormEditPlayer}
-          editedPlayer={editedPlayer}
-        />
-        <PopupResetPassword
-          isOpenPopup={isOpenPopupResetPassword}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          isOpenPopupResetPassword={isOpenPopupResetPassword}
-        />
-        <PopupChangePassword
-          isOpenPopup={isOpenPopupChangePassword}
-          onClosePopup={closeAllPopup}
-          isPopupSuccess={isPopupSuccess}
-          isOpenPopupChangePassword={isOpenPopupChangePassword}
-          sendDataForm={handleFormChangePassword}
-        />
+          <PopupAddPlayer
+            isOpenPopup={isOpenPopopAddPlayer}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            isOpenPopopAddPlayer={isOpenPopopAddPlayer}
+            sendDataForm={handleFormAddPlayer}
+          />
+          <PopupEditPlayer
+            isOpenPopup={isOpenPopopEditPlayer}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            goToHomePage={handleButtongoToHomePage}
+            isOpenPopopEditPlayer={isOpenPopopEditPlayer}
+            sendDataForm={handleFormEditPlayer}
+            editedPlayer={editedPlayer}
+          />
+          <PopupResetPassword
+            isOpenPopup={isOpenPopupResetPassword}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            isOpenPopupResetPassword={isOpenPopupResetPassword}
+          />
+          <PopupChangePassword
+            isOpenPopup={isOpenPopupChangePassword}
+            onClosePopup={closeAllPopup}
+            isPopupSuccess={isPopupSuccess}
+            isOpenPopupChangePassword={isOpenPopupChangePassword}
+            sendDataForm={handleFormChangePassword}
+          />
+        </div>
       </div>
-    </div>
+    </HelmetProvider>
   );
 }
 
