@@ -1,18 +1,33 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import useWindowWidth from '../../hooks/useWindowWidth';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
+
 import './Login.scss';
 
-const Login = (props) => {
+const Login = () => {
   const [classButtonGoBack, setClassButtonGoBack] = useState();
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
   const { values, handleChange } = useFormAndValidation();
 
+  const screenWidth = useWindowWidth();
+
   useEffect(() => {
-    props.screenWidth < 1024
+    screenWidth < 1024
       ? setClassButtonGoBack('page-login__button-go-back_hidden')
       : setClassButtonGoBack('page-login__button-go-back_visible');
-  }, [props.screenWidth]);
+  }, [screenWidth]);
+
+  useEffect(() => {
+    if (!values.email || !values.password) {
+      setIsButtonActive(false);
+    } else {
+      setIsButtonActive(true);
+    }
+  }, [values.email, values.password]);
 
   return (
     <main className='page-login'>
@@ -60,7 +75,7 @@ const Login = (props) => {
           Забыли пароль?
         </button>
         <div className='page-login__button-list'>
-          <button className='page-login__button-submit' type='submit'>
+          <button className='page-login__button-submit' type='submit' disabled={!isButtonActive}>
             Войти
           </button>
           <Link className='page-login__link-to-register' to='/signup'>
