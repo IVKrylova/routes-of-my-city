@@ -1,16 +1,19 @@
+import { useSelector } from 'react-redux';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import CardTask from '../CardTask/CardTask';
 import Timer from '../Timer/Timer';
 import './ListExercise.scss';
 
 const ListExercise = (props) => {
+  const currentQuest = useSelector(store => store.currentQuest.currentQuest);
+
   return (
     <section className='list-exercise'>
       <ButtonGoBack
         goBack={props.goBack}
       />
-      {props.currentQuest &&
-        <h1 className='list-exercise__title'>{props.currentQuest.name}</h1>
+      {currentQuest &&
+        <h1 className='list-exercise__title'>{currentQuest.name}</h1>
       }
       <div className='list-exercise__info'>
         <p className='list-exercise__category'>
@@ -33,7 +36,6 @@ const ListExercise = (props) => {
               img={el.img}
               id={el.id}
               sendCardTaskId={props.handleCardClick}
-              currentQuestId={props.currentQuestId}
             />
           );
         })}
