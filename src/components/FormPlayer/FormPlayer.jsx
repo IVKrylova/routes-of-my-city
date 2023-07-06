@@ -3,12 +3,24 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './FormPlayer.scss';
 
 const FormPlayer = (props) => {
-  const { values, handleChange, setValues, setErrors, setIsValid } = useFormAndValidation();
+  const { values, handleChange, setValues, setErrors, setIsValid, isValid, errors } = useFormAndValidation();
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     props.sendDataForm(values)
   }
+
+  useEffect(_ => {
+    if (props.isOpenPopopAddPlayer) {
+      if (errors.name
+        || errors.birthday
+        || errors.tel
+        || errors.email
+        || (!values.name || !values.birthday || !values.tel || !values.email)) {
+          setIsValid(false);
+        }
+    }
+  }, [props.isOpenPopopAddPlayer]);
 
   useEffect(_ => {
     if (props.isOpenPopopEditPlayer) {
@@ -43,7 +55,9 @@ const FormPlayer = (props) => {
         <span className={`form-add-player__input-block-placeholder ${values.name ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
           Имя
         </span>
-        <span className='form-add-player__input-block-error'></span>
+        <span className={`form-add-player__input-block-error ${errors.name ? 'form-add-player__input-block-error_active' : ''}`}>
+          {errors.name}
+        </span>
       </label>
       <label htmlFor={props.idTel} className='form-add-player__input-block'>
         <input
@@ -59,7 +73,9 @@ const FormPlayer = (props) => {
         <span className={`form-add-player__input-block-placeholder ${values.tel ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
           Телефон
         </span>
-        <span className='form-add-player__input-block-error'></span>
+        <span className={`form-add-player__input-block-error ${errors.tel ? 'form-add-player__input-block-error_active' : ''}`}>
+          {errors.tel}
+        </span>
       </label>
       <label htmlFor={props.idEmail} className='form-add-player__input-block'>
         <input
@@ -75,7 +91,9 @@ const FormPlayer = (props) => {
         <span className={`form-add-player__input-block-placeholder ${values.email ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
           Почта
         </span>
-        <span className='form-add-player__input-block-error'></span>
+        <span className={`form-add-player__input-block-error ${errors.email ? 'form-add-player__input-block-error_active' : ''}`}>
+          {errors.email}
+        </span>
       </label>
       <label htmlFor={props.idBirthday} className='form-add-player__input-block'>
         <input
@@ -91,7 +109,9 @@ const FormPlayer = (props) => {
         <span className={`form-add-player__input-block-placeholder ${values.birthday ? 'form-add-player__input-block-placeholder_visible' : ''}`}>
           Дата рождения
         </span>
-        <span className='form-add-player__input-block-error'></span>
+        <span className={`form-add-player__input-block-error ${errors.birthday ? 'form-add-player__input-block-error_active' : ''}`}>
+          {errors.birthday}
+        </span>
       </label>
       <label htmlFor={props.idCaptain} className={`form-add-player__input-checkbox`}>
         <input
@@ -99,7 +119,7 @@ const FormPlayer = (props) => {
           type='checkbox'
           name='captain'
           id={props.idCaptain}
-          value={values.captain || false}
+          value={'Капитан'}
           checked={props.player && props.player.status === 'Капитан'}
           onChange={handleChange}
         />
@@ -107,7 +127,7 @@ const FormPlayer = (props) => {
           Назначить капитаном
         </span>
       </label>
-      <button type='submit' className='form-add-player__button'>
+      <button type='submit' className='form-add-player__button' disabled={!isValid}>
         {props.button}
       </button>
     </form>

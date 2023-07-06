@@ -20,6 +20,7 @@ const PopupAddPlayer = (props) => {
         idEmail='add-email'
         idBirthday='add-birthday'
         idCaptain='add-captain'
+        isOpenPopopAddPlayer={props.isOpenPopopAddPlayer}
       />
     </GeneralPopup>
   );

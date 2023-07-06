@@ -326,6 +326,45 @@ function App() {
 
   // ToDo: fix with Redux
   const handleFormAddPlayer = (data) => {
+    const id = Math.random();
+    const status = data.captain ? 'Капитан' : 'игрок';
+    const player = {
+      name: data.name,
+      id: id,
+      phone: data.tel,
+      email: data.email,
+      birthday: data.birthday,
+      status: status,
+    };
+
+    const arr = teamPlayers.filter(el => !!el.name === true);
+    if (data.captain === 'Капитан') {
+      arr.map(el => el.status = 'игрок');
+    }
+    arr.push(player);
+    if (data.captain === 'Капитан') arr.reverse();
+    let count = 2;
+
+    for (let i = 0; i < 5; i++) {
+      if (!arr[i]) {
+        arr[i] = {
+          status: '',
+          name: '',
+          phone: '',
+          email: '',
+          birthday: '',
+          id: Math.random(),
+        }
+      }
+      if (arr[i].status !== 'Капитан') {
+        arr[i].status = 'игрок';
+      }
+      if (arr[i].status === 'игрок' || (arr[i].status === '')) {
+        arr[i].status = `${count} игрок`;
+        count++;
+      }
+    }
+    setTeamPlayers(arr);
     setIsPopupSuccess(true);
   }
 
