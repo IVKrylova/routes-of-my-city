@@ -1,6 +1,7 @@
 .app {
-  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100vh;
+  position: relative;
 }

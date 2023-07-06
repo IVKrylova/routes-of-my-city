@@ -1,0 +1,472 @@
+@import "../../utils/styles/_constants";
+@import "../../utils/styles/_mixins";
+.register {
+  background: #f7fafc;
+  padding-top: 25px;
+  padding-bottom: 200px;
+  @media (max-width: 981px) {
+    padding-bottom: 50px;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    @media (min-width: 981px) {
+      height: 103%;
+    }
+    @media (max-width: 981px) {
+      /*    height: 147%; */
+      height: 162%;
+    }
+    @media (max-width: 400px) {
+      height: 89%;
+    }
+  }
+}
+.container {
+  /*  margin: 0; */
+  box-sizing: border-box;
+  padding-left: 10%;
+  padding-right: 10%;
+  @media (min-width: 600px) {
+  }
+  /*   @media (max-width: 1160px) {
+    margin: 0 auto;
+  } */
+  @media (max-width: 450px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.form {
+  position: relative;
+  padding-bottom: 144px;
+  --background-blue: #003b59;
+  --background-white: #fff;
+  --background-gray: #edf0f2;
+  --background-gradient-faq: radial-gradient(
+      104.3% 215.81% at -39.38% 165.74%,
+      rgba(249, 161, 53, 0.2) 0%,
+      rgba(249, 161, 53, 0) 100%
+    )
+    #edf0f2;
+  --background-gradient-no-quests: radial-gradient(
+      70.36% 70.36% at -11.32% -37.94%,
+      rgba(249, 161, 53, 0.2) 0%,
+      rgba(249, 161, 53, 0) 100%
+    ),
+    radial-gradient(
+      59.97% 77.7% at 115.45% 65.77%,
+      rgba(2, 118, 151, 0.2) 0%,
+      rgba(2, 118, 151, 0) 100%
+    ),
+    #ffffff;
+
+  --font-color-white: #fff;
+  --font-color-black: #131211;
+  --font-color-gray: #79848a;
+  --font-color-red: #ac4c3e;
+  --font-color-orange: #f9a135;
+
+  --button-color-cta: #f9a135;
+  --button-color-cta-hover: #ffb458;
+  --button-color-cta-active: #e48e23;
+  --button-color-disabled: #c2c4c4;
+  --button-color-sign-up: #ac4c3e;
+  --button-color-sign-up-active: #963628;
+  --button-color-sign-up-hover: #bd5748;
+  &__title {
+    /*   @include hi; */
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.17;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: var(font-color-white);
+    margin: 0;
+    margin-bottom: 25px;
+    @media screen and (max-width: 768px) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 38px;
+      margin-bottom: 0;
+    }
+  }
+  &__subtitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: var (--background-blue);
+    margin-top: 5px;
+  }
+  /*   padding-left: 185px;
+  @media (max-width: 1400px) {
+    padding: 0;
+  } */
+  &__sign-in-up {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    @media (max-width: 1200px) {
+      margin-top: 6.5px;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 450px) {
+      margin: 0;
+    }
+  }
+  &__sign-in {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10.8%;
+    padding-right: 6.2%;
+    @media (max-width: 450px) {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 15px;
+    }
+    & a {
+      @include link-button-orange;
+      text-decoration: none;
+      color: #f9a135;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 23px;
+      @media (max-width: 1200px) {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+    & p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      @media (max-width: 1200px) {
+        font-size: 14px;
+        line-height: 16px;
+        color: #131211;
+        padding-right: 0;
+      }
+    }
+    @media (max-width: 1200px) {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      display: block;
+    }
+  }
+  &__sign-text {
+    margin: 0;
+  }
+  &__input {
+    outline: none;
+    border: none;
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #003b59;
+    &::-webkit-input-placeholder {
+      color: #003b59;
+    }
+    ::-moz-placeholder {
+      color: #003b59;
+    }
+    :-moz-placeholder {
+      color: #003b59;
+    }
+    :-ms-input-placeholder {
+      color: #003b59;
+    }
+    &_type_simple {
+      border: 2px solid var(--font-color-red);
+      width: 400px;
+      height: 55px;
+      font-size: 16px;
+      line-height: 19px;
+      padding-left: 16px;
+      align-items: center;
+      border-radius: 10px;
+      @media (max-width: 980px) {
+        width: 324px;
+      }
+      @media (max-width: 400px) {
+        width: 324px;
+        box-sizing: border-box;
+      }
+    }
+    &_type_signin {
+      border: 1px solid #c5c2cd;
+    }
+  }
+  &__input-full {
+    display: inline-block;
+    padding-left: 16px;
+    padding-top: 9.5px;
+    border: 1px solid var(--background-gray);
+    width: 400px;
+    height: 55px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    background: white;
+    @media (max-width: 980px) {
+      width: 340px;
+    }
+    @media (max-width: 400px) {
+      /*       width: auto; */
+      width: 330px;
+      box-sizing: border-box;
+    }
+  }
+  &__label {
+    display: block;
+    color: var(--font-color-gray);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 130%;
+    letter-spacing: -0.019em;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: var(--font-color-gray);
+  }
+  &__fieldset {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 0 25px 18px;
+    gap: 30px;
+    border: none;
+    width: 440px;
+    position: relative;
+    @media (max-width: 980px) {
+      width: 340px;
+      padding: 15px 10px;
+      box-sizing: border-box;
+    }
+    @media (max-width: 400px) {
+      padding: 15px 5px;
+      width: 320px;
+      box-sizing: border-box;
+    }
+  }
+  &__fieldset-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: wrap;
+    /*   @media (min-width: 980px) {
+      padding-left: 10.8%;
+      padding-right: 6.2%;
+    } */
+    & .form__fieldset:nth-of-type(2) {
+      background: var(--background-gray);
+      border-radius: 10px;
+    }
+    @media (max-width: 980px) {
+      flex-direction: column;
+      gap: 25px;
+      margin: 0 auto;
+    }
+  }
+  &__line {
+    /*     margin-right: 95px;
+    margin-left: 95px; */
+    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
+
+    @media (max-width: 1200px) {
+      display: none;
+    }
+  }
+  &__line-horizontal {
+    /* margin: auto; */
+    max-width: 503px;
+    padding: 0 0 0 18px;
+    @media (max-width: 980px) {
+      max-width: 319px;
+    }
+  }
+  &__button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    &_type_close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+    &-container {
+      display: block;
+      @media (max-width: 921px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  &__back-button {
+    cursor: pointer;
+    margin: 30px auto;
+    @media (min-width: 900px) {
+      padding-left: 7.4%;
+    }
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+  .container {
+    padding-left: 10%;
+    padding-right: 10%;
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+  &__submit {
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    &_disabled {
+      background-color: var(--button-color-disabled);
+      cursor: default;
+    }
+  }
+  &__plus-box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    padding-top: 25px;
+    &:f {
+      margin-right: 35px;
+      @media (max-width: 768px) {
+        margin-right: 20px;
+      }
+    }
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+  &__link {
+    transition: 0.2s linear;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+    &-plus {
+      transition: 0.2s linear;
+      color: #79848a;
+      &_disable {
+        /*  color: rgba(175, 189, 198, 1); */
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+  }
+  &__star {
+    position: relative;
+    flex-basis: 100%;
+    width: auto;
+    padding-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 32px;
+    @media (max-width: 1200px) {
+      width: 320px;
+    }
+  }
+  &__sign-data-container {
+    background-color: #f7fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  &__checkbox {
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #afbdc6;
+    border-radius: 5px;
+    &-container {
+      gap: 10px;
+      display: flex;
+      flex-direction: row;
+    }
+    &-label {
+      width: 307px;
+      height: 38px;
+      font-family: "Raleway";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      font-feature-settings: "pnum" on, "lnum" on;
+      color: K #000000;
+      opacity: 0.5;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+      @media (max-width: 450px) {
+        font-size: 14px;
+        width: 250px;
+      }
+    }
+  }
+
+  .button {
+    &__button-sign {
+      @include button-cta;
+      font-size: 16px;
+      padding: 16px 30px;
+      font-size: 14px;
+      line-height: 1.15;
+      background: #f9a135;
+      border-radius: 10px;
+      color: #ffffff;
+      @media (min-width: 1200px) {
+        font-size: 20px;
+        margin: 0 auto;
+      }
+      @media (max-width: 568px) {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+.form .tooltip {
+  font-size: 14px;
+  background: #ffffff;
+  color: #cc0033;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
