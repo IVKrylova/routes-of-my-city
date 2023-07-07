@@ -348,11 +348,11 @@ function App() {
     };
 
     const arr = teamPlayers.filter(el => !!el.name === true);
-    if (data.captain === 'Капитан') {
+    if (data.captain) {
       arr.map(el => el.status = 'игрок');
     }
     arr.push(player);
-    if (data.captain === 'Капитан') arr.reverse();
+    if (data.captain) arr.reverse();
     let count = 2;
 
     for (let i = 0; i < 5; i++) {

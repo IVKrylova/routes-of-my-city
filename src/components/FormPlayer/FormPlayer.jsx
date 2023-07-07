@@ -1,14 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './FormPlayer.scss';
 
 const FormPlayer = (props) => {
   const { values, handleChange, setValues, setErrors, setIsValid, isValid, errors } = useFormAndValidation();
 
+  const [isCaptain, setIsCaptain] = useState(false);
+
+  const toggleCaptain = () => {
+    isCaptain ? setIsCaptain(false) : setIsCaptain(true);
+  }
+
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    props.sendDataForm(values)
+    props.sendDataForm({
+      birthday: values.birthday,
+      email: values.email,
+      name: values.name,
+      tel: values.tel,
+      captain: isCaptain,
+    });
   }
+
+  useEffect(() => {
+    if (props.player && props.player.status === 'Капитан') {
+      setIsCaptain(true);
+    }
+  }, [props.player]);
 
   useEffect(_ => {
     if (props.isOpenPopopAddPlayer) {
@@ -120,8 +138,8 @@ const FormPlayer = (props) => {
           name='captain'
           id={props.idCaptain}
           value={'Капитан'}
-          checked={props.player && props.player.status === 'Капитан'}
-          onChange={handleChange}
+          checked={isCaptain}
+          onChange={toggleCaptain}
         />
         <span className={`form-add-player__input-checkbox-span`}>
           Назначить капитаном
