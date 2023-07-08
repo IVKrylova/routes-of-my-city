@@ -321,7 +321,6 @@ function App() {
     getQuestCategory(questId)
       .then(res => setQuestCategoriesToChange(res))
       .catch(err => console.log(err));
-
   }
 
   const changeCategoryInPopup = (category) => {
@@ -381,15 +380,30 @@ function App() {
   // ToDo: fix with Redux
   const handleClickEditPlayer = (id) => {
     setIsOpenPopopEditPlayer(true);
-    for (let key in teams.members) {
-      if (teams.members[key].id === id) setEditedPlayer(team.members[key]);
+    for (let key in teamPlayers) {
+      if (teamPlayers[key].id === id) setEditedPlayer(teamPlayers[key]);
     }
   }
 
   // ToDo: fix with Api
   const handleFormEditPlayer = (data) => {
     setIsPopupSuccess(true);
-    setEditedPlayer({});
+    const status = data.captain ? 'Капитан' : 'игрок';
+    const player = {
+      name: data.name,
+      id: editedPlayer.id,
+      phone: data.tel,
+      email: data.email,
+      birthday: data.birthday,
+      status: status,
+    };
+    const arr = teamPlayers.map(el => {
+      if (el.id === editedPlayer.id) {
+        el = player;
+      }
+      return el;
+    });
+    setTeamPlayers(arr);
   }
 
   // ToDo: check logic

@@ -25,6 +25,8 @@ const FormPlayer = (props) => {
   useEffect(() => {
     if (props.player && props.player.status === 'Капитан') {
       setIsCaptain(true);
+    } else {
+      setIsCaptain(false);
     }
   }, [props.player]);
 
