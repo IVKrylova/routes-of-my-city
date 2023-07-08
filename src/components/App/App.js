@@ -387,13 +387,13 @@ function App() {
       status: status,
     };
     const arr = teamPlayers.map((el, ind) => {
-      if (status === 'Капитан') el.status = `${ind + 2} игрок`;
+      if (status === 'Капитан') el.status = `игрок`;
       if (el.id === editedPlayer.id) {
         el = player;
       }
       return el;
     });
-    const sortArr = sortPlayers(arr);
+    const sortArr = sortPlayers(countPlayers(arr));
     setTeamPlayers(sortArr);
   }
 
