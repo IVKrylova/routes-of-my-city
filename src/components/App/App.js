@@ -35,6 +35,7 @@ import {
 import { getQuests, getQuestCategory } from '../../utils/api';
 import { setQuests } from '../../store/actionCreators/questsAction';
 import { setCurrentQuest } from '../../store/actionCreators/currentQuestAction';
+import { sortPlayers } from '../../utils/sortPlayers';
 import './App.scss';
 
 // ToDo: delete after getting API data
@@ -373,7 +374,8 @@ function App() {
         count++;
       }
     }
-    setTeamPlayers(arr);
+    const sortArr = sortPlayers(arr);
+    setTeamPlayers(sortArr);
     setIsPopupSuccess(true);
   }
 
@@ -397,13 +399,15 @@ function App() {
       birthday: data.birthday,
       status: status,
     };
-    const arr = teamPlayers.map(el => {
+    const arr = teamPlayers.map((el, ind) => {
+      if (status === 'Капитан') el.status = `${ind + 2} игрок`;
       if (el.id === editedPlayer.id) {
         el = player;
       }
       return el;
     });
-    setTeamPlayers(arr);
+    const sortArr = sortPlayers(arr);
+    setTeamPlayers(sortArr);
   }
 
   // ToDo: check logic
