@@ -37,6 +37,7 @@ import { setQuests } from '../../store/actionCreators/questsAction';
 import { setCurrentQuest } from '../../store/actionCreators/currentQuestAction';
 import { sortPlayers } from '../../utils/sortPlayers';
 import { countPlayers } from '../../utils/countPlayers';
+import { fillTeam } from '../../utils/fillTeam';
 import './App.scss';
 
 // ToDo: delete after getting API data
@@ -211,11 +212,15 @@ function App() {
         el.email = '';
         el.birthday = '';
         el.id = Math.random();
+        el.status = '';
       }
 
       return el;
     });
-    const sortArr = sortPlayers(countPlayers(team));
+    const filterArr = team.filter(el => el.name !== '');
+    const arr = fillTeam(filterArr);
+    const sortArr = sortPlayers(countPlayers(arr));
+
     setTeamPlayers(sortArr);
     // ToDo: if deleting successfull
     setIsPopupSuccess(true);
@@ -355,21 +360,8 @@ function App() {
     }
     arr.push(player);
     if (data.captain) arr.reverse();
-    let count = 2;
-
-    for (let i = 0; i < 5; i++) {
-      if (!arr[i]) {
-        arr[i] = {
-          status: '',
-          name: '',
-          phone: '',
-          email: '',
-          birthday: '',
-          id: Math.random(),
-        }
-      }
-    }
-    const sortArr = sortPlayers(countPlayers(arr));
+    const team = fillTeam(arr);
+    const sortArr = sortPlayers(countPlayers(team));
     setTeamPlayers(sortArr);
     setIsPopupSuccess(true);
   }
