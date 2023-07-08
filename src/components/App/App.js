@@ -36,6 +36,7 @@ import { getQuests, getQuestCategory } from '../../utils/api';
 import { setQuests } from '../../store/actionCreators/questsAction';
 import { setCurrentQuest } from '../../store/actionCreators/currentQuestAction';
 import { sortPlayers } from '../../utils/sortPlayers';
+import { countPlayers } from '../../utils/countPlayers';
 import './App.scss';
 
 // ToDo: delete after getting API data
@@ -214,7 +215,8 @@ function App() {
 
       return el;
     });
-    setTeamPlayers(team);
+    const sortArr = sortPlayers(countPlayers(team));
+    setTeamPlayers(sortArr);
     // ToDo: if deleting successfull
     setIsPopupSuccess(true);
      // ToDo: fix with Redux
@@ -366,15 +368,8 @@ function App() {
           id: Math.random(),
         }
       }
-      if (arr[i].status !== 'Капитан') {
-        arr[i].status = 'игрок';
-      }
-      if (arr[i].status === 'игрок' || (arr[i].status === '')) {
-        arr[i].status = `${count} игрок`;
-        count++;
-      }
     }
-    const sortArr = sortPlayers(arr);
+    const sortArr = sortPlayers(countPlayers(arr));
     setTeamPlayers(sortArr);
     setIsPopupSuccess(true);
   }
