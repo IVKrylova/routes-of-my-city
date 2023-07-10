@@ -5,7 +5,6 @@
   @include grid-column-1fr;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.9s, opacity .7s linear;
   justify-content: center;
   align-items: center;
   z-index: 100;
@@ -21,6 +20,7 @@
   &_opened {
     visibility: visible;
     opacity: 1;
+    transition: visibility 0.2s, opacity .2s linear;
   }
 
   &__container {
