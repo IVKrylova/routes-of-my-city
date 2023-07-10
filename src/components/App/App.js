@@ -140,26 +140,14 @@ function App() {
 
   /* ToDo: check logics with API data */
   useEffect(() => {
-    const players = [];
-    let count = 2;
-    for (let i = 0; i < 5; i++) {
-      players.push(team.members[i]);
-      if (!players[i]) {
-        players[i] = {
-          status: '',
-          name: '',
-          phone: '',
-          email: '',
-          birthday: '',
-          id: Math.random(),
-        }
-      }
-      if (players[i].status === 'игрок' || (players[i].status === '')) {
-        players[i].status = `${count} игрок`;
-        count++;
-      }
+    if (team && team.members) {
+      const players = [];
+      team.members.forEach(el => {
+        players.push(el);
+      });
+      const arr = fillTeam(players);
+      setTeamPlayers(arr);
     }
-    setTeamPlayers(players);
   }, [team]);
 
   /* ToDo: check logics with API data */
@@ -208,11 +196,6 @@ function App() {
     const team = teamPlayers.map(el => {
       if (el.id === deletedPlayerId) {
         el.name = '';
-        el.phone = '';
-        el.email = '';
-        el.birthday = '';
-        el.id = Math.random();
-        el.status = '';
       }
 
       return el;
@@ -344,7 +327,7 @@ function App() {
   // ToDo: fix with Redux
   const handleFormAddPlayer = (data) => {
     const id = Math.random();
-    const status = data.captain ? 'Капитан' : 'игрок';
+    const status = data.captain ? 'Капитан' : `игрок`;
     const player = {
       name: data.name,
       id: id,
@@ -356,12 +339,16 @@ function App() {
 
     const arr = teamPlayers.filter(el => !!el.name === true);
     if (data.captain) {
-      arr.map(el => el.status = 'игрок');
+      const member = arr.find(el => el.status === 'Капитан');
+      member.status = 'игрок';
+      arr[0] = player;
+      arr[arr.length] = member;
+    } else {
+      arr.push(player);
     }
-    arr.push(player);
-    if (data.captain) arr.reverse();
     const team = fillTeam(arr);
     const sortArr = sortPlayers(countPlayers(team));
+
     setTeamPlayers(sortArr);
     setIsPopupSuccess(true);
   }
@@ -386,15 +373,22 @@ function App() {
       birthday: data.birthday,
       status: status,
     };
-    const arr = teamPlayers.map((el, ind) => {
-      if (status === 'Капитан') el.status = `игрок`;
+    const arr = teamPlayers.map(el => {
       if (el.id === editedPlayer.id) {
         el = player;
       }
       return el;
     });
-    const sortArr = sortPlayers(countPlayers(arr));
-    setTeamPlayers(sortArr);
+
+    if (status === 'Капитан') {
+      const ind = arr.indexOf(player);
+      const member = arr[0];
+      member.status = `${ind + 1} игрок`;
+      arr[0] = player;
+      arr[ind] = member;
+    }
+
+    setTeamPlayers(arr);
   }
 
   // ToDo: check logic

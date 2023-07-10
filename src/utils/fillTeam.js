@@ -10,6 +10,9 @@ export const fillTeam = (arr) => {
         id: Math.random(),
       }
     }
+    if (arr[i].status === 'игрок' || arr[i].status === '') {
+      arr[i].status = `${i + 1} игрок`;
+    }
   }
 
   return arr;

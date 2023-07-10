@@ -1,8 +1,8 @@
 // ToDo: check with API
 export const INITIAL_STATE_TEAM = {
   id: null,
-  members: {
-    0: {
+  members: [
+    {
       status: '',
       name: '',
       phone: '',
@@ -10,7 +10,7 @@ export const INITIAL_STATE_TEAM = {
       birthday: '',
       id: null,
     }
-  },
+  ],
   name: '',
   quests: {
     0: {
