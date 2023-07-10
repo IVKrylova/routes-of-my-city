@@ -316,7 +316,13 @@ function App() {
 
   const changeCategoryInPopup = (category) => {
     // ToDo: fix with Api, use changedCategoryQuestId
-    console.log(category);
+    const arr = teamQuestList.map(el => {
+      if (Number(el.id) === Number(changedCategoryQuestId)) {
+        el.category = category;
+      }
+      return el;
+    })
+    setTeamQuestList(arr);
     setIsPopupSuccess(true);
   }
 

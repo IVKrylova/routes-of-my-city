@@ -12,14 +12,14 @@ export const INITIAL_STATE_TEAM = {
     }
   ],
   name: '',
-  quests: {
-    0: {
+  quests: [
+    {
       id: null,
       name: '',
       category: '',
       categoryDescription: ''
     }
-  },
+  ],
   membersNumber: null,
 };
 
