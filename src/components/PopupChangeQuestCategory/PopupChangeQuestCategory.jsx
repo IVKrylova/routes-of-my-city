@@ -23,6 +23,8 @@ const PopupChangeQuestCategory = (props) => {
         sendCategory={props.sendCategory}
         classModifier='form-choice-category_popup'
         isOpenPopup={props.isOpenPopup}
+        teamQuestList={props.teamQuestList}
+        changedCategoryQuestId={props.changedCategoryQuestId}
       />
     </GeneralPopup>
   );

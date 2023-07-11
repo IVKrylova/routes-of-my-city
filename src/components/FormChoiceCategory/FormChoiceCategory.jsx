@@ -10,7 +10,8 @@ const FormChoiceCategory = ({
   sendCategory,
   classModifier,
   handleCancelClick,
-  teamQuestList
+  teamQuestList,
+  changedCategoryQuestId,
 }) => {
   const [category, setCategory] = useState('');
   const classButtonList = `form-choice-category__button-list ${isOpenPopup ? 'form-choice-category__button-list_popup' : ''}`;
@@ -26,10 +27,11 @@ const FormChoiceCategory = ({
   }
 
   useEffect(() => {
-    if (teamQuestList && teamQuestList.length > 0) {
-     console.log(teamQuestList)
+    if (teamQuestList && teamQuestList.length > 0 && changedCategoryQuestId) {
+      const quest = teamQuestList.find(el => Number(el.id) === Number(changedCategoryQuestId));
+      setCategory(quest.category);
     }
-  }, [teamQuestList]);
+  }, [teamQuestList, changedCategoryQuestId]);
 
   return (
     <>

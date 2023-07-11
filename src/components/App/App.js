@@ -19,7 +19,6 @@ import Task from '../Task/Task';
 import DeletePlayerPopup from '../DeletePlayerPopup/DeletePlayerPopup';
 import CancelQuestPopup from '../CancelQuestPopup/CancelQuestPopup';
 import DeleteProfilePopup from '../DeleteProfilePopup/DeleteProfilePopup';
-import PopupChangeQuestCategory from '../PopupChangeQuestCategory/PopupChangeQuestCategory';
 import Rules from '../Rules/Rules';
 import AnswerPage from '../AnswerPage/AnswerPage';
 import PopupAddPlayer from '../PopupAddPlayer/PopupAddPlayer';
@@ -550,6 +549,7 @@ function App() {
                     isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
                     questCategories={questCategoriesToChange}
                     sendCategory={changeCategoryInPopup}
+                    changedCategoryQuestId={changedCategoryQuestId}
                   />
                 }
               />
