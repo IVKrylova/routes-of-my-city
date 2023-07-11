@@ -370,7 +370,7 @@ function App() {
   // ToDo: fix with Api
   const handleFormEditPlayer = (data) => {
     setIsPopupSuccess(true);
-    const status = data.captain ? 'Капитан' : 'игрок';
+    const status = data.captain ? 'Капитан' : '1 игрок';
     const player = {
       name: data.name,
       id: editedPlayer.id,

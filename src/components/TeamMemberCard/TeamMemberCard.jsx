@@ -26,7 +26,7 @@ const TeamMemberCard = (props) => {
                 onClick={handleClickButtonEdit}
               ></button>
             </div>
-            {props.player.status !== 'Капитан' && props.player.status !== '2 игрок' &&
+            {props.player.status !== 'Капитан' && props.player.status !== '2 игрок' && props.player.status !== '1 игрок' &&
               <button
                 type='button'
                 className='team-member-card__button-delete'
