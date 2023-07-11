@@ -4,7 +4,14 @@ import { Preloader } from '../Preloader/Preloader';
 
 import './FormChoiceCategory.scss';
 
-const FormChoiceCategory = ({ questCategories, isOpenPopup, sendCategory, classModifier, handleCancelClick }) => {
+const FormChoiceCategory = ({
+  questCategories,
+  isOpenPopup,
+  sendCategory,
+  classModifier,
+  handleCancelClick,
+  teamQuestList
+}) => {
   const [category, setCategory] = useState('');
   const classButtonList = `form-choice-category__button-list ${isOpenPopup ? 'form-choice-category__button-list_popup' : ''}`;
   const classButtonSubmit = `form-choice-category__button-submit ${isOpenPopup ? 'form-choice-category__button-submit_popup' : ''}`;
@@ -19,10 +26,10 @@ const FormChoiceCategory = ({ questCategories, isOpenPopup, sendCategory, classM
   }
 
   useEffect(() => {
-    if (questCategories.length > 0) {
-     setCategory(questCategories[0].name);
+    if (teamQuestList && teamQuestList.length > 0) {
+     console.log(teamQuestList)
     }
-  }, [questCategories]);
+  }, [teamQuestList]);
 
   return (
     <>

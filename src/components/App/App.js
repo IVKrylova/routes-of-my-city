@@ -259,6 +259,7 @@ function App() {
     setIsOpenCancelQuestPopup(false);
     setIsOpenDeleteProfilePopup(false);
     setIsOpenPopupChangeQuestCategory(false);
+    setQuestCategoriesToChange([]);
     setIsOpenPopopAddPlayer(false);
     setIsOpenPopopEditPlayer(false);
     setIsOpenPopupResetPassword(false);
@@ -541,6 +542,14 @@ function App() {
                     handleClickEditPlayer={handleClickEditPlayer}
                     openPopupResetPassword={openPopupResetPassword}
                     openPopupChangePassword={openPopupChangePassword}
+                    isOpenPopup={isOpenPopupChangeQuestCategory}
+                    onClosePopup={closeAllPopup}
+                    isPopupSuccess={isPopupSuccess}
+                    goToHomePage={handleButtongoToHomePage}
+                    handleCancelAndGoBack={handleCancelAndGoBack}
+                    isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
+                    questCategories={questCategoriesToChange}
+                    sendCategory={changeCategoryInPopup}
                   />
                 }
               />
@@ -716,16 +725,6 @@ function App() {
             isPopupSuccess={isPopupSuccess}
             goToHomePage={handleButtongoToHomePage}
             handleButtonClick={handleDeleteProfile}
-          />
-          <PopupChangeQuestCategory
-            isOpenPopup={isOpenPopupChangeQuestCategory}
-            onClosePopup={closeAllPopup}
-            isPopupSuccess={isPopupSuccess}
-            goToHomePage={handleButtongoToHomePage}
-            handleCancelAndGoBack={handleCancelAndGoBack}
-            isOpenPopupChangeQuestCategory={isOpenPopupChangeQuestCategory}
-            questCategories={questCategoriesToChange}
-            sendCategory={changeCategoryInPopup}
           />
           <PopupAddPlayer
             isOpenPopup={isOpenPopopAddPlayer}

@@ -5,6 +5,7 @@ import QuestCardProfile from '../QuestCardProfile/QuestCardProfile';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import ButtonGoBack from '../ButtonGoBack/ButtonGoBack';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import PopupChangeQuestCategory from '../PopupChangeQuestCategory/PopupChangeQuestCategory';
 
 import './Profile.scss';
 
@@ -29,6 +30,7 @@ const Profile = (props) => {
   }, [values.name]);
 
   return (
+    <>
     <main className='profile'>
       <ButtonGoBack
         goBack={props.goBack}
@@ -117,6 +119,18 @@ const Profile = (props) => {
         Сохранить
       </button>
     </main>
+    <PopupChangeQuestCategory
+      isOpenPopup={props.isOpenPopup}
+      onClosePopup={props.closeAllPopup}
+      isPopupSuccess={props.isPopupSuccess}
+      goToHomePage={props.goToHomePage}
+      handleCancelAndGoBack={props.handleCancelAndGoBack}
+      questCategories={props.questCategories}
+      sendCategory={props.sendCategory}
+      teamQuestList={props.teamQuestList}
+      isOpenPopupChangeQuestCategory={props.isOpenPopupChangeQuestCategory}
+    />
+  </>
   );
 }
 
